@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "PDP",
+    "PPP"
+  ],
+  "key": {
+    "P": [
+      {
+        "item": "minecraft:paper"
+      }
+    ],
+    "D": [
+      {
+        "tag": "immersive_melodies:dye"
+      }
+    ]
+  },
+  "result": {
+    "item": "immersive_melodies:triangle"
+  }
+}

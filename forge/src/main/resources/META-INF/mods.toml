@@ -1,0 +1,29 @@
+modLoader = "javafml"
+loaderVersion = "[35,)"
+issueTrackerURL = "https://github.com/Luke100000/ImmersiveMelodies/issues"
+license = "GNU"
+
+[[mods]]
+modId = "immersive_melodies"
+version = "${version}"
+displayName = "Immersive Melodies"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/ImmersiveMelodies"
+authors = "Luke100000"
+description = '''
+    Play custom melodies on various instruments and annoy your friends!
+    '''
+logoFile = "logoFile.png"
+
+[[dependencies.immersive_melodies]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.immersive_melodies]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1]"
+ordering = "NONE"
+side = "BOTH"
