@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public final class Melody {
-    private final String name;
-    private final int bpm;
+
+
+public class Melody extends MelodyDescriptor {
     private final List<Note> notes;
 
     public Melody() {
@@ -16,30 +16,34 @@ public final class Melody {
     }
 
     public Melody(String name, int bpm, List<Note> notes) {
-        this.name = name;
-        this.bpm = bpm;
+        super(name, bpm);
         this.notes = notes;
     }
 
-    public String getName() {
-        return name;
-    }
+    public Melody(NbtCompound compound) {
+        super(compound);
 
-    public int getBPM() {
-        return bpm;
+        int noteCount = compound.getInt("noteCount");
+        notes = new LinkedList<>();
+        for (int i = 0; i < noteCount; i++) {
+            notes.add(new Note(
+                    compound.getCompound("note" + i)
+            ));
+        }
     }
 
     public List<Note> getNotes() {
         return Collections.unmodifiableList(notes);
     }
 
-    public static Melody fromNbt(NbtCompound compound) {
-        // todo
-        return new Melody();
-    }
-
     public NbtCompound toNbt() {
-        // todo
-        return new NbtCompound();
+        NbtCompound nbt = super.toLiteNbt();
+
+        nbt.putInt("noteCount", notes.size());
+        for (int i = 0; i < notes.size(); i++) {
+            nbt.put("note" + i, notes.get(i).toNbt());
+        }
+
+        return nbt;
     }
 }

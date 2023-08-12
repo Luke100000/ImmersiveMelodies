@@ -10,8 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MidiParser {
-    public static Melody parseMidi(InputStream inputStream) {
-        String name = "unnamed";
+    public static Melody parseMidi(InputStream inputStream, String name) {
         int bpm = 120;
         List<Note> notes = new LinkedList<>();
 
@@ -31,7 +30,10 @@ public class MidiParser {
                         byte[] data = metaMessage.getData();
                         int type = metaMessage.getType();
                         if (type == 0x03) {
-                            name = new String(data);
+                            String s = new String(data).strip();
+                            if (s.length() > 0) {
+                                name = s;
+                            }
                         } else if (type == 0x51) {
                             int microsecondsPerBeat = ((data[0] & 0xFF) << 16) | ((data[1] & 0xFF) << 8) | (data[2] & 0xFF);
                             bpm = Math.round(60000000.0f / microsecondsPerBeat);

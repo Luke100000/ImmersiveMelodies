@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
 import immersive_melodies.util.MidiParser;
+import immersive_melodies.util.Utils;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.SinglePreparationResourceReloader;
@@ -23,11 +24,11 @@ public class MelodyLoader extends SinglePreparationResourceReloader<Map<Identifi
     protected Map<Identifier, Melody> prepare(ResourceManager manager, Profiler profiler) {
         Map<Identifier, Melody> map = Maps.newHashMap();
 
-        Map<Identifier, Resource> resources = manager.findResources(dataType, path -> path.getPath().endsWith(".midi"));
+        Map<Identifier, Resource> resources = manager.findResources(dataType, path -> path.getPath().endsWith(".midi") || path.getPath().endsWith(".mid"));
         for (Map.Entry<Identifier, Resource> entry : resources.entrySet()) {
             try {
                 InputStream inputStream = entry.getValue().getInputStream();
-                Melody melody = MidiParser.parseMidi(inputStream);
+                Melody melody = MidiParser.parseMidi(inputStream, Utils.toTitle(entry.getKey().getPath()));
                 map.put(entry.getKey(), melody);
             } catch (IllegalArgumentException | IOException | JsonParseException exception) {
                 LOGGER.error("Couldn't load melody {} ({})", entry.getKey(), exception);

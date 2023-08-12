@@ -2,7 +2,7 @@ package immersive_melodies.network.s2c;
 
 import immersive_melodies.Common;
 import immersive_melodies.cobalt.network.Message;
-import immersive_melodies.resources.Melody;
+import immersive_melodies.resources.MelodyDescriptor;
 import immersive_melodies.resources.ServerMelodyManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
@@ -10,9 +10,10 @@ import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MelodyListMessage extends Message {
-    private final Map<Identifier, Melody> melodies = new HashMap<>();
+    private final Map<Identifier, MelodyDescriptor> melodies = new HashMap<>();
 
     public MelodyListMessage() {
         //datapack melodies
@@ -25,16 +26,16 @@ public class MelodyListMessage extends Message {
     @Override
     public void encode(PacketByteBuf b) {
         b.writeInt(melodies.size());
-        for (Map.Entry<Identifier, Melody> entry : melodies.entrySet()) {
+        for (Map.Entry<Identifier, MelodyDescriptor> entry : melodies.entrySet()) {
             b.writeIdentifier(entry.getKey());
-            b.writeNbt(entry.getValue().toNbt());
+            b.writeNbt(entry.getValue().toLiteNbt());
         }
     }
 
     public MelodyListMessage(PacketByteBuf b) {
         int size = b.readInt();
         for (int i = 0; i < size; i++) {
-            melodies.put(b.readIdentifier(), Melody.fromNbt(b.readNbt()));
+            melodies.put(b.readIdentifier(), new MelodyDescriptor(Objects.requireNonNull(b.readNbt())));
         }
     }
 
@@ -43,7 +44,7 @@ public class MelodyListMessage extends Message {
         Common.networkManager.handleMelodyListMessage(this);
     }
 
-    public Map<Identifier, Melody> getMelodies() {
+    public Map<Identifier, MelodyDescriptor> getMelodies() {
         return melodies;
     }
 }

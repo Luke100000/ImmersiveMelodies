@@ -18,7 +18,7 @@ public class MelodyResponse extends Message {
 
     public MelodyResponse(PacketByteBuf b) {
         this.identifier = b.readIdentifier();
-        this.melody = Melody.fromNbt(b.readNbt());
+        this.melody = new Melody(b.readNbt());
     }
 
     @Override

@@ -51,7 +51,7 @@ public class ServerMelodyManager {
         public static CustomServerMelodies fromNbt(NbtCompound nbt) {
             CustomServerMelodies c = new CustomServerMelodies();
             for (String key : nbt.getKeys()) {
-                c.customServerMelodies.put(new Identifier(key), Melody.fromNbt(nbt.getCompound(key)));
+                c.customServerMelodies.put(new Identifier(key), new Melody(nbt.getCompound(key)));
             }
             return c;
         }

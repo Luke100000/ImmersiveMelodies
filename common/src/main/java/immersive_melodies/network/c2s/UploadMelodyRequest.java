@@ -20,7 +20,7 @@ public class UploadMelodyRequest extends Message {
 
     public UploadMelodyRequest(PacketByteBuf b) {
         this.name = b.readString();
-        this.melody = Melody.fromNbt(b.readNbt());
+        this.melody = new Melody(b.readNbt());
     }
 
     @Override
