@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 public class MelodyLoader extends SinglePreparationResourceReloader<Map<Identifier, Melody>> {
@@ -28,8 +29,11 @@ public class MelodyLoader extends SinglePreparationResourceReloader<Map<Identifi
         for (Map.Entry<Identifier, Resource> entry : resources.entrySet()) {
             try {
                 InputStream inputStream = entry.getValue().getInputStream();
-                Melody melody = MidiParser.parseMidi(inputStream, Utils.toTitle(entry.getKey().getPath()));
-                map.put(entry.getKey(), melody);
+                List<Melody> melodies = MidiParser.parseMidi(inputStream, Utils.toTitle(entry.getKey().getPath()));
+                int i = 0;
+                for (Melody melody : melodies) {
+                    map.put(new Identifier(entry.getKey().getNamespace(), entry.getKey().getPath() + "_" + (i++)), melody);
+                }
             } catch (IllegalArgumentException | IOException | JsonParseException exception) {
                 LOGGER.error("Couldn't load melody {} ({})", entry.getKey(), exception);
             }

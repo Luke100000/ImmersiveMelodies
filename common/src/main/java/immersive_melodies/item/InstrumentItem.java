@@ -1,6 +1,7 @@
 package immersive_melodies.item;
 
 import immersive_melodies.Common;
+import immersive_melodies.client.MelodyProgressHandler;
 import immersive_melodies.cobalt.network.NetworkHandler;
 import immersive_melodies.network.s2c.MelodyListMessage;
 import immersive_melodies.network.s2c.OpenGuiRequest;
@@ -13,7 +14,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
@@ -30,6 +30,8 @@ public class InstrumentItem extends Item {
     public InstrumentItem(Settings settings) {
         super(settings);
     }
+
+    private static final MelodyProgressHandler melodyProgressHandler = new MelodyProgressHandler();
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
@@ -53,6 +55,10 @@ public class InstrumentItem extends Item {
         Melody melody = getMelody(stack);
         tooltip.add(Text.literal(melody.getName()).formatted(Formatting.ITALIC));
 
+        // Progress
+        //melodyProgressHandler.getAndAdvanceProgress()
+        tooltip.add(Text.literal(String.valueOf(stack.getOrCreateNbt().getLong("progress"))).formatted(Formatting.ITALIC).formatted(Formatting.GRAY));
+
         super.appendTooltip(stack, world, tooltip, context);
     }
 
@@ -69,36 +75,41 @@ public class InstrumentItem extends Item {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, world, entity, slot, selected);
 
-        if (isPlaying(stack)) {
-            NbtCompound nbt = stack.getOrCreateNbt();
-            long progress = nbt.getLong("progress");
-            progress += 50;
-            nbt.putLong("progress", progress);
+        // check if player holds it
+        boolean isHolding = false;
+        for (ItemStack handItem : entity.getHandItems()) {
+            if (handItem == stack) {
+                isHolding = true;
+                break;
+            }
+        }
 
-            if (world.isClient) {
-                Melody melody = getMelody(stack);
-                // todo optimize
-                for (int i = 0; i < melody.getNotes().size(); i++) {
-                    Note note = melody.getNotes().get(i);
-                    if (progress >= note.getTime() && progress < note.getTime() + 50) {
-                        float volume = note.getVelocity() / 255.0f * 3.0f;
-                        float pitch = (float) Math.pow(2, (note.getNote() - 72) / 12.0);
-                        float length = note.getLength() / 1000.0f;
-                        Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(), Instrument.XYLOPHONE.getSound().value(), SoundCategory.RECORDS, volume, pitch, length);
-                    }
+        // play
+        if (isPlaying(stack) && isHolding && world.isClient) {
+            long progress = melodyProgressHandler.getAndAdvanceProgress(entity, stack);
+            Melody melody = getMelody(stack);
+            // todo optimize
+            for (int i = 0; i < melody.getNotes().size(); i++) {
+                Note note = melody.getNotes().get(i);
+                if (progress >= note.getTime() && progress < note.getTime() + 50) {
+                    float volume = note.getVelocity() / 255.0f * 3.0f;
+                    float pitch = (float) Math.pow(2, (note.getNote() - 66) / 12.0) * 4.0f; // todo
+                    long length = note.getLength();
+                    Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(), Instrument.BELL.getSound().value(), SoundCategory.RECORDS, volume, pitch, length, entity);
                 }
             }
         }
     }
 
-    public void play(ItemStack stack, Identifier melody) {
+    public void play(ItemStack stack, Identifier melody, World world) {
         stack.getOrCreateNbt().putString("melody", melody.toString());
-        stack.getOrCreateNbt().putLong("progress", 0);
         stack.getOrCreateNbt().putBoolean("playing", true);
+        stack.getOrCreateNbt().putLong("start_time", world.getTime());
     }
 
-    public void play(ItemStack stack) {
+    public void play(ItemStack stack, World world) {
         stack.getOrCreateNbt().putBoolean("playing", true);
+        stack.getOrCreateNbt().putLong("start_time", world.getTime());
     }
 
     public void pause(ItemStack stack) {

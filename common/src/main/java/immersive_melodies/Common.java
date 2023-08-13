@@ -1,6 +1,6 @@
 package immersive_melodies;
 
-import immersive_melodies.client.SoundManager;
+import immersive_melodies.client.sound.SoundManager;
 import immersive_melodies.network.NetworkManager;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;

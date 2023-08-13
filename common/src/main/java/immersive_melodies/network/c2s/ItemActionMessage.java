@@ -43,11 +43,11 @@ public class ItemActionMessage extends Message {
         ItemStack stack = e.getInventory().getStack(slot);
         if (stack.getItem() instanceof InstrumentItem instrument) {
             if (!melody.getPath().equals("_")) {
-                instrument.play(stack, melody);
+                instrument.play(stack, melody, e.getWorld());
             } else if (state == State.PAUSE) {
                 instrument.pause(stack);
             } else {
-                instrument.play(stack);
+                instrument.play(stack, e.getWorld());
             }
         }
     }

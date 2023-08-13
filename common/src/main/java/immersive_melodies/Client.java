@@ -1,6 +1,6 @@
 package immersive_melodies;
 
-import immersive_melodies.client.SoundManagerImpl;
+import immersive_melodies.client.sound.SoundManagerImpl;
 import immersive_melodies.network.ClientNetworkManager;
 import net.minecraft.client.MinecraftClient;
 

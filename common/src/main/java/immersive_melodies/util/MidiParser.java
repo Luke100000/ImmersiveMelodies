@@ -10,17 +10,22 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MidiParser {
-    public static Melody parseMidi(InputStream inputStream, String name) {
-        int bpm = 120;
-        List<Note> notes = new LinkedList<>();
-
-        HashMap<Integer, Note.Builder> currentNotes = new HashMap<>();
-
+    public static List<Melody> parseMidi(InputStream inputStream, String fallback) {
+        List<Melody> melodies = new LinkedList<>();
         try {
             Sequence sequence = MidiSystem.getSequence(inputStream);
 
+            String name = fallback;
+            int bpm = 120;
+
             // Iterate through tracks and MIDI events
+            int trackNr = 0;
             for (Track track : sequence.getTracks()) {
+                boolean customName = false;
+                List<Note> notes = new LinkedList<>();
+
+                HashMap<Integer, Note.Builder> currentNotes = new HashMap<>();
+
                 for (int i = 0; i < track.size(); i++) {
                     MidiEvent event = track.get(i);
                     MidiMessage message = event.getMessage();
@@ -33,6 +38,7 @@ public class MidiParser {
                             String s = new String(data).strip();
                             if (s.length() > 0) {
                                 name = s;
+                                customName = true;
                             }
                         } else if (type == 0x51) {
                             int microsecondsPerBeat = ((data[0] & 0xFF) << 16) | ((data[1] & 0xFF) << 8) | (data[2] & 0xFF);
@@ -46,7 +52,12 @@ public class MidiParser {
                         if (command == ShortMessage.NOTE_ON) {
                             int note = sm.getData1();
                             int velocity = sm.getData2();
-                            currentNotes.put(note, new Note.Builder(note, velocity, event.getTick()));
+
+                            // Convert notes into ms
+                            long tick = event.getTick();
+                            long ms = tick * 60 * 1000 / sequence.getResolution() / bpm;
+
+                            currentNotes.put(note, new Note.Builder(note, velocity, ms));
                         } else if (command == ShortMessage.NOTE_OFF) {
                             int note = sm.getData1();
                             Note.Builder noteBuilder = currentNotes.get(note);
@@ -55,11 +66,25 @@ public class MidiParser {
                         }
                     }
                 }
+
+                if (notes.size() > 0) {
+                    if (sequence.getTracks().length > 1 && !customName) {
+                        trackNr += 1;
+                        name += " Track " + trackNr;
+                    }
+
+                    // Just to make sure
+                    notes.sort((a, b) -> (int) (a.getTime() - b.getTime()));
+
+                    melodies.add(new Melody(name, bpm, notes));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return new Melody(name, bpm, notes);
+        // todo given that Minecraft updates at 20 Hz, it makes sense to scale the actual BPM to a multiple of 50
+
+        return melodies;
     }
 }
