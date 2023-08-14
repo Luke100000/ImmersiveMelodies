@@ -7,9 +7,11 @@ import net.minecraft.world.PersistentState;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class ServerMelodyManager {
     static final Melody DEFAULT = new Melody();
+    static final Random random = new Random();
 
     public static MinecraftServer server;
     private static Map<Identifier, Melody> datapackMelodies = new HashMap<>();
@@ -25,6 +27,17 @@ public class ServerMelodyManager {
 
     public static void setDatapackMelodies(Map<Identifier, Melody> datapackMelodies) {
         ServerMelodyManager.datapackMelodies = datapackMelodies;
+    }
+
+    public static Identifier getRandomMelody() {
+        Object[] datapack = getDatapackMelodies().keySet().toArray();
+        Object[] custom = get().customServerMelodies.keySet().toArray();
+        int i = random.nextInt(datapack.length + custom.length);
+        if (i < datapack.length) {
+            return (Identifier) datapack[i];
+        } else {
+            return (Identifier) custom[i - datapack.length];
+        }
     }
 
     public static void registerMelody(Identifier identifier, Melody melody) {

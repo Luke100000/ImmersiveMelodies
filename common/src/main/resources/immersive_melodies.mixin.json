@@ -4,6 +4,7 @@
   "package": "immersive_melodies.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "MobEntityMixin"
   ],
   "client": [
   ],

@@ -9,6 +9,7 @@ import immersive_melodies.network.s2c.OpenGuiRequest;
 import immersive_melodies.resources.ClientMelodyManager;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.Note;
+import immersive_melodies.resources.ServerMelodyManager;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -45,7 +46,6 @@ public class InstrumentItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-
         // State
         if (isPlaying(stack)) {
             tooltip.add(Text.translatable("immersive_melodies.playing").formatted(Formatting.GREEN));
@@ -54,10 +54,6 @@ public class InstrumentItem extends Item {
         // Name
         Melody melody = getMelody(stack);
         tooltip.add(Text.literal(melody.getName()).formatted(Formatting.ITALIC));
-
-        // Progress
-        //melodyProgressHandler.getAndAdvanceProgress()
-        tooltip.add(Text.literal(String.valueOf(stack.getOrCreateNbt().getLong("progress"))).formatted(Formatting.ITALIC).formatted(Formatting.GRAY));
 
         super.appendTooltip(stack, world, tooltip, context);
     }
@@ -75,17 +71,14 @@ public class InstrumentItem extends Item {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, world, entity, slot, selected);
 
-        // check if player holds it
-        boolean isHolding = false;
-        for (ItemStack handItem : entity.getHandItems()) {
-            if (handItem == stack) {
-                isHolding = true;
-                break;
-            }
+        // autoplay
+        if (!world.isClient && !(entity instanceof PlayerEntity) && !isPlaying(stack)) {
+            Identifier randomMelody = ServerMelodyManager.getRandomMelody();
+            play(stack, randomMelody, world);
         }
 
         // play
-        if (isPlaying(stack) && isHolding && world.isClient) {
+        if (isPlaying(stack) && selected && world.isClient) {
             long progress = melodyProgressHandler.getAndAdvanceProgress(entity, stack);
             Melody melody = getMelody(stack);
             // todo optimize
@@ -101,6 +94,10 @@ public class InstrumentItem extends Item {
                     }
                     long length = note.getLength();
                     Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(), Sounds.PIANO.get(octave), SoundCategory.RECORDS, volume, pitch, length, entity);
+
+                    if (i == melody.getNotes().size() - 1) {
+                        melodyProgressHandler.setLastIndex(entity, i + 1);
+                    }
                 } else {
                     melodyProgressHandler.setLastIndex(entity, i);
                     break;
