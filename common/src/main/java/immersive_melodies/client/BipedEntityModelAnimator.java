@@ -18,11 +18,11 @@ public class BipedEntityModelAnimator {
     }
 
     public static <T extends LivingEntity> ModelPart getLeftArm(BipedEntityModel<T> model, T entity) {
-        return model.leftArm;
+        return entity.getMainHandStack().getItem() instanceof InstrumentItem ? model.leftArm : model.rightArm;
     }
 
     public static <T extends LivingEntity> ModelPart getRightArm(BipedEntityModel<T> model, T entity) {
-        return model.rightArm;
+        return entity.getMainHandStack().getItem() instanceof InstrumentItem ? model.rightArm : model.leftArm;
     }
 
     public static <T extends LivingEntity> void setAngles(BipedEntityModel<T> model, T entity) {

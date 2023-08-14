@@ -12,8 +12,8 @@ public class SoundManagerImpl implements SoundManager {
         this.client = client;
     }
 
-    public void playSound(double x, double y, double z, SoundEvent event, SoundCategory category, float volume, float pitch, long length, Entity entity) {
-        NoteSoundInstance positionedSoundInstance = new NoteSoundInstance(event, category, volume, pitch, length, entity);
+    public void playSound(double x, double y, double z, SoundEvent event, SoundCategory category, float volume, float pitch, long length, long sustain, Entity entity) {
+        NoteSoundInstance positionedSoundInstance = new NoteSoundInstance(event, category, volume, pitch, length, sustain, entity);
             this.client.getSoundManager().play(positionedSoundInstance);
     }
 }

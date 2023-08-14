@@ -91,7 +91,12 @@ public class InstrumentItem extends Item {
                         octave++;
                     }
                     long length = note.getLength();
-                    Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(), Sounds.PIANO.get(octave), SoundCategory.RECORDS, volume, pitch, length, entity);
+                    long instrumentSustain = 250;
+                    long sustain = Math.min(instrumentSustain, note.getSustain());
+
+                    Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(),
+                            Sounds.PIANO.get(octave), SoundCategory.RECORDS,
+                            volume, pitch, length, sustain, entity);
 
                     MelodyProgressHandler.INSTANCE.setLastNote(entity, volume, pitch, length);
 

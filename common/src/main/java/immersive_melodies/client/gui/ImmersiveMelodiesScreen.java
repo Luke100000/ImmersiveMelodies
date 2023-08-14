@@ -4,8 +4,13 @@ import immersive_melodies.client.gui.widget.MelodyListWidget;
 import immersive_melodies.client.gui.widget.TexturedButtonWidget;
 import immersive_melodies.cobalt.network.NetworkHandler;
 import immersive_melodies.network.c2s.ItemActionMessage;
+import immersive_melodies.network.c2s.UploadMelodyRequest;
 import immersive_melodies.resources.ClientMelodyManager;
+import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.MelodyDescriptor;
+import immersive_melodies.util.MidiConverter;
+import immersive_melodies.util.MidiParser;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -15,7 +20,14 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
 import javax.annotation.Nullable;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URI;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +71,41 @@ public class ImmersiveMelodiesScreen extends Screen {
             Util.getOperatingSystem().open(URI.create("https://github.com/Luke100000/ImmersiveMelodies/wiki/Custom-Melodies"));
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void filesDragged(List<Path> paths) {
+        PathMatcher midiMatcher = FileSystems.getDefault().getPathMatcher("glob:*{.mid,.midi,.MID,.MIDI}");
+        PathMatcher abcMatcher = FileSystems.getDefault().getPathMatcher("glob:*{.abc,.ABC}");
+        for (Path path : paths) {
+            try {
+                String rawName = path.getFileName().toString();
+                String name = rawName.substring(0, rawName.lastIndexOf('.'));
+                if (midiMatcher.matches(path.getFileName())) {
+                    InputStream inputStream = new FileInputStream(path.toFile());
+                    List<Melody> melodies = MidiParser.parseMidi(inputStream, name);
+                    for (Melody melody : melodies) {
+                        NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
+                    }
+                } else if (abcMatcher.matches(path.getFileName())) {
+                    byte[] bytes = Files.readAllBytes(path);
+                    MinecraftClient.getInstance().execute(() -> {
+                        try {
+                            MidiConverter.Response request = MidiConverter.request(bytes);
+                            ByteArrayInputStream inputStream = new ByteArrayInputStream(request.getBody());
+                            List<Melody> melodies = MidiParser.parseMidi(inputStream, name);
+                            for (Melody melody : melodies) {
+                                NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

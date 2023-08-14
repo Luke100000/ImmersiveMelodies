@@ -8,13 +8,18 @@ import net.minecraft.sound.SoundEvent;
 public class NoteSoundInstance extends EntityTrackingSoundInstance {
     long age;
     long length;
+    long sustain;
     long fallOff;
 
-    public NoteSoundInstance(SoundEvent sound, SoundCategory category, float volume, float pitch, long length, Entity entity) {
+    public NoteSoundInstance(SoundEvent sound, SoundCategory category, float volume, float pitch, long length, long sustain, Entity entity) {
         super(sound, category, volume, pitch, entity, 1);
 
-        this.length = length;
-        this.fallOff = Math.min(length / 2, 200);
+        // The minimum time one need to e.g., repress a key
+        long minSustain = 50;
+
+        this.length = length + sustain;
+        this.sustain = sustain;
+        this.fallOff = Math.min(minSustain, sustain);
     }
 
     @Override
@@ -32,7 +37,8 @@ public class NoteSoundInstance extends EntityTrackingSoundInstance {
 
     @Override
     public float getVolume() {
-        return volume * Math.min(1.0f, ((float) (length - age)) / fallOff);
+        float f = Math.min(1.0f, ((float) (length - age)) / fallOff);
+        return volume * f;
     }
 
     @Override

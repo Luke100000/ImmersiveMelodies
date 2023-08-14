@@ -57,6 +57,13 @@ public class MidiParser {
                         if (command == ShortMessage.NOTE_ON) {
                             int note = sm.getData1();
                             int velocity = sm.getData2();
+
+                            // We simulate the (minimum) sustain as the time between releasing the key and pressing it again
+                            if (currentNotes.containsKey(note)) {
+                                Note.Builder previousNote = currentNotes.get(note);
+                                previousNote.sustain = ms - previousNote.time;
+                            }
+
                             currentNotes.put(note, new Note.Builder(note, velocity, ms));
                         } else if (command == ShortMessage.NOTE_OFF) {
                             int note = sm.getData1();

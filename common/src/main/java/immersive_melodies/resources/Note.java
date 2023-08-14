@@ -8,12 +8,14 @@ public class Note {
     private final int velocity;
     private final long time;
     private final long length;
+    private final long sustain;
 
-    public Note(int note, int velocity, long time, long length) {
+    public Note(int note, int velocity, long time, long length, long sustain) {
         this.note = note;
         this.velocity = velocity;
         this.time = time;
         this.length = length;
+        this.sustain = sustain;
     }
 
     public Note(NbtCompound nbt) {
@@ -21,6 +23,7 @@ public class Note {
         this.velocity = nbt.getInt("velocity");
         this.time = nbt.getLong("time");
         this.length = nbt.getLong("length");
+        this.sustain = nbt.getLong("sustain");
     }
 
     public int getNote() {
@@ -39,12 +42,17 @@ public class Note {
         return length;
     }
 
+    public long getSustain() {
+        return sustain;
+    }
+
     public NbtElement toNbt() {
         NbtCompound nbt = new NbtCompound();
         nbt.putInt("note", note);
         nbt.putInt("velocity", velocity);
         nbt.putLong("time", time);
         nbt.putLong("length", length);
+        nbt.putLong("sustain", sustain);
         return nbt;
     }
 
@@ -52,6 +60,7 @@ public class Note {
         public final int note;
         public final int velocity;
         public final long time;
+        public long sustain = 9999;
         public long length;
 
         public Builder(int note, int velocity, long time) {
@@ -65,7 +74,8 @@ public class Note {
                     note,
                     velocity,
                     time,
-                    length
+                    length,
+                    sustain
             );
         }
     }

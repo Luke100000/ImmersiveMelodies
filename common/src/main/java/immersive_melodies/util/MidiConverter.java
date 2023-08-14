@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class MidiConverter {
     private static final String URL = "http://localhost:8000/v1/convert/";
 
-    static class Response {
+    public static class Response {
         int responseCode;
         @Nullable
         String error;
