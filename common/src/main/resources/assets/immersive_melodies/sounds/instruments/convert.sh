@@ -28,7 +28,7 @@ for (( octave = 1; octave <= 8; octave++ )); do
     output_file="${input_filename_without_ext}/c${octave}.ogg"
     pitch_adjustment=$(((octave - base_octave) * 1200))
     
-    sox "$input_file" "$output_file" pitch "$pitch_adjustment"
+    sox "$input_file" "$output_file" speed "$pitch_adjustment"c
     
     if [ $? -eq 0 ]; then
         echo "Generated $output_file"
@@ -36,5 +36,3 @@ for (( octave = 1; octave <= 8; octave++ )); do
         echo "Error generating $output_file"
     fi
 done
-
-echo "Octave copies generated successfully."
