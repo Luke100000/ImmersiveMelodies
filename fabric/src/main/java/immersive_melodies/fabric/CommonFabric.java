@@ -1,9 +1,6 @@
 package immersive_melodies.fabric;
 
-import immersive_melodies.Common;
-import immersive_melodies.ItemGroups;
-import immersive_melodies.Items;
-import immersive_melodies.Messages;
+import immersive_melodies.*;
 import immersive_melodies.fabric.cobalt.network.NetworkHandlerImpl;
 import immersive_melodies.fabric.cobalt.registration.RegistrationImpl;
 import immersive_melodies.fabric.resources.FabricMelody;
@@ -25,6 +22,7 @@ public final class CommonFabric implements ModInitializer {
 
         Items.bootstrap();
         Messages.bootstrap();
+        Sounds.bootstrap();
 
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new FabricMelody());
 

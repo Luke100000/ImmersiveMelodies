@@ -27,6 +27,7 @@ public final class CommonForge {
     public static void onRegistryEvent(RegisterEvent event) {
         Items.bootstrap();
         Messages.bootstrap();
+        Sounds.bootstrap();
     }
 
     public static final DeferredRegister<ItemGroup> DEF_REG = DeferredRegister.create(ITEM_GROUP, Common.MOD_ID);

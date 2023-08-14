@@ -1,0 +1,42 @@
+{
+  "piano.c1": {
+    "sounds": [
+      "immersive_melodies:instruments/piano/c1"
+    ]
+  },
+  "piano.c2": {
+    "sounds": [
+      "immersive_melodies:instruments/piano/c2"
+    ]
+  },
+  "piano.c3": {
+    "sounds": [
+      "immersive_melodies:instruments/piano/c3"
+    ]
+  },
+  "piano.c4": {
+    "sounds": [
+      "immersive_melodies:instruments/piano/c4"
+    ]
+  },
+  "piano.c5": {
+    "sounds": [
+      "immersive_melodies:instruments/piano/c5"
+    ]
+  },
+  "piano.c6": {
+    "sounds": [
+      "immersive_melodies:instruments/piano/c6"
+    ]
+  },
+  "piano.c7": {
+    "sounds": [
+      "immersive_melodies:instruments/piano/c7"
+    ]
+  },
+  "piano.c8": {
+    "sounds": [
+      "immersive_melodies:instruments/piano/c8"
+    ]
+  }
+}

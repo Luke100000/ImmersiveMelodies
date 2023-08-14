@@ -33,6 +33,11 @@ public class ImmersiveMelodiesScreen extends Screen {
     }
 
     @Override
+    public boolean shouldPause() {
+        return false;
+    }
+
+    @Override
     protected void init() {
         this.search = addDrawableChild(new TextFieldWidget(this.textRenderer, this.width / 2 - 70, this.height / 2 - 103, 140, 20, Text.translatable("immersive_melodies.search")));
         this.search.setMaxLength(128);

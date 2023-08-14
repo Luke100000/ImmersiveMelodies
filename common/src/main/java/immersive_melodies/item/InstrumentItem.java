@@ -1,6 +1,7 @@
 package immersive_melodies.item;
 
 import immersive_melodies.Common;
+import immersive_melodies.Sounds;
 import immersive_melodies.client.MelodyProgressHandler;
 import immersive_melodies.cobalt.network.NetworkHandler;
 import immersive_melodies.network.s2c.MelodyListMessage;
@@ -8,7 +9,6 @@ import immersive_melodies.network.s2c.OpenGuiRequest;
 import immersive_melodies.resources.ClientMelodyManager;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.Note;
-import net.minecraft.block.enums.Instrument;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -89,13 +89,21 @@ public class InstrumentItem extends Item {
             long progress = melodyProgressHandler.getAndAdvanceProgress(entity, stack);
             Melody melody = getMelody(stack);
             // todo optimize
-            for (int i = 0; i < melody.getNotes().size(); i++) {
+            for (int i = melodyProgressHandler.getLastIndex(entity); i < melody.getNotes().size(); i++) {
                 Note note = melody.getNotes().get(i);
-                if (progress >= note.getTime() && progress < note.getTime() + 50) {
+                if (progress >= note.getTime()) {
                     float volume = note.getVelocity() / 255.0f * 3.0f;
-                    float pitch = (float) Math.pow(2, (note.getNote() - 66) / 12.0) * 4.0f; // todo
+                    float pitch = (float) Math.pow(2, (note.getNote() - 24) / 12.0);
+                    int octave = 1;
+                    while (octave < 8 && pitch > 4.0 / 3.0) {
+                        pitch /= 2;
+                        octave++;
+                    }
                     long length = note.getLength();
-                    Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(), Instrument.BELL.getSound().value(), SoundCategory.RECORDS, volume, pitch, length, entity);
+                    Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(), Sounds.PIANO.get(octave), SoundCategory.RECORDS, volume, pitch, length, entity);
+                } else {
+                    melodyProgressHandler.setLastIndex(entity, i);
+                    break;
                 }
             }
         }

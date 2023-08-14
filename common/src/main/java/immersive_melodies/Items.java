@@ -23,6 +23,7 @@ public interface Items {
     }
 
     static void bootstrap() {
+        // nop
     }
 
     static Item.Settings baseProps() {
