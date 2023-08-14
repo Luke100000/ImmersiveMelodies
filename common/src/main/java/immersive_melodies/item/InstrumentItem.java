@@ -32,8 +32,6 @@ public class InstrumentItem extends Item {
         super(settings);
     }
 
-    private static final MelodyProgressHandler melodyProgressHandler = new MelodyProgressHandler();
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
@@ -79,10 +77,10 @@ public class InstrumentItem extends Item {
 
         // play
         if (isPlaying(stack) && selected && world.isClient) {
-            long progress = melodyProgressHandler.getAndAdvanceProgress(entity, stack);
+            long progress = MelodyProgressHandler.INSTANCE.getAndAdvanceProgress(entity, stack);
             Melody melody = getMelody(stack);
             // todo optimize
-            for (int i = melodyProgressHandler.getLastIndex(entity); i < melody.getNotes().size(); i++) {
+            for (int i = MelodyProgressHandler.INSTANCE.getProgress(entity).getLastIndex(); i < melody.getNotes().size(); i++) {
                 Note note = melody.getNotes().get(i);
                 if (progress >= note.getTime()) {
                     float volume = note.getVelocity() / 255.0f * 3.0f;
@@ -95,11 +93,18 @@ public class InstrumentItem extends Item {
                     long length = note.getLength();
                     Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(), Sounds.PIANO.get(octave), SoundCategory.RECORDS, volume, pitch, length, entity);
 
+                    MelodyProgressHandler.INSTANCE.setLastNote(entity, volume, pitch, length);
+
                     if (i == melody.getNotes().size() - 1) {
-                        melodyProgressHandler.setLastIndex(entity, i + 1);
+                        if (entity instanceof PlayerEntity) {
+                            MelodyProgressHandler.INSTANCE.setLastIndex(entity, i + 1);
+                        } else {
+                            // other entities loop
+                            play(stack, world);
+                        }
                     }
                 } else {
-                    melodyProgressHandler.setLastIndex(entity, i);
+                    MelodyProgressHandler.INSTANCE.setLastIndex(entity, i);
                     break;
                 }
             }

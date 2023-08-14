@@ -49,19 +49,19 @@ public class MidiParser {
                     // Parse note on/off events
                     if (message instanceof ShortMessage sm) {
                         int command = sm.getCommand();
+
+                        // Convert notes into ms
+                        long tick = event.getTick();
+                        long ms = tick * 60 * 1000 / sequence.getResolution() / bpm;
+
                         if (command == ShortMessage.NOTE_ON) {
                             int note = sm.getData1();
                             int velocity = sm.getData2();
-
-                            // Convert notes into ms
-                            long tick = event.getTick();
-                            long ms = tick * 60 * 1000 / sequence.getResolution() / bpm;
-
                             currentNotes.put(note, new Note.Builder(note, velocity, ms));
                         } else if (command == ShortMessage.NOTE_OFF) {
                             int note = sm.getData1();
                             Note.Builder noteBuilder = currentNotes.get(note);
-                            noteBuilder.length = event.getTick() - noteBuilder.time;
+                            noteBuilder.length = ms - noteBuilder.time;
                             notes.add(noteBuilder.build());
                         }
                     }
