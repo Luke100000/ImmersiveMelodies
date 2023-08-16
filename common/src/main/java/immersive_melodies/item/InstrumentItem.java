@@ -28,8 +28,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class InstrumentItem extends Item {
-    public InstrumentItem(Settings settings) {
+    private final Sounds.Instrument sound;
+    private final long sustain;
+
+    public InstrumentItem(Settings settings, Sounds.Instrument sound, long sustain) {
         super(settings);
+
+        this.sound = sound;
+        this.sustain = sustain;
     }
 
     @Override
@@ -79,7 +85,6 @@ public class InstrumentItem extends Item {
         if (isPlaying(stack) && selected && world.isClient) {
             long progress = MelodyProgressHandler.INSTANCE.getAndAdvanceProgress(entity, stack);
             Melody melody = getMelody(stack);
-            // todo optimize
             for (int i = MelodyProgressHandler.INSTANCE.getProgress(entity).getLastIndex(); i < melody.getNotes().size(); i++) {
                 Note note = melody.getNotes().get(i);
                 if (progress >= note.getTime()) {
@@ -91,11 +96,10 @@ public class InstrumentItem extends Item {
                         octave++;
                     }
                     long length = note.getLength();
-                    long instrumentSustain = 250;
-                    long sustain = Math.min(instrumentSustain, note.getSustain());
+                    long sustain = Math.min(this.sustain, note.getSustain());
 
                     Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(),
-                            Sounds.PIANO.get(octave), SoundCategory.RECORDS,
+                            sound.get(octave), SoundCategory.RECORDS,
                             volume, pitch, length, sustain, entity);
 
                     MelodyProgressHandler.INSTANCE.setLastNote(entity, volume, pitch, length);

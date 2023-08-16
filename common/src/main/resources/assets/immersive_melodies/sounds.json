@@ -1,42 +1,58 @@
 {
-  "piano.c1": {
-    "sounds": [
-      "immersive_melodies:instruments/piano/c1"
-    ]
-  },
-  "piano.c2": {
-    "sounds": [
-      "immersive_melodies:instruments/piano/c2"
-    ]
-  },
-  "piano.c3": {
-    "sounds": [
-      "immersive_melodies:instruments/piano/c3"
-    ]
-  },
-  "piano.c4": {
-    "sounds": [
-      "immersive_melodies:instruments/piano/c4"
-    ]
-  },
-  "piano.c5": {
-    "sounds": [
-      "immersive_melodies:instruments/piano/c5"
-    ]
-  },
-  "piano.c6": {
-    "sounds": [
-      "immersive_melodies:instruments/piano/c6"
-    ]
-  },
-  "piano.c7": {
-    "sounds": [
-      "immersive_melodies:instruments/piano/c7"
-    ]
-  },
-  "piano.c8": {
-    "sounds": [
-      "immersive_melodies:instruments/piano/c8"
-    ]
-  }
+  "bagpipe.c1": {"sounds": ["immersive_melodies:instruments/bagpipe/c1"]},
+  "bagpipe.c2": {"sounds": ["immersive_melodies:instruments/bagpipe/c2"]},
+  "bagpipe.c3": {"sounds": ["immersive_melodies:instruments/bagpipe/c3"]},
+  "bagpipe.c4": {"sounds": ["immersive_melodies:instruments/bagpipe/c4"]},
+  "bagpipe.c5": {"sounds": ["immersive_melodies:instruments/bagpipe/c5"]},
+  "bagpipe.c6": {"sounds": ["immersive_melodies:instruments/bagpipe/c6"]},
+  "bagpipe.c7": {"sounds": ["immersive_melodies:instruments/bagpipe/c7"]},
+  "bagpipe.c8": {"sounds": ["immersive_melodies:instruments/bagpipe/c8"]},
+  "didgeridoo.c1": {"sounds": ["immersive_melodies:instruments/didgeridoo/c1"]},
+  "didgeridoo.c2": {"sounds": ["immersive_melodies:instruments/didgeridoo/c2"]},
+  "didgeridoo.c3": {"sounds": ["immersive_melodies:instruments/didgeridoo/c3"]},
+  "didgeridoo.c4": {"sounds": ["immersive_melodies:instruments/didgeridoo/c4"]},
+  "didgeridoo.c5": {"sounds": ["immersive_melodies:instruments/didgeridoo/c5"]},
+  "didgeridoo.c6": {"sounds": ["immersive_melodies:instruments/didgeridoo/c6"]},
+  "didgeridoo.c7": {"sounds": ["immersive_melodies:instruments/didgeridoo/c7"]},
+  "didgeridoo.c8": {"sounds": ["immersive_melodies:instruments/didgeridoo/c8"]},
+  "flute.c1": {"sounds": ["immersive_melodies:instruments/flute/c1"]},
+  "flute.c2": {"sounds": ["immersive_melodies:instruments/flute/c2"]},
+  "flute.c3": {"sounds": ["immersive_melodies:instruments/flute/c3"]},
+  "flute.c4": {"sounds": ["immersive_melodies:instruments/flute/c4"]},
+  "flute.c5": {"sounds": ["immersive_melodies:instruments/flute/c5"]},
+  "flute.c6": {"sounds": ["immersive_melodies:instruments/flute/c6"]},
+  "flute.c7": {"sounds": ["immersive_melodies:instruments/flute/c7"]},
+  "flute.c8": {"sounds": ["immersive_melodies:instruments/flute/c8"]},
+  "lute.c1": {"sounds": ["immersive_melodies:instruments/lute/c1"]},
+  "lute.c2": {"sounds": ["immersive_melodies:instruments/lute/c2"]},
+  "lute.c3": {"sounds": ["immersive_melodies:instruments/lute/c3"]},
+  "lute.c4": {"sounds": ["immersive_melodies:instruments/lute/c4"]},
+  "lute.c5": {"sounds": ["immersive_melodies:instruments/lute/c5"]},
+  "lute.c6": {"sounds": ["immersive_melodies:instruments/lute/c6"]},
+  "lute.c7": {"sounds": ["immersive_melodies:instruments/lute/c7"]},
+  "lute.c8": {"sounds": ["immersive_melodies:instruments/lute/c8"]},
+  "piano.c1": {"sounds": ["immersive_melodies:instruments/piano/c1"]},
+  "piano.c2": {"sounds": ["immersive_melodies:instruments/piano/c2"]},
+  "piano.c3": {"sounds": ["immersive_melodies:instruments/piano/c3"]},
+  "piano.c4": {"sounds": ["immersive_melodies:instruments/piano/c4"]},
+  "piano.c5": {"sounds": ["immersive_melodies:instruments/piano/c5"]},
+  "piano.c6": {"sounds": ["immersive_melodies:instruments/piano/c6"]},
+  "piano.c7": {"sounds": ["immersive_melodies:instruments/piano/c7"]},
+  "piano.c8": {"sounds": ["immersive_melodies:instruments/piano/c8"]},
+  "triangle.c1": {"sounds": ["immersive_melodies:instruments/triangle/c1"]},
+  "triangle.c2": {"sounds": ["immersive_melodies:instruments/triangle/c2"]},
+  "triangle.c3": {"sounds": ["immersive_melodies:instruments/triangle/c3"]},
+  "triangle.c4": {"sounds": ["immersive_melodies:instruments/triangle/c4"]},
+  "triangle.c5": {"sounds": ["immersive_melodies:instruments/triangle/c5"]},
+  "triangle.c6": {"sounds": ["immersive_melodies:instruments/triangle/c6"]},
+  "triangle.c7": {"sounds": ["immersive_melodies:instruments/triangle/c7"]},
+  "triangle.c8": {"sounds": ["immersive_melodies:instruments/triangle/c8"]},
+  "trumpet.c1": {"sounds": ["immersive_melodies:instruments/trumpet/c1"]},
+  "trumpet.c2": {"sounds": ["immersive_melodies:instruments/trumpet/c2"]},
+  "trumpet.c3": {"sounds": ["immersive_melodies:instruments/trumpet/c3"]},
+  "trumpet.c4": {"sounds": ["immersive_melodies:instruments/trumpet/c4"]},
+  "trumpet.c5": {"sounds": ["immersive_melodies:instruments/trumpet/c5"]},
+  "trumpet.c6": {"sounds": ["immersive_melodies:instruments/trumpet/c6"]},
+  "trumpet.c7": {"sounds": ["immersive_melodies:instruments/trumpet/c7"]},
+  "trumpet.c8": {"sounds": ["immersive_melodies:instruments/trumpet/c8"]}
 }

@@ -10,12 +10,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MidiParser {
-    public static List<Melody> parseMidi(InputStream inputStream, String fallback) {
+    public static List<Melody> parseMidi(InputStream inputStream, String baseName) {
         List<Melody> melodies = new LinkedList<>();
         try {
             Sequence sequence = MidiSystem.getSequence(inputStream);
 
-            String name = fallback;
+            String name = baseName;
             int bpm = 120;
 
             // Iterate through tracks and MIDI events
@@ -35,10 +35,12 @@ public class MidiParser {
                         byte[] data = metaMessage.getData();
                         int type = metaMessage.getType();
                         if (type == 0x03) {
-                            String s = new String(data).strip();
-                            if (s.length() > 0) {
-                                name = s;
-                                customName = true;
+                            if (sequence.getTracks().length > 1) {
+                                String s = new String(data).strip();
+                                if (s.length() > 0) {
+                                    name = String.format("%s (%s)", name, s);
+                                    customName = true;
+                                }
                             }
                         } else if (type == 0x51) {
                             int microsecondsPerBeat = ((data[0] & 0xFF) << 16) | ((data[1] & 0xFF) << 8) | (data[2] & 0xFF);

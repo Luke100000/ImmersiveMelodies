@@ -14,7 +14,13 @@ import java.util.function.Supplier;
 public interface Items {
     List<Supplier<Item>> items = new LinkedList<>();
 
-    Supplier<Item> TRIANGLE = register("triangle", () -> new InstrumentItem(baseProps()));
+    Supplier<Item> BAGPIPE = register("bagpipe", () -> new InstrumentItem(baseProps(), Sounds.BAGPIPE, 200));
+    Supplier<Item> DIDGERIDOO = register("didgeridoo", () -> new InstrumentItem(baseProps(), Sounds.DIDGERIDOO, 200));
+    Supplier<Item> FLUTE = register("flute", () -> new InstrumentItem(baseProps(), Sounds.FLUTE, 100));
+    Supplier<Item> LUTE = register("lute", () -> new InstrumentItem(baseProps(), Sounds.LUTE, 200));
+    Supplier<Item> PIANO = register("piano", () -> new InstrumentItem(baseProps(), Sounds.PIANO, 300));
+    Supplier<Item> TRIANGLE = register("triangle", () -> new InstrumentItem(baseProps(), Sounds.TRIANGLE, 300));
+    Supplier<Item> TRUMPET = register("trumpet", () -> new InstrumentItem(baseProps(), Sounds.TRUMPET, 100));
 
     static Supplier<Item> register(String name, Supplier<Item> item) {
         Supplier<Item> register = Registration.register(Registries.ITEM, Common.locate(name), item);
