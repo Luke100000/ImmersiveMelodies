@@ -37,7 +37,7 @@ public interface Items {
     }
 
     static Item.Settings baseProps() {
-        return new Item.Settings();
+        return new Item.Settings().maxCount(1);
     }
 
     static Collection<ItemStack> getSortedItems() {
