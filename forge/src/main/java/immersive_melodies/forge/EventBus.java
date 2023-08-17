@@ -32,4 +32,9 @@ public class EventBus {
     public static void onAddReloadListener(AddReloadListenerEvent event) {
         event.addListener(new MelodyLoader());
     }
+
+    @SubscribeEvent
+    public void onTick(TickEvent.RenderTickEvent event) {
+        Common.timer.getTime();
+    }
 }

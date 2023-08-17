@@ -1,5 +1,6 @@
 package immersive_melodies.client;
 
+import immersive_melodies.Common;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 
@@ -15,7 +16,7 @@ public class MelodyProgressHandler {
         return progress.computeIfAbsent(entity.getId(), a -> new MelodyProgress());
     }
 
-    public long getAndAdvanceProgress(Entity entity, ItemStack stack) {
+    public long getProgress(Entity entity, ItemStack stack) {
         // reset progress on change
         String identifier = stack.getOrCreateNbt().getString("melody");
         long startTime = stack.getOrCreateNbt().getLong("start_time");
@@ -25,24 +26,21 @@ public class MelodyProgressHandler {
         // reset if the melody changed
         if (!progress.currentlyPlaying.equals(identifier)) {
             progress.currentlyPlaying = identifier;
-            progress.startTime = startTime;
-            progress.progress = 0;
+            progress.worldTime = startTime;
+            progress.startTime = Common.timer.getTime();
             progress.lastIndex = 0;
         }
 
         // reset when the start time appears to be off
-        if (progress.startTime != startTime) {
-            progress.startTime = startTime;
-            progress.progress = 0;
+        if (progress.worldTime != startTime) {
+            progress.worldTime = startTime;
+            progress.startTime = Common.timer.getTime();
             progress.lastIndex = 0;
         }
 
-        // advance
-        progress.progress += 50;
-
         // todo sync with other players here, use entity id as a universal priority comparator
 
-        return progress.progress;
+        return Common.timer.getTime() - progress.startTime;
     }
     public void setLastIndex(Entity entity, int index) {
         getProgress(entity).lastIndex = index;
@@ -61,9 +59,9 @@ public class MelodyProgressHandler {
     }
 
     public static class MelodyProgress {
-        long progress;
-        String currentlyPlaying = "";
         long startTime;
+        String currentlyPlaying = "";
+        long worldTime;
         int lastIndex;
 
         int lastNoteTime;
@@ -75,21 +73,21 @@ public class MelodyProgressHandler {
         float currentVolume;
         float currentPitch;
 
-        float lastTime;
+        float lastAnimationTime;
 
         float attackTime = 5.0f;
         float decayTime = 15.0f;
 
-        public long getProgress() {
-            return progress;
+        public long getStartTime() {
+            return startTime;
         }
 
         public String getCurrentlyPlaying() {
             return currentlyPlaying;
         }
 
-        public long getStartTime() {
-            return startTime;
+        public long getWorldTime() {
+            return worldTime;
         }
 
         public int getLastIndex() {
@@ -114,8 +112,8 @@ public class MelodyProgressHandler {
 
         public void tick(float time) {
             boolean decayPhase = time - lastNoteTime > attackTime;
-            float delta = Math.max(0.0f, Math.min(1.0f, (time - lastTime) / (decayPhase ? decayTime : attackTime)));
-            lastTime = time;
+            float delta = Math.max(0.0f, Math.min(1.0f, (time - lastAnimationTime) / (decayPhase ? decayTime : attackTime)));
+            lastAnimationTime = time;
 
             if (delta > 0) {
                 current = current * (1.0f - delta) + (decayPhase ? 0.0f : 1.0f) * delta;

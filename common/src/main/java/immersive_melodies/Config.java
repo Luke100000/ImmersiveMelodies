@@ -11,4 +11,5 @@ public final class Config extends JsonConfig {
     public String README = "https://github.com/Luke100000/ImmersiveMelodies/wiki/Config";
 
     public boolean showOtherPlayersMelodies = true;
+    public long getBufferDelay = 75;
 }

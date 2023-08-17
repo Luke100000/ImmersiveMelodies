@@ -83,11 +83,11 @@ public class InstrumentItem extends Item {
 
         // play
         if (isPlaying(stack) && selected && world.isClient) {
-            long progress = MelodyProgressHandler.INSTANCE.getAndAdvanceProgress(entity, stack);
+            long time = MelodyProgressHandler.INSTANCE.getProgress(entity, stack);
             Melody melody = getMelody(stack);
             for (int i = MelodyProgressHandler.INSTANCE.getProgress(entity).getLastIndex(); i < melody.getNotes().size(); i++) {
                 Note note = melody.getNotes().get(i);
-                if (progress >= note.getTime()) {
+                if (time >= note.getTime()) {
                     float volume = note.getVelocity() / 255.0f * 3.0f;
                     float pitch = (float) Math.pow(2, (note.getNote() - 24) / 12.0);
                     int octave = 1;
@@ -100,7 +100,8 @@ public class InstrumentItem extends Item {
 
                     Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(),
                             sound.get(octave), SoundCategory.RECORDS,
-                            volume, pitch, length, sustain, entity);
+                            volume, pitch, length, sustain,
+                            note.getTime() - time, entity);
 
                     MelodyProgressHandler.INSTANCE.setLastNote(entity, volume, pitch, length);
 
