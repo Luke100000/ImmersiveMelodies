@@ -57,7 +57,9 @@ public class InstrumentItem extends Item {
 
         // Name
         Melody melody = getMelody(stack);
-        tooltip.add(Text.literal(melody.getName()).formatted(Formatting.ITALIC));
+        if (!melody.getName().equals("unknown")) {
+            tooltip.add(Text.literal(melody.getName()).formatted(Formatting.ITALIC));
+        }
 
         super.appendTooltip(stack, world, tooltip, context);
     }

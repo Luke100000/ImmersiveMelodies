@@ -14,6 +14,6 @@ public class ItemGroups {
     }
 
     public static ItemStack getIcon() {
-        return Items.TRIANGLE.get().getDefaultStack();
+        return Items.LUTE.get().getDefaultStack();
     }
 }

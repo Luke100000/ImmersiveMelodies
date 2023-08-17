@@ -6,7 +6,7 @@
   "mixins": [
     "MobEntityMixin"
   ],
-  "client": ["AbstractZombieModelMixin", "BipedEntityModelMixin"],
+  "client": ["AbstractZombieModelMixin", "BipedEntityModelMixin", "ItemRendererMixin", "ModelLoaderMixin"],
   "injectors": {
     "defaultRequire": 1
   }
