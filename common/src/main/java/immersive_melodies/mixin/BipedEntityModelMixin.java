@@ -1,6 +1,6 @@
 package immersive_melodies.mixin;
 
-import immersive_melodies.client.BipedEntityModelAnimator;
+import immersive_melodies.client.animation.BipedEntityModelAnimator;
 import net.minecraft.client.render.entity.model.AnimalModel;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.ModelWithArms;

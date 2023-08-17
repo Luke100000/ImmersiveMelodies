@@ -1,6 +1,6 @@
 package immersive_melodies.mixin;
 
-import immersive_melodies.client.BipedEntityModelAnimator;
+import immersive_melodies.client.animation.BipedEntityModelAnimator;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.AbstractZombieModel;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -18,7 +18,7 @@ public abstract class AbstractZombieModelMixin<T extends HostileEntity> extends 
 
     @Inject(method = "setAngles(Lnet/minecraft/entity/mob/HostileEntity;FFFFF)V", at = @At("HEAD"), cancellable = true)
     public void immersiveMelodies$injectSetAngles(T entity, float f, float g, float h, float i, float j, CallbackInfo ci) {
-        if (BipedEntityModelAnimator.holdsInstrument(entity)) {
+        if (BipedEntityModelAnimator.getInstrument(entity) != null) {
             super.setAngles(entity, f, g, h, i, j);
             ci.cancel();
         }
