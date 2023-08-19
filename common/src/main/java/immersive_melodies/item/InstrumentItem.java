@@ -3,7 +3,7 @@ package immersive_melodies.item;
 import immersive_melodies.Common;
 import immersive_melodies.Sounds;
 import immersive_melodies.client.MelodyProgress;
-import immersive_melodies.client.MelodyProgressHandler;
+import immersive_melodies.client.MelodyProgressManager;
 import immersive_melodies.cobalt.network.NetworkHandler;
 import immersive_melodies.network.s2c.MelodyListMessage;
 import immersive_melodies.network.s2c.OpenGuiRequest;
@@ -97,11 +97,11 @@ public class InstrumentItem extends Item {
 
         // play
         if (isPlaying(stack) && isPrimary && world.isClient) {
-            MelodyProgress progress = MelodyProgressHandler.INSTANCE.getProgress(entity);
+            MelodyProgress progress = MelodyProgressManager.INSTANCE.getProgress(entity);
             progress.tick(stack);
 
             Melody melody = getMelody(stack);
-            for (int i = MelodyProgressHandler.INSTANCE.getProgress(entity).getLastIndex(); i < melody.getNotes().size(); i++) {
+            for (int i = MelodyProgressManager.INSTANCE.getProgress(entity).getLastIndex(); i < melody.getNotes().size(); i++) {
                 Note note = melody.getNotes().get(i);
                 if (progress.getTime() >= note.getTime()) {
                     float volume = note.getVelocity() / 255.0f * 3.0f;
@@ -119,18 +119,18 @@ public class InstrumentItem extends Item {
                             volume, pitch, length, sustain,
                             note.getTime() - progress.getTime(), entity);
 
-                    MelodyProgressHandler.INSTANCE.setLastNote(entity, volume, pitch, length);
+                    MelodyProgressManager.INSTANCE.setLastNote(entity, volume, pitch, length);
 
                     if (i == melody.getNotes().size() - 1) {
                         if (entity instanceof PlayerEntity) {
-                            MelodyProgressHandler.INSTANCE.setLastIndex(entity, i + 1);
+                            MelodyProgressManager.INSTANCE.setLastIndex(entity, i + 1);
                         } else {
                             // other entities loop
                             rewind(stack, world);
                         }
                     }
                 } else {
-                    MelodyProgressHandler.INSTANCE.setLastIndex(entity, i);
+                    MelodyProgressManager.INSTANCE.setLastIndex(entity, i);
                     break;
                 }
             }

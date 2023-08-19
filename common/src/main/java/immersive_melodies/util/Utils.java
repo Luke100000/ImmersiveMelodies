@@ -40,4 +40,14 @@ public class Utils {
             return input;
         }
     }
+
+    public static String getLastPart(String input, String delimiter) {
+        int lastDotIndex = input.lastIndexOf(delimiter);
+
+        if (lastDotIndex != -1) {
+            return input.substring(lastDotIndex);
+        } else {
+            return input;
+        }
+    }
 }

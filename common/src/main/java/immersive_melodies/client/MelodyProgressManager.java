@@ -5,8 +5,8 @@ import net.minecraft.entity.Entity;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MelodyProgressHandler {
-    public static final MelodyProgressHandler INSTANCE = new MelodyProgressHandler();
+public class MelodyProgressManager {
+    public static final MelodyProgressManager INSTANCE = new MelodyProgressManager();
 
     Map<Integer, MelodyProgress> progress = new HashMap<>();
 

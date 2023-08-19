@@ -64,7 +64,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         this.search.setDrawsBackground(false);
         this.search.setEditableColor(0x808080);
         this.search.setSuggestion("Search");
-        this.search.setFocused(true);
+        setInitialFocus(this.search);
 
         list = addDrawableChild(new MelodyListWidget(this.client, this));
 
@@ -114,8 +114,9 @@ public class ImmersiveMelodiesScreen extends Screen {
         List<Melody> melodies = MidiParser.parseMidi(inputStream, name, Config.getInstance().parseAllMidiTracks);
         if (Config.getInstance().parseAllMidiTracks) {
             // Use all tracks and just add a track name prefix
+            int i = 0;
             for (Melody melody : melodies) {
-                NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
+                NetworkHandler.sendToServer(new UploadMelodyRequest(name + i++, melody));
                 search.setText(name);
             }
         } else {

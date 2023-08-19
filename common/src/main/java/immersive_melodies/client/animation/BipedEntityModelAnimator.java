@@ -1,7 +1,7 @@
 package immersive_melodies.client.animation;
 
 import immersive_melodies.client.MelodyProgress;
-import immersive_melodies.client.MelodyProgressHandler;
+import immersive_melodies.client.MelodyProgressManager;
 import immersive_melodies.item.InstrumentItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.ModelPart;
@@ -37,7 +37,7 @@ public class BipedEntityModelAnimator {
 
             float time = (MinecraftClient.getInstance().isPaused() ? 0.0f : MinecraftClient.getInstance().getTickDelta()) + entity.age;
 
-            MelodyProgress progress = MelodyProgressHandler.INSTANCE.getProgress(entity);
+            MelodyProgress progress = MelodyProgressManager.INSTANCE.getProgress(entity);
             progress.tick(time);
 
             ItemAnimators.get(Registries.ITEM.getId(item)).setAngles(left, right, model, entity, progress, time);

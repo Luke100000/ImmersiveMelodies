@@ -29,7 +29,7 @@ public class MelodyLoader extends SinglePreparationResourceReloader<Map<Identifi
         for (Map.Entry<Identifier, Resource> entry : resources.entrySet()) {
             try {
                 InputStream inputStream = entry.getValue().getInputStream();
-                List<Melody> melodies = MidiParser.parseMidi(inputStream, Utils.toTitle(entry.getKey().getPath()), true);
+                List<Melody> melodies = MidiParser.parseMidi(inputStream, Utils.toTitle(Utils.getLastPart(entry.getKey().getPath(), "/")), true);
                 int i = 0;
                 for (Melody melody : melodies) {
                     map.put(new Identifier(entry.getKey().getNamespace(), entry.getKey().getPath() + "_" + (i++)), melody);
