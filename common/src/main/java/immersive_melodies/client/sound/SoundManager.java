@@ -8,4 +8,6 @@ public interface SoundManager {
     void playSound(double x, double y, double z, SoundEvent event, SoundCategory category, float volume, float pitch, long length, long sustain, long delay, Entity entity);
 
     boolean isFirstPerson(Entity entity);
+
+    boolean audible(Entity entity);
 }

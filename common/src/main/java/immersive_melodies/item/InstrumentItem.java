@@ -91,7 +91,7 @@ public class InstrumentItem extends Item {
         }
 
         // play
-        if (isPlaying(stack) && isPrimary && world.isClient) {
+        if (isPlaying(stack) && isPrimary && world.isClient && Common.soundManager.audible(entity)) {
             MelodyProgress progress = MelodyProgressManager.INSTANCE.getProgress(entity);
             progress.tick(stack);
 

@@ -31,4 +31,10 @@ public class SoundManagerImpl implements SoundManager {
     public boolean isFirstPerson(Entity entity) {
         return MinecraftClient.getInstance().getCameraEntity() == entity && !MinecraftClient.getInstance().gameRenderer.getCamera().isThirdPerson();
     }
+
+    @Override
+    public boolean audible(Entity entity) {
+        Entity cameraEntity = MinecraftClient.getInstance().getCameraEntity();
+        return cameraEntity != null && cameraEntity.distanceTo(entity) < 24.0f;
+    }
 }
