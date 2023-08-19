@@ -1,0 +1,55 @@
+X:1
+T:All the Small Things
+L:1/8
+Q:152
+M:4/4
+K:C
+cc cc [Ec][Ec] [Cc][Cc]| \
+G,G, G,G, [B,G,][B,G,] [CG,][CG,]| \
+F,F, F,F, [EF,][EF,] [CF,][CF,]|
+G,G, G,G, [B,G,][B,G,] [CG,][CG,]| \
+cc cc [Ec][Ec] [Cc][Cc]| \
+G,G, G,G, [B,G,][B,G,] [CG,][CG,]| \
+F,F, F,F, [EF,][EF,] [CF,][CF,]|
+G,G, G,G, [B,G,][B,G,] [CG,][CG,]| \
+cc cc [Ec][Ec] [Fc][Fc]| \
+G,G, G,G, [EG,][EG,] [CG,][CG,]| \
+F,F, F,F, [EF,][EF,] [CF,][CF,]|
+G,G, [G,G,][G,G,] [B,G,][B,G,] [CG,][CG,]| \
+cc cc [Ec][Ec] [Cc][Cc]| \
+G,G, G,G, [B,G,][B,G,] [CG,][CG,]| \
+F,F, F,F, [EF,][EF,] [CF,][CF,]|
+G,G, [G,G,][G,G,] [B,G,][B,G,] [CG,][CG,]| \
+cc cc [Ec][Ec] [Ec][Ec]| \
+[Ec][Ec] cc [Ec][Fc] [Ec][Ec]| \
+[DG,][DG,] G,G, [DG,][EG,] [DG,][DG,]|
+[CF,][CF,] F,F, [FF,][FF,] [FF,][FF,]| \
+[Cc][ECc] [ECc][Ec] [Ec][Ec] [Ec][Ec]| \
+[Ec][Cc] [Cc][Cc] [Cc][Cc] [Cc][Cc]| \
+[DG,][DG,] [DG,][DG,] [DG,][DG,] [DG,][FG,]|
+[FF,][CF,] [CF,][CF,] [CF,][CF,] [CF,][CF,]| \
+[Ec][Ec] [Ec][Ec] [Ec][Ec] [Ec][Ec]| \
+[Ec][Cc] [Cc][Cc] [Cc][Cc] [Cc][Cc]| \
+[DG,][DG,] [DG,][DG,] [DG,][DG,] [DG,][FG,]|
+[FF,][CF,] [CF,][CF,] [CF,][CF,] [CF,][CF,]| \
+F,F, F,F, F,F, F,F,|
+G,G, G,G, G,G, G,G,| \
+cc cc [Ec][Ec] [Ec][Ec]| \
+[Ec][Ec] cc [Ec][Fc] [Ec][Ec]| \
+[DG,][DG,] G,G, [DG,][EG,] [DG,][DG,]|
+[CF,][CF,] F,F, [FF,][FF,] [FF,][FF,]| \
+[Cc][Cc] cc [Ec][Ec] [Ec][Ec]| \
+[Ec][Ec] cc [Ec][Fc] [Ec][Ec]| \
+[DG,][DG,] G,G, [DG,][EG,] [DG,][DG,]|
+[CF,][CF,] F,F, [FF,][FF,] [FF,][FF,]| \
+[Cc][Cc] [Ec][ECc] [ECc][ECc] [ECc][ECc]| \
+[ECc][ECG,c] [CG,c][CG,c] [ECG,c][FCG,c] [ECG,c][ECG,c]| \
+[DB,G,][DB,G,] [B,G,][DB,G,] [DB,G,][EB,G,] [DB,G,][FDCG,]|
+[FCCF,][CCA,F,] [CA,F,][CA,F,] [FCA,F,][FCA,F,] [FCG,F,][FCG,F,]| \
+[ECc][ECc] [Ec][ECc] [ECc][ECc] [ECc][ECc]| \
+[ECc][ECG,c] [CG,c][CG,c] [ECG,c][FCG,c] [ECG,c][ECG,c]| \
+[DB,G,][DB,G,] [B,G,][B,G,] [DB,G,][EB,G,] [DB,G,][FDG,]|
+[FCF,][CA,F,] [A,F,][A,F,] [DCA,F,][ECA,F,] [DCA,F,][DCA,F,]| \
+[CA,F,][CA,F,] [A,F,][A,F,] [FCA,F,][FCA,F,] [ECA,F,][ECA,F,]| \
+[C8G,8c8]|[C8G,8c8]|
+[C8G,8c8]|[C6G,6c6] [CG,c

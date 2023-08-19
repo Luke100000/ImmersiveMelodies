@@ -1,0 +1,76 @@
+X:1
+T:Skyrim
+L:1/8
+Q:100
+M:3/4
+K:C
+[B,B] [B,B] [B,B] [G,B] [G,B] [G,B] |
+[A,B] [A,B] [A,B] [E,B] [E,B] [E,/^c/] [E,/d/] |
+[B,B] [B,B] [B,B] [G,B] [G,B] [G,B] |
+[A,B] [A,B] [A,B] [E,B] [E,B] [E,/^c/] [E,/d/] |
+[B,B] [B,B] [B,B] [G,B] [G,B] [G,B] |
+[A,B] [A,B] [A,B] [E,B] [E,B] [E,/d/] [E,/^c/] |
+[B,^FBd] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/^c/] [G,DGd] [G,/D/G/d/] [G,/D/G/d/] [G,/D/G/c/] [G,/D/G/d/] |
+[A,EAe] [A,/E/A/d/] [A,/E/A/d/] [A,/E/A/^c/] [A,/E/A/c/] [E,B,EB] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/A/] |
+[G,DGB] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/A/] [G,DGB] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/A/] [G,/D/G/B/] |
+[A,EA^c] [A,/E/A/d/] [A,/E/A/d/] [A,/E/A/] [A,/E/A/] [B,^FB] [B,/F/B/] [B,/F/B/] [B,/F/B/d/] [B,/F/B/c/] |
+[B,^FBd] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [G,DGd] [G,/D/G/d/] [G,/D/G/d/] [G,/D/G/^c/] [G,/D/G/d/] |
+[A,EAe] [A,/E/A/d/] [A,/E/A/d/] [A,/E/A/^c/] [A,/E/A/c/] [E,B,EB] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/A/] |
+[G,DGB] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/A/] [G,DGB] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/A/] [G,/D/G/B/] |
+[A,EA^c] [A,/E/A/d/] [A,/E/A/d/] [A,/E/A/] [A,/E/A/] [B,^FB] [B,/F/B/] [B,/F/B/] [B,/F/B/] [B,/F/B/] |
+[B,^FB^f] [B,/F/B/f/] [B,/F/B/f/] [B,FBf] [B,FBe] [B/e/] [B/e/] [^ce] |
+d d/ d/ d [^cd] [c/d/] [c/d/] [ce] |
+^f f/ f/ f [ef] [e/f/] [e/f/] [ea] |
+[de] [d/e/] [d/e/] [de] [^ce] [c/d/] [c/d/] c |
+[B^f] [B/f/] [B/f/] [Bf] [Be] [B/e/] [B/e/] [^ce] |
+d d/ d/ d [^cd] [c/^f/] [c/f/] [ca] |
+[^fb] [f/b/] [f/b/] [f/b/] [f/b/] [fb] [f/a/] [f/a/] [^c/f/] [c/f/] |
+[gb] [g/b/] [g/b/] [g/b/] [g/b/] [^fb] [f/b/] [f/b/] [fb] |
+[B,^FB^c] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,FBc] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] |
+[G,DG] [G,/D/G/e/] [G,/D/G/e/] [G,/D/G/^c/] [G,/D/G/c/] [G,DGc] [G,/D/G/d/] [G,/D/G/d/] [G,/D/G/A/] [G,/D/G/A/] |
+[B,^FB^c] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,FBc] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] |
+[G,DG] [G,/D/G/e/] [G,/D/G/e/] [G,/D/G/^c/] [G,/D/G/c/] [G,DGc] [G,/D/G/d/] [G,/D/G/d/] [G,/D/G/A/] [G,/D/G/A/] |
+[B,^FB^ce] [B,/F/B/d/^f/] [B,/F/B/d/f/] [B,/F/B/d/f/] [B,/F/B/d/f/] [B,FBce] [B,/F/B/d/f/] [B,/F/B/d/f/] [B,/F/B/d/f/] [B,/F/B/d/f/] |
+[G,DG] [G,/D/G/e/g/] [G,/D/G/e/g/] [G,/D/G/^c/e/] [G,/D/G/c/e/] [G,DGce] [G,/D/G/d/^f/] [G,/D/G/d/f/] [G,/D/G/A/B/] [G,/D/G/A/B/] |
+[B,^FBd^f] [B,/F/B/d/f/] [B,/F/B/d/f/] [B,/F/B/d/f/] [B,/F/B/d/f/] [B,FBdf] [B,/F/B/d/f/] [B,/F/B/d/f/] [B,/F/B/d/f/] [B,/F/B/d/f/] |
+[G,B,DGdg] [G,/B,/D/G/d/g/] [G,/B,/D/G/d/g/] [G,/B,/D/G/d/g/] [G,/B,/D/G/d/g/] [G,/B,/D/G/d/g/] [G,/B,/D/G/d/g/] [G,/B,/D/G/d/g/] [G,/B,/D/G/d/g/]
+[G,/B,/D/G/d/g/] [G,/B,/D/G/d/g/] |
+[B,2^F2B2d2^f2] [B,/F/B/d/] [B,/F/B/d/] [B,2F2B2d2f2] [B,/F/B/d/] [B,/F/B/d/] |
+[B,4^F4B4^f4] [B,FB] [B,FB] |
+[B,2^F2B2^f2] [B,/F/B/] [B,/F/B/] [B,2F2B2f2] [B,/F/B/] [B,/F/B/] |
+[B,6^F6B6^f6] |
+[B,^FB] [B,/B/] [B,/B/] [B,/B/] [B,/B/] [G,DGB] [G,/B/] [G,/B/] [G,/B/] [G,/B/] |
+[E,B,EB] [E,/B/] [E,/B/] [E,/B/] [E,/B/] [^F,^CB] [E,/B,/B/] [E,/B,/B/] [D,/4E,/4A,/4^c/4] [D,/4E,/4A,/4d/4] [D,/E,/A,/c/] |
+[B,^FB] [B,/B/] [B,/B/] [B,/B/] [B,/B/] [G,DGB] [G,/B/] [G,/B/] [G,/B/] [G,/B/] |
+[E,B,EB] [E,/B/] [E,/B/] [E,/B/] [E,/B/] [^F,^CB] [E,/B,/B/] [E,/B,/B/] [D,/4E,/4A,/4^c/4] [D,/4E,/4A,/4d/4] [D,/E,/A,/c/] |
+[B,^FBd] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [G,DGBd] [G,/D/G/B/d/] [G,/D/G/B/d/] [G,/D/G/B/d/] [G,/D/G/B/d/] |
+[E,B,EA^c] [E,/B,/E/A/c/] [E,/B,/E/A/c/] [E,/B,/E/A/c/] [E,/B,/E/A/c/] [^F,^C^FB] [E,/B,/E/F/B/] [E,/B,/E/F/B/] [D,/4E,/4A,/4D/4c/4e/4]
+[D,/4E,/4A,/4D/4d/4^f/4] [D,/E,/A,/D/c/e/] |
+[B,^FBd] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [G,DGBd] [G,/D/G/B/d/] [G,/D/G/B/d/] [G,/D/G/B/d/] [G,/D/G/B/d/] |
+[E,B,E^ce] [E,/B,/E/c/e/] [E,/B,/E/c/e/] [E,/B,/E/c/e/] [E,/B,/E/c/e/] [^F,/4^C/4^F/4c/4e/4] [F,/4C/4F/4d/4^f/4] [F,/C/F/c/e/] [E,B,EBd]
+[D,/E,/A,/D/c/e/] [D,/E,/A,/D/c/d/] |
+[B,^FBde] [B,/F/B/d/e/] [B,/F/B/d/e/] [B,/F/B/d/e/] [B,/F/B/d/e/] [B,FBde] [B,/F/B/d/e/] [B,/F/B/d/e/] [B,/F/B/e/] [B,/F/B/e/] |
+[D,DAd^f] [D,/D/A/d/f/] [D,/D/A/d/f/] [D,/D/A/d/f/] [D,/D/A/d/f/] [D,DAdf] [D,/D/A/d/f/] [D,/D/A/d/f/] [D,/D/A/d/a/] [D,/D/A/d/a/] |
+[A,EAe] [A,/E/A/e/] [A,/E/A/e/] [A,/E/A/e/] [A,/E/A/e/] [A,EAe] [A,/E/A/d/] [A,/E/A/d/] [A,/E/A/^c/] [A,/E/A/c/] |
+[E,B,EB] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/B/] [E,B,EB] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/^c/] [E,/B,/E/c/] |
+[B,^FBd] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,FBd] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/e/] [B,/F/B/e/] |
+[D,DAd^f] [D,/D/A/d/f/] [D,/D/A/d/f/] [D,/D/A/d/f/] [D,/D/A/d/f/] [D,DAdf] [D,/D/A/d/f/] [D,/D/A/d/f/] [D,/D/A/d/a/] [D,/D/A/d/a/] |
+[G,DGb] [G,/D/G/b/] [G,/D/G/b/] [G,/D/G/b/] [G,/D/G/b/] [G,DGb] [G,/D/G/a/] [G,/D/G/a/] [G,/D/G/^c/] [G,/D/G/c/] |
+[E,B,Eb] [E,/B,/E/b/] [E,/B,/E/b/] [E,/B,/E/b/] [E,/B,/E/b/] [E,B,Eb] [E,/B,/E/b/] [E,/B,/E/b/] [E,/B,/E/^c/] [E,/B,/E/c/] |
+[B,2^F2B2^c2] [B,2F2B2c2] [B,2F2B2b2] |
+[D,2D2A2d2a2] [D,2D2A2d2g2] [D,2D2A2d2^f2] |
+[A,4E4A4e4] [A,EAd] [A,EA^f] |
+[A,2E2A2e2] [A,2E2A2e2] [A,EA] [A,/E/A/d/] [A,/E/A/^c/] |
+[B,^FBd] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/^c/] [G,DGd] [G,/D/G/d/] [G,/D/G/d/] [G,/D/G/c/] [G,/D/G/d/] |
+[A,EAe] [A,/E/A/d/] [A,/E/A/d/] [A,/E/A/^c/] [A,/E/A/c/] [E,B,EB] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/A/] |
+[G,DGB] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/A/] [G,DGB] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/A/] [G,/D/G/B/] |
+[A,EA^c] [A,/E/A/d/] [A,/E/A/d/] [A,/E/A/] [A,/E/A/] [B,^FB] [B,/F/B/] [B,/F/B/] [B,/F/B/d/] [B,/F/B/c/] |
+[B,^FBd] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [B,/F/B/d/] [G,DGd] [G,/D/G/d/] [G,/D/G/d/] [G,/D/G/^c/] [G,/D/G/d/] |
+[A,EAe] [A,/E/A/d/] [A,/E/A/d/] [A,/E/A/^c/] [A,/E/A/c/] [E,B,EB] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/B/] [E,/B,/E/A/] |
+[G,DGB] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/A/] [G,DGB] [G,/D/G/B/] [G,/D/G/B/] [G,/D/G/A/] [G,/D/G/B/] |
+[A,EA^c] [A,/E/A/d/] [A,/E/A/d/] [A,/E/A/] [A,/E/A/] [B,^FB] [B,/F/B/] [B,/F/B/] [B,/F/B/] [B,/F/B/] |
+[B,2^F2B2^f2] [B,FB] [B,2F2B2f2] [B,FB] |
+[B,4^F4B4^f4] z [B,FB] |
+[B,2^F2B2^f2] [B,FB] [B,2F2B2f2] [B,FB] |
+[B,6^F6B6^f6] |
+[B,6^F6B6] |

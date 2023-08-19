@@ -1,0 +1,78 @@
+X:1
+T:Rise of the Sinistrals
+L:1/8
+Q:136
+K:C
+x8| \
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BA,][EA,]| \
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BA,][EA,]| \
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BA,][EA,]|
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BA,][EA,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [gA,][cA,] [BA,][EA,]| \
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BGA,][GEA,]| \
+[EG,G,][EDG,] [AEG,][BEG,] [gEG,][BEG,] [AEG,][EDG,]|
+[EG,G,][EDG,] [AEG,][BEG,] [gEG,][BEG,] [AG,][DG,]| \
+[F,F,][CF,] [GF,][AF,] [gcF,][cAF,] [cGF,][cCF,]| \
+[BF,F,][BCF,] [BGF,][BAF,] [gBF,][BAF,] [GF,][CF,]| \
+[eG,G,][eDG,] [eAG,][eBG,] [geG,][eBG,] [eAG,][eDG,]|
+[dG,G,][dDG,] [dAG,][dBG,] [gdG,][dBG,] [dAG,][dDG,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [gA,][cA,] [BA,][EA,]| \
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BGA,][GEA,]| \
+[EG,G,][EDG,] [AEG,][BEG,] [gEG,][BEG,] [AEG,][EDG,]|
+[EG,G,][EDG,] [AEG,][BEG,] [gEG,][BEG,] [AG,][DG,]| \
+[F,F,][CF,] [GF,][AF,] [gF,][AF,] [GF,][CF,]| \
+[G,G,][DG,] [AG,][BG,] [gG,][BG,] [AGG,][GDG,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [gAA,][cAA,] [BAA,][AEA,]|
+[AA,A,][AEA,] [BAA,][cAA,] [gAA,][cAA,] [BAA,][AEA,]| \
+[cAAAA,A,][cAAAEA,] [cBAAAA,][ccAAAA,] [geAA,][ecAA,] [eBAA,][eAEA,]| \
+[dAA,A,][dAEA,] [dBAA,][dcAA,] [gdAA,][dcAA,] [BAGA,][AGEA,]| \
+[cGEG,G,][cGEDG,] [cAGEG,][cBGEG,] [gcGEG,][cBGEG,] [cAGEG,][cGEDG,]|
+[cGEG,G,][cGEDG,] [cAGEG,][cBGEG,] [gcGEG,][cBGEG,] [cAGG,][cGDG,]| \
+[FF,F,][FCF,] [GFF,][AFF,] [gcFF,][cAFF,] [cGFF,][cFCF,]| \
+[dBFF,F,][dBFCF,] [dBGFF,][dBAFF,] [gdBFF,][dBAFF,] [GFF,][FCF,]| \
+[ecGEG,G,][ecGEDG,] [ecAGEG,][ecBGEG,] [gecGEG,][ecBGEG,] [ecAGEG,][ecGEDG,]|
+[dGEG,G,][dGEDG,] [dAGEG,][dBGEG,] [gdGEG,][dBGEG,] [dAGEG,][dGEDG,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [geA,][ecA,] [eBA,][eEA,]| \
+[dA,A,][dEA,] [dBA,][dcA,] [gdA,][dcA,] [BGA,][GEA,]| \
+[cGEG,G,][cGEDG,] [cAGEG,][cBGEG,] [gcGEG,][cBGEG,] [cAGEG,][cGEDG,]|
+[cGEG,G,][cGEDG,] [cAGEG,][cBGEG,] [gcGEG,][cBGEG,] [cAGG,][cGDG,]| \
+[cFF,F,][cFCF,] [cGFF,][cAFF,] [gcFF,][cAFF,] [cGFF,][cFCF,]| \
+[dG,G,][dDG,] [ecAG,][ecBG,] [gdG,][dBG,] [BAGG,][BGDG,]| \
+[cAA,A,][cAEA,] [cBAA,][ccAA,] [gcAA,][ccAA,] [cBAA,][cAEA,]|
+[cAA,A,][cAEA,] [cBAA,][ccAA,] [gcAA,][ccAA,] [cBAA,][cAEA,]| \
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BA,][EA,]| \
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BA,][EA,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [gA,][cA,] [BA,][EA,]|
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BGA,][GEA,]| \
+[EG,G,][EDG,] [AEG,][BEG,] [gEG,][BEG,] [AEG,][EDG,]| \
+[EG,G,][EDG,] [AEG,][BEG,] [gEG,][BEG,] [AG,][DG,]| \
+[F,F,][CF,] [GF,][AF,] [gcF,][cAF,] [cGF,][cCF,]|
+[BF,F,][BCF,] [BGF,][BAF,] [gBF,][BAF,] [GF,][CF,]| \
+[eG,G,][eDG,] [eAG,][eBG,] [geG,][eBG,] [eAG,][eDG,]| \
+[dG,G,][dDG,] [dAG,][dBG,] [gdG,][dBG,] [dAG,][dDG,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [gA,][cA,] [BA,][EA,]|
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BGA,][GEA,]| \
+[EG,G,][EDG,] [AEG,][BEG,] [gEG,][BEG,] [AEG,][EDG,]| \
+[EG,G,][EDG,] [AEG,][BEG,] [gEG,][BEG,] [AG,][DG,]| \
+[F,F,][CF,] [GF,][AF,] [gF,][AF,] [GF,][CF,]|
+[G,G,][DG,] [AG,][BG,] [gG,][BG,] [AGG,][GDG,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [gAA,][cAA,] [BAA,][AEA,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [gAA,][cAA,] [BAA,][AEA,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [geA,][ecA,] [eBA,][eEA,]|
+[dBA,A,][dBEA,] [dBBA,][dcBA,] [gdBA,][dcBA,] [BGA,][GEA,]| \
+[cGEG,G,][cGEDG,] [cAGEG,][cBGEG,] [gcGEG,][cBGEG,] [cAGEG,][cGEDG,]| \
+[cGEG,G,][cGEDG,] [cAGEG,][cBGEG,] [gcGEG,][cBGEG,] [cAGG,][cGDG,]| \
+[FF,F,][FCF,] [GFF,][AFF,] [gcFF,][cAFF,] [cGFF,][cFCF,]|
+[dBFF,F,][dBFCF,] [dBGFF,][dBAFF,] [gdBFF,][dBAFF,] [GFF,][FCF,]| \
+[ecGEG,G,][ecGEDG,] [ecAGEG,][ecBGEG,] [gecGEG,][ecBGEG,] [ecAGEG,][ecGEDG,]| \
+[dGEG,G,][dGEDG,] [dAGEG,][dBGEG,] [gdGEG,][dBGEG,] [dAGEG,][dGEDG,]| \
+[AA,A,][AEA,] [BAA,][cAA,] [geA,][ecA,] [eBA,][eEA,]|
+[dA,A,][dEA,] [dBA,][dcA,] [gdA,][dcA,] [BGA,][GEA,]| \
+[cGEG,G,][cGEDG,] [cAGEG,][cBGEG,] [gcGEG,][cBGEG,] [cAGEG,][cGEDG,]| \
+[cGEG,G,][cGEDG,] [cAGEG,][cBGEG,] [gcGEG,][cBGEG,] [cAGG,][cGDG,]| \
+[cFF,F,][cFCF,] [cGFF,][cAFF,] [gcFF,][cAFF,] [cGFF,][cFCF,]|
+[dG,G,][dDG,] [ecAG,][ecBG,] [gdG,][dBG,] [BAGG,][BGDG,]| \
+[cAA,A,][cAEA,] [cBAA,][ccAA,] [gcAA,][ccAA,] [cBAA,][cAEA,]| \
+[cAA,A,][cAEA,] [cBAA,][ccAA,] [gcAA,][ccAA,] [cBAA,][cAEA,]| \
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BA,][EA,]|
+[A,A,][EA,] [BA,][cA,] [gA,][cA,] [BA,][EA,]
