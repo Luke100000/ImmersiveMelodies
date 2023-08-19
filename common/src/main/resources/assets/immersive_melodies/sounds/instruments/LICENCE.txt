@@ -1,0 +1,11 @@
+Content in this directory and subdirectories are not covered by the repo wide MIT licence.
+
+Triangle by InspectorJ
+CC-BY 4.0
+https://freesound.org/people/InspectorJ/sounds/360327/
+
+Piano by PACWAY
+CC0
+https://freesound.org/people/PACWAY/sounds/442980/
+
+The other sounds' origins got lost in time.
