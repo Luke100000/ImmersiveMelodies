@@ -92,8 +92,6 @@ public class MidiParser {
             e.printStackTrace();
         }
 
-        // todo given that Minecraft updates at 20 Hz, it makes sense to scale the actual BPM to a multiple of 50
-
         return melodies;
     }
 }

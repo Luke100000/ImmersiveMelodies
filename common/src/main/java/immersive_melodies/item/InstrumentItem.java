@@ -7,7 +7,6 @@ import immersive_melodies.client.MelodyProgressManager;
 import immersive_melodies.cobalt.network.NetworkHandler;
 import immersive_melodies.network.s2c.MelodyListMessage;
 import immersive_melodies.network.s2c.OpenGuiRequest;
-import immersive_melodies.resources.ClientMelodyManager;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.Note;
 import immersive_melodies.resources.ServerMelodyManager;
@@ -63,22 +62,11 @@ public class InstrumentItem extends Item {
             tooltip.add(Text.translatable("immersive_melodies.playing").formatted(Formatting.GREEN));
         }
 
-        // Name
-        Melody melody = getMelody(stack);
-        if (!melody.getName().equals("unknown")) {
-            tooltip.add(Text.literal(melody.getName()).formatted(Formatting.ITALIC));
-        }
-
         super.appendTooltip(stack, world, tooltip, context);
     }
 
     public boolean isPlaying(ItemStack stack) {
         return stack.getOrCreateNbt().getBoolean("playing");
-    }
-
-    public Melody getMelody(ItemStack stack) {
-        String identifier = stack.getOrCreateNbt().getString("melody");
-        return ClientMelodyManager.getMelody(new Identifier(identifier));
     }
 
     @Override
@@ -107,7 +95,10 @@ public class InstrumentItem extends Item {
             MelodyProgress progress = MelodyProgressManager.INSTANCE.getProgress(entity);
             progress.tick(stack);
 
-            Melody melody = getMelody(stack);
+            // sync
+            MelodyProgressManager.INSTANCE.sync(world.getTime());
+
+            Melody melody = progress.getMelody();
             for (int i = MelodyProgressManager.INSTANCE.getProgress(entity).getLastIndex(); i < melody.getNotes().size(); i++) {
                 Note note = melody.getNotes().get(i);
                 if (progress.getTime() >= note.getTime()) {

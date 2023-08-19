@@ -23,7 +23,7 @@ public interface Items {
     Supplier<Item> LUTE = register("lute", () -> new InstrumentItem(baseProps(), Sounds.LUTE, 200, 0.5f, 0.0f));
     Supplier<Item> PIANO = register("piano", () -> new InstrumentItem(baseProps(), Sounds.PIANO, 300, 0.5f, 0.25f));
     Supplier<Item> TRIANGLE = register("triangle", () -> new InstrumentItem(baseProps(), Sounds.TRIANGLE, 300, 0.6f, 0.0f));
-    Supplier<Item> TRUMPET = register("trumpet", () -> new InstrumentItem(baseProps(), Sounds.TRUMPET, 100, 1.25f, 0.2f));
+    Supplier<Item> TRUMPET = register("trumpet", () -> new InstrumentItem(baseProps(), Sounds.TRUMPET, 100, 1.4f, 0.2f));
 
     static Supplier<Item> register(String name, Supplier<Item> item) {
         Identifier identifier = Common.locate(name);

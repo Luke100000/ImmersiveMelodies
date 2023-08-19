@@ -13,4 +13,6 @@ public final class Config extends JsonConfig {
     public boolean showOtherPlayersMelodies = true;
     public boolean parseAllMidiTracks = false;
     public long getBufferDelay = 75;
+    public float mobInstrumentFactor = 0.5f;
+    public boolean forceMobsToPickUp = true;
 }

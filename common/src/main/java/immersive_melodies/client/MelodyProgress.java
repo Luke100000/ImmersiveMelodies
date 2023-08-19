@@ -1,6 +1,9 @@
 package immersive_melodies.client;
 
+import immersive_melodies.resources.ClientMelodyManager;
+import immersive_melodies.resources.Melody;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 
 public class MelodyProgress {
     long lastTime;
@@ -50,8 +53,6 @@ public class MelodyProgress {
             time = 0;
             lastIndex = 0;
         }
-
-        // todo sync with other players here, use entity id as a universal priority comparator
     }
 
     public long getTime() {
@@ -74,6 +75,10 @@ public class MelodyProgress {
         return currentPitch;
     }
 
+    public String getCurrentlyPlaying() {
+        return currentlyPlaying;
+    }
+
     public void visualTick(float time) {
         boolean decayPhase = time - lastNoteTime > attackTime;
         float delta = Math.max(0.0f, Math.min(1.0f, (time - lastAnimationTime) / (decayPhase ? decayTime : attackTime)));
@@ -84,5 +89,13 @@ public class MelodyProgress {
             currentPitch = currentPitch * (1.0f - delta) + lastPitch * delta;
             currentVolume = currentVolume * (1.0f - delta) + lastVolume * delta;
         }
+    }
+
+    public boolean isPlaying() {
+        return (System.currentTimeMillis() - lastTime) < 1000;
+    }
+
+    public Melody getMelody() {
+        return ClientMelodyManager.getMelody(new Identifier(currentlyPlaying));
     }
 }

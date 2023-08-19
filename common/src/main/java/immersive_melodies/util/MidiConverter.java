@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MidiConverter {
-    private static final String URL = "http://localhost:8000/v1/convert/";
+    private static final String URL = "https://api.conczin.net/v1/convert/";
 
     public static class Response {
         int responseCode;
