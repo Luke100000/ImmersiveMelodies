@@ -1,10 +1,5 @@
 * Add note particles
-* Add extended upload GUI
-    * For each multitrack allow to toggle tracks, merge them or upload individually
-      * For now, just pick the track with the highest note count
-    * Add separators
-    * Add tabs for own, datapack and players
-    * Enable search by default
+* For each multitrack allow to toggle tracks, merge them or upload individually
 * Let mobs spawn with them
 * Let mobs pick them up reliably
 * Let mobs and players synchronize

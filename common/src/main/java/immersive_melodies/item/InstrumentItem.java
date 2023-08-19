@@ -112,7 +112,7 @@ public class InstrumentItem extends Item {
                             MelodyProgressHandler.INSTANCE.setLastIndex(entity, i + 1);
                         } else {
                             // other entities loop
-                            play(stack, world);
+                            rewind(stack, world);
                         }
                     }
                 } else {
@@ -129,9 +129,12 @@ public class InstrumentItem extends Item {
         stack.getOrCreateNbt().putLong("start_time", world.getTime());
     }
 
-    public void play(ItemStack stack, World world) {
-        stack.getOrCreateNbt().putBoolean("playing", true);
+    public void rewind(ItemStack stack, World world) {
         stack.getOrCreateNbt().putLong("start_time", world.getTime());
+    }
+
+    public void play(ItemStack stack) {
+        stack.getOrCreateNbt().putBoolean("playing", true);
     }
 
     public void pause(ItemStack stack) {

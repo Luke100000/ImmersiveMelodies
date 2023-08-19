@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MidiParser {
-    public static List<Melody> parseMidi(InputStream inputStream, String baseName) {
+    public static List<Melody> parseMidi(InputStream inputStream, String baseName, boolean appendTrackName) {
         List<Melody> melodies = new LinkedList<>();
         try {
             Sequence sequence = MidiSystem.getSequence(inputStream);
@@ -35,7 +35,7 @@ public class MidiParser {
                         byte[] data = metaMessage.getData();
                         int type = metaMessage.getType();
                         if (type == 0x03) {
-                            if (sequence.getTracks().length > 1) {
+                            if (sequence.getTracks().length > 1 && appendTrackName) {
                                 String s = new String(data).strip();
                                 if (s.length() > 0) {
                                     name = String.format("%s (%s)", name, s);
@@ -77,7 +77,7 @@ public class MidiParser {
                 }
 
                 if (notes.size() > 0) {
-                    if (sequence.getTracks().length > 1 && !customName) {
+                    if (sequence.getTracks().length > 1 && !customName && appendTrackName) {
                         trackNr += 1;
                         name += " Track " + trackNr;
                     }

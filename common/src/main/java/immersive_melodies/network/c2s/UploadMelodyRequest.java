@@ -1,12 +1,14 @@
 package immersive_melodies.network.c2s;
 
-import immersive_melodies.Common;
 import immersive_melodies.cobalt.network.Message;
+import immersive_melodies.cobalt.network.NetworkHandler;
+import immersive_melodies.network.s2c.MelodyListMessage;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.ServerMelodyManager;
 import immersive_melodies.util.Utils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 public class UploadMelodyRequest extends Message {
@@ -31,12 +33,14 @@ public class UploadMelodyRequest extends Message {
 
     @Override
     public void receive(PlayerEntity e) {
-        String id = Utils.escapeString(e.getGameProfile().getName()) + "/" + Utils.escapeString(name);
-        Identifier identifier = Common.locate(id);
+        String id = Utils.getPlayerName(e) + "/" + Utils.escapeString(name);
+        Identifier identifier = new Identifier("player", id);
 
         ServerMelodyManager.registerMelody(
                 identifier,
                 melody
         );
+
+        NetworkHandler.sendToPlayer(new MelodyListMessage(), (ServerPlayerEntity) e);
     }
 }

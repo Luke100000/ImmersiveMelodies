@@ -1,9 +1,6 @@
 package immersive_melodies.client.gui.widget;
 
 import immersive_melodies.client.gui.ImmersiveMelodiesScreen;
-import immersive_melodies.cobalt.network.NetworkHandler;
-import immersive_melodies.network.c2s.ItemActionMessage;
-import immersive_melodies.resources.MelodyDescriptor;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.AlwaysSelectedEntryListWidget;
@@ -17,7 +14,7 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
     private final ImmersiveMelodiesScreen currentScreen;
 
     public MelodyListWidget(MinecraftClient client, ImmersiveMelodiesScreen currentScreen) {
-        super(client, currentScreen.width, currentScreen.height, 40, 200, 10);
+        super(client, currentScreen.width, currentScreen.height, (currentScreen.height - 230) / 2 + 22, (currentScreen.height - 230) / 2 + 184, 10);
 
         this.currentScreen = currentScreen;
 
@@ -31,8 +28,8 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
         super.clearEntries();
     }
 
-    public void addEntry(Identifier identifier, MelodyDescriptor descriptor, Runnable onPress) {
-        super.addEntry(new MelodyEntry(identifier, descriptor, onPress));
+    public void addEntry(Identifier identifier, Text name, Runnable onPress) {
+        super.addEntry(new MelodyEntry(identifier, name, onPress));
     }
 
     @Override
@@ -69,37 +66,32 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
 
     public class MelodyEntry extends AlwaysSelectedEntryListWidget.Entry<MelodyEntry> {
         final Identifier identifier;
-        final MelodyDescriptor melody;
+        final Text name;
         final Runnable onPress;
 
-        public MelodyEntry(Identifier identifier, MelodyDescriptor melody, Runnable onPress) {
+        public MelodyEntry(Identifier identifier, Text melody, Runnable onPress) {
             this.identifier = identifier;
-            this.melody = melody;
+            this.name = melody;
             this.onPress = onPress;
         }
 
         @Override
         public void render(DrawContext context, int index, int y, int x, int entryWidth, int entryHeight, int mouseX, int mouseY, boolean hovered, float tickDelta) {
-            context.drawText(currentScreen.getTextRenderer(), melody.getName(), currentScreen.width / 2 - 75, y + 1, 0x404040, false);
+            context.drawText(currentScreen.getTextRenderer(), name, currentScreen.width / 2 - 75 + (onPress == null ? -2 : 2), y + 1, 0x404040, false);
         }
 
         @Override
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
-            if (button == 0) {
-                onPressed();
+            if (button == 0 && onPress != null) {
+                onPress.run();
                 return true;
             }
             return false;
         }
 
-        void onPressed() {
-            NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.PLAY, identifier));
-            onPress.run();
-        }
-
         @Override
         public Text getNarration() {
-            return Text.translatable("narrator.select", melody.getName());
+            return Text.translatable("narrator.select", name);
         }
 
         @Override

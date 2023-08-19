@@ -14,15 +14,18 @@ public class ItemActionMessage extends Message {
     private final State state;
     private final Identifier melody;
 
-    public ItemActionMessage(State state) {
-        this(state, new Identifier("_"));
-    }
-
     public ItemActionMessage(State state, Identifier melody) {
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
         slot = player == null ? -1 : player.getInventory().selectedSlot;
         this.state = state;
         this.melody = melody;
+    }
+
+    public ItemActionMessage(State state) {
+        ClientPlayerEntity player = MinecraftClient.getInstance().player;
+        slot = player == null ? -1 : player.getInventory().selectedSlot;
+        this.state = state;
+        this.melody = new Identifier("empty");
     }
 
     public ItemActionMessage(PacketByteBuf b) {
@@ -42,18 +45,17 @@ public class ItemActionMessage extends Message {
     public void receive(PlayerEntity e) {
         ItemStack stack = e.getInventory().getStack(slot);
         if (stack.getItem() instanceof InstrumentItem instrument) {
-            if (!melody.getPath().equals("_")) {
-                instrument.play(stack, melody, e.getWorld());
-            } else if (state == State.PAUSE) {
-                instrument.pause(stack);
-            } else {
-                instrument.play(stack, e.getWorld());
+            switch (state) {
+                case PLAY -> instrument.play(stack, melody, e.getWorld());
+                case CONTINUE -> instrument.play(stack);
+                case PAUSE -> instrument.pause(stack);
             }
         }
     }
 
     public enum State {
         PLAY,
+        CONTINUE,
         PAUSE
     }
 }

@@ -1,21 +1,25 @@
 package immersive_melodies.client.gui;
 
+import immersive_melodies.Config;
 import immersive_melodies.client.gui.widget.MelodyListWidget;
 import immersive_melodies.client.gui.widget.TexturedButtonWidget;
 import immersive_melodies.cobalt.network.NetworkHandler;
 import immersive_melodies.network.c2s.ItemActionMessage;
+import immersive_melodies.network.c2s.MelodyDeleteRequest;
 import immersive_melodies.network.c2s.UploadMelodyRequest;
 import immersive_melodies.resources.ClientMelodyManager;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.MelodyDescriptor;
 import immersive_melodies.util.MidiConverter;
 import immersive_melodies.util.MidiParser;
+import immersive_melodies.util.Utils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
@@ -60,6 +64,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         this.search.setDrawsBackground(false);
         this.search.setEditableColor(0x808080);
         this.search.setSuggestion("Search");
+        this.search.setFocused(true);
 
         list = addDrawableChild(new MelodyListWidget(this.client, this));
 
@@ -83,21 +88,17 @@ public class ImmersiveMelodiesScreen extends Screen {
                 String rawName = path.getFileName().toString();
                 String name = rawName.substring(0, rawName.lastIndexOf('.'));
                 if (midiMatcher.matches(path.getFileName())) {
+                    // This is a midi file, parse it
                     InputStream inputStream = new FileInputStream(path.toFile());
-                    List<Melody> melodies = MidiParser.parseMidi(inputStream, name);
-                    for (Melody melody : melodies) {
-                        NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
-                    }
+                    parseMidi(name, inputStream);
                 } else if (abcMatcher.matches(path.getFileName())) {
+                    // This is an abc file, convert it to midi and then parse it
                     byte[] bytes = Files.readAllBytes(path);
                     MinecraftClient.getInstance().execute(() -> {
                         try {
                             MidiConverter.Response request = MidiConverter.request(bytes);
                             ByteArrayInputStream inputStream = new ByteArrayInputStream(request.getBody());
-                            List<Melody> melodies = MidiParser.parseMidi(inputStream, name);
-                            for (Melody melody : melodies) {
-                                NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
-                            }
+                            parseMidi(name, inputStream);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -106,6 +107,23 @@ public class ImmersiveMelodiesScreen extends Screen {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void parseMidi(String name, InputStream inputStream) {
+        List<Melody> melodies = MidiParser.parseMidi(inputStream, name, Config.getInstance().parseAllMidiTracks);
+        if (Config.getInstance().parseAllMidiTracks) {
+            // Use all tracks and just add a track name prefix
+            for (Melody melody : melodies) {
+                NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
+                search.setText(name);
+            }
+        } else {
+            // Only use the track with the most notes
+            melodies.stream().max(Comparator.comparingInt(m -> m.getNotes().size())).ifPresent(melody -> {
+                NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
+                search.setText(name);
+            });
         }
     }
 
@@ -122,37 +140,48 @@ public class ImmersiveMelodiesScreen extends Screen {
 
     public void refreshPage() {
         list.clearEntries();
+        String lastPath = "";
         for (Map.Entry<Identifier, MelodyDescriptor> entry : ClientMelodyManager.getMelodiesList().entrySet().stream()
                 .filter(e -> this.search.getText().isEmpty() || e.getValue().getName().contains(this.search.getText()))
                 .sorted(Comparator.comparing(a -> a.getKey().getPath()))
                 .toList()) {
-            list.addEntry(entry.getKey(), entry.getValue(), () -> {
+
+            String dir = Utils.removeLastPart(entry.getKey().getPath(), "/");
+            String path = entry.getKey().getNamespace() + "/" + dir;
+
+            if (!path.equals(lastPath)) {
+                list.addEntry(new Identifier(path), Text.literal(dir).formatted(Formatting.ITALIC).formatted(Formatting.GRAY), null);
+                lastPath = path;
+            }
+
+            list.addEntry(entry.getKey(), Text.literal(entry.getValue().getName()), () -> {
+                NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.PLAY, entry.getKey()));
                 selected = entry.getKey();
                 refreshPage();
             });
         }
 
         // Close
-        addDrawableChild(new TexturedButtonWidget(width / 2 - 80, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 0, 256, 256, Text.of(null), button -> {
+        addDrawableChild(new TexturedButtonWidget(width / 2 - 75, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 0, 256, 256, Text.of(null), button -> {
             close();
         }, () -> List.of(Text.translatable("immersive_melodies.close").asOrderedText())));
 
-        if (selected != null) {
-            // Delete
+        // Delete
+        if (selected != null && (Utils.canDelete(selected, MinecraftClient.getInstance().player))) {
             addDrawableChild(new TexturedButtonWidget(width / 2 + 30, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 16, 256, 256, Text.of(null), button -> {
-
+                NetworkHandler.sendToServer(new MelodyDeleteRequest(selected));
             }, () -> List.of(Text.translatable("immersive_melodies.delete").asOrderedText())));
-
-            // Pause
-            addDrawableChild(new TexturedButtonWidget(width / 2 - 20 - 8, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 32, 32, 256, 256, Text.of(null), button -> {
-                NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.PAUSE, selected));
-            }, () -> List.of(Text.translatable("immersive_melodies.pause").asOrderedText())));
-
-            // Play
-            addDrawableChild(new TexturedButtonWidget(width / 2 - 8, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 32, 256, 256, Text.of(null), button -> {
-                NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.PLAY, selected));
-            }, () -> List.of(Text.translatable("immersive_melodies.play").asOrderedText())));
         }
+
+        // Pause
+        addDrawableChild(new TexturedButtonWidget(width / 2 - 10 - 8, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 32, 32, 256, 256, Text.of(null), button -> {
+            NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.PAUSE));
+        }, () -> List.of(Text.translatable("immersive_melodies.pause").asOrderedText())));
+
+        // Play
+        addDrawableChild(new TexturedButtonWidget(width / 2, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 32, 256, 256, Text.of(null), button -> {
+            NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.CONTINUE));
+        }, () -> List.of(Text.translatable("immersive_melodies.play").asOrderedText())));
 
         // Help
         addDrawableChild(new TexturedButtonWidget(width / 2 + 50, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 32, 256, 256, Text.of(null), button -> {
