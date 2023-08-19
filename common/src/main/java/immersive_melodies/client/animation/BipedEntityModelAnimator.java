@@ -38,7 +38,7 @@ public class BipedEntityModelAnimator {
             float time = (MinecraftClient.getInstance().isPaused() ? 0.0f : MinecraftClient.getInstance().getTickDelta()) + entity.age;
 
             MelodyProgress progress = MelodyProgressManager.INSTANCE.getProgress(entity);
-            progress.tick(time);
+            progress.visualTick(time);
 
             ItemAnimators.get(Registries.ITEM.getId(item)).setAngles(left, right, model, entity, progress, time);
         }

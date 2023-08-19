@@ -74,7 +74,7 @@ public class MelodyProgress {
         return currentPitch;
     }
 
-    public void tick(float time) {
+    public void visualTick(float time) {
         boolean decayPhase = time - lastNoteTime > attackTime;
         float delta = Math.max(0.0f, Math.min(1.0f, (time - lastAnimationTime) / (decayPhase ? decayTime : attackTime)));
         lastAnimationTime = time;
