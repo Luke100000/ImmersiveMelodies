@@ -26,4 +26,9 @@ public class SoundManagerImpl implements SoundManager {
             this.client.execute(() -> this.client.getSoundManager().play(positionedSoundInstance));
         }, delay, TimeUnit.MILLISECONDS);
     }
+
+    @Override
+    public boolean isFirstPerson(Entity entity) {
+        return MinecraftClient.getInstance().getCameraEntity() == entity && !MinecraftClient.getInstance().gameRenderer.getCamera().isThirdPerson();
+    }
 }

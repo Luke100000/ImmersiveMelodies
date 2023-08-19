@@ -13,9 +13,11 @@ import immersive_melodies.resources.Note;
 import immersive_melodies.resources.ServerMelodyManager;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
@@ -32,11 +34,16 @@ public class InstrumentItem extends Item {
     private final Sounds.Instrument sound;
     private final long sustain;
 
-    public InstrumentItem(Settings settings, Sounds.Instrument sound, long sustain) {
+    private final double horizontalOffset;
+    private final double verticalOffset;
+
+    public InstrumentItem(Settings settings, Sounds.Instrument sound, long sustain, float horizontalOffset, float verticalOffset) {
         super(settings);
 
         this.sound = sound;
         this.sustain = sustain;
+        this.horizontalOffset = horizontalOffset;
+        this.verticalOffset = verticalOffset;
     }
 
     @Override
@@ -114,10 +121,20 @@ public class InstrumentItem extends Item {
                     long length = note.getLength();
                     long sustain = Math.min(this.sustain, note.getSustain());
 
+                    // sound
                     Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(),
                             sound.get(octave), SoundCategory.RECORDS,
                             volume, pitch, length, sustain,
                             note.getTime() - progress.getTime(), entity);
+
+                    // particle
+                    if (entity instanceof LivingEntity livingEntity && !Common.soundManager.isFirstPerson(entity)) {
+                        double x = Math.sin(-livingEntity.bodyYaw / 180.0 * Math.PI);
+                        double z = Math.cos(-livingEntity.bodyYaw / 180.0 * Math.PI);
+                        world.addParticle(ParticleTypes.NOTE,
+                                entity.getX() + x * horizontalOffset, entity.getY() + entity.getHeight() / 2.0 + verticalOffset, entity.getZ() + z * horizontalOffset,
+                                x * 5.0, 0.0, z * 5.0);
+                    }
 
                     MelodyProgressManager.INSTANCE.setLastNote(entity, volume, pitch, length);
 

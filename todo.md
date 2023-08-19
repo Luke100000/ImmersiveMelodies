@@ -1,4 +1,3 @@
-* Add note particles
 * For each multitrack allow to toggle tracks, merge them or upload individually
 * Let mobs spawn with them
 * Let mobs pick them up reliably
