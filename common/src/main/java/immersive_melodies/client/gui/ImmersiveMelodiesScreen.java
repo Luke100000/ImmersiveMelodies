@@ -143,7 +143,15 @@ public class ImmersiveMelodiesScreen extends Screen {
         String lastPath = "";
         for (Map.Entry<Identifier, MelodyDescriptor> entry : ClientMelodyManager.getMelodiesList().entrySet().stream()
                 .filter(e -> this.search.getText().isEmpty() || e.getValue().getName().contains(this.search.getText()))
-                .sorted(Comparator.comparing(a -> a.getKey().getPath()))
+                .sorted((a, b) -> {
+                    int primarySortA = Utils.ownsMelody(a.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(a.getKey()) ? 0 : 1;
+                    int primarySortB = Utils.ownsMelody(b.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(b.getKey()) ? 0 : 1;
+                    if (primarySortA != primarySortB) {
+                        return primarySortB - primarySortA;
+                    } else {
+                        return a.getValue().getName().compareTo(b.getValue().getName());
+                    }
+                })
                 .toList()) {
 
             String dir = Utils.removeLastPart(entry.getKey().getPath(), "/");
