@@ -3,17 +3,15 @@ package immersive_melodies.mixin;
 import immersive_melodies.Config;
 import immersive_melodies.Items;
 import immersive_melodies.item.InstrumentItem;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Vec3i;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -48,8 +46,8 @@ public abstract class MobEntityMixin extends LivingEntity {
         });
     }
 
-    @Inject(method = "initEquipment(Lnet/minecraft/util/math/random/Random;Lnet/minecraft/world/LocalDifficulty;)V", at = @At("TAIL"))
-    private void immersiveArmors$injectGetEquipmentForSlot(Random random, LocalDifficulty localDifficulty, CallbackInfo ci) {
+    @Inject(method = "initialize(Lnet/minecraft/world/ServerWorldAccess;Lnet/minecraft/world/LocalDifficulty;Lnet/minecraft/entity/SpawnReason;Lnet/minecraft/entity/EntityData;Lnet/minecraft/nbt/NbtCompound;)Lnet/minecraft/entity/EntityData;", at = @At("TAIL"))
+    private void immersiveArmors$injectGetEquipmentForSlot(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, NbtCompound entityNbt, CallbackInfoReturnable<EntityData> cir) {
         if (Config.getInstance().mobInstrumentFactor > 0 && random.nextFloat() < Config.getInstance().mobInstrumentFactor) {
             Item item = Items.items.get(random.nextInt(Items.items.size())).get();
             equipStack(EquipmentSlot.MAINHAND, new ItemStack(item));
@@ -72,6 +70,8 @@ public abstract class MobEntityMixin extends LivingEntity {
     private void immersiveMelodies$injectPrefersNewEquipment(ItemStack newStack, ItemStack oldStack, CallbackInfoReturnable<Boolean> cir) {
         if (newStack.getItem() instanceof InstrumentItem && !(oldStack.getItem() instanceof InstrumentItem)) {
             cir.setReturnValue(true);
+        } else if (oldStack.getItem() instanceof InstrumentItem) {
+            cir.setReturnValue(false);
         }
     }
 }

@@ -45,7 +45,7 @@ public class Utils {
         int lastDotIndex = input.lastIndexOf(delimiter);
 
         if (lastDotIndex != -1) {
-            return input.substring(lastDotIndex);
+            return input.substring(lastDotIndex + delimiter.length());
         } else {
             return input;
         }

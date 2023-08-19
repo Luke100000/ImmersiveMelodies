@@ -55,7 +55,7 @@ public class ImmersiveMelodiesScreen extends Screen {
 
     @Override
     protected void init() {
-        this.search = addDrawableChild(new TextFieldWidget(this.textRenderer, this.width / 2 - 70, this.height / 2 - 103, 140, 20, Text.translatable("immersive_melodies.search")));
+        this.search = new TextFieldWidget(this.textRenderer, this.width / 2 - 70, this.height / 2 - 103, 140, 20, Text.translatable("immersive_melodies.search"));
         this.search.setMaxLength(128);
         this.search.setChangedListener(a -> {
             this.refreshPage();
@@ -66,7 +66,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         this.search.setSuggestion("Search");
         setInitialFocus(this.search);
 
-        list = addDrawableChild(new MelodyListWidget(this.client, this));
+        list = new MelodyListWidget(this.client, this);
 
         refreshPage();
     }
@@ -140,6 +140,11 @@ public class ImmersiveMelodiesScreen extends Screen {
     }
 
     public void refreshPage() {
+        clearChildren();
+
+        addDrawableChild(search);
+        addDrawableChild(list);
+
         list.clearEntries();
         String lastPath = "";
         for (Map.Entry<Identifier, MelodyDescriptor> entry : ClientMelodyManager.getMelodiesList().entrySet().stream()
