@@ -5,7 +5,6 @@
 		"0": "immersive_melodies:item/lute",
 		"particle": "immersive_melodies:item/lute"
 	},
-	"gui_light": "front",
 	"elements": [
 		{
 			"from": [5, 1, 7],
@@ -112,10 +111,15 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [92, -13, 79],
-			"translation": [-7.5, -4, 2]
+			"rotation": [75, -13, 79],
+			"translation": [-6.5, -4.5, 2]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, -13, 79],
+			"translation": [-6.5, -4.5, 2]
 		},
 		"firstperson_righthand": {
 			"rotation": [0, -20, -23],

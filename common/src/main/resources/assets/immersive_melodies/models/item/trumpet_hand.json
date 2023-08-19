@@ -5,7 +5,6 @@
 		"0": "immersive_melodies:item/trumpet",
 		"particle": "immersive_melodies:item/trumpet"
 	},
-	"gui_light": "front",
 	"elements": [
 		{
 			"from": [6, 6.5, 0],
@@ -138,6 +137,7 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [-6, -20, 0],

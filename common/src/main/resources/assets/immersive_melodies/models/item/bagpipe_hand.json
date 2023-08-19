@@ -5,7 +5,6 @@
 		"0": "immersive_melodies:item/bagpipe",
 		"particle": "immersive_melodies:item/bagpipe"
 	},
-	"gui_light": "front",
 	"elements": [
 		{
 			"from": [7, 7, 6],
@@ -170,10 +169,11 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [75, 4, 32],
-			"translation": [-8.5, -1, 6]
+			"translation": [-8, -1.25, 5.5]
 		}
 	}
 }

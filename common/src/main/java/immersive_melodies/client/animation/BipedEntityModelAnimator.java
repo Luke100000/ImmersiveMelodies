@@ -40,7 +40,7 @@ public class BipedEntityModelAnimator {
             MelodyProgress progress = MelodyProgressHandler.INSTANCE.getProgress(entity);
             progress.tick(time);
 
-            ItemAngleHandlers.get(Registries.ITEM.getId(item)).setAngles(left, right, model, entity, progress, time);
+            ItemAnimators.get(Registries.ITEM.getId(item)).setAngles(left, right, model, entity, progress, time);
         }
     }
 }

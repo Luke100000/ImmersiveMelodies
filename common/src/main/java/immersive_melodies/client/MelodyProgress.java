@@ -17,7 +17,7 @@ public class MelodyProgress {
 
     float lastAnimationTime;
 
-    float attackTime = 5.0f;
+    float attackTime = 10.0f;
     float decayTime = 15.0f;
 
     public long getStartTime() {

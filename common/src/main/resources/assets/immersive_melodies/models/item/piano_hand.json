@@ -5,7 +5,6 @@
 		"0": "immersive_melodies:item/piano",
 		"particle": "immersive_melodies:item/piano"
 	},
-	"gui_light": "front",
 	"elements": [
 		{
 			"from": [0, 4, 4],
@@ -56,14 +55,15 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [0, 140, 0],
-			"translation": [-1.75, 4, -1]
+			"translation": [-1.75, 3, 0]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [0, 140, 0],
-			"translation": [-1.75, 4, -1]
+			"translation": [-1.75, 3, 0]
 		},
 		"firstperson_righthand": {
 			"rotation": [0, 150, 0],

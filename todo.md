@@ -1,7 +1,4 @@
 * Add note particles
-* Add animation
-    * Framework
-    * Animation for each model
 * Add extended upload GUI
     * For each multitrack allow to toggle tracks, merge them or upload individually
       * For now, just pick the track with the highest note count

@@ -5,11 +5,10 @@
 		"0": "immersive_melodies:item/didgeridoo",
 		"particle": "immersive_melodies:item/didgeridoo"
 	},
-	"gui_light": "front",
 	"elements": [
 		{
-			"from": [6, 0, 7],
-			"to": [8, 20, 9],
+			"from": [7, 0, 7],
+			"to": [9, 20, 9],
 			"faces": {
 				"north": {"uv": [1, 1, 2, 11], "texture": "#0"},
 				"east": {"uv": [0, 1, 1, 11], "texture": "#0"},
@@ -20,14 +19,15 @@
 			}
 		}
 	],
+	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [60, 0, 0],
-			"translation": [-5, -3.5, -2.5]
+			"rotation": [60, 0, 20],
+			"translation": [0.5, -3.5, -4.25]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [60, 0, 0],
-			"translation": [-7, -3.5, -2.5]
+			"rotation": [60, 0, 20],
+			"translation": [-0.5, -3.5, -4.25]
 		},
 		"firstperson_righthand": {
 			"rotation": [95, 0, 180],
