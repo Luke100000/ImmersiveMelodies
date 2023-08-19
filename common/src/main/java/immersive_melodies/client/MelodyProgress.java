@@ -1,7 +1,11 @@
 package immersive_melodies.client;
 
+import net.minecraft.item.ItemStack;
+
 public class MelodyProgress {
-    long startTime;
+    long lastTime;
+    long time;
+
     String currentlyPlaying = "";
     long worldTime;
     int lastIndex;
@@ -20,24 +24,42 @@ public class MelodyProgress {
     float attackTime = 10.0f;
     float decayTime = 15.0f;
 
-    public long getStartTime() {
-        return startTime;
+    public void tick(ItemStack stack) {
+        long l = System.currentTimeMillis();
+        long delta = l - lastTime;
+        if (delta < 150) {
+            time += delta;
+        }
+        lastTime = l;
+
+        // reset progress on change
+        String identifier = stack.getOrCreateNbt().getString("melody");
+        long startTime = stack.getOrCreateNbt().getLong("start_time");
+
+        // reset if the melody changed
+        if (!currentlyPlaying.equals(identifier)) {
+            currentlyPlaying = identifier;
+            worldTime = startTime;
+            time = 0;
+            lastIndex = 0;
+        }
+
+        // reset when the start time appears to be off
+        if (worldTime != startTime) {
+            worldTime = startTime;
+            time = 0;
+            lastIndex = 0;
+        }
+
+        // todo sync with other players here, use entity id as a universal priority comparator
     }
 
-    public String getCurrentlyPlaying() {
-        return currentlyPlaying;
-    }
-
-    public long getWorldTime() {
-        return worldTime;
+    public long getTime() {
+        return time;
     }
 
     public int getLastIndex() {
         return lastIndex;
-    }
-
-    public int getLastNoteTime() {
-        return lastNoteTime;
     }
 
     public float getCurrent() {

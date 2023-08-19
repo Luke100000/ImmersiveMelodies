@@ -2,6 +2,7 @@ package immersive_melodies.item;
 
 import immersive_melodies.Common;
 import immersive_melodies.Sounds;
+import immersive_melodies.client.MelodyProgress;
 import immersive_melodies.client.MelodyProgressHandler;
 import immersive_melodies.cobalt.network.NetworkHandler;
 import immersive_melodies.network.s2c.MelodyListMessage;
@@ -83,13 +84,26 @@ public class InstrumentItem extends Item {
             play(stack, randomMelody, world);
         }
 
+        // check if the item is in the hand, and is the primary instrument as you cant play two at once
+        boolean isPrimary = false;
+        for (ItemStack handItem : entity.getHandItems()) {
+            if (handItem == stack) {
+                isPrimary = true;
+                break;
+            } else if (handItem.getItem() instanceof InstrumentItem) {
+                break;
+            }
+        }
+
         // play
-        if (isPlaying(stack) && selected && world.isClient) {
-            long time = MelodyProgressHandler.INSTANCE.getProgress(entity, stack);
+        if (isPlaying(stack) && isPrimary && world.isClient) {
+            MelodyProgress progress = MelodyProgressHandler.INSTANCE.getProgress(entity);
+            progress.tick(stack);
+
             Melody melody = getMelody(stack);
             for (int i = MelodyProgressHandler.INSTANCE.getProgress(entity).getLastIndex(); i < melody.getNotes().size(); i++) {
                 Note note = melody.getNotes().get(i);
-                if (time >= note.getTime()) {
+                if (progress.getTime() >= note.getTime()) {
                     float volume = note.getVelocity() / 255.0f * 3.0f;
                     float pitch = (float) Math.pow(2, (note.getNote() - 24) / 12.0);
                     int octave = 1;
@@ -103,7 +117,7 @@ public class InstrumentItem extends Item {
                     Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(),
                             sound.get(octave), SoundCategory.RECORDS,
                             volume, pitch, length, sustain,
-                            note.getTime() - time, entity);
+                            note.getTime() - progress.getTime(), entity);
 
                     MelodyProgressHandler.INSTANCE.setLastNote(entity, volume, pitch, length);
 
