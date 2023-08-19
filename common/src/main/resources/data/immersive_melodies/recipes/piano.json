@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "NNN",
+    "   "
+  ],
+  "key": {
+    "B": [
+      {
+        "item": "minecraft:bone"
+      }
+    ],
+    "N": [
+      {
+        "item": "minecraft:note_block"
+      }
+    ]
+  },
+  "result": {
+    "item": "immersive_melodies:piano"
+  }
+}

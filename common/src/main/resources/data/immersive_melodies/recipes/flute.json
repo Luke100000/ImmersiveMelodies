@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  B",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "S": [
+      {
+        "item": "minecraft:stick"
+      }
+    ],
+    "B": [
+      {
+        "item": "minecraft:bone"
+      }
+    ]
+  },
+  "result": {
+    "item": "immersive_melodies:flute"
+  }
+}

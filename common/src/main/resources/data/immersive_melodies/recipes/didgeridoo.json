@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P  ",
+    " PL",
+    "  P"
+  ],
+  "key": {
+    "L": [
+      {
+        "item": "minecraft:lapis_lazuli"
+      }
+    ],
+    "P": [
+      {
+        "tag": "minecraft:planks"
+      }
+    ]
+  },
+  "result": {
+    "item": "immersive_melodies:didgeridoo"
+  }
+}

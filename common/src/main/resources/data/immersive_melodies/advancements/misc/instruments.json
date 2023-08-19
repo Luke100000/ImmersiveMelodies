@@ -2,7 +2,13 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "immersive_melodies:triangle"
+      "immersive_melodies:bagpipe",
+      "immersive_melodies:didgeridoo",
+      "immersive_melodies:flute",
+      "immersive_melodies:lute",
+      "immersive_melodies:piano",
+      "immersive_melodies:triangle",
+      "immersive_melodies:trumpet"
     ]
   },
   "criteria": {
@@ -12,7 +18,7 @@
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
+              "minecraft:copper_ingot"
             ]
           }
         ]
