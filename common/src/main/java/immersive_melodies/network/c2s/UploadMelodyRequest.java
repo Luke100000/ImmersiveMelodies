@@ -41,6 +41,6 @@ public class UploadMelodyRequest extends Message {
                 melody
         );
 
-        NetworkHandler.sendToPlayer(new MelodyListMessage(), (ServerPlayerEntity) e);
+        NetworkHandler.sendToPlayer(new MelodyListMessage(e), (ServerPlayerEntity) e);
     }
 }

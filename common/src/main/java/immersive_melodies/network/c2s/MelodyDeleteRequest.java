@@ -31,7 +31,7 @@ public class MelodyDeleteRequest extends Message {
         if (Utils.canDelete(identifier, e)) {
             ServerMelodyManager.deleteMelody(identifier);
 
-            NetworkHandler.sendToPlayer(new MelodyListMessage(), (ServerPlayerEntity) e);
+            NetworkHandler.sendToPlayer(new MelodyListMessage(e), (ServerPlayerEntity) e);
         }
     }
 }

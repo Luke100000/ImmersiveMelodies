@@ -1,9 +1,11 @@
 package immersive_melodies.network.s2c;
 
 import immersive_melodies.Common;
+import immersive_melodies.Config;
 import immersive_melodies.cobalt.network.Message;
 import immersive_melodies.resources.MelodyDescriptor;
 import immersive_melodies.resources.ServerMelodyManager;
+import immersive_melodies.util.Utils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
@@ -15,12 +17,20 @@ import java.util.Objects;
 public class MelodyListMessage extends Message {
     private final Map<Identifier, MelodyDescriptor> melodies = new HashMap<>();
 
-    public MelodyListMessage() {
+    public MelodyListMessage(PlayerEntity receiver) {
         //datapack melodies
         this.melodies.putAll(ServerMelodyManager.getDatapackMelodies());
 
         //custom melodies
-        this.melodies.putAll(ServerMelodyManager.get().getCustomServerMelodies());
+        if (Config.getInstance().showOtherPlayersMelodies) {
+            this.melodies.putAll(ServerMelodyManager.get().getCustomServerMelodies());
+        } else {
+            ServerMelodyManager.get().getCustomServerMelodies().forEach((id, desc) -> {
+                if (Utils.ownsMelody(id, receiver)) {
+                    this.melodies.put(id, desc);
+                }
+            });
+        }
     }
 
     @Override

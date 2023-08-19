@@ -41,7 +41,7 @@ public class InstrumentItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
-            NetworkHandler.sendToPlayer(new MelodyListMessage(), (ServerPlayerEntity) user);
+            NetworkHandler.sendToPlayer(new MelodyListMessage(user), (ServerPlayerEntity) user);
             NetworkHandler.sendToPlayer(new OpenGuiRequest(OpenGuiRequest.Type.SELECTOR), (ServerPlayerEntity) user);
         }
 
