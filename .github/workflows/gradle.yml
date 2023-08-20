@@ -73,9 +73,9 @@ jobs:
         uses: Kir-Antipov/mc-publish@v3.1
         if: ${{ success() && startsWith(github.ref, 'refs/tags/') }}
         with:
-          modrinth-id: 6txNkua3
+          modrinth-id: TaSmHw8V
           modrinth-token: ${{ env.MODRINTH_TOKEN }}
-          curseforge-id: 639584
+          curseforge-id: 904471
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
           name: "[Forge ${{steps.split.outputs._1}}] Immersive Melodies - ${{steps.split.outputs._0}}"
