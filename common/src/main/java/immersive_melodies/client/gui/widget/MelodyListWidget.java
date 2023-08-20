@@ -2,8 +2,8 @@ package immersive_melodies.client.gui.widget;
 
 import immersive_melodies.client.gui.ImmersiveMelodiesScreen;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.AlwaysSelectedEntryListWidget;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -21,11 +21,6 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
         setRenderBackground(false);
         setRenderHorizontalShadows(false);
         setRenderHeader(false, 0);
-    }
-
-    @Override
-    public void clearEntries() {
-        super.clearEntries();
     }
 
     public void addEntry(Identifier identifier, Text name, Runnable onPress) {
@@ -53,15 +48,15 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
     }
 
     @Override
-    protected void enableScissor(DrawContext context) {
-        context.enableScissor(currentScreen.width / 2 - 100, this.top, currentScreen.width / 2 + 70, this.bottom);
+    protected void enableScissor() {
+        enableScissor(currentScreen.width / 2 - 100, this.top, currentScreen.width / 2 + 70, this.bottom);
     }
 
     @Override
-    protected void drawSelectionHighlight(DrawContext context, int y, int entryWidth, int entryHeight, int borderColor, int fillColor) {
+    protected void drawSelectionHighlight(MatrixStack matrices, int y, int entryWidth, int entryHeight, int borderColor, int fillColor) {
         int x0 = currentScreen.width / 2 - 75;
         int x1 = currentScreen.width / 2 + 80;
-        context.fill(x0 - 1, y - 1, x1, y + entryHeight + 3, 0x40000000);
+        fill(matrices, x0 - 1, y - 1, x1, y + entryHeight + 3, 0x40000000);
     }
 
     public class MelodyEntry extends AlwaysSelectedEntryListWidget.Entry<MelodyEntry> {
@@ -76,8 +71,8 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
         }
 
         @Override
-        public void render(DrawContext context, int index, int y, int x, int entryWidth, int entryHeight, int mouseX, int mouseY, boolean hovered, float tickDelta) {
-            context.drawText(currentScreen.getTextRenderer(), name, currentScreen.width / 2 - 75 + (onPress == null ? -2 : 2), y + 1, 0x404040, false);
+        public void render(MatrixStack matrices, int index, int y, int x, int entryWidth, int entryHeight, int mouseX, int mouseY, boolean hovered, float tickDelta) {
+            currentScreen.getTextRenderer().draw(matrices, name, currentScreen.width / 2.0f - 75 + (onPress == null ? -2 : 2), y + 1, 0x404040);
         }
 
         @Override

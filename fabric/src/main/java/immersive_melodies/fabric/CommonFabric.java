@@ -1,6 +1,9 @@
 package immersive_melodies.fabric;
 
-import immersive_melodies.*;
+import immersive_melodies.ItemGroups;
+import immersive_melodies.Items;
+import immersive_melodies.Messages;
+import immersive_melodies.Sounds;
 import immersive_melodies.fabric.cobalt.network.NetworkHandlerImpl;
 import immersive_melodies.fabric.cobalt.registration.RegistrationImpl;
 import immersive_melodies.fabric.resources.FabricMelody;
@@ -9,9 +12,6 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.resource.ResourceType;
 
 public final class CommonFabric implements ModInitializer {
@@ -28,13 +28,11 @@ public final class CommonFabric implements ModInitializer {
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> ServerMelodyManager.server = server);
 
-        ItemGroup group = FabricItemGroup.builder()
+        FabricItemGroup.builder(ItemGroups.getIdentifier())
                 .displayName(ItemGroups.getDisplayName())
                 .icon(ItemGroups::getIcon)
-                .entries((enabledFeatures, entries) -> entries.addAll(Items.getSortedItems()))
+                .entries((enabledFeatures, entries) -> entries.addAll(Items.items.stream().map(i -> i.get().getDefaultStack()).toList()))
                 .build();
-
-        Registry.register(Registries.ITEM_GROUP, Common.locate("group"), group);
     }
 }
 

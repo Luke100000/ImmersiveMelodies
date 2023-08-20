@@ -1,5 +1,6 @@
 package immersive_melodies.client.gui;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import immersive_melodies.Config;
 import immersive_melodies.client.gui.widget.MelodyListWidget;
 import immersive_melodies.client.gui.widget.TexturedButtonWidget;
@@ -15,9 +16,9 @@ import immersive_melodies.util.MidiParser;
 import immersive_melodies.util.Utils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -130,14 +131,16 @@ public class ImmersiveMelodiesScreen extends Screen {
     }
 
     @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        this.renderBackground(context);
+    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+        this.renderBackground(matrices);
 
         int x = (this.width - 192) / 2;
         int y = (this.height - 230) / 2;
-        context.drawTexture(BACKGROUND_TEXTURE, x, y, 0, 0, 192, 215);
 
-        super.render(context, mouseX, mouseY, delta);
+        RenderSystem.setShaderTexture(0, BACKGROUND_TEXTURE);
+        drawTexture(matrices, x, y, 0, 0, 192, 215);
+
+        super.render(matrices, mouseX, mouseY, delta);
     }
 
     public void refreshPage() {
@@ -146,7 +149,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         addDrawableChild(search);
         addDrawableChild(list);
 
-        list.clearEntries();
+        list.children().clear();
         String lastPath = "";
         for (Map.Entry<Identifier, MelodyDescriptor> entry : ClientMelodyManager.getMelodiesList().entrySet().stream()
                 .filter(e -> this.search.getText().isEmpty() || e.getValue().getName().toLowerCase(Locale.ROOT).contains(this.search.getText().toLowerCase(Locale.ROOT)))
