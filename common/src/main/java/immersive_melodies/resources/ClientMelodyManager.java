@@ -30,4 +30,8 @@ public class ClientMelodyManager {
     public static void setMelody(Identifier identifier, Melody melody) {
         melodies.put(identifier, melody);
     }
+
+    public static void cleanupMelodies() {
+        melodies.entrySet().removeIf(entry -> !melodiesList.containsKey(entry.getKey()));
+    }
 }

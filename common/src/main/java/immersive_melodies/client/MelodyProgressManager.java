@@ -1,9 +1,7 @@
 package immersive_melodies.client;
 
-import immersive_melodies.item.InstrumentItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 
 import java.util.HashMap;
@@ -62,7 +60,7 @@ public class MelodyProgressManager {
                         } else if (!b1 && b2) {
                             return -1;
                         } else {
-                            return a.getId() - b.getId();
+                            return (int) (getProgress(b).time - getProgress(a).time);
                         }
                     })
                     .toList();
@@ -76,18 +74,13 @@ public class MelodyProgressManager {
                         // Thus, the higher in the order the higher the priority
                         MelodyProgress progress0 = getProgress(entity0);
                         MelodyProgress progress1 = getProgress(entity1);
-                        if (progress0.getCurrentlyPlaying().equals(progress1.getCurrentlyPlaying())) {
-                            if (Math.abs(progress0.time - progress1.time) > 100) {
-                                progress0.time = progress1.time;
-                                progress0.lastIndex = progress1.lastIndex;
-                            }
-                        } else if (!(entity0 instanceof PlayerEntity)) {
-                            entity0.getHandItems().forEach(h -> {
-                                if (h.getItem() instanceof InstrumentItem instrumentItem) {
-                                    instrumentItem.play(h, new Identifier(progress1.getCurrentlyPlaying()), entity0.getWorld());
-                                }
-                            });
+
+                        if (Math.abs(progress0.time - progress1.time) > 100) {
+                            progress0.overwrite(progress1.getCurrentlyPlaying());
+                            progress0.time = progress1.time;
+                            progress0.lastIndex = progress1.lastIndex;
                         }
+
                         break;
                     }
                 }

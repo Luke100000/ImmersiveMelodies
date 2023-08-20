@@ -10,6 +10,7 @@ public class MelodyProgress {
     long time;
 
     String currentlyPlaying = "";
+    String overwritten = null;
     long worldTime;
     int lastIndex;
 
@@ -42,6 +43,7 @@ public class MelodyProgress {
         // reset if the melody changed
         if (!currentlyPlaying.equals(identifier)) {
             currentlyPlaying = identifier;
+            overwritten = null;
             worldTime = startTime;
             time = 0;
             lastIndex = 0;
@@ -50,6 +52,7 @@ public class MelodyProgress {
         // reset when the start time appears to be off
         if (worldTime != startTime) {
             worldTime = startTime;
+            overwritten = null;
             time = 0;
             lastIndex = 0;
         }
@@ -76,7 +79,11 @@ public class MelodyProgress {
     }
 
     public String getCurrentlyPlaying() {
-        return currentlyPlaying;
+        return overwritten == null ? currentlyPlaying : overwritten;
+    }
+
+    public void overwrite(String by) {
+        overwritten = by;
     }
 
     public void visualTick(float time) {
@@ -96,6 +103,6 @@ public class MelodyProgress {
     }
 
     public Melody getMelody() {
-        return ClientMelodyManager.getMelody(new Identifier(currentlyPlaying));
+        return ClientMelodyManager.getMelody(new Identifier(getCurrentlyPlaying()));
     }
 }

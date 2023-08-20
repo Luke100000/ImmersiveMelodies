@@ -34,6 +34,7 @@ import java.nio.file.Path;
 import java.nio.file.PathMatcher;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class ImmersiveMelodiesScreen extends Screen {
@@ -148,7 +149,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         list.clearEntries();
         String lastPath = "";
         for (Map.Entry<Identifier, MelodyDescriptor> entry : ClientMelodyManager.getMelodiesList().entrySet().stream()
-                .filter(e -> this.search.getText().isEmpty() || e.getValue().getName().contains(this.search.getText()))
+                .filter(e -> this.search.getText().isEmpty() || e.getValue().getName().toLowerCase(Locale.ROOT).contains(this.search.getText().toLowerCase(Locale.ROOT)))
                 .sorted((a, b) -> {
                     int primarySortA = Utils.ownsMelody(a.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(a.getKey()) ? 0 : 1;
                     int primarySortB = Utils.ownsMelody(b.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(b.getKey()) ? 0 : 1;
@@ -175,30 +176,33 @@ public class ImmersiveMelodiesScreen extends Screen {
             });
         }
 
+        int y = this.height / 2 + 69;
+
         // Close
-        addDrawableChild(new TexturedButtonWidget(width / 2 - 75, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 0, 256, 256, Text.of(null), button -> {
+        addDrawableChild(new TexturedButtonWidget(width / 2 - 75, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 0, 256, 256, Text.of(null), button -> {
             close();
         }, () -> List.of(Text.translatable("immersive_melodies.close").asOrderedText())));
 
         // Delete
         if (selected != null && (Utils.canDelete(selected, MinecraftClient.getInstance().player))) {
-            addDrawableChild(new TexturedButtonWidget(width / 2 + 30, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 16, 256, 256, Text.of(null), button -> {
+            addDrawableChild(new TexturedButtonWidget(width / 2 + 30, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 16, 256, 256, Text.of(null), button -> {
                 NetworkHandler.sendToServer(new MelodyDeleteRequest(selected));
+                selected = null;
             }, () -> List.of(Text.translatable("immersive_melodies.delete").asOrderedText())));
         }
 
         // Pause
-        addDrawableChild(new TexturedButtonWidget(width / 2 - 10 - 8, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 32, 32, 256, 256, Text.of(null), button -> {
+        addDrawableChild(new TexturedButtonWidget(width / 2 - 10 - 8, y, 16, 16, BACKGROUND_TEXTURE, 256 - 32, 32, 256, 256, Text.of(null), button -> {
             NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.PAUSE));
         }, () -> List.of(Text.translatable("immersive_melodies.pause").asOrderedText())));
 
         // Play
-        addDrawableChild(new TexturedButtonWidget(width / 2, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 32, 256, 256, Text.of(null), button -> {
+        addDrawableChild(new TexturedButtonWidget(width / 2, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 32, 256, 256, Text.of(null), button -> {
             NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.CONTINUE));
         }, () -> List.of(Text.translatable("immersive_melodies.play").asOrderedText())));
 
         // Help
-        addDrawableChild(new TexturedButtonWidget(width / 2 + 50, 200, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 32, 256, 256, Text.of(null), button -> {
+        addDrawableChild(new TexturedButtonWidget(width / 2 + 50, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 32, 256, 256, Text.of(null), button -> {
             openHelp();
         }, () -> List.of(Text.translatable("immersive_melodies.help").asOrderedText())));
     }
