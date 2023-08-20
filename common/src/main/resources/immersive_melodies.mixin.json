@@ -4,9 +4,17 @@
   "package": "immersive_melodies.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "MobEntityMixin", "ParrotEntityMixin"
+    "EntityMixin",
+    "MobEntityMixin",
+    "ParrotEntityMixin",
+    "ServerWorldMixin"
   ],
-  "client": ["AbstractZombieModelMixin", "BipedEntityModelMixin", "ItemRendererMixin", "ModelLoaderMixin"],
+  "client": [
+    "AbstractZombieModelMixin",
+    "BipedEntityModelMixin",
+    "ItemRendererMixin",
+    "ModelLoaderMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
