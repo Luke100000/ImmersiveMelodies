@@ -6,11 +6,11 @@ import net.minecraft.nbt.NbtElement;
 public class Note {
     private final int note;
     private final int velocity;
-    private final long time;
-    private final long length;
-    private final long sustain;
+    private final int time;
+    private final int length;
+    private final int sustain;
 
-    public Note(int note, int velocity, long time, long length, long sustain) {
+    public Note(int note, int velocity, int time, int length, int sustain) {
         this.note = note;
         this.velocity = velocity;
         this.time = time;
@@ -21,9 +21,9 @@ public class Note {
     public Note(NbtCompound nbt) {
         this.note = nbt.getInt("note");
         this.velocity = nbt.getInt("velocity");
-        this.time = nbt.getLong("time");
-        this.length = nbt.getLong("length");
-        this.sustain = nbt.getLong("sustain");
+        this.time = nbt.getInt("time");
+        this.length = nbt.getInt("length");
+        this.sustain = nbt.getInt("sustain");
     }
 
     public int getNote() {
@@ -34,15 +34,15 @@ public class Note {
         return velocity;
     }
 
-    public long getTime() {
+    public int getTime() {
         return time;
     }
 
-    public long getLength() {
+    public int getLength() {
         return length;
     }
 
-    public long getSustain() {
+    public int getSustain() {
         return sustain;
     }
 
@@ -50,20 +50,20 @@ public class Note {
         NbtCompound nbt = new NbtCompound();
         nbt.putInt("note", note);
         nbt.putInt("velocity", velocity);
-        nbt.putLong("time", time);
-        nbt.putLong("length", length);
-        nbt.putLong("sustain", sustain);
+        nbt.putInt("time", time);
+        nbt.putInt("length", length);
+        nbt.putInt("sustain", sustain);
         return nbt;
     }
 
     public static class Builder {
         public final int note;
         public final int velocity;
-        public final long time;
-        public long sustain = 9999;
-        public long length;
+        public final int time;
+        public int sustain = 9999;
+        public int length;
 
-        public Builder(int note, int velocity, long time) {
+        public Builder(int note, int velocity, int time) {
             this.note = note;
             this.velocity = velocity;
             this.time = time;

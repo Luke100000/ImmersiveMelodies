@@ -54,7 +54,7 @@ public class MidiParser {
 
                         // Convert notes into ms
                         long tick = event.getTick();
-                        long ms = tick * 60 * 1000 / sequence.getResolution() / bpm;
+                        int ms = (int) (tick * 60 * 1000 / sequence.getResolution() / bpm);
 
                         if (command == ShortMessage.NOTE_ON) {
                             int note = sm.getData1();

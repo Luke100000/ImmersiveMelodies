@@ -33,5 +33,6 @@ public class ClientMelodyManager {
 
     public static void cleanupMelodies() {
         melodies.entrySet().removeIf(entry -> !melodiesList.containsKey(entry.getKey()));
+        requested.removeIf(entry -> !melodiesList.containsKey(entry));
     }
 }

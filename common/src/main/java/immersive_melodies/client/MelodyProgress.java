@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 
 public class MelodyProgress {
     long lastTime;
-    long time;
+    int time;
 
     String currentlyPlaying = "";
     String overwritten = null;
