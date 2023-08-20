@@ -1,11 +1,10 @@
 package immersive_melodies.resources;
 
-import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
 
 
 public class Melody extends MelodyDescriptor {
@@ -20,15 +19,13 @@ public class Melody extends MelodyDescriptor {
         this.notes = notes;
     }
 
-    public Melody(NbtCompound compound) {
-        super(compound);
+    public Melody(PacketByteBuf b) {
+        super(b);
 
-        int noteCount = compound.getInt("noteCount");
+        int noteCount = b.readInt();
         notes = new LinkedList<>();
         for (int i = 0; i < noteCount; i++) {
-            notes.add(new Note(
-                    compound.getCompound("note" + i)
-            ));
+            notes.add(new Note(b));
         }
     }
 
@@ -36,14 +33,12 @@ public class Melody extends MelodyDescriptor {
         return Collections.unmodifiableList(notes);
     }
 
-    public NbtCompound toNbt() {
-        NbtCompound nbt = super.toLiteNbt();
+    public void encode(PacketByteBuf b) {
+        super.encodeLite(b);
 
-        nbt.putInt("noteCount", notes.size());
-        for (int i = 0; i < notes.size(); i++) {
-            nbt.put("note" + i, notes.get(i).toNbt());
+        b.writeInt(notes.size());
+        for (Note note : notes) {
+            note.encode(b);
         }
-
-        return nbt;
     }
 }

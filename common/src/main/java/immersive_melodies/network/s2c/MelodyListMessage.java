@@ -12,7 +12,6 @@ import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class MelodyListMessage extends Message {
     private final Map<Identifier, MelodyDescriptor> melodies = new HashMap<>();
@@ -38,14 +37,14 @@ public class MelodyListMessage extends Message {
         b.writeInt(melodies.size());
         for (Map.Entry<Identifier, MelodyDescriptor> entry : melodies.entrySet()) {
             b.writeIdentifier(entry.getKey());
-            b.writeNbt(entry.getValue().toLiteNbt());
+            entry.getValue().encodeLite(b);
         }
     }
 
     public MelodyListMessage(PacketByteBuf b) {
         int size = b.readInt();
         for (int i = 0; i < size; i++) {
-            melodies.put(b.readIdentifier(), new MelodyDescriptor(Objects.requireNonNull(b.readNbt())));
+            melodies.put(b.readIdentifier(), new MelodyDescriptor(b));
         }
     }
 

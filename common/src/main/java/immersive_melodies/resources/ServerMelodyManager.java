@@ -1,6 +1,8 @@
 package immersive_melodies.resources;
 
+import io.netty.buffer.Unpooled;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.PersistentState;
@@ -64,7 +66,8 @@ public class ServerMelodyManager {
         public static CustomServerMelodies fromNbt(NbtCompound nbt) {
             CustomServerMelodies c = new CustomServerMelodies();
             for (String key : nbt.getKeys()) {
-                c.customServerMelodies.put(new Identifier(key), new Melody(nbt.getCompound(key)));
+                PacketByteBuf buffer = new PacketByteBuf(Unpooled.wrappedBuffer(nbt.getByteArray(key)));
+                c.customServerMelodies.put(new Identifier(key), new Melody(buffer));
             }
             return c;
         }
@@ -73,7 +76,9 @@ public class ServerMelodyManager {
         public NbtCompound writeNbt(NbtCompound nbt) {
             NbtCompound c = new NbtCompound();
             for (Map.Entry<Identifier, Melody> entry : customServerMelodies.entrySet()) {
-                c.put(entry.getKey().toString(), entry.getValue().toNbt());
+                PacketByteBuf buffer = new PacketByteBuf(Unpooled.buffer());
+                entry.getValue().encode(buffer);
+                c.putByteArray(entry.getKey().toString(), buffer.array());
             }
             return c;
         }

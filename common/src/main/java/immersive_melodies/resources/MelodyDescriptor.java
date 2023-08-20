@@ -1,6 +1,6 @@
 package immersive_melodies.resources;
 
-import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
 
 public class MelodyDescriptor {
     private final String name;
@@ -15,9 +15,9 @@ public class MelodyDescriptor {
         this.bpm = bpm;
     }
 
-    public MelodyDescriptor(NbtCompound compound) {
-        this.name = compound.getString("name");
-        this.bpm = compound.getInt("bpm");
+    public MelodyDescriptor(PacketByteBuf b) {
+        this.name = b.readString();
+        this.bpm = b.readInt();
     }
 
     public String getName() {
@@ -28,10 +28,8 @@ public class MelodyDescriptor {
         return bpm;
     }
 
-    public NbtCompound toLiteNbt() {
-        NbtCompound nbt = new NbtCompound();
-        nbt.putString("name", name);
-        nbt.putInt("bpm", bpm);
-        return nbt;
+    public void encodeLite(PacketByteBuf b) {
+        b.writeString(name);
+        b.writeInt(bpm);
     }
 }

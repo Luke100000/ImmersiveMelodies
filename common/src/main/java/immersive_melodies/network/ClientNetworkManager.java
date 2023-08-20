@@ -19,8 +19,6 @@ public class ClientNetworkManager implements NetworkManager {
         ClientMelodyManager.getMelodiesList().clear();
         ClientMelodyManager.getMelodiesList().putAll(response.getMelodies());
 
-        ClientMelodyManager.cleanupMelodies();
-
         if (MinecraftClient.getInstance().currentScreen instanceof ImmersiveMelodiesScreen screen) {
             screen.refreshPage();
         }

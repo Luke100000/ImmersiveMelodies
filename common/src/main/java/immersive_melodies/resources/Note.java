@@ -1,7 +1,6 @@
 package immersive_melodies.resources;
 
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
+import net.minecraft.network.PacketByteBuf;
 
 public class Note {
     private final int note;
@@ -18,12 +17,12 @@ public class Note {
         this.sustain = sustain;
     }
 
-    public Note(NbtCompound nbt) {
-        this.note = nbt.getInt("note");
-        this.velocity = nbt.getInt("velocity");
-        this.time = nbt.getInt("time");
-        this.length = nbt.getInt("length");
-        this.sustain = nbt.getInt("sustain");
+    public Note(PacketByteBuf b) {
+        this.note = b.readByte() & 0xFF;
+        this.velocity = b.readByte() & 0xFF;
+        this.time = b.readInt();
+        this.length = b.readInt();
+        this.sustain = b.readInt();
     }
 
     public int getNote() {
@@ -46,14 +45,12 @@ public class Note {
         return sustain;
     }
 
-    public NbtElement toNbt() {
-        NbtCompound nbt = new NbtCompound();
-        nbt.putInt("note", note);
-        nbt.putInt("velocity", velocity);
-        nbt.putInt("time", time);
-        nbt.putInt("length", length);
-        nbt.putInt("sustain", sustain);
-        return nbt;
+    public void encode(PacketByteBuf b) {
+        b.writeByte(note);
+        b.writeByte(velocity);
+        b.writeInt(time);
+        b.writeInt(length);
+        b.writeInt(sustain);
     }
 
     public static class Builder {

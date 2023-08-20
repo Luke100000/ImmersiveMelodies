@@ -18,13 +18,13 @@ public class MelodyResponse extends Message {
 
     public MelodyResponse(PacketByteBuf b) {
         this.identifier = b.readIdentifier();
-        this.melody = new Melody(b.readNbt());
+        this.melody = new Melody(b);
     }
 
     @Override
     public void encode(PacketByteBuf b) {
         b.writeIdentifier(identifier);
-        b.writeNbt(melody.toNbt());
+        melody.encode(b);
     }
 
     @Override

@@ -3,6 +3,7 @@ package immersive_melodies.network.c2s;
 import immersive_melodies.cobalt.network.Message;
 import immersive_melodies.cobalt.network.NetworkHandler;
 import immersive_melodies.network.s2c.MelodyListMessage;
+import immersive_melodies.network.s2c.MelodyResponse;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.ServerMelodyManager;
 import immersive_melodies.util.Utils;
@@ -22,13 +23,13 @@ public class UploadMelodyRequest extends Message {
 
     public UploadMelodyRequest(PacketByteBuf b) {
         this.name = b.readString();
-        this.melody = new Melody(b.readNbt());
+        this.melody = new Melody(b);
     }
 
     @Override
     public void encode(PacketByteBuf b) {
         b.writeString(name);
-        b.writeNbt(melody.toNbt());
+        melody.encode(b);
     }
 
     @Override
@@ -42,5 +43,9 @@ public class UploadMelodyRequest extends Message {
         );
 
         NetworkHandler.sendToPlayer(new MelodyListMessage(e), (ServerPlayerEntity) e);
+
+        e.getWorld().getPlayers().forEach(player -> {
+            NetworkHandler.sendToPlayer(new MelodyResponse(identifier, melody), (ServerPlayerEntity) player);
+        });
     }
 }
