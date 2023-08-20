@@ -2,8 +2,8 @@ package immersive_melodies.client;
 
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,12 +21,12 @@ public class CustomInventoryModels {
     }
 
     public static ModelIdentifier computeHandIdentifier(Item item) {
-        Identifier id = Registries.ITEM.getId(item);
+        Identifier id = Registry.ITEM.getId(item);
         return computeHandIdentifier(id);
     }
 
     public static ModelIdentifier computeIdentifier(Item item) {
-        Identifier id = Registries.ITEM.getId(item);
+        Identifier id = Registry.ITEM.getId(item);
         return computeIdentifier(id);
     }
 

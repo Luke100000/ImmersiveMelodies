@@ -5,6 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.widget.AlwaysSelectedEntryListWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 
 import java.util.Collection;
@@ -14,7 +15,7 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
     private final ImmersiveMelodiesScreen currentScreen;
 
     public MelodyListWidget(MinecraftClient client, ImmersiveMelodiesScreen currentScreen) {
-        super(client, currentScreen.width, currentScreen.height, (currentScreen.height - 230) / 2 + 22, (currentScreen.height - 230) / 2 + 184, 10);
+        super(client, currentScreen.width, currentScreen.height, (currentScreen.height - 230) / 2 + 32, (currentScreen.height - 230) / 2 + 174, 10);
 
         this.currentScreen = currentScreen;
 
@@ -47,18 +48,6 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
         return mouseX >= currentScreen.width / 2.0 - 120 && mouseX <= currentScreen.width / 2.0 + 120 && mouseY >= this.top && mouseY <= this.bottom;
     }
 
-    @Override
-    protected void enableScissor() {
-        enableScissor(currentScreen.width / 2 - 100, this.top, currentScreen.width / 2 + 70, this.bottom);
-    }
-
-    @Override
-    protected void drawSelectionHighlight(MatrixStack matrices, int y, int entryWidth, int entryHeight, int borderColor, int fillColor) {
-        int x0 = currentScreen.width / 2 - 75;
-        int x1 = currentScreen.width / 2 + 80;
-        fill(matrices, x0 - 1, y - 1, x1, y + entryHeight + 3, 0x40000000);
-    }
-
     public class MelodyEntry extends AlwaysSelectedEntryListWidget.Entry<MelodyEntry> {
         final Identifier identifier;
         final Text name;
@@ -86,7 +75,7 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
 
         @Override
         public Text getNarration() {
-            return Text.translatable("narrator.select", name);
+            return new TranslatableText("narrator.select", name);
         }
 
         @Override

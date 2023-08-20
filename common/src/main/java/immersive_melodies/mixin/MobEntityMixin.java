@@ -7,7 +7,6 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -19,9 +18,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(MobEntity.class)
 public abstract class MobEntityMixin extends LivingEntity {
     @Shadow
-    protected abstract Vec3i getItemPickUpRangeExpander();
-
-    @Shadow
     protected abstract void loot(ItemEntity item);
 
     protected MobEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
@@ -31,8 +27,7 @@ public abstract class MobEntityMixin extends LivingEntity {
     @Inject(method = "tickMovement()V", at = @At("TAIL"))
     private void immersiveMelodies$injectTickMovement(CallbackInfo ci) {
         if (Config.getInstance().forceMobsToPickUp && !this.getWorld().isClient && this.isAlive() && !this.dead) {
-            Vec3i vec3i = this.getItemPickUpRangeExpander();
-            for (ItemEntity itementity : this.getWorld().getNonSpectatingEntities(ItemEntity.class, this.getBoundingBox().expand(vec3i.getX(), vec3i.getY(), vec3i.getZ()))) {
+            for (ItemEntity itementity : this.getWorld().getNonSpectatingEntities(ItemEntity.class, this.getBoundingBox().expand(1.0, 0.0, 1.0))) {
                 if (!itementity.isRemoved() && !itementity.getStack().isEmpty() && itementity.getStack().getItem() instanceof InstrumentItem) {
                     this.loot(itementity);
                 }

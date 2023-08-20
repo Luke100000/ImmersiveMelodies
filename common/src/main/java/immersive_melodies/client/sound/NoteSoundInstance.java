@@ -12,7 +12,7 @@ public class NoteSoundInstance extends EntityTrackingSoundInstance {
     long fallOff;
 
     public NoteSoundInstance(SoundEvent sound, SoundCategory category, float volume, float pitch, long length, long sustain, Entity entity) {
-        super(sound, category, volume, pitch, entity, 1);
+        super(sound, category, volume, pitch, entity);
 
         // The minimum time one need to e.g., repress a key
         long minSustain = 50;

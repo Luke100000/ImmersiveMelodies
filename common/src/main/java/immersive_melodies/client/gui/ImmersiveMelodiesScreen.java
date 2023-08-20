@@ -17,9 +17,12 @@ import immersive_melodies.util.Utils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
@@ -47,7 +50,7 @@ public class ImmersiveMelodiesScreen extends Screen {
     private Identifier selected = null;
 
     public ImmersiveMelodiesScreen() {
-        super(Text.translatable("itemGroup.immersive_melodies.immersive_melodies_tab"));
+        super(new TranslatableText("itemGroup.immersive_melodies.immersive_melodies_tab"));
     }
 
     @Override
@@ -57,7 +60,7 @@ public class ImmersiveMelodiesScreen extends Screen {
 
     @Override
     protected void init() {
-        this.search = new TextFieldWidget(this.textRenderer, this.width / 2 - 70, this.height / 2 - 103, 140, 20, Text.translatable("immersive_melodies.search"));
+        this.search = new TextFieldWidget(this.textRenderer, this.width / 2 - 70, this.height / 2 - 103, 140, 20, new TranslatableText("immersive_melodies.search"));
         this.search.setMaxLength(128);
         this.search.setChangedListener(a -> {
             this.refreshPage();
@@ -168,11 +171,11 @@ public class ImmersiveMelodiesScreen extends Screen {
             String path = entry.getKey().getNamespace() + "/" + dir;
 
             if (!path.equals(lastPath)) {
-                list.addEntry(new Identifier(path), Text.literal(dir).formatted(Formatting.ITALIC).formatted(Formatting.GRAY), null);
+                list.addEntry(new Identifier(path), new LiteralText(dir).formatted(Formatting.ITALIC).formatted(Formatting.GRAY), null);
                 lastPath = path;
             }
 
-            list.addEntry(entry.getKey(), Text.literal(entry.getValue().getName()), () -> {
+            list.addEntry(entry.getKey(), new LiteralText(entry.getValue().getName()), () -> {
                 NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.PLAY, entry.getKey()));
                 selected = entry.getKey();
                 refreshPage();
@@ -184,30 +187,30 @@ public class ImmersiveMelodiesScreen extends Screen {
         // Close
         addDrawableChild(new TexturedButtonWidget(width / 2 - 75, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 0, 256, 256, Text.of(null), button -> {
             close();
-        }, () -> List.of(Text.translatable("immersive_melodies.close").asOrderedText())));
+        }, (ButtonWidget b, MatrixStack matrixStack, int mx, int my) -> renderTooltip(matrixStack, new TranslatableText("immersive_melodies.close"), mx, my)));
 
         // Delete
         if (selected != null && (Utils.canDelete(selected, MinecraftClient.getInstance().player))) {
             addDrawableChild(new TexturedButtonWidget(width / 2 + 30, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 16, 256, 256, Text.of(null), button -> {
                 NetworkHandler.sendToServer(new MelodyDeleteRequest(selected));
                 selected = null;
-            }, () -> List.of(Text.translatable("immersive_melodies.delete").asOrderedText())));
+            }, (ButtonWidget b, MatrixStack matrixStack, int mx, int my) -> renderTooltip(matrixStack, new TranslatableText("immersive_melodies.delete"), mx, my)));
         }
 
         // Pause
         addDrawableChild(new TexturedButtonWidget(width / 2 - 10 - 8, y, 16, 16, BACKGROUND_TEXTURE, 256 - 32, 32, 256, 256, Text.of(null), button -> {
             NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.PAUSE));
-        }, () -> List.of(Text.translatable("immersive_melodies.pause").asOrderedText())));
+        }, (ButtonWidget b, MatrixStack matrixStack, int mx, int my) -> renderTooltip(matrixStack, new TranslatableText("immersive_melodies.pause"), mx, my)));
 
         // Play
         addDrawableChild(new TexturedButtonWidget(width / 2, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 32, 256, 256, Text.of(null), button -> {
             NetworkHandler.sendToServer(new ItemActionMessage(ItemActionMessage.State.CONTINUE));
-        }, () -> List.of(Text.translatable("immersive_melodies.play").asOrderedText())));
+        }, (ButtonWidget b, MatrixStack matrixStack, int mx, int my) -> renderTooltip(matrixStack, new TranslatableText("immersive_melodies.play"), mx, my)));
 
         // Help
         addDrawableChild(new TexturedButtonWidget(width / 2 + 50, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 32, 256, 256, Text.of(null), button -> {
             openHelp();
-        }, () -> List.of(Text.translatable("immersive_melodies.help").asOrderedText())));
+        }, (ButtonWidget b, MatrixStack matrixStack, int mx, int my) -> renderTooltip(matrixStack, new TranslatableText("immersive_melodies.help"), mx, my)));
     }
 
     public TextRenderer getTextRenderer() {

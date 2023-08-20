@@ -13,14 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Entity.class)
 public abstract class EntityMixin {
     @Shadow
-    public abstract Iterable<ItemStack> getHandItems();
-
-    @Shadow
     public abstract World getWorld();
+
+    @Shadow public abstract Iterable<ItemStack> getItemsHand();
 
     @Inject(method = "tick()V", at = @At("HEAD"))
     public void immersiveMelodies$injectTick(CallbackInfo ci) {
-        this.getHandItems().forEach(itemStack -> {
+        this.getItemsHand().forEach(itemStack -> {
             if (itemStack.getItem() instanceof InstrumentItem item) {
                 item.inventoryTick(itemStack, getWorld(), (Entity) (Object) this, 0, true);
             }

@@ -9,11 +9,11 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
+import net.minecraft.util.registry.Registry;
 
 public class BipedEntityModelAnimator {
     public static <T extends LivingEntity> Item getInstrument(T entity) {
-        for (ItemStack handItem : entity.getHandItems()) {
+        for (ItemStack handItem : entity.getItemsHand()) {
             if (handItem.getItem() instanceof InstrumentItem) {
                 return handItem.getItem();
             }
@@ -40,7 +40,7 @@ public class BipedEntityModelAnimator {
             MelodyProgress progress = MelodyProgressManager.INSTANCE.getProgress(entity);
             progress.visualTick(time);
 
-            ItemAnimators.get(Registries.ITEM.getId(item)).setAngles(left, right, model, entity, progress, time);
+            ItemAnimators.get(Registry.ITEM.getId(item)).setAngles(left, right, model, entity, progress, time);
         }
     }
 }

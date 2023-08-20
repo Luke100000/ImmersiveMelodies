@@ -20,6 +20,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -59,7 +60,7 @@ public class InstrumentItem extends Item {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         // State
         if (isPlaying(stack)) {
-            tooltip.add(Text.translatable("immersive_melodies.playing").formatted(Formatting.GREEN));
+            tooltip.add(new TranslatableText("immersive_melodies.playing").formatted(Formatting.GREEN));
         }
 
         super.appendTooltip(stack, world, tooltip, context);
@@ -81,7 +82,7 @@ public class InstrumentItem extends Item {
 
         // check if the item is in the hand, and is the primary instrument as you cant play two at once
         boolean isPrimary = false;
-        for (ItemStack handItem : entity.getHandItems()) {
+        for (ItemStack handItem : entity.getItemsHand()) {
             if (handItem == stack) {
                 isPrimary = true;
                 break;

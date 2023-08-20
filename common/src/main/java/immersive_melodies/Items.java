@@ -4,8 +4,8 @@ import immersive_melodies.cobalt.registration.Registration;
 import immersive_melodies.item.InstrumentItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -27,7 +27,7 @@ public interface Items {
 
     static Supplier<Item> register(String name, Supplier<Item> item) {
         Identifier identifier = Common.locate(name);
-        Supplier<Item> register = Registration.register(Registries.ITEM, identifier, item);
+        Supplier<Item> register = Registration.register(Registry.ITEM, identifier, item);
         items.add(register);
         customInventoryModels.add(identifier);
         return register;
@@ -38,7 +38,7 @@ public interface Items {
     }
 
     static Item.Settings baseProps() {
-        return new Item.Settings().maxCount(1);
+        return new Item.Settings().maxCount(1).group(ItemGroups.GROUP);
     }
 
     static Collection<ItemStack> getSortedItems() {

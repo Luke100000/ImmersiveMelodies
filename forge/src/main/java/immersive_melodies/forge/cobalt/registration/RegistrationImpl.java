@@ -1,8 +1,8 @@
 package immersive_melodies.forge.cobalt.registration;
 
 import immersive_melodies.cobalt.registration.Registration;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistry;

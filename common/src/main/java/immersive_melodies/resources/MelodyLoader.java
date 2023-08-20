@@ -5,7 +5,6 @@ import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
 import immersive_melodies.util.MidiParser;
 import immersive_melodies.util.Utils;
-import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.SinglePreparationResourceReloader;
 import net.minecraft.util.Identifier;
@@ -14,6 +13,7 @@ import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -25,17 +25,17 @@ public class MelodyLoader extends SinglePreparationResourceReloader<Map<Identifi
     protected Map<Identifier, Melody> prepare(ResourceManager manager, Profiler profiler) {
         Map<Identifier, Melody> map = Maps.newHashMap();
 
-        Map<Identifier, Resource> resources = manager.findResources(dataType, path -> path.getPath().endsWith(".midi") || path.getPath().endsWith(".mid"));
-        for (Map.Entry<Identifier, Resource> entry : resources.entrySet()) {
+        Collection<Identifier> resources = manager.findResources(dataType, path -> path.endsWith(".midi") || path.endsWith(".mid"));
+        for (Identifier entry : resources) {
             try {
-                InputStream inputStream = entry.getValue().getInputStream();
-                List<Melody> melodies = MidiParser.parseMidi(inputStream, Utils.toTitle(Utils.removeLastPart(Utils.getLastPart(entry.getKey().getPath(), "/"), ".")), true);
+                InputStream inputStream = manager.getResource(entry).getInputStream();
+                List<Melody> melodies = MidiParser.parseMidi(inputStream, Utils.toTitle(Utils.removeLastPart(Utils.getLastPart(entry.getPath(), "/"), ".")), true);
                 int i = 0;
                 for (Melody melody : melodies) {
-                    map.put(new Identifier(entry.getKey().getNamespace(), entry.getKey().getPath() + "_" + (i++)), melody);
+                    map.put(new Identifier(entry.getNamespace(), entry.getPath() + "_" + (i++)), melody);
                 }
             } catch (IllegalArgumentException | IOException | JsonParseException exception) {
-                LOGGER.error("Couldn't load melody {} ({})", entry.getKey(), exception);
+                LOGGER.error("Couldn't load melody {} ({})", entry, exception);
             }
         }
 
