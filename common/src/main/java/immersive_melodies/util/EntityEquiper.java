@@ -6,12 +6,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.Registry;
 
 public class EntityEquiper {
     public static void equip(Entity entity, Random random) {
-        String id = Registries.ENTITY_TYPE.getId(entity.getType()).toString();
+        String id = Registry.ENTITY_TYPE.getId(entity.getType()).toString();
         if (Config.getInstance().mobInstrumentFactors.containsKey(id) && random.nextFloat() < Config.getInstance().mobInstrumentFactors.get(id)) {
             Item item = Items.items.get(random.nextInt(Items.items.size())).get();
             entity.equipStack(EquipmentSlot.MAINHAND, new ItemStack(item));

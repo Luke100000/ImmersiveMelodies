@@ -3,8 +3,8 @@ package immersive_melodies.forge;
 import immersive_melodies.*;
 import immersive_melodies.forge.cobalt.network.NetworkHandlerImpl;
 import immersive_melodies.forge.cobalt.registration.RegistrationImpl;
-import net.minecraftforge.event.CreativeModeTabEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
@@ -15,17 +15,15 @@ public final class CommonForge {
         RegistrationImpl.bootstrap();
         new NetworkHandlerImpl();
 
+        ItemGroups.GROUP = new ItemGroup(ItemGroup.getGroupCountSafe(), ItemGroups.getIdentifier().toString().replace(":", ".")) {
+            @Override
+            public ItemStack createIcon() {
+                return ItemGroups.getIcon();
+            }
+        };
+
         Items.bootstrap();
         Messages.bootstrap();
         Sounds.bootstrap();
-    }
-
-    @SubscribeEvent
-    public static void register(CreativeModeTabEvent.Register event) {
-        event.registerCreativeModeTab(ItemGroups.getIdentifier(), builder -> builder
-                .displayName(ItemGroups.getDisplayName())
-                .icon(ItemGroups::getIcon)
-                .entries((featureFlags, output) -> output.addAll(Items.items.stream().map(i -> i.get().getDefaultStack()).toList()))
-        );
     }
 }

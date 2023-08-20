@@ -17,13 +17,13 @@ logoFile = "logoFile.png"
 [[dependencies.immersive_melodies]]
 modId = "forge"
 mandatory = true
-versionRange = "[45,)"
+versionRange = "[43,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.immersive_melodies]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.4]"
+versionRange = "[1.19.2]"
 ordering = "NONE"
 side = "BOTH"

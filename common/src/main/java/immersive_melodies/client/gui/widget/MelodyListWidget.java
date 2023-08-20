@@ -14,7 +14,7 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
     private final ImmersiveMelodiesScreen currentScreen;
 
     public MelodyListWidget(MinecraftClient client, ImmersiveMelodiesScreen currentScreen) {
-        super(client, currentScreen.width, currentScreen.height, (currentScreen.height - 230) / 2 + 22, (currentScreen.height - 230) / 2 + 184, 10);
+        super(client, currentScreen.width, currentScreen.height, (currentScreen.height - 230) / 2 + 32, (currentScreen.height - 230) / 2 + 174, 10);
 
         this.currentScreen = currentScreen;
 
@@ -45,11 +45,6 @@ public class MelodyListWidget extends AlwaysSelectedEntryListWidget<MelodyListWi
     @Override
     public boolean isMouseOver(double mouseX, double mouseY) {
         return mouseX >= currentScreen.width / 2.0 - 120 && mouseX <= currentScreen.width / 2.0 + 120 && mouseY >= this.top && mouseY <= this.bottom;
-    }
-
-    @Override
-    protected void enableScissor() {
-        enableScissor(currentScreen.width / 2 - 100, this.top, currentScreen.width / 2 + 70, this.bottom);
     }
 
     @Override

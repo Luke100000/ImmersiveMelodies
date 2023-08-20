@@ -1,7 +1,7 @@
 package immersive_melodies.cobalt.registration;
 
-import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.function.Supplier;
 

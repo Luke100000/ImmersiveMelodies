@@ -9,8 +9,8 @@ import immersive_melodies.fabric.cobalt.registration.RegistrationImpl;
 import immersive_melodies.fabric.resources.FabricMelody;
 import immersive_melodies.resources.ServerMelodyManager;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.resource.ResourceType;
 
@@ -20,6 +20,8 @@ public final class CommonFabric implements ModInitializer {
         new RegistrationImpl();
         new NetworkHandlerImpl();
 
+        ItemGroups.GROUP = FabricItemGroupBuilder.create(ItemGroups.getIdentifier()).icon(ItemGroups::getIcon).build();
+
         Items.bootstrap();
         Messages.bootstrap();
         Sounds.bootstrap();
@@ -27,12 +29,6 @@ public final class CommonFabric implements ModInitializer {
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new FabricMelody());
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> ServerMelodyManager.server = server);
-
-        FabricItemGroup.builder(ItemGroups.getIdentifier())
-                .displayName(ItemGroups.getDisplayName())
-                .icon(ItemGroups::getIcon)
-                .entries((enabledFeatures, entries) -> entries.addAll(Items.items.stream().map(i -> i.get().getDefaultStack()).toList()))
-                .build();
     }
 }
 

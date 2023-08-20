@@ -1,9 +1,9 @@
 package immersive_melodies;
 
 import immersive_melodies.cobalt.registration.Registration;
-import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class Sounds {
 
     static Supplier<SoundEvent> register(String path) {
         Identifier id = Common.locate(path);
-        return Registration.register(Registries.SOUND_EVENT, id, () -> SoundEvent.of(id));
+        return Registration.register(Registry.SOUND_EVENT, id, () -> new SoundEvent(id));
     }
 
     public static void bootstrap() {
