@@ -19,6 +19,9 @@ public class FluteAnimator implements Animator {
         model.head.pitch = getVerticalOffset(time);
         model.head.yaw = 0.0f;
 
+        model.hat.yaw = model.head.yaw;
+        model.hat.pitch = model.head.pitch;
+
         float horizontalOffset = getHorizontalOffset(time);
 
         left.pitch = (float) (-Math.PI / 2.0f) + model.head.pitch;
