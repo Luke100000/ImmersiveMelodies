@@ -5,6 +5,7 @@ import immersive_melodies.resources.Note;
 
 import javax.sound.midi.*;
 import java.io.InputStream;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,6 +57,11 @@ public class MidiParser {
                         long tick = event.getTick();
                         int ms = (int) (tick * 60 * 1000 / sequence.getResolution() / bpm);
 
+                        // Another way to decode note offs are note ons with velocity 0
+                        if (command == ShortMessage.NOTE_ON && sm.getData2() == 0) {
+                            command = ShortMessage.NOTE_OFF;
+                        }
+
                         if (command == ShortMessage.NOTE_ON) {
                             int note = sm.getData1();
                             int velocity = sm.getData2();
@@ -83,7 +89,7 @@ public class MidiParser {
                     }
 
                     // Just to make sure
-                    notes.sort((a, b) -> (int) (a.getTime() - b.getTime()));
+                    notes.sort(Comparator.comparingInt(Note::getTime));
 
                     melodies.add(new Melody(name, bpm, notes));
                 }

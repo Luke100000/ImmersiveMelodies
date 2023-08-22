@@ -11,6 +11,9 @@ public class BagpipeAnimator implements Animator {
         model.head.yaw = 0.0f;
         model.head.pitch = 0.25f;
 
+        model.hat.yaw = model.head.yaw;
+        model.hat.pitch = model.head.pitch;
+
         left.pitch = -0.4f;
         left.yaw = -0.5f;
 
