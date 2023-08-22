@@ -10,6 +10,7 @@ import immersive_melodies.network.c2s.UploadMelodyRequest;
 import immersive_melodies.resources.ClientMelodyManager;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.MelodyDescriptor;
+import immersive_melodies.resources.Note;
 import immersive_melodies.util.MidiConverter;
 import immersive_melodies.util.MidiParser;
 import immersive_melodies.util.Utils;
@@ -122,7 +123,7 @@ public class ImmersiveMelodiesScreen extends Screen {
             }
         } else {
             // Only use the track with the most notes
-            melodies.stream().max(Comparator.comparingInt(m -> m.getNotes().size())).ifPresent(melody -> {
+            melodies.stream().max(Comparator.comparingInt(m -> (int) (m.getNotes().size() * m.getNotes().stream().mapToInt(Note::getNote).distinct().count()))).ifPresent(melody -> {
                 NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
                 search.setText(name);
             });
