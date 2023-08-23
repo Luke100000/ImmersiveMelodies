@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Immersive Melodies",
+  "item.immersive_melodies.bagpipe": "Bagpipe",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Flute",
+  "item.immersive_melodies.lute": "Lute",
+  "item.immersive_melodies.piano": "Piano",
+  "item.immersive_melodies.triangle": "Triangle",
+  "item.immersive_melodies.trumpet": "Trumpet",
+  "immersive_melodies.playing": "Playing",
+  "immersive_melodies.close": "Close",
+  "immersive_melodies.search": "Busca en",
+  "immersive_melodies.favorite": "Favorite",
+  "immersive_melodies.remove_favorite": "Remove Favorite",
+  "immersive_melodies.delete": "Borra",
+  "immersive_melodies.play": "Play",
+  "immersive_melodies.help": "Open help",
+  "immersive_melodies.pause": "Pause"
+}
