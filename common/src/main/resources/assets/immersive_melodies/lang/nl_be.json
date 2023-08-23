@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Meeslepende melodieën",
+  "item.immersive_melodies.bagpipe": "Doedelzak",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Fluit",
+  "item.immersive_melodies.lute": "Luit",
+  "item.immersive_melodies.piano": "Piano",
+  "item.immersive_melodies.triangle": "Driehoek",
+  "item.immersive_melodies.trumpet": "Trompet",
+  "immersive_melodies.playing": "Spelen",
+  "immersive_melodies.close": "Sluit",
+  "immersive_melodies.search": "Zoek",
+  "immersive_melodies.favorite": "Favoriet",
+  "immersive_melodies.remove_favorite": "Favoriet verwijderen",
+  "immersive_melodies.delete": "Verwijder",
+  "immersive_melodies.play": "Speel",
+  "immersive_melodies.help": "Hulp openen",
+  "immersive_melodies.pause": "Pauze"
+}
