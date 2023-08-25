@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "没入感のあるメロディー",
+  "item.immersive_melodies.bagpipe": "バグパイプ",
+  "item.immersive_melodies.didgeridoo": "ディジュリドゥ",
+  "item.immersive_melodies.flute": "フルート",
+  "item.immersive_melodies.lute": "リュート",
+  "item.immersive_melodies.piano": "ピアノ",
+  "item.immersive_melodies.triangle": "トライアングル",
+  "item.immersive_melodies.trumpet": "トランペット",
+  "immersive_melodies.playing": "プレー",
+  "immersive_melodies.close": "閉じる",
+  "immersive_melodies.search": "検索",
+  "immersive_melodies.favorite": "お気に入り",
+  "immersive_melodies.remove_favorite": "お気に入りを削除",
+  "immersive_melodies.delete": "削除",
+  "immersive_melodies.play": "プレー",
+  "immersive_melodies.help": "ヘルプを開く",
+  "immersive_melodies.pause": "ポーズ"
+}

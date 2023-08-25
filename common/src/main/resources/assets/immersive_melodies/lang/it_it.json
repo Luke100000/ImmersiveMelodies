@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Melodie coinvolgenti",
+  "item.immersive_melodies.bagpipe": "Zampogna",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Flauto",
+  "item.immersive_melodies.lute": "Liuto",
+  "item.immersive_melodies.piano": "Pianoforte",
+  "item.immersive_melodies.triangle": "Triangolo",
+  "item.immersive_melodies.trumpet": "Tromba",
+  "immersive_melodies.playing": "Giocare",
+  "immersive_melodies.close": "Chiudi",
+  "immersive_melodies.search": "Ricerca",
+  "immersive_melodies.favorite": "Preferiti",
+  "immersive_melodies.remove_favorite": "Rimuovi i preferiti",
+  "immersive_melodies.delete": "Elimina",
+  "immersive_melodies.play": "Gioca",
+  "immersive_melodies.help": "Apri la guida",
+  "immersive_melodies.pause": "Pausa"
+}

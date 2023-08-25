@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Melodías envolventes",
+  "item.immersive_melodies.bagpipe": "Gaita",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Flauta",
+  "item.immersive_melodies.lute": "Laúd",
+  "item.immersive_melodies.piano": "Piano",
+  "item.immersive_melodies.triangle": "Triángulo",
+  "item.immersive_melodies.trumpet": "Trompeta",
+  "immersive_melodies.playing": "Jugando a",
+  "immersive_melodies.close": "Cerrar",
+  "immersive_melodies.search": "Busca en",
+  "immersive_melodies.favorite": "Favoritos",
+  "immersive_melodies.remove_favorite": "Eliminar favorito",
+  "immersive_melodies.delete": "Borra",
+  "immersive_melodies.play": "Juega a",
+  "immersive_melodies.help": "Abrir ayuda",
+  "immersive_melodies.pause": "Pausa"
+}

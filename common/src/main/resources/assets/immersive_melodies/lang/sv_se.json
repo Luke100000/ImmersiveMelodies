@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Uppslukande melodier",
+  "item.immersive_melodies.bagpipe": "Säckpipa",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Flöjt",
+  "item.immersive_melodies.lute": "Luta",
+  "item.immersive_melodies.piano": "Piano",
+  "item.immersive_melodies.triangle": "Triangel",
+  "item.immersive_melodies.trumpet": "Trumpet",
+  "immersive_melodies.playing": "Spelande",
+  "immersive_melodies.close": "Nära",
+  "immersive_melodies.search": "Sök på",
+  "immersive_melodies.favorite": "Favorit",
+  "immersive_melodies.remove_favorite": "Ta bort favorit",
+  "immersive_melodies.delete": "Ta bort",
+  "immersive_melodies.play": "Spela",
+  "immersive_melodies.help": "Öppna hjälp",
+  "immersive_melodies.pause": "Paus"
+}

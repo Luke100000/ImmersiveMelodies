@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Immersiiviset melodiat",
+  "item.immersive_melodies.bagpipe": "Säkkipilli",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Huilu",
+  "item.immersive_melodies.lute": "Lute",
+  "item.immersive_melodies.piano": "Piano",
+  "item.immersive_melodies.triangle": "Kolmio",
+  "item.immersive_melodies.trumpet": "Trumpetti",
+  "immersive_melodies.playing": "Pelaaminen",
+  "immersive_melodies.close": "Sulje",
+  "immersive_melodies.search": "Etsi",
+  "immersive_melodies.favorite": "Suosikki",
+  "immersive_melodies.remove_favorite": "Poista suosikki",
+  "immersive_melodies.delete": "Poista",
+  "immersive_melodies.play": "Pelaa",
+  "immersive_melodies.help": "Avaa ohje",
+  "immersive_melodies.pause": "Tauko"
+}

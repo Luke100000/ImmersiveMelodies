@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Потапящи мелодии",
+  "item.immersive_melodies.bagpipe": "Гайда",
+  "item.immersive_melodies.didgeridoo": "Диджериду",
+  "item.immersive_melodies.flute": "Флейта",
+  "item.immersive_melodies.lute": "Лютеница",
+  "item.immersive_melodies.piano": "Пиано",
+  "item.immersive_melodies.triangle": "Триъгълник",
+  "item.immersive_melodies.trumpet": "Тромпет",
+  "immersive_melodies.playing": "Играе",
+  "immersive_melodies.close": "Затвори",
+  "immersive_melodies.search": "Търсене",
+  "immersive_melodies.favorite": "Любими",
+  "immersive_melodies.remove_favorite": "Премахване на любими",
+  "immersive_melodies.delete": "Изтриване на",
+  "immersive_melodies.play": "Играйте",
+  "immersive_melodies.help": "Отворена помощ",
+  "immersive_melodies.pause": "Пауза"
+}
