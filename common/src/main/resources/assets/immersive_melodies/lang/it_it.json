@@ -7,13 +7,13 @@
   "item.immersive_melodies.piano": "Pianoforte",
   "item.immersive_melodies.triangle": "Triangolo",
   "item.immersive_melodies.trumpet": "Tromba",
-  "immersive_melodies.playing": "Giocare",
+  "immersive_melodies.playing": "Suonando",
   "immersive_melodies.close": "Chiudi",
   "immersive_melodies.search": "Ricerca",
-  "immersive_melodies.favorite": "Preferiti",
-  "immersive_melodies.remove_favorite": "Rimuovi i preferiti",
+  "immersive_melodies.favorite": "Preferito",
+  "immersive_melodies.remove_favorite": "Remove Preferito",
   "immersive_melodies.delete": "Elimina",
-  "immersive_melodies.play": "Gioca",
-  "immersive_melodies.help": "Apri la guida",
+  "immersive_melodies.play": "Suona",
+  "immersive_melodies.help": "Apri help",
   "immersive_melodies.pause": "Pausa"
 }
