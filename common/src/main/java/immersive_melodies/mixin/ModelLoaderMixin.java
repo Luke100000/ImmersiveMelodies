@@ -36,7 +36,9 @@ public abstract class ModelLoaderMixin {
         for (Identifier identifier : Items.customInventoryModels) {
             ModelIdentifier modelIdentifier = CustomInventoryModels.computeHandIdentifier(identifier);
             addModel(modelIdentifier);
-            modelsToBake.get(modelIdentifier).setParents(this::getOrLoadModel);
+            if (modelsToBake.containsKey(modelIdentifier)) {
+                modelsToBake.get(modelIdentifier).setParents(this::getOrLoadModel);
+            }
         }
     }
 }
