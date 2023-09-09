@@ -34,7 +34,7 @@ public class TexturedButtonWidget extends DefaultButtonWidget {
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, this.alpha);
         }
 
-        context.drawTexture( texture, getX(), getY(), this.u, this.v + (active ? 0 : 16), this.w, this.h, this.tw, this.th);
+        context.drawTexture(texture, getX(), getY(), this.u, this.v + (active ? 0 : 16), this.w, this.h, this.tw, this.th);
 
         int j = this.active ? 0xFFFFFF : 0xA0A0A0;
         context.drawCenteredTextWithShadow(MinecraftClient.getInstance().textRenderer, this.getMessage(), this.getX() + this.width / 2, this.getY() + (this.height - 8) / 2, j | MathHelper.ceil(this.alpha * 255.0f) << 24);

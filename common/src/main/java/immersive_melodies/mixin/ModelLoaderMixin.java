@@ -24,9 +24,12 @@ public abstract class ModelLoaderMixin {
     @Shadow
     protected abstract void addModel(ModelIdentifier modelId);
 
-    @Shadow @Final private Map<Identifier, UnbakedModel> modelsToBake;
+    @Shadow
+    @Final
+    private Map<Identifier, UnbakedModel> modelsToBake;
 
-    @Shadow public abstract UnbakedModel getOrLoadModel(Identifier id);
+    @Shadow
+    public abstract UnbakedModel getOrLoadModel(Identifier id);
 
     @Inject(method = "<init>(Lnet/minecraft/client/color/block/BlockColors;Lnet/minecraft/util/profiler/Profiler;Ljava/util/Map;Ljava/util/Map;)V", at = @At("TAIL"))
     void immersiveMelodies$injectModelLoaderInit(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<ModelLoader.SourceTrackedData>> blockStates, CallbackInfo ci) {

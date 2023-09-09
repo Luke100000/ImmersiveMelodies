@@ -1,7 +1,6 @@
 package immersive_melodies.mixin;
 
 import immersive_melodies.client.CustomInventoryModels;
-import immersive_melodies.client.MelodyProgressManager;
 import immersive_melodies.item.InstrumentItem;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemModels;
