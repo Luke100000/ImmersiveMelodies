@@ -14,6 +14,6 @@ public class ServerWorldMixin {
             at = @At("HEAD")
     )
     private void onAddEntity(Entity entity, CallbackInfoReturnable<Boolean> info) {
-        EntityEquiper.equip(entity, entity.getWorld().getRandom());
+        EntityEquiper.equip(entity);
     }
 }

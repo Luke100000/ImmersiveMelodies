@@ -2,6 +2,7 @@ package immersive_melodies.mixin;
 
 import immersive_melodies.Config;
 import immersive_melodies.item.InstrumentItem;
+import immersive_melodies.util.EntityEquiper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -30,7 +31,7 @@ public abstract class MobEntityMixin extends LivingEntity {
 
     @Inject(method = "tickMovement()V", at = @At("TAIL"))
     private void immersiveMelodies$injectTickMovement(CallbackInfo ci) {
-        if (Config.getInstance().forceMobsToPickUp && !this.getWorld().isClient && this.isAlive() && !this.dead) {
+        if (Config.getInstance().forceMobsToPickUp && EntityEquiper.canPickUp(this) && !this.getWorld().isClient && this.isAlive() && !this.dead) {
             Vec3i vec3i = this.getItemPickUpRangeExpander();
             for (ItemEntity itementity : this.getWorld().getNonSpectatingEntities(ItemEntity.class, this.getBoundingBox().expand(vec3i.getX(), vec3i.getY(), vec3i.getZ()))) {
                 if (!itementity.isRemoved() && !itementity.getStack().isEmpty() && itementity.getStack().getItem() instanceof InstrumentItem) {

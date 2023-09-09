@@ -1,3 +1,7 @@
+# 0.0.3
+
+* Only relevant entities pick up instruments
+
 # 0.0.2
 
 * Slightly enhanced, which track is used until a proper selection is added
