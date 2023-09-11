@@ -17,18 +17,31 @@ public class MidiParser {
             Sequence sequence = MidiSystem.getSequence(inputStream);
 
             String name = baseName;
-            int bpm = 120;
+
+            // Fetch shared events
+            List<MidiEvent> sharedEvents = new LinkedList<>();
+            for (Track track : sequence.getTracks()) {
+                getEvents(track).stream()
+                        .filter(event -> event.getMessage() instanceof MetaMessage m && m.getType() == 0x51)
+                        .forEach(sharedEvents::add);
+            }
 
             // Iterate through tracks and MIDI events
             int trackNr = 0;
             for (Track track : sequence.getTracks()) {
+                // Merge with shared events and sort
+                List<MidiEvent> events = getEvents(track);
+                events.addAll(0, sharedEvents);
+                events.sort((a, b) -> (int) (a.getTick() - b.getTick()));
+
+                int bpm = 120;
+                long lastTick = 0;
+                double lastMs = 0;
                 boolean customName = false;
                 List<Note> notes = new LinkedList<>();
-
                 HashMap<Integer, Note.Builder> currentNotes = new HashMap<>();
 
-                for (int i = 0; i < track.size(); i++) {
-                    MidiEvent event = track.get(i);
+                for (MidiEvent event : events) {
                     MidiMessage message = event.getMessage();
 
                     // Parse meta events
@@ -55,7 +68,9 @@ public class MidiParser {
 
                         // Convert notes into ms
                         long tick = event.getTick();
-                        int ms = (int) (tick * 60 * 1000 / sequence.getResolution() / bpm);
+                        int ms = (int) ((tick - lastTick) * 60 * 1000 / sequence.getResolution() / bpm + lastMs);
+                        lastTick = tick;
+                        lastMs = ms;
 
                         // Another way to decode note offs are note ons with velocity 0
                         if (command == ShortMessage.NOTE_ON && sm.getData2() == 0) {
@@ -76,6 +91,7 @@ public class MidiParser {
                         } else if (command == ShortMessage.NOTE_OFF) {
                             int note = sm.getData1();
                             Note.Builder noteBuilder = currentNotes.get(note);
+                            currentNotes.remove(note);
                             if (noteBuilder != null) {
                                 noteBuilder.length = ms - noteBuilder.time;
                                 notes.add(noteBuilder.build());
@@ -90,10 +106,10 @@ public class MidiParser {
                         name += " Track " + trackNr;
                     }
 
-                    // Just to make sure
+                    // Sort
                     notes.sort(Comparator.comparingInt(Note::getTime));
 
-                    melodies.add(new Melody(name, bpm, notes));
+                    melodies.add(new Melody(name, notes));
                 }
             }
         } catch (Exception e) {
@@ -101,5 +117,13 @@ public class MidiParser {
         }
 
         return melodies;
+    }
+
+    private static List<MidiEvent> getEvents(Track track) {
+        List<MidiEvent> events = new LinkedList<>();
+        for (int i = 0; i < track.size(); i++) {
+            events.add(track.get(i));
+        }
+        return events;
     }
 }

@@ -11,11 +11,11 @@ public class Melody extends MelodyDescriptor {
     private final List<Note> notes;
 
     public Melody() {
-        this("unknown", 120, new LinkedList<>());
+        this("unknown", new LinkedList<>());
     }
 
-    public Melody(String name, int bpm, List<Note> notes) {
-        super(name, bpm);
+    public Melody(String name, List<Note> notes) {
+        super(name);
         this.notes = notes;
     }
 
