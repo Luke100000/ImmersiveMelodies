@@ -76,8 +76,10 @@ public class MidiParser {
                         } else if (command == ShortMessage.NOTE_OFF) {
                             int note = sm.getData1();
                             Note.Builder noteBuilder = currentNotes.get(note);
-                            noteBuilder.length = ms - noteBuilder.time;
-                            notes.add(noteBuilder.build());
+                            if (noteBuilder != null) {
+                                noteBuilder.length = ms - noteBuilder.time;
+                                notes.add(noteBuilder.build());
+                            }
                         }
                     }
                 }

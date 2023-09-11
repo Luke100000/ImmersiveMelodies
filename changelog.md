@@ -2,6 +2,7 @@
 
 * Only relevant entities pick up instruments
 * Right-click on an entity will cause them to drop their instrument
+* Fixed some midis
 
 # 0.0.2
 
