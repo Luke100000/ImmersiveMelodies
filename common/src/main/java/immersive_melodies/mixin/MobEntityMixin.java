@@ -53,8 +53,7 @@ public abstract class MobEntityMixin extends LivingEntity {
     private void immersiveMelodies$injectTickMovement(CallbackInfo ci) {
         if (Config.getInstance().forceMobsToPickUp && EntityEquiper.canPickUp(this) && !this.getWorld().isClient && this.isAlive() && !this.dead) {
             for (ItemEntity itementity : this.getWorld().getNonSpectatingEntities(ItemEntity.class, this.getBoundingBox().expand(1.0, 0.0, 1.0))) {
-                if ((itementity.getOwner() == null || !itementity.getOwner().equals(getUuid())) && !itementity.isRemoved() && !itementity.getStack().isEmpty() && itementity.getStack().getItem() instanceof InstrumentItem) {
-                    System.out.println(itementity.getOwner());
+                if ((itementity.getThrower() == null || !itementity.getThrower().equals(getUuid())) && !itementity.isRemoved() && !itementity.getStack().isEmpty() && itementity.getStack().getItem() instanceof InstrumentItem) {
                     this.loot(itementity);
                 }
             }

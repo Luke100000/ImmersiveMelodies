@@ -132,7 +132,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         drawTexture(matrices, x, y, 0, 0, 192, 215);
 
         if (!Config.getInstance().clickedHelp) {
-            renderTooltip(matrices, Text.translatable("immersive_melodies.read"), width / 2 + 55, height / 2 + 69 + 17);
+            renderTooltip(matrices, new TranslatableText("immersive_melodies.read"), width / 2 + 55, height / 2 + 69 + 17);
         }
 
         super.render(matrices, mouseX, mouseY, delta);

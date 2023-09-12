@@ -12,6 +12,7 @@ import net.minecraft.util.profiler.Profiler;
 import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
@@ -59,8 +60,8 @@ public class MelodyLoader extends SinglePreparationResourceReloader<Map<Identifi
         Collection<Identifier> resources = manager.findResources(dataType, path -> path.endsWith(".midi") || path.endsWith(".mid"));
         for (Identifier entry : resources) {
             try {
-                String name = Utils.toTitle(Utils.removeLastPart(Utils.getLastPart(entry.getKey().getPath(), "/"), "."));
-                Identifier identifier = new Identifier(entry.getKey().getNamespace(), entry.getKey().getPath());
+                String name = Utils.toTitle(Utils.removeLastPart(Utils.getLastPart(entry.getPath(), "/"), "."));
+                Identifier identifier = new Identifier(entry.getNamespace(), entry.getPath());
                 map.put(identifier, new LazyMelody(name, () -> {
                     try {
                         return MidiParser.parseMidi(manager.getResource(entry).getInputStream(), name);
@@ -69,7 +70,7 @@ public class MelodyLoader extends SinglePreparationResourceReloader<Map<Identifi
                     }
                 }));
             } catch (IllegalArgumentException | JsonParseException exception) {
-                LOGGER.error("Couldn't load melody {} ({})", entry.getKey(), exception);
+                LOGGER.error("Couldn't load melody {} ({})", entry, exception);
             }
         }
 
