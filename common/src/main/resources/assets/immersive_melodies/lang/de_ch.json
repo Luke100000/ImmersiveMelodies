@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Mitreißende Melodien",
+  "item.immersive_melodies.bagpipe": "Dudelsack",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Flöte",
+  "item.immersive_melodies.lute": "Laute",
+  "item.immersive_melodies.piano": "Klavier",
+  "item.immersive_melodies.triangle": "Dreieck",
+  "item.immersive_melodies.trumpet": "Trompete",
+  "immersive_melodies.playing": "Spielen",
+  "immersive_melodies.close": "Schließen",
+  "immersive_melodies.search": "Suchen",
+  "immersive_melodies.favorite": "Favorit",
+  "immersive_melodies.remove_favorite": "Favorit entfernen",
+  "immersive_melodies.delete": "Löschen",
+  "immersive_melodies.play": "Spielen",
+  "immersive_melodies.help": "Hilfe öffnen",
+  "immersive_melodies.pause": "Pause"
+}

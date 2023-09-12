@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Vsiljive melodije",
+  "item.immersive_melodies.bagpipe": "Duda",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Flavta",
+  "item.immersive_melodies.lute": "Lute",
+  "item.immersive_melodies.piano": "Klavir",
+  "item.immersive_melodies.triangle": "Trikotnik",
+  "item.immersive_melodies.trumpet": "Trobenta",
+  "immersive_melodies.playing": "Igranje",
+  "immersive_melodies.close": "Zapri",
+  "immersive_melodies.search": "Iskanje",
+  "immersive_melodies.favorite": "Najljubši",
+  "immersive_melodies.remove_favorite": "Odstrani priljubljeno",
+  "immersive_melodies.delete": "Izbriši",
+  "immersive_melodies.play": "Igraj",
+  "immersive_melodies.help": "Odprta pomoč",
+  "immersive_melodies.pause": "Prekinitev"
+}

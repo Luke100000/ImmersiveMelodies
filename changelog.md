@@ -1,3 +1,15 @@
+# 0.0.3
+
+* Only relevant entities pick up instruments
+* Right-click on an entity will cause them to drop their instrument
+* Fixed some midis
+* Added support for tempo changes mid-play
+* Streamed melody transfer for extra large midis
+* Changed data format
+    * Midi now store tracks (no GUI to actually select specific tracks, but the technical capacities are here now)
+    * One .dat per melody to scale better
+* Lazy loading of datapacks to speed up starting time
+
 # 0.0.2
 
 * Slightly enhanced, which track is used until a proper selection is added

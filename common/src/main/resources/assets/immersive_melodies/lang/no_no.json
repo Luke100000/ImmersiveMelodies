@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Oppslukende melodier",
+  "item.immersive_melodies.bagpipe": "Sekkepipe",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Fløyte",
+  "item.immersive_melodies.lute": "Lutt",
+  "item.immersive_melodies.piano": "Piano",
+  "item.immersive_melodies.triangle": "Trekant",
+  "item.immersive_melodies.trumpet": "Trompet",
+  "immersive_melodies.playing": "Spille",
+  "immersive_melodies.close": "Lukk",
+  "immersive_melodies.search": "Søk",
+  "immersive_melodies.favorite": "Favoritt",
+  "immersive_melodies.remove_favorite": "Fjern favoritt",
+  "immersive_melodies.delete": "Slett",
+  "immersive_melodies.play": "Spill",
+  "immersive_melodies.help": "Åpne hjelp",
+  "immersive_melodies.pause": "Pause"
+}

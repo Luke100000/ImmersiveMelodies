@@ -5,13 +5,12 @@ import immersive_melodies.Config;
 import immersive_melodies.client.gui.widget.MelodyListWidget;
 import immersive_melodies.client.gui.widget.TexturedButtonWidget;
 import immersive_melodies.cobalt.network.NetworkHandler;
+import immersive_melodies.network.PacketSplitter;
 import immersive_melodies.network.c2s.ItemActionMessage;
 import immersive_melodies.network.c2s.MelodyDeleteRequest;
-import immersive_melodies.network.c2s.UploadMelodyRequest;
 import immersive_melodies.resources.ClientMelodyManager;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.MelodyDescriptor;
-import immersive_melodies.resources.Note;
 import immersive_melodies.util.MidiConverter;
 import immersive_melodies.util.MidiParser;
 import immersive_melodies.util.Utils;
@@ -34,7 +33,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.PathMatcher;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -114,21 +112,10 @@ public class ImmersiveMelodiesScreen extends Screen {
     }
 
     private void parseMidi(String name, InputStream inputStream) {
-        List<Melody> melodies = MidiParser.parseMidi(inputStream, name, Config.getInstance().parseAllMidiTracks);
-        if (Config.getInstance().parseAllMidiTracks) {
-            // Use all tracks and just add a track name prefix
-            int i = 0;
-            for (Melody melody : melodies) {
-                NetworkHandler.sendToServer(new UploadMelodyRequest(name + i++, melody));
-                search.setText(name);
-            }
-        } else {
-            // Only use the track with the most notes
-            melodies.stream().max(Comparator.comparingInt(m -> (int) (m.getNotes().size() * m.getNotes().stream().mapToInt(Note::getNote).distinct().count()))).ifPresent(melody -> {
-                NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
-                search.setText(name);
-            });
-        }
+        Melody melody = MidiParser.parseMidi(inputStream, name);
+        PacketSplitter.sendToServer(name, melody);
+        search.setText(name);
+        list.setScrollAmount(0);
     }
 
     @Override
@@ -141,7 +128,11 @@ public class ImmersiveMelodiesScreen extends Screen {
         RenderSystem.setShaderTexture(0, BACKGROUND_TEXTURE);
         drawTexture(matrices, x, y, 0, 0, 192, 215);
 
-        super.render(matrices, mouseX, mouseY, delta);
+        if (!Config.getInstance().clickedHelp) {
+            context.drawTooltip(textRenderer, Text.translatable("immersive_melodies.read"), width / 2 + 55, height / 2 + 69 + 17);
+        }
+
+        super.render(context, mouseX, mouseY, delta);
     }
 
     public void refreshPage() {
@@ -208,6 +199,10 @@ public class ImmersiveMelodiesScreen extends Screen {
         // Help
         addDrawableChild(new TexturedButtonWidget(width / 2 + 50, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 32, 256, 256, Text.of(null), button -> {
             openHelp();
+            if (!Config.getInstance().clickedHelp) {
+                Config.getInstance().clickedHelp = true;
+                Config.getInstance().save();
+            }
         }, () -> List.of(Text.translatable("immersive_melodies.help").asOrderedText())));
     }
 

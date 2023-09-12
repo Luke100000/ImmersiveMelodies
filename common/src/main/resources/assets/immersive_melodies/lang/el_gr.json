@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Καθηλωτικές μελωδίες",
+  "item.immersive_melodies.bagpipe": "γκάιντα",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Φλάουτο",
+  "item.immersive_melodies.lute": "Lute",
+  "item.immersive_melodies.piano": "Πιάνο",
+  "item.immersive_melodies.triangle": "Τρίγωνο",
+  "item.immersive_melodies.trumpet": "Τρομπέτα",
+  "immersive_melodies.playing": "Παίζοντας",
+  "immersive_melodies.close": "Κλείστε το",
+  "immersive_melodies.search": "Αναζήτηση",
+  "immersive_melodies.favorite": "Αγαπημένο",
+  "immersive_melodies.remove_favorite": "Αφαίρεση αγαπημένου",
+  "immersive_melodies.delete": "Διαγραφή",
+  "immersive_melodies.play": "Παίξτε",
+  "immersive_melodies.help": "Ανοίξτε τη βοήθεια",
+  "immersive_melodies.pause": "Παύση"
+}
