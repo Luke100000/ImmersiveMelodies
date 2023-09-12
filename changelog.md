@@ -8,6 +8,7 @@
 * Changed data format
     * Midi now store tracks (no GUI to actually select specific tracks, but the technical capacities are here now)
     * One .dat per melody to scale better
+* Lazy loading of datapacks to speed up starting time
 
 # 0.0.2
 

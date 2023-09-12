@@ -21,7 +21,7 @@ public class ServerMelodyManager {
     static final Random RANDOM = new Random();
 
     public static MinecraftServer server;
-    private static Map<Identifier, Melody> datapackMelodies = new HashMap<>();
+    private static Map<Identifier, MelodyLoader.LazyMelody> datapackMelodies = new HashMap<>();
     private static File directory = new File("data/melodies");
 
     public static void instantiate(ServerWorld world, LevelStorage.Session session) {
@@ -39,11 +39,11 @@ public class ServerMelodyManager {
         return server.getOverworld().getPersistentStateManager().getOrCreate(CustomServerMelodiesIndex::fromNbt, CustomServerMelodiesIndex::new, "immersive_melodies");
     }
 
-    public static Map<Identifier, Melody> getDatapackMelodies() {
+    public static Map<Identifier, MelodyLoader.LazyMelody> getDatapackMelodies() {
         return datapackMelodies;
     }
 
-    public static void setDatapackMelodies(Map<Identifier, Melody> datapackMelodies) {
+    public static void setDatapackMelodies(Map<Identifier, MelodyLoader.LazyMelody> datapackMelodies) {
         ServerMelodyManager.datapackMelodies = datapackMelodies;
     }
 
@@ -98,7 +98,7 @@ public class ServerMelodyManager {
 
     public static Melody getMelody(Identifier identifier) {
         if (datapackMelodies.containsKey(identifier)) {
-            return datapackMelodies.get(identifier);
+            return datapackMelodies.get(identifier).get();
         } else {
             Melody melody = DEFAULT;
             try {
