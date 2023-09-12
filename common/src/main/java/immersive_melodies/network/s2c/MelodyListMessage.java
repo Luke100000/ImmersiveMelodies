@@ -4,6 +4,7 @@ import immersive_melodies.Common;
 import immersive_melodies.Config;
 import immersive_melodies.cobalt.network.Message;
 import immersive_melodies.resources.MelodyDescriptor;
+import immersive_melodies.resources.MelodyLoader;
 import immersive_melodies.resources.ServerMelodyManager;
 import immersive_melodies.util.Utils;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,13 +19,15 @@ public class MelodyListMessage extends Message {
 
     public MelodyListMessage(PlayerEntity receiver) {
         //datapack melodies
-        this.melodies.putAll(ServerMelodyManager.getDatapackMelodies());
+        for (Map.Entry<Identifier, MelodyLoader.LazyMelody> lazyMelodyEntry : ServerMelodyManager.getDatapackMelodies().entrySet()) {
+            melodies.put(lazyMelodyEntry.getKey(), lazyMelodyEntry.getValue().getDescriptor());
+        }
 
         //custom melodies
         if (Config.getInstance().showOtherPlayersMelodies) {
-            this.melodies.putAll(ServerMelodyManager.get().getCustomServerMelodies());
+            this.melodies.putAll(ServerMelodyManager.getIndex().getMelodies());
         } else {
-            ServerMelodyManager.get().getCustomServerMelodies().forEach((id, desc) -> {
+            ServerMelodyManager.getIndex().getMelodies().forEach((id, desc) -> {
                 if (Utils.ownsMelody(id, receiver)) {
                     this.melodies.put(id, desc);
                 }

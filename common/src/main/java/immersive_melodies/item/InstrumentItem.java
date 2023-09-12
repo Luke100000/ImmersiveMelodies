@@ -99,10 +99,10 @@ public class InstrumentItem extends Item {
             MelodyProgressManager.INSTANCE.sync(world.getTime());
 
             Melody melody = progress.getMelody();
-            for (int i = MelodyProgressManager.INSTANCE.getProgress(entity).getLastIndex(); i < melody.getNotes().size(); i++) {
-                Note note = melody.getNotes().get(i);
+            for (int i = MelodyProgressManager.INSTANCE.getProgress(entity).getLastIndex(); i < melody.getPrimaryTrack().getNotes().size(); i++) {
+                Note note = melody.getPrimaryTrack().getNotes().get(i);
                 if (progress.getTime() >= note.getTime()) {
-                    float volume = note.getVelocity() / 255.0f * 3.0f;
+                    float volume = note.getVelocity() / 255.0f * 2.0f;
                     float pitch = (float) Math.pow(2, (note.getNote() - 24) / 12.0);
                     int octave = 1;
                     while (octave < 8 && pitch > 4.0 / 3.0) {
@@ -129,7 +129,7 @@ public class InstrumentItem extends Item {
 
                     MelodyProgressManager.INSTANCE.setLastNote(entity, volume, pitch, length);
 
-                    if (i == melody.getNotes().size() - 1) {
+                    if (i == melody.getPrimaryTrack().getNotes().size() - 1) {
                         if (entity instanceof PlayerEntity) {
                             MelodyProgressManager.INSTANCE.setLastIndex(entity, i + 1);
                         } else {

@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Kaasahaaravad meloodiad",
+  "item.immersive_melodies.bagpipe": "Torupill",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Flööt",
+  "item.immersive_melodies.lute": "Lute",
+  "item.immersive_melodies.piano": "Klaver",
+  "item.immersive_melodies.triangle": "Kolmnurk",
+  "item.immersive_melodies.trumpet": "Trompet",
+  "immersive_melodies.playing": "Mängimine",
+  "immersive_melodies.close": "Sulge",
+  "immersive_melodies.search": "Otsi",
+  "immersive_melodies.favorite": "Lemmik",
+  "immersive_melodies.remove_favorite": "Eemalda lemmik",
+  "immersive_melodies.delete": "Kustuta",
+  "immersive_melodies.play": "Mängi",
+  "immersive_melodies.help": "Avatud abi",
+  "immersive_melodies.pause": "Paus"
+}

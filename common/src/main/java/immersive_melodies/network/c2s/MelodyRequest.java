@@ -1,8 +1,7 @@
 package immersive_melodies.network.c2s;
 
 import immersive_melodies.cobalt.network.Message;
-import immersive_melodies.cobalt.network.NetworkHandler;
-import immersive_melodies.network.s2c.MelodyResponse;
+import immersive_melodies.network.PacketSplitter;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.ServerMelodyManager;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,6 +28,6 @@ public class MelodyRequest extends Message {
     @Override
     public void receive(PlayerEntity e) {
         Melody melody = ServerMelodyManager.getMelody(identifier);
-        NetworkHandler.sendToPlayer(new MelodyResponse(identifier, melody), (ServerPlayerEntity) e);
+        PacketSplitter.sendToPlayer(identifier, melody, (ServerPlayerEntity) e);
     }
 }

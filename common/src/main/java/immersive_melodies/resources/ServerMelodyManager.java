@@ -1,40 +1,56 @@
 package immersive_melodies.resources;
 
+import immersive_melodies.Common;
 import io.netty.buffer.Unpooled;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.PersistentState;
+import net.minecraft.world.level.storage.LevelStorage;
 
+import java.io.*;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 public class ServerMelodyManager {
     static final Melody DEFAULT = new Melody();
-    static final Random random = new Random();
+    static final Random RANDOM = new Random();
 
     public static MinecraftServer server;
-    private static Map<Identifier, Melody> datapackMelodies = new HashMap<>();
+    private static Map<Identifier, MelodyLoader.LazyMelody> datapackMelodies = new HashMap<>();
+    private static File directory = new File("data/melodies");
 
-    public static CustomServerMelodies get() {
-        return server.getOverworld().getPersistentStateManager()
-                .getOrCreate(CustomServerMelodies::fromNbt, CustomServerMelodies::new, "immersive_melodies");
+    public static void instantiate(ServerWorld world, LevelStorage.Session session) {
+        directory = session.getWorldDirectory(world.getRegistryKey()).resolve("data/melodies").toFile();
     }
 
-    public static Map<Identifier, Melody> getDatapackMelodies() {
+    private static File getFile(String id) {
+        File file = new File(directory, id + ".bin");
+        //noinspection ResultOfMethodCallIgnored
+        file.getParentFile().mkdirs();
+        return file;
+    }
+
+    public static CustomServerMelodiesIndex getIndex() {
+        return server.getOverworld().getPersistentStateManager().getOrCreate(CustomServerMelodiesIndex::fromNbt, CustomServerMelodiesIndex::new, "immersive_melodies");
+    }
+
+    public static Map<Identifier, MelodyLoader.LazyMelody> getDatapackMelodies() {
         return datapackMelodies;
     }
 
-    public static void setDatapackMelodies(Map<Identifier, Melody> datapackMelodies) {
+    public static void setDatapackMelodies(Map<Identifier, MelodyLoader.LazyMelody> datapackMelodies) {
         ServerMelodyManager.datapackMelodies = datapackMelodies;
     }
 
     public static Identifier getRandomMelody() {
         Object[] datapack = getDatapackMelodies().keySet().toArray();
-        Object[] custom = get().customServerMelodies.keySet().toArray();
-        int i = random.nextInt(datapack.length + custom.length);
+        Object[] custom = getIndex().melodies.keySet().toArray();
+        int i = RANDOM.nextInt(datapack.length + custom.length);
         if (i < datapack.length) {
             return (Identifier) datapack[i];
         } else {
@@ -42,32 +58,70 @@ public class ServerMelodyManager {
         }
     }
 
+    /**
+     * Registers a melody to the server and saves it to disk.
+     *
+     * @param identifier The identifier of the melody to register.
+     * @param melody     The melody to register.
+     */
     public static void registerMelody(Identifier identifier, Melody melody) {
-        get().getCustomServerMelodies().put(identifier, melody);
-        get().setDirty(true);
+        getIndex().getMelodies().put(identifier, melody);
+        getIndex().setDirty(true);
+
+        try {
+            PacketByteBuf buffer = new PacketByteBuf(Unpooled.buffer());
+            melody.encode(buffer);
+
+            // Write to disk
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(getFile(identifier.toString())));
+            bos.write(buffer.array());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    /**
+     * Deletes a melody from the server.
+     *
+     * @param identifier The identifier of the melody to delete.
+     */
     public static void deleteMelody(Identifier identifier) {
-        get().getCustomServerMelodies().remove(identifier);
-        get().setDirty(true);
+        getIndex().getMelodies().remove(identifier);
+        getIndex().setDirty(true);
+
+        try {
+            Files.delete(getFile(identifier.toString()).toPath());
+        } catch (IOException e) {
+            Common.LOGGER.error("Couldn't delete melody {} ({})", identifier, e);
+        }
     }
 
     public static Melody getMelody(Identifier identifier) {
         if (datapackMelodies.containsKey(identifier)) {
-            return datapackMelodies.get(identifier);
+            return datapackMelodies.get(identifier).get();
         } else {
-            return get().customServerMelodies.getOrDefault(identifier, DEFAULT);
+            Melody melody = DEFAULT;
+            try {
+                BufferedInputStream bis = new BufferedInputStream(new FileInputStream(getFile(identifier.toString())));
+                melody = new Melody(new PacketByteBuf(Unpooled.wrappedBuffer(bis.readAllBytes())));
+            } catch (IOException e) {
+                Common.LOGGER.error("Couldn't load melody {} ({})", identifier, e);
+            }
+            return melody;
         }
     }
 
-    public static class CustomServerMelodies extends PersistentState {
-        final Map<Identifier, Melody> customServerMelodies = new HashMap<>();
+    /**
+     * The melody index, containing only important information about the melodies.
+     */
+    public static class CustomServerMelodiesIndex extends PersistentState {
+        final Map<Identifier, MelodyDescriptor> melodies = new HashMap<>();
 
-        public static CustomServerMelodies fromNbt(NbtCompound nbt) {
-            CustomServerMelodies c = new CustomServerMelodies();
+        public static CustomServerMelodiesIndex fromNbt(NbtCompound nbt) {
+            CustomServerMelodiesIndex c = new CustomServerMelodiesIndex();
             for (String key : nbt.getKeys()) {
                 PacketByteBuf buffer = new PacketByteBuf(Unpooled.wrappedBuffer(nbt.getByteArray(key)));
-                c.customServerMelodies.put(new Identifier(key), new Melody(buffer));
+                c.melodies.put(new Identifier(key), new MelodyDescriptor(buffer));
             }
             return c;
         }
@@ -75,16 +129,16 @@ public class ServerMelodyManager {
         @Override
         public NbtCompound writeNbt(NbtCompound nbt) {
             NbtCompound c = new NbtCompound();
-            for (Map.Entry<Identifier, Melody> entry : customServerMelodies.entrySet()) {
+            for (Map.Entry<Identifier, MelodyDescriptor> entry : melodies.entrySet()) {
                 PacketByteBuf buffer = new PacketByteBuf(Unpooled.buffer());
-                entry.getValue().encode(buffer);
+                entry.getValue().encodeLite(buffer);
                 c.putByteArray(entry.getKey().toString(), buffer.array());
             }
             return c;
         }
 
-        public Map<Identifier, Melody> getCustomServerMelodies() {
-            return customServerMelodies;
+        public Map<Identifier, MelodyDescriptor> getMelodies() {
+            return melodies;
         }
     }
 }
