@@ -39,7 +39,7 @@ public abstract class FragmentedMessage extends Message {
 
     @Override
     public void receive(PlayerEntity e) {
-        Queue<byte[]> byteBuffer = buffer.computeIfAbsent(e.getUuidAsString() + ":" + name, k -> new ConcurrentLinkedQueue<>());
+        Queue<byte[]> byteBuffer = buffer.computeIfAbsent((e == null ? "local" : e.getUuidAsString()) + ":" + name, k -> new ConcurrentLinkedQueue<>());
         byteBuffer.add(fragment);
 
         if (byteBuffer.stream().mapToInt(f -> f.length).sum() == length) {
