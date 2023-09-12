@@ -4,9 +4,9 @@ import immersive_melodies.Config;
 import immersive_melodies.client.gui.widget.MelodyListWidget;
 import immersive_melodies.client.gui.widget.TexturedButtonWidget;
 import immersive_melodies.cobalt.network.NetworkHandler;
+import immersive_melodies.network.PacketSplitter;
 import immersive_melodies.network.c2s.ItemActionMessage;
 import immersive_melodies.network.c2s.MelodyDeleteRequest;
-import immersive_melodies.network.c2s.UploadMelodyRequest;
 import immersive_melodies.resources.ClientMelodyManager;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.MelodyDescriptor;
@@ -112,7 +112,7 @@ public class ImmersiveMelodiesScreen extends Screen {
 
     private void parseMidi(String name, InputStream inputStream) {
         Melody melody = MidiParser.parseMidi(inputStream, name);
-        NetworkHandler.sendToServer(new UploadMelodyRequest(name, melody));
+        PacketSplitter.sendToServer(name, melody);
         search.setText(name);
         list.setScrollAmount(0);
     }

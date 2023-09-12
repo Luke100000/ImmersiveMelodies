@@ -1,34 +1,23 @@
 package immersive_melodies.network.s2c;
 
-import immersive_melodies.cobalt.network.Message;
+import immersive_melodies.network.FragmentedMessage;
 import immersive_melodies.resources.ClientMelodyManager;
 import immersive_melodies.resources.Melody;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 
-public class MelodyResponse extends Message {
-    private final Identifier identifier;
-    private final Melody melody;
-
-    public MelodyResponse(Identifier identifier, Melody melody) {
-        this.identifier = identifier;
-        this.melody = melody;
-    }
-
+public class MelodyResponse extends FragmentedMessage {
     public MelodyResponse(PacketByteBuf b) {
-        this.identifier = b.readIdentifier();
-        this.melody = new Melody(b);
+        super(b);
+    }
+
+    public MelodyResponse(Identifier identifier, byte[] fragment, int length) {
+        super(identifier.toString(), fragment, length);
     }
 
     @Override
-    public void encode(PacketByteBuf b) {
-        b.writeIdentifier(identifier);
-        melody.encode(b);
-    }
-
-    @Override
-    public void receive(PlayerEntity e) {
-        ClientMelodyManager.setMelody(identifier, melody);
+    protected void finish(PlayerEntity e, String name, Melody melody) {
+        ClientMelodyManager.setMelody(new Identifier(name), melody);
     }
 }
