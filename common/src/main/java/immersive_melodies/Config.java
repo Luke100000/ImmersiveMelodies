@@ -24,4 +24,6 @@ public final class Config extends JsonConfig {
             "minecraft:pillager", 0.01f
     );
     public boolean forceMobsToPickUp = true;
+
+    public boolean clickedHelp = false;
 }

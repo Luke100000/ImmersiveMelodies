@@ -1,5 +1,6 @@
 package immersive_melodies.client.gui;
 
+import immersive_melodies.Config;
 import immersive_melodies.client.gui.widget.MelodyListWidget;
 import immersive_melodies.client.gui.widget.TexturedButtonWidget;
 import immersive_melodies.cobalt.network.NetworkHandler;
@@ -124,6 +125,10 @@ public class ImmersiveMelodiesScreen extends Screen {
         int y = (this.height - 230) / 2;
         context.drawTexture(BACKGROUND_TEXTURE, x, y, 0, 0, 192, 215);
 
+        if (!Config.getInstance().clickedHelp) {
+            context.drawTooltip(textRenderer, Text.translatable("immersive_melodies.read"), width / 2 + 55, height / 2 + 69 + 17);
+        }
+
         super.render(context, mouseX, mouseY, delta);
     }
 
@@ -191,6 +196,10 @@ public class ImmersiveMelodiesScreen extends Screen {
         // Help
         addDrawableChild(new TexturedButtonWidget(width / 2 + 50, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 32, 256, 256, Text.of(null), button -> {
             openHelp();
+            if (!Config.getInstance().clickedHelp) {
+                Config.getInstance().clickedHelp = true;
+                Config.getInstance().save();
+            }
         }, () -> List.of(Text.translatable("immersive_melodies.help").asOrderedText())));
     }
 
