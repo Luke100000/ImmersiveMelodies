@@ -22,9 +22,9 @@ public class MelodyListMessage extends Message {
 
         //custom melodies
         if (Config.getInstance().showOtherPlayersMelodies) {
-            this.melodies.putAll(ServerMelodyManager.get().getCustomServerMelodies());
+            this.melodies.putAll(ServerMelodyManager.getIndex().getMelodies());
         } else {
-            ServerMelodyManager.get().getCustomServerMelodies().forEach((id, desc) -> {
+            ServerMelodyManager.getIndex().getMelodies().forEach((id, desc) -> {
                 if (Utils.ownsMelody(id, receiver)) {
                     this.melodies.put(id, desc);
                 }

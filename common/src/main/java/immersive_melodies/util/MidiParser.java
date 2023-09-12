@@ -11,12 +11,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MidiParser {
-    public static List<Melody> parseMidi(InputStream inputStream, String baseName, boolean appendTrackName) {
-        List<Melody> melodies = new LinkedList<>();
+    public static Melody parseMidi(InputStream inputStream, String midiName) {
+        Melody melody = new Melody(midiName);
         try {
             Sequence sequence = MidiSystem.getSequence(inputStream);
-
-            String name = baseName;
 
             // Fetch shared events
             List<MidiEvent> sharedEvents = new LinkedList<>();
@@ -27,7 +25,7 @@ public class MidiParser {
             }
 
             // Iterate through tracks and MIDI events
-            int trackNr = 0;
+            int trackNr = 1;
             for (Track track : sequence.getTracks()) {
                 // Merge with shared events and sort
                 List<MidiEvent> events = getEvents(track);
@@ -37,7 +35,7 @@ public class MidiParser {
                 int bpm = 120;
                 long lastTick = 0;
                 double lastMs = 0;
-                boolean customName = false;
+                String name = "Track " + trackNr;
                 List<Note> notes = new LinkedList<>();
                 HashMap<Integer, Note.Builder> currentNotes = new HashMap<>();
 
@@ -49,12 +47,8 @@ public class MidiParser {
                         byte[] data = metaMessage.getData();
                         int type = metaMessage.getType();
                         if (type == 0x03) {
-                            if (sequence.getTracks().length > 1 && appendTrackName) {
-                                String s = new String(data).strip();
-                                if (s.length() > 0) {
-                                    name = String.format("%s (%s)", name, s);
-                                    customName = true;
-                                }
+                            if (sequence.getTracks().length > 1) {
+                                name = new String(data).strip();
                             }
                         } else if (type == 0x51) {
                             int microsecondsPerBeat = ((data[0] & 0xFF) << 16) | ((data[1] & 0xFF) << 8) | (data[2] & 0xFF);
@@ -101,22 +95,19 @@ public class MidiParser {
                 }
 
                 if (notes.size() > 0) {
-                    if (sequence.getTracks().length > 1 && !customName && appendTrackName) {
-                        trackNr += 1;
-                        name += " Track " + trackNr;
-                    }
+                    trackNr += 1;
 
                     // Sort
                     notes.sort(Comparator.comparingInt(Note::getTime));
 
-                    melodies.add(new Melody(name, notes));
+                    melody.addTrack(new immersive_melodies.resources.Track(name, notes));
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return melodies;
+        return melody;
     }
 
     private static List<MidiEvent> getEvents(Track track) {

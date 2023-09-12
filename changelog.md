@@ -4,6 +4,10 @@
 * Right-click on an entity will cause them to drop their instrument
 * Fixed some midis
 * Added support for tempo changes mid-play
+* Streamed melody transfer for extra large midis
+* Changed data format
+    * Midi now store tracks (no GUI to actually select specific tracks, but the technical capacities are here now)
+    * One .dat per melody to scale better
 
 # 0.0.2
 
