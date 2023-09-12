@@ -70,7 +70,7 @@ public class NetworkHandlerImpl extends NetworkHandler.Impl {
         public static <T extends Message> void register(Identifier id, Function<PacketByteBuf, T> constructor) {
             ClientPlayNetworking.registerGlobalReceiver(id, (client, ignore1, buffer, ignore2) -> {
                 Message m = constructor.apply(buffer);
-                client.execute(() -> m.receive(client.player));
+                client.execute(() -> m.receive(null));
             });
         }
     }

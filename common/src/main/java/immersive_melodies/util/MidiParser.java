@@ -11,24 +11,35 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MidiParser {
-    public static List<Melody> parseMidi(InputStream inputStream, String baseName, boolean appendTrackName) {
-        List<Melody> melodies = new LinkedList<>();
+    public static Melody parseMidi(InputStream inputStream, String midiName) {
+        Melody melody = new Melody(midiName);
         try {
             Sequence sequence = MidiSystem.getSequence(inputStream);
 
-            String name = baseName;
-            int bpm = 120;
+            // Fetch shared events
+            List<MidiEvent> sharedEvents = new LinkedList<>();
+            for (Track track : sequence.getTracks()) {
+                getEvents(track).stream()
+                        .filter(event -> event.getMessage() instanceof MetaMessage m && m.getType() == 0x51)
+                        .forEach(sharedEvents::add);
+            }
 
             // Iterate through tracks and MIDI events
-            int trackNr = 0;
+            int trackNr = 1;
             for (Track track : sequence.getTracks()) {
-                boolean customName = false;
-                List<Note> notes = new LinkedList<>();
+                // Merge with shared events and sort
+                List<MidiEvent> events = getEvents(track);
+                events.addAll(0, sharedEvents);
+                events.sort((a, b) -> (int) (a.getTick() - b.getTick()));
 
+                int bpm = 120;
+                long lastTick = 0;
+                double lastMs = 0;
+                String name = "Track " + trackNr;
+                List<Note> notes = new LinkedList<>();
                 HashMap<Integer, Note.Builder> currentNotes = new HashMap<>();
 
-                for (int i = 0; i < track.size(); i++) {
-                    MidiEvent event = track.get(i);
+                for (MidiEvent event : events) {
                     MidiMessage message = event.getMessage();
 
                     // Parse meta events
@@ -36,12 +47,8 @@ public class MidiParser {
                         byte[] data = metaMessage.getData();
                         int type = metaMessage.getType();
                         if (type == 0x03) {
-                            if (sequence.getTracks().length > 1 && appendTrackName) {
-                                String s = new String(data).strip();
-                                if (s.length() > 0) {
-                                    name = String.format("%s (%s)", name, s);
-                                    customName = true;
-                                }
+                            if (sequence.getTracks().length > 1) {
+                                name = new String(data).strip();
                             }
                         } else if (type == 0x51) {
                             int microsecondsPerBeat = ((data[0] & 0xFF) << 16) | ((data[1] & 0xFF) << 8) | (data[2] & 0xFF);
@@ -55,7 +62,9 @@ public class MidiParser {
 
                         // Convert notes into ms
                         long tick = event.getTick();
-                        int ms = (int) (tick * 60 * 1000 / sequence.getResolution() / bpm);
+                        int ms = (int) ((tick - lastTick) * 60 * 1000 / sequence.getResolution() / bpm + lastMs);
+                        lastTick = tick;
+                        lastMs = ms;
 
                         // Another way to decode note offs are note ons with velocity 0
                         if (command == ShortMessage.NOTE_ON && sm.getData2() == 0) {
@@ -76,28 +85,36 @@ public class MidiParser {
                         } else if (command == ShortMessage.NOTE_OFF) {
                             int note = sm.getData1();
                             Note.Builder noteBuilder = currentNotes.get(note);
-                            noteBuilder.length = ms - noteBuilder.time;
-                            notes.add(noteBuilder.build());
+                            currentNotes.remove(note);
+                            if (noteBuilder != null) {
+                                noteBuilder.length = ms - noteBuilder.time;
+                                notes.add(noteBuilder.build());
+                            }
                         }
                     }
                 }
 
                 if (notes.size() > 0) {
-                    if (sequence.getTracks().length > 1 && !customName && appendTrackName) {
-                        trackNr += 1;
-                        name += " Track " + trackNr;
-                    }
+                    trackNr += 1;
 
-                    // Just to make sure
+                    // Sort
                     notes.sort(Comparator.comparingInt(Note::getTime));
 
-                    melodies.add(new Melody(name, bpm, notes));
+                    melody.addTrack(new immersive_melodies.resources.Track(name, notes));
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return melodies;
+        return melody;
+    }
+
+    private static List<MidiEvent> getEvents(Track track) {
+        List<MidiEvent> events = new LinkedList<>();
+        for (int i = 0; i < track.size(); i++) {
+            events.add(track.get(i));
+        }
+        return events;
     }
 }

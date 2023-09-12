@@ -1,0 +1,19 @@
+{
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Melodi yang menghanyutkan",
+  "item.immersive_melodies.bagpipe": "Bagpipe",
+  "item.immersive_melodies.didgeridoo": "Didgeridoo",
+  "item.immersive_melodies.flute": "Seruling",
+  "item.immersive_melodies.lute": "Kecapi",
+  "item.immersive_melodies.piano": "Piano",
+  "item.immersive_melodies.triangle": "Segitiga",
+  "item.immersive_melodies.trumpet": "Terompet",
+  "immersive_melodies.playing": "Bermain",
+  "immersive_melodies.close": "Tutup",
+  "immersive_melodies.search": "Pencarian",
+  "immersive_melodies.favorite": "Favorit",
+  "immersive_melodies.remove_favorite": "Hapus Favorit",
+  "immersive_melodies.delete": "Hapus",
+  "immersive_melodies.play": "Bermain",
+  "immersive_melodies.help": "Buka bantuan",
+  "immersive_melodies.pause": "Jeda"
+}
