@@ -1,3 +1,8 @@
+# 0.0.4
+
+* Fixed broken backport
+* Fixed fabric incompatibility with model loading
+
 # 0.0.3
 
 * Only relevant entities pick up instruments
