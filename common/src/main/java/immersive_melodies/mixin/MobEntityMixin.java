@@ -58,7 +58,7 @@ public abstract class MobEntityMixin extends LivingEntity {
         if (Config.getInstance().forceMobsToPickUp && EntityEquiper.canPickUp(this) && !this.getWorld().isClient && this.isAlive() && !this.dead) {
             Vec3i vec3i = this.getItemPickUpRangeExpander();
             for (ItemEntity itementity : this.getWorld().getNonSpectatingEntities(ItemEntity.class, this.getBoundingBox().expand(vec3i.getX(), vec3i.getY(), vec3i.getZ()))) {
-                if ((itementity.getOwner() == null || !itementity.getOwner().getUuid().equals(getUuid())) && !itementity.isRemoved() && !itementity.getStack().isEmpty() && itementity.getStack().getItem() instanceof InstrumentItem) {
+                if ((itementity.getOwner() == null || !itementity.getOwner().equals(getUuid())) && !itementity.isRemoved() && !itementity.getStack().isEmpty() && itementity.getStack().getItem() instanceof InstrumentItem) {
                     System.out.println(itementity.getOwner());
                     this.loot(itementity);
                 }

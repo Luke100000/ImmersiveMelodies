@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
+import net.minecraft.util.registry.Registry;
 
 public class EntityEquiper {
     public static void equip(Entity entity) {
@@ -22,7 +22,7 @@ public class EntityEquiper {
     }
 
     public static boolean canPickUp(Entity entity) {
-        String id = Registries.ENTITY_TYPE.getId(entity.getType()).toString();
+        String id = Registry.ENTITY_TYPE.getId(entity.getType()).toString();
         return Config.getInstance().mobInstrumentFactors.containsKey(id) && Config.getInstance().mobInstrumentFactors.get(id) > 0;
     }
 }
