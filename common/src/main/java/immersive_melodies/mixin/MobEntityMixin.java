@@ -42,7 +42,8 @@ public abstract class MobEntityMixin extends LivingEntity {
     private void immersiveMelodies$injectInteract(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         for (ItemStack handItem : this.handItems) {
             if (handItem.getItem() instanceof InstrumentItem) {
-                ItemEntity itemEntity = dropStack(handItem.copyAndEmpty());
+                ItemEntity itemEntity = dropStack(handItem.copy());
+                handItem.setCount(0);
                 if (itemEntity != null) {
                     itemEntity.setThrower(getUuid());
                 }
