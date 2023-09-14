@@ -1,3 +1,8 @@
+# 0.0.5
+
+* Fixed some crashes
+* Fixed null textures
+
 # 0.0.4
 
 * Fixed broken backport
