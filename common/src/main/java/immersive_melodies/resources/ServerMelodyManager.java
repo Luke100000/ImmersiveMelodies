@@ -17,7 +17,6 @@ import java.util.Map;
 import java.util.Random;
 
 public class ServerMelodyManager {
-    static final Melody DEFAULT = new Melody();
     static final Random RANDOM = new Random();
 
     public static MinecraftServer server;
@@ -100,7 +99,7 @@ public class ServerMelodyManager {
         if (datapackMelodies.containsKey(identifier)) {
             return datapackMelodies.get(identifier).get();
         } else {
-            Melody melody = DEFAULT;
+            Melody melody = Melody.DEFAULT;
             try {
                 BufferedInputStream bis = new BufferedInputStream(new FileInputStream(getFile(identifier.toString())));
                 melody = new Melody(new PacketByteBuf(Unpooled.wrappedBuffer(bis.readAllBytes())));
