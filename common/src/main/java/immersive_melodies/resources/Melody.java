@@ -9,6 +9,8 @@ import java.util.List;
 
 
 public class Melody extends MelodyDescriptor {
+    static final Melody DEFAULT = new Melody();
+
     private final List<Track> tracks = new LinkedList<>();
     private Track primaryTrack;
 
@@ -41,7 +43,7 @@ public class Melody extends MelodyDescriptor {
 
     public Track getPrimaryTrack() {
         if (primaryTrack == null) {
-            primaryTrack = getTracks().stream().max(Comparator.comparingInt(m -> (int) (m.getNotes().size() * m.getNotes().stream().mapToInt(Note::getNote).distinct().count()))).orElse(null);
+            primaryTrack = getTracks().stream().max(Comparator.comparingInt(m -> (int) (m.getNotes().size() * m.getNotes().stream().mapToInt(Note::getNote).distinct().count()))).orElse(DEFAULT.tracks.get(0));
         }
         return primaryTrack;
     }
