@@ -37,6 +37,21 @@ public interface Items {
         return register;
     }
 
+    /**
+     * Open method to create custom items, for addons
+     * @param namespace Your addon's namespace
+     * @param name Your addon's item name
+     * @param animator Your item's animator. Allows to define how the entity
+     *                 model should be animated when playing the instrument.
+     * @param sustain Determines the instrument's note sustain capacity.
+     *                Defines how many ticks can a note hold for the longest
+     *                with your custom instrument.
+     * @param hOffset Determines the horizontal offset from the player's location
+     *                of the position at which a note particle should be displayed
+     * @param vOffset Determines the vertical offset from the player's location
+     *                of the position at which a note particle should be displayed
+     * @return The registered item's provider
+     */
     static @Nullable Supplier<Item> register(@NotNull String namespace, @NotNull String name, Animator animator,
                                              long sustain, float hOffset, float vOffset) {
         Identifier identifier = new Identifier(namespace, name);
