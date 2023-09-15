@@ -1,5 +1,7 @@
 package immersive_melodies;
 
+import immersive_melodies.client.animation.ItemAnimators;
+import immersive_melodies.client.animation.animators.Animator;
 import immersive_melodies.cobalt.registration.Registration;
 import immersive_melodies.item.InstrumentItem;
 import net.minecraft.item.Item;
@@ -35,8 +37,8 @@ public interface Items {
         return register;
     }
 
-    static @Nullable Supplier<Item> register(@NotNull String namespace, @NotNull String name, long sustain,
-                                                    float hOffset, float vOffset) {
+    static @Nullable Supplier<Item> register(@NotNull String namespace, @NotNull String name, Animator animator,
+                                             long sustain, float hOffset, float vOffset) {
         Identifier identifier = Identifier.of(namespace, name);
         if (identifier == null) {
             return null;
@@ -45,6 +47,7 @@ public interface Items {
         Supplier<Item> itemSupplier = () -> new InstrumentItem(baseProps(), instrument, sustain, hOffset, vOffset);
         Supplier<Item> supplier = Registration.register(Registries.ITEM, identifier, itemSupplier);
         items.add(supplier);
+        ItemAnimators.register(identifier, animator);
         customInventoryModels.add(identifier);
         return supplier;
     }
