@@ -6,6 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -31,6 +33,17 @@ public interface Items {
         items.add(register);
         customInventoryModels.add(identifier);
         return register;
+    }
+
+    static @Nullable Supplier<Item> register(@NotNull String namespace, @NotNull String name, long sustain,
+                                                    float hOffset, float vOffset) {
+        Identifier identifier = new Identifier(namespace, name);
+        Sounds.Instrument instrument = new Sounds.Instrument(namespace, name);
+        Supplier<Item> itemSupplier = () -> new InstrumentItem(baseProps(), instrument, sustain, hOffset, vOffset);
+        Supplier<Item> supplier = Registration.register(Registry.ITEM, identifier, itemSupplier);
+        items.add(supplier);
+        customInventoryModels.add(identifier);
+        return supplier;
     }
 
     static void bootstrap() {
