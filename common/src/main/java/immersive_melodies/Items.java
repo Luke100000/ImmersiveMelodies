@@ -47,19 +47,39 @@ public interface Items {
      *                Defines how many ticks can a note hold for the longest
      *                with your custom instrument.
      * @param hOffset Determines the horizontal offset from the player's location
-     *                of the position at which a note particle should be displayed
+     *                of the position at which a note particle should be displayed.
      * @param vOffset Determines the vertical offset from the player's location
-     *                of the position at which a note particle should be displayed
-     * @return The registered item's provider
+     *                of the position at which a note particle should be displayed.
+     * @return The registered item's provider.
      */
     static @Nullable Supplier<Item> register(@NotNull String namespace, @NotNull String name, Animator animator,
+                                             long sustain, float hOffset, float vOffset) {
+        Identifier identifier = Identifier.of(namespace, name);
+        Supplier<Item> supplier = register(namespace, name, sustain, hOffset, vOffset);
+        ItemAnimators.register(identifier, animator);
+        return supplier;
+    }
+
+    /**
+     * Open method to create custom items, for addons.
+     * If using this method, make sure to also register an {@link Animator} for your item.
+     * @param namespace Your addon's namespace
+     * @param name Your addon's item name
+     * @param sustain Your item's animator. Allows to define how the entity
+     *                model should be animated when playing the instrument.
+     * @param hOffset Determines the horizontal offset from the player's location
+     *                of the position at which a note particle should be displayed.
+     * @param vOffset Determines the vertical offset from the player's location
+     *                of the position at which a note particle should be displayed.
+     * @return The registered item's provider.
+     */
+    static @Nullable Supplier<Item> register(@NotNull String namespace, @NotNull String name,
                                              long sustain, float hOffset, float vOffset) {
         Identifier identifier = Identifier.of(namespace, name);
         Sounds.Instrument instrument = new Sounds.Instrument(namespace, name);
         Supplier<Item> itemSupplier = () -> new InstrumentItem(baseProps(), instrument, sustain, hOffset, vOffset);
         Supplier<Item> supplier = Registration.register(Registry.ITEM, identifier, itemSupplier);
         items.add(supplier);
-        ItemAnimators.register(identifier, animator);
         customInventoryModels.add(identifier);
         return supplier;
     }
