@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "トライアングル",
   "item.immersive_melodies.trumpet": "トランペット",
   "immersive_melodies.playing": "プレー",
+  "immersive_melodies.error.empty": "ファイルを解析できません。",
   "immersive_melodies.close": "閉じる",
   "immersive_melodies.search": "検索",
   "immersive_melodies.favorite": "お気に入り",
