@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Треугольник",
   "item.immersive_melodies.trumpet": "Трубач",
   "immersive_melodies.playing": "Игра",
+  "immersive_melodies.error.empty": "Невозможно разобрать файл.",
   "immersive_melodies.close": "Закрыть",
   "immersive_melodies.search": "Поиск",
   "immersive_melodies.favorite": "Любимый",
