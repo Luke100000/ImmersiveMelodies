@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Triangel",
   "item.immersive_melodies.trumpet": "Trumpet",
   "immersive_melodies.playing": "Spelande",
+  "immersive_melodies.error.empty": "Kan inte analysera filen.",
   "immersive_melodies.close": "Nära",
   "immersive_melodies.search": "Sök på",
   "immersive_melodies.favorite": "Favorit",
