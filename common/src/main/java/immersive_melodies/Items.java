@@ -21,21 +21,13 @@ public interface Items {
     List<Supplier<Item>> items = new LinkedList<>();
     List<Identifier> customInventoryModels = new LinkedList<>();
 
-    Supplier<Item> BAGPIPE = register("bagpipe", () -> new InstrumentItem(baseProps(), Sounds.BAGPIPE, 200, 0.5f, 0.1f));
-    Supplier<Item> DIDGERIDOO = register("didgeridoo", () -> new InstrumentItem(baseProps(), Sounds.DIDGERIDOO, 200, 1.0f, -0.45f));
-    Supplier<Item> FLUTE = register("flute", () -> new InstrumentItem(baseProps(), Sounds.FLUTE, 100, 0.9f, 0.1f));
-    Supplier<Item> LUTE = register("lute", () -> new InstrumentItem(baseProps(), Sounds.LUTE, 200, 0.5f, 0.0f));
-    Supplier<Item> PIANO = register("piano", () -> new InstrumentItem(baseProps(), Sounds.PIANO, 300, 0.5f, 0.25f));
-    Supplier<Item> TRIANGLE = register("triangle", () -> new InstrumentItem(baseProps(), Sounds.TRIANGLE, 300, 0.6f, 0.0f));
-    Supplier<Item> TRUMPET = register("trumpet", () -> new InstrumentItem(baseProps(), Sounds.TRUMPET, 100, 1.4f, 0.2f));
-
-    static Supplier<Item> register(String name, Supplier<Item> item) {
-        Identifier identifier = Common.locate(name);
-        Supplier<Item> register = Registration.register(Registries.ITEM, identifier, item);
-        items.add(register);
-        customInventoryModels.add(identifier);
-        return register;
-    }
+    Supplier<Item> BAGPIPE = register(Common.MOD_ID, "bagpipe", 200, 0.5f, 0.1f);
+    Supplier<Item> DIDGERIDOO = register(Common.MOD_ID, "didgeridoo", 200, 1.0f, -0.45f);
+    Supplier<Item> FLUTE = register(Common.MOD_ID, "flute", 100, 0.9f, 0.1f);
+    Supplier<Item> LUTE = register(Common.MOD_ID, "lute", 200, 0.5f, 0.0f);
+    Supplier<Item> PIANO = register(Common.MOD_ID, "piano", 300, 0.5f, 0.25f);
+    Supplier<Item> TRIANGLE = register(Common.MOD_ID, "triangle", 300, 0.6f, 0.0f);
+    Supplier<Item> TRUMPET = register(Common.MOD_ID, "trumpet", 100, 1.4f, 0.2f);
 
     /**
      * Open method to create custom items, for addons

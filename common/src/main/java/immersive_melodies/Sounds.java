@@ -10,14 +10,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class Sounds {
-    public static final Instrument BAGPIPE = new Instrument("bagpipe");
-    public static final Instrument DIDGERIDOO = new Instrument("didgeridoo");
-    public static final Instrument FLUTE = new Instrument("flute");
-    public static final Instrument LUTE = new Instrument("lute");
-    public static final Instrument PIANO = new Instrument("piano");
-    public static final Instrument TRIANGLE = new Instrument("triangle");
-    public static final Instrument TRUMPET = new Instrument("trumpet");
-
     static Supplier<SoundEvent> register(String namespace, String path) {
         Identifier id = Identifier.of(namespace, path);
         return Registration.register(Registries.SOUND_EVENT, id, () -> SoundEvent.of(id));
@@ -29,10 +21,6 @@ public class Sounds {
 
     public static class Instrument {
         List<Supplier<SoundEvent>> octaves = new LinkedList<>();
-
-        public Instrument(String name) {
-            this(Common.MOD_ID, name);
-        }
 
         public Instrument(String namespace, String name) {
             for (int octave = 1; octave <= 8; octave++) {
