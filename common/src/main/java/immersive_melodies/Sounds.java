@@ -10,14 +10,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class Sounds {
-    public static final Instrument BAGPIPE = new Instrument("bagpipe");
-    public static final Instrument DIDGERIDOO = new Instrument("didgeridoo");
-    public static final Instrument FLUTE = new Instrument("flute");
-    public static final Instrument LUTE = new Instrument("lute");
-    public static final Instrument PIANO = new Instrument("piano");
-    public static final Instrument TRIANGLE = new Instrument("triangle");
-    public static final Instrument TRUMPET = new Instrument("trumpet");
-
     static Supplier<SoundEvent> register(String namespace, String path) {
         Identifier id = new Identifier(namespace, path);
         return Registration.register(Registry.SOUND_EVENT, id, () -> new SoundEvent(id));

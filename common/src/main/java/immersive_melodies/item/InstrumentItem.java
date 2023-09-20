@@ -25,6 +25,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,16 +35,14 @@ public class InstrumentItem extends Item {
     private final Sounds.Instrument sound;
     private final long sustain;
 
-    private final double horizontalOffset;
-    private final double verticalOffset;
+    private final Vec3f offset;
 
-    public InstrumentItem(Settings settings, Sounds.Instrument sound, long sustain, float horizontalOffset, float verticalOffset) {
+    public InstrumentItem(Settings settings, Sounds.Instrument sound, long sustain, Vec3f offset) {
         super(settings);
 
         this.sound = sound;
         this.sustain = sustain;
-        this.horizontalOffset = horizontalOffset;
-        this.verticalOffset = verticalOffset;
+        this.offset = offset;
     }
 
     @Override
@@ -124,7 +123,7 @@ public class InstrumentItem extends Item {
                         double x = Math.sin(-livingEntity.bodyYaw / 180.0 * Math.PI);
                         double z = Math.cos(-livingEntity.bodyYaw / 180.0 * Math.PI);
                         world.addParticle(ParticleTypes.NOTE,
-                                entity.getX() + x * horizontalOffset, entity.getY() + entity.getHeight() / 2.0 + verticalOffset, entity.getZ() + z * horizontalOffset,
+                                entity.getX() + x * offset.getZ() + z * offset.getX(), entity.getY() + entity.getHeight() / 2.0 + offset.getY(), entity.getZ() + z * offset.getZ() - x * offset.getX(),
                                 x * 5.0, 0.0, z * 5.0);
                     }
 
