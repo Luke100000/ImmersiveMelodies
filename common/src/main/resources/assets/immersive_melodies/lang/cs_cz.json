@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Trojúhelník",
   "item.immersive_melodies.trumpet": "Trubka",
   "immersive_melodies.playing": "Přehrávání",
+  "immersive_melodies.error.empty": "Soubor nelze analyzovat.",
   "immersive_melodies.close": "Zavřít",
   "immersive_melodies.search": "Vyhledávání",
   "immersive_melodies.favorite": "Oblíbené stránky",
