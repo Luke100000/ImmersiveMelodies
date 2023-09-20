@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Trikotnik",
   "item.immersive_melodies.trumpet": "Trobenta",
   "immersive_melodies.playing": "Igranje",
+  "immersive_melodies.error.empty": "Datoteke ni mogoče razčleniti.",
   "immersive_melodies.close": "Zapri",
   "immersive_melodies.search": "Iskanje",
   "immersive_melodies.favorite": "Najljubši",
