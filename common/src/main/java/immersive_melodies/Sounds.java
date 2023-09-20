@@ -18,8 +18,8 @@ public class Sounds {
     public static final Instrument TRIANGLE = new Instrument("triangle");
     public static final Instrument TRUMPET = new Instrument("trumpet");
 
-    static Supplier<SoundEvent> register(String path) {
-        Identifier id = Common.locate(path);
+    static Supplier<SoundEvent> register(String namespace, String path) {
+        Identifier id = new Identifier(namespace, path);
         return Registration.register(Registry.SOUND_EVENT, id, () -> new SoundEvent(id));
     }
 
@@ -31,8 +31,12 @@ public class Sounds {
         List<Supplier<SoundEvent>> octaves = new LinkedList<>();
 
         public Instrument(String name) {
+            this(Common.MOD_ID, name);
+        }
+
+        public Instrument(String namespace, String name) {
             for (int octave = 1; octave <= 8; octave++) {
-                octaves.add(register(name + ".c" + octave));
+                octaves.add(register(namespace, name + ".c" + octave));
             }
         }
 
