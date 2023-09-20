@@ -42,6 +42,16 @@ public class ImmersiveMelodiesScreen extends Screen {
     private MelodyListWidget list;
     private TextFieldWidget search;
 
+    private Text error;
+    private long lastError;
+
+    private void setError(Text error) {
+        this.error = error;
+        this.lastError = System.currentTimeMillis();
+        this.search.setText("");
+        this.search.setSuggestion(null);
+    }
+
     @Nullable
     private Identifier selected = null;
 
@@ -61,6 +71,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         this.search.setChangedListener(a -> {
             this.refreshPage();
             this.search.setSuggestion(null);
+            this.list.setScrollAmount(0);
         });
         this.search.setDrawsBackground(false);
         this.search.setEditableColor(0x808080);
@@ -102,6 +113,7 @@ public class ImmersiveMelodiesScreen extends Screen {
                             parseMidi(name, inputStream);
                         } catch (Exception e) {
                             e.printStackTrace();
+                            setError(Text.translatable("immersive_melodies.error.empty"));
                         }
                     });
                 }
@@ -113,9 +125,13 @@ public class ImmersiveMelodiesScreen extends Screen {
 
     private void parseMidi(String name, InputStream inputStream) {
         Melody melody = MidiParser.parseMidi(inputStream, name);
-        PacketSplitter.sendToServer(name, melody);
-        search.setText(name);
-        list.setScrollAmount(0);
+        if (!melody.getTracks().isEmpty()) {
+            PacketSplitter.sendToServer(name, melody);
+            search.setText(name);
+            list.setScrollAmount(0);
+        } else {
+            setError(Text.translatable("immersive_melodies.error.empty"));
+        }
     }
 
     @Override
@@ -128,8 +144,14 @@ public class ImmersiveMelodiesScreen extends Screen {
         RenderSystem.setShaderTexture(0, BACKGROUND_TEXTURE);
         drawTexture(matrices, x, y, 0, 0, 192, 215);
 
+        // Print help for noobs
         if (!Config.getInstance().clickedHelp) {
             renderTooltip(matrices, Text.translatable("immersive_melodies.read"), width / 2 + 55, height / 2 + 69 + 17);
+        }
+
+        // Print error
+        if (error != null && System.currentTimeMillis() - lastError < 5000) {
+            drawCenteredTextWithShadow(matrices, textRenderer, error, width / 2, this.height / 2 - 103, 0xFF0000);
         }
 
         super.render(matrices, mouseX, mouseY, delta);
@@ -146,8 +168,8 @@ public class ImmersiveMelodiesScreen extends Screen {
         for (Map.Entry<Identifier, MelodyDescriptor> entry : ClientMelodyManager.getMelodiesList().entrySet().stream()
                 .filter(e -> this.search.getText().isEmpty() || e.getValue().getName().toLowerCase(Locale.ROOT).contains(this.search.getText().toLowerCase(Locale.ROOT)))
                 .sorted((a, b) -> {
-                    int primarySortA = Utils.ownsMelody(a.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(a.getKey()) ? 0 : 1;
-                    int primarySortB = Utils.ownsMelody(b.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(b.getKey()) ? 0 : 1;
+                    int primarySortA = getSortIndex(a);
+                    int primarySortB = getSortIndex(b);
                     if (primarySortA != primarySortB) {
                         return primarySortB - primarySortA;
                     } else {
@@ -204,6 +226,10 @@ public class ImmersiveMelodiesScreen extends Screen {
                 Config.getInstance().save();
             }
         }, () -> List.of(Text.translatable("immersive_melodies.help").asOrderedText())));
+    }
+
+    private static int getSortIndex(Map.Entry<Identifier, MelodyDescriptor> entry) {
+        return Utils.ownsMelody(entry.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(entry.getKey()) ? 0 : 1;
     }
 
     public TextRenderer getTextRenderer() {

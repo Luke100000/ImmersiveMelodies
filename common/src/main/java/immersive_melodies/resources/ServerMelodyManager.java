@@ -28,7 +28,7 @@ public class ServerMelodyManager {
     }
 
     private static File getFile(String id) {
-        File file = new File(directory, id + ".bin");
+        File file = new File(directory, id.replace(":", "/") + ".bin");
         //noinspection ResultOfMethodCallIgnored
         file.getParentFile().mkdirs();
         return file;
