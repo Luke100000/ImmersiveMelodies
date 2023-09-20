@@ -143,8 +143,8 @@ public class ImmersiveMelodiesScreen extends Screen {
         for (Map.Entry<Identifier, MelodyDescriptor> entry : ClientMelodyManager.getMelodiesList().entrySet().stream()
                 .filter(e -> this.search.getText().isEmpty() || e.getValue().getName().toLowerCase(Locale.ROOT).contains(this.search.getText().toLowerCase(Locale.ROOT)))
                 .sorted((a, b) -> {
-                    int primarySortA = Utils.ownsMelody(a.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(a.getKey()) ? 0 : 1;
-                    int primarySortB = Utils.ownsMelody(b.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(b.getKey()) ? 0 : 1;
+                    int primarySortA = getSortIndex(a);
+                    int primarySortB = getSortIndex(b);
                     if (primarySortA != primarySortB) {
                         return primarySortB - primarySortA;
                     } else {
@@ -201,6 +201,10 @@ public class ImmersiveMelodiesScreen extends Screen {
                 Config.getInstance().save();
             }
         }, () -> List.of(Text.translatable("immersive_melodies.help").asOrderedText())));
+    }
+
+    private static int getSortIndex(Map.Entry<Identifier, MelodyDescriptor> entry) {
+        return Utils.ownsMelody(entry.getKey(), MinecraftClient.getInstance().player) ? 2 : Utils.isPlayerMelody(entry.getKey()) ? 0 : 1;
     }
 
     public TextRenderer getTextRenderer() {
