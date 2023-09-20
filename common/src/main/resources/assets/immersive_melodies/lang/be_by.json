@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Triangle",
   "item.immersive_melodies.trumpet": "Trumpet",
   "immersive_melodies.playing": "Playing",
+  "immersive_melodies.error.empty": "Cannot parse the file.",
   "immersive_melodies.close": "Закрыць",
   "immersive_melodies.search": "Пошук",
   "immersive_melodies.favorite": "Favorite",
