@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Triangle",
   "item.immersive_melodies.trumpet": "Trompette",
   "immersive_melodies.playing": "Jouer",
+  "immersive_melodies.error.empty": "Impossible d'analyser le fichier.",
   "immersive_melodies.close": "Fermer",
   "immersive_melodies.search": "Recherche",
   "immersive_melodies.favorite": "Favoris",
