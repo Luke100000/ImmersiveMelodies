@@ -41,6 +41,16 @@ public class ImmersiveMelodiesScreen extends Screen {
     private MelodyListWidget list;
     private TextFieldWidget search;
 
+    private Text error;
+    private long lastError;
+
+    private void setError(Text error) {
+        this.error = error;
+        this.lastError = System.currentTimeMillis();
+        this.search.setText("");
+        this.search.setSuggestion(null);
+    }
+
     @Nullable
     private Identifier selected = null;
 
@@ -60,6 +70,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         this.search.setChangedListener(a -> {
             this.refreshPage();
             this.search.setSuggestion(null);
+            this.list.setScrollAmount(0);
         });
         this.search.setDrawsBackground(false);
         this.search.setEditableColor(0x808080);
@@ -101,6 +112,7 @@ public class ImmersiveMelodiesScreen extends Screen {
                             parseMidi(name, inputStream);
                         } catch (Exception e) {
                             e.printStackTrace();
+                            setError(Text.translatable("immersive_melodies.error.empty"));
                         }
                     });
                 }
@@ -112,9 +124,13 @@ public class ImmersiveMelodiesScreen extends Screen {
 
     private void parseMidi(String name, InputStream inputStream) {
         Melody melody = MidiParser.parseMidi(inputStream, name);
-        PacketSplitter.sendToServer(name, melody);
-        search.setText(name);
-        list.setScrollAmount(0);
+        if (!melody.getTracks().isEmpty()) {
+            PacketSplitter.sendToServer(name, melody);
+            search.setText(name);
+            list.setScrollAmount(0);
+        } else {
+            setError(Text.translatable("immersive_melodies.error.empty"));
+        }
     }
 
     @Override
@@ -125,8 +141,14 @@ public class ImmersiveMelodiesScreen extends Screen {
         int y = (this.height - 230) / 2;
         context.drawTexture(BACKGROUND_TEXTURE, x, y, 0, 0, 192, 215);
 
+        // Print help for noobs
         if (!Config.getInstance().clickedHelp) {
             context.drawTooltip(textRenderer, Text.translatable("immersive_melodies.read"), width / 2 + 55, height / 2 + 69 + 17);
+        }
+
+        // Print error
+        if (error != null && System.currentTimeMillis() - lastError < 5000) {
+            context.drawCenteredTextWithShadow(textRenderer, error, width / 2, this.height / 2 - 103, 0xFF0000);
         }
 
         super.render(context, mouseX, mouseY, delta);
