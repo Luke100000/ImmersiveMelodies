@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Трикутник",
   "item.immersive_melodies.trumpet": "Труба",
   "immersive_melodies.playing": "Грає",
+  "immersive_melodies.error.empty": "Не вдається розібрати файл.",
   "immersive_melodies.close": "Закрити",
   "immersive_melodies.search": "Пошук",
   "immersive_melodies.favorite": "Улюбленець",

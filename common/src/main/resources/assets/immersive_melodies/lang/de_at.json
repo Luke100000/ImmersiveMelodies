@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Dreieck",
   "item.immersive_melodies.trumpet": "Trompete",
   "immersive_melodies.playing": "Spielen",
+  "immersive_melodies.error.empty": "Die Datei kann nicht geparst werden.",
   "immersive_melodies.close": "Schließen",
   "immersive_melodies.search": "Suche",
   "immersive_melodies.favorite": "Favorit",

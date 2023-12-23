@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Trīsstūris",
   "item.immersive_melodies.trumpet": "Trompete",
   "immersive_melodies.playing": "Spēlējot",
+  "immersive_melodies.error.empty": "Failu nav iespējams analizēt.",
   "immersive_melodies.close": "Aizvērt",
   "immersive_melodies.search": "Meklēšana",
   "immersive_melodies.favorite": "Iecienītākais",

@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Driehoek",
   "item.immersive_melodies.trumpet": "Trompet",
   "immersive_melodies.playing": "Spelen",
+  "immersive_melodies.error.empty": "Kan het bestand niet ontleden.",
   "immersive_melodies.close": "Sluit",
   "immersive_melodies.search": "Zoek",
   "immersive_melodies.favorite": "Favoriet",

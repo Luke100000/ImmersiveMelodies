@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Háromszög",
   "item.immersive_melodies.trumpet": "Trombita",
   "immersive_melodies.playing": "Játék",
+  "immersive_melodies.error.empty": "Nem tudja elemezni a fájlt.",
   "immersive_melodies.close": "Zárja be a",
   "immersive_melodies.search": "Keresés",
   "immersive_melodies.favorite": "Kedvenc",

@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "트라이앵글",
   "item.immersive_melodies.trumpet": "트럼펫",
   "immersive_melodies.playing": "재생",
+  "immersive_melodies.error.empty": "파일을 구문 분석할 수 없습니다.",
   "immersive_melodies.close": "닫기",
   "immersive_melodies.search": "검색",
   "immersive_melodies.favorite": "즐겨찾기",

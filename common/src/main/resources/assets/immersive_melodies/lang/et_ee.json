@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Kolmnurk",
   "item.immersive_melodies.trumpet": "Trompet",
   "immersive_melodies.playing": "Mängimine",
+  "immersive_melodies.error.empty": "Faili ei saa analüüsida.",
   "immersive_melodies.close": "Sulge",
   "immersive_melodies.search": "Otsi",
   "immersive_melodies.favorite": "Lemmik",

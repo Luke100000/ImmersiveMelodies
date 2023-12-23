@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Trojuholník",
   "item.immersive_melodies.trumpet": "Trúbka",
   "immersive_melodies.playing": "Hranie na",
+  "immersive_melodies.error.empty": "Nemožno analyzovať súbor.",
   "immersive_melodies.close": "Zatvoriť",
   "immersive_melodies.search": "Vyhľadávanie",
   "immersive_melodies.favorite": "Obľúbené stránky",

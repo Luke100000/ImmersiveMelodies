@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Τρίγωνο",
   "item.immersive_melodies.trumpet": "Τρομπέτα",
   "immersive_melodies.playing": "Παίζοντας",
+  "immersive_melodies.error.empty": "Δεν είναι δυνατή η ανάλυση του αρχείου.",
   "immersive_melodies.close": "Κλείστε το",
   "immersive_melodies.search": "Αναζήτηση",
   "immersive_melodies.favorite": "Αγαπημένο",

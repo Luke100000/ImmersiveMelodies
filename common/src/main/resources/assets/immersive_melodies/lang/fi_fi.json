@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Kolmio",
   "item.immersive_melodies.trumpet": "Trumpetti",
   "immersive_melodies.playing": "Pelaaminen",
+  "immersive_melodies.error.empty": "Tiedostoa ei voida analysoida.",
   "immersive_melodies.close": "Sulje",
   "immersive_melodies.search": "Etsi",
   "immersive_melodies.favorite": "Suosikki",

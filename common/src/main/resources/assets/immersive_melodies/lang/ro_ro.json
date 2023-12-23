@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Triunghi",
   "item.immersive_melodies.trumpet": "Trompetă",
   "immersive_melodies.playing": "Joc",
+  "immersive_melodies.error.empty": "Nu se poate analiza fișierul.",
   "immersive_melodies.close": "Închideți",
   "immersive_melodies.search": "Căutare",
   "immersive_melodies.favorite": "Favorit",
