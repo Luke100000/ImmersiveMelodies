@@ -6,16 +6,16 @@
   "item.immersive_melodies.lute": "Лютня",
   "item.immersive_melodies.piano": "Пианино",
   "item.immersive_melodies.triangle": "Треугольник",
-  "item.immersive_melodies.trumpet": "Трубач",
-  "immersive_melodies.playing": "Игра",
+  "item.immersive_melodies.trumpet": "Труба",
+  "immersive_melodies.playing": "Играет",
   "immersive_melodies.error.empty": "Невозможно разобрать файл.",
   "immersive_melodies.close": "Закрыть",
   "immersive_melodies.search": "Поиск",
-  "immersive_melodies.favorite": "Любимый",
-  "immersive_melodies.remove_favorite": "Remove Favorite",
+  "immersive_melodies.favorite": "Избранное",
+  "immersive_melodies.remove_favorite": "Убрать избранное",
   "immersive_melodies.delete": "Удалить",
   "immersive_melodies.play": "Играть",
-  "immersive_melodies.help": "Открытая помощь",
+  "immersive_melodies.help": "Открыть помощь",
   "immersive_melodies.pause": "Пауза",
-  "immersive_melodies.read": "Нажми, чтобы узнать, как загрузить!"
+  "immersive_melodies.read": "Нажмите, чтобы узнать, как добавлять мелодии!"
 }
