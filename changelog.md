@@ -1,3 +1,9 @@
+# 0.1.0
+
+* Added plugin API (thanks NerjalNosk!)
+* Fixed midis upload not working on Windows
+* Added error message when file cannot be parsed
+
 # 0.0.5
 
 * Fixed some crashes
