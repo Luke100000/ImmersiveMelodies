@@ -1,5 +1,5 @@
 {
-  "itemGroup.immersive_melodies.immersive_melodies_tab": "Иммерсивные мелодии",
+  "itemGroup.immersive_melodies.immersive_melodies_tab": "Захватывающие Мелодии",
   "item.immersive_melodies.bagpipe": "Волынка",
   "item.immersive_melodies.didgeridoo": "Диджериду",
   "item.immersive_melodies.flute": "Флейта",
@@ -13,11 +13,11 @@
   "immersive_melodies.close": "Закрыть",
   "immersive_melodies.search": "Поиск",
   "immersive_melodies.favorite": "Избранное",
-  "immersive_melodies.remove_favorite": "Убрать избранное",
+  "immersive_melodies.remove_favorite": "Удалить избранное",
   "immersive_melodies.delete": "Удалить",
   "immersive_melodies.play": "Играть",
-  "immersive_melodies.tracks": "Трек-лист",
-  "immersive_melodies.help": "Открыть помощь",
+  "immersive_melodies.tracks": "Список композиций",
+  "immersive_melodies.help": "Открыть справку",
   "immersive_melodies.pause": "Пауза",
   "immersive_melodies.read": "Нажмите, чтобы узнать, как добавлять мелодии!"
 }
