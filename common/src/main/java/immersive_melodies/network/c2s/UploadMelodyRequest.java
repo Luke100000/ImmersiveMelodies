@@ -1,5 +1,6 @@
 package immersive_melodies.network.c2s;
 
+import immersive_melodies.Config;
 import immersive_melodies.cobalt.network.NetworkHandler;
 import immersive_melodies.network.FragmentedMessage;
 import immersive_melodies.network.PacketSplitter;
@@ -10,6 +11,7 @@ import immersive_melodies.util.Utils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class UploadMelodyRequest extends FragmentedMessage {
@@ -23,6 +25,10 @@ public class UploadMelodyRequest extends FragmentedMessage {
 
     @Override
     protected void finish(PlayerEntity e, String name, Melody melody) {
+        if (Config.getInstance().disableUpload) {
+            e.sendMessage(Text.translatable("immersive_melodies.error.upload.no_permission"));
+            return;
+        }
         String id = Utils.getPlayerName(e) + "/" + Utils.escapeString(name);
         Identifier identifier = new Identifier("player", id);
 

@@ -16,5 +16,6 @@
   "immersive_melodies.play": "Suona",
   "immersive_melodies.help": "Apri help",
   "immersive_melodies.pause": "Pausa",
-  "immersive_melodies.read": "Clicca per sapere come caricare!"
+  "immersive_melodies.read": "Clicca per sapere come caricare!",
+  "immersive_melodies.error.upload.no_permission": "Non hai il permesso per caricare file!"
 }
