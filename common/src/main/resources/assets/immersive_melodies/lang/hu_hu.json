@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "Apró dob",
   "immersive_melodies.playing": "Játék",
   "immersive_melodies.error.empty": "Nem tudja elemezni a fájlt.",
+  "immersive_melodies.error.unknown_file_type": ".abc vagy .midi fájlnak kell lennie.",
+  "immersive_melodies.error.upload.no_permission": "Nincs jogosultsága fájlok feltöltéséhez!",
   "immersive_melodies.close": "Zárja be a",
   "immersive_melodies.search": "Keresés",
   "immersive_melodies.favorite": "Kedvenc",
