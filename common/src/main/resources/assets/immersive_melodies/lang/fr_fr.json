@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "Tambour minuscule",
   "immersive_melodies.playing": "Jouer",
   "immersive_melodies.error.empty": "Impossible d'analyser le fichier.",
+  "immersive_melodies.error.unknown_file_type": "Il doit s'agir d'un fichier .abc ou .midi.",
+  "immersive_melodies.error.upload.no_permission": "Tu n'as pas la permission de télécharger des fichiers !",
   "immersive_melodies.close": "Fermer",
   "immersive_melodies.search": "Recherche",
   "immersive_melodies.favorite": "Favoris",
