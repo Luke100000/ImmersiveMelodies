@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "Drobný Buben",
   "immersive_melodies.playing": "Přehrávání",
   "immersive_melodies.error.empty": "Soubor nelze analyzovat.",
+  "immersive_melodies.error.unknown_file_type": "Musí to být soubor .abc nebo .midi.",
+  "immersive_melodies.error.upload.no_permission": "Nemáte oprávnění k nahrávání souborů!",
   "immersive_melodies.close": "Zavřít",
   "immersive_melodies.search": "Vyhledávání",
   "immersive_melodies.favorite": "Oblíbené",
