@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "Minik Davul",
   "immersive_melodies.playing": "Oynamak",
   "immersive_melodies.error.empty": "Dosya ayrıştırılamıyor.",
+  "immersive_melodies.error.unknown_file_type": "Bir .abc veya .midi dosyası olması gerekir.",
+  "immersive_melodies.error.upload.no_permission": "Dosya yüklemek için izniniz yok!",
   "immersive_melodies.close": "Kapat",
   "immersive_melodies.search": "Arama",
   "immersive_melodies.favorite": "Favori",
