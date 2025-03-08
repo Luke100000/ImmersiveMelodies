@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "Droben boben",
   "immersive_melodies.playing": "Igranje",
   "immersive_melodies.error.empty": "Datoteke ni mogoče razčleniti.",
+  "immersive_melodies.error.unknown_file_type": "To mora biti datoteka .abc ali .midi.",
+  "immersive_melodies.error.upload.no_permission": "Nimate dovoljenja za nalaganje datotek!",
   "immersive_melodies.close": "Zapri",
   "immersive_melodies.search": "Iskanje",
   "immersive_melodies.favorite": "Najljubši",
