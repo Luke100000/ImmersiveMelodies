@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "Крошечный барабан",
   "immersive_melodies.playing": "Играет",
   "immersive_melodies.error.empty": "Невозможно разобрать файл.",
+  "immersive_melodies.error.unknown_file_type": "Это должен быть файл в формате .abc или .midi.",
+  "immersive_melodies.error.upload.no_permission": "У тебя нет разрешения на загрузку файлов!",
   "immersive_melodies.close": "Закрыть",
   "immersive_melodies.search": "Поиск",
   "immersive_melodies.favorite": "Избранное",
