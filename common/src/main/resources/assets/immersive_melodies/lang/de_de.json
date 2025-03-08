@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "Winzige Trommel",
   "immersive_melodies.playing": "Spielt gerade",
   "immersive_melodies.error.empty": "Die Datei kann nicht geparst werden.",
+  "immersive_melodies.error.unknown_file_type": "Es muss eine .abc oder .midi Datei sein.",
+  "immersive_melodies.error.upload.no_permission": "Du hast nicht die Erlaubnis, Dateien hochzuladen!",
   "immersive_melodies.close": "Schließen",
   "immersive_melodies.search": "Suchen",
   "immersive_melodies.favorite": "Favorit",
