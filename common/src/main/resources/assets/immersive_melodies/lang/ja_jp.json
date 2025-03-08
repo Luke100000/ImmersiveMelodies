@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "タイニー・ドラム",
   "immersive_melodies.playing": "プレー",
   "immersive_melodies.error.empty": "ファイルを解析できません。",
+  "immersive_melodies.error.unknown_file_type": ".abcまたは.midiファイルが必要です。",
+  "immersive_melodies.error.upload.no_permission": "ファイルをアップロードする権限がありません！",
   "immersive_melodies.close": "閉じる",
   "immersive_melodies.search": "検索",
   "immersive_melodies.favorite": "お気に入り",
