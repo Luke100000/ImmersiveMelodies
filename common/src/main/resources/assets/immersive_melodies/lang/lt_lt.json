@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "Mažytis būgnelis",
   "immersive_melodies.playing": "Žaidimas",
   "immersive_melodies.error.empty": "Nepavyksta analizuoti failo.",
+  "immersive_melodies.error.unknown_file_type": "Turi būti .abc arba .midi failas.",
+  "immersive_melodies.error.upload.no_permission": "Jūs neturite leidimo įkelti failus!",
   "immersive_melodies.close": "Uždaryti",
   "immersive_melodies.search": "Paieška",
   "immersive_melodies.favorite": "Mėgstamiausias",
