@@ -10,6 +10,8 @@
   "item.immersive_melodies.tiny_drum": "Tiny Drum",
   "immersive_melodies.playing": "Playing",
   "immersive_melodies.error.empty": "Cannot parse the file.",
+  "immersive_melodies.error.unknown_file_type": "需要是 .abc 或 .midi 檔案。",
+  "immersive_melodies.error.upload.no_permission": "您沒有上傳檔案的權限！",
   "immersive_melodies.close": "Close",
   "immersive_melodies.search": "Search",
   "immersive_melodies.favorite": "Favorite",
