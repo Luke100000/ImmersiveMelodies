@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Triangel",
   "item.immersive_melodies.trumpet": "Trumpet",
   "item.immersive_melodies.tiny_drum": "Liten trumma",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "Spelande",
   "immersive_melodies.error.empty": "Kan inte analysera filen.",
   "immersive_melodies.error.unknown_file_type": "Måste vara en .abc- eller .midi-fil.",
