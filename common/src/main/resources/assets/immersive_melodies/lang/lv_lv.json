@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Trīsstūris",
   "item.immersive_melodies.trumpet": "Trompete",
   "item.immersive_melodies.tiny_drum": "Tiny Drum",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "Spēlējot",
   "immersive_melodies.error.empty": "Failu nav iespējams analizēt.",
   "immersive_melodies.error.unknown_file_type": "Nepieciešams .abc vai .midi fails.",
