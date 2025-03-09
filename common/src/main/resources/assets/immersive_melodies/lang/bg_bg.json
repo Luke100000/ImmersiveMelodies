@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Триъгълник",
   "item.immersive_melodies.trumpet": "Тромпет",
   "item.immersive_melodies.tiny_drum": "Малък барабан",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "Играе",
   "immersive_melodies.error.empty": "Не може да анализира файла.",
   "immersive_melodies.error.unknown_file_type": "Трябва да бъде .abc или .midi файл.",
