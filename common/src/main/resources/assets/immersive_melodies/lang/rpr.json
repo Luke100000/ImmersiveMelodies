@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Треугольник",
   "item.immersive_melodies.trumpet": "Трубач",
   "item.immersive_melodies.tiny_drum": "Крошечный барабан",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "Игра",
   "immersive_melodies.error.empty": "Невозможно разобрать файл.",
   "immersive_melodies.error.unknown_file_type": "Needs to be a .abc or .midi file.",
