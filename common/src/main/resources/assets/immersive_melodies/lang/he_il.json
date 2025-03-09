@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "משולש",
   "item.immersive_melodies.trumpet": "חצוצרה",
   "item.immersive_melodies.tiny_drum": "Tiny Drum",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "מנגן",
   "immersive_melodies.error.empty": "אין יכולת לנתח את הקובץ הזה.",
   "immersive_melodies.error.unknown_file_type": "Needs to be a .abc or .midi file.",
