@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Triangel",
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Kleine trommel",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "Spelen",
   "immersive_melodies.error.empty": "Kan het bestand niet ontleden.",
   "immersive_melodies.error.unknown_file_type": "Moet een .abc of .midi bestand zijn.",
