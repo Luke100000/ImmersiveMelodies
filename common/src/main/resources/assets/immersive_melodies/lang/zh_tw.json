@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "三角鐵",
   "item.immersive_melodies.trumpet": "喇叭",
   "item.immersive_melodies.tiny_drum": "小鼓",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "正在播放",
   "immersive_melodies.error.empty": "無法解析音檔",
   "immersive_melodies.error.unknown_file_type": "需要是 .abc 或 .midi 檔案。",
