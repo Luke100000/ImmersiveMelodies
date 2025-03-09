@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Trójkąt",
   "item.immersive_melodies.trumpet": "Trąbka",
   "item.immersive_melodies.tiny_drum": "Tiny Drum",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "Granie",
   "immersive_melodies.error.empty": "Nie można przeanalizować pliku.",
   "immersive_melodies.error.unknown_file_type": "Musi to być plik .abc lub .midi.",
