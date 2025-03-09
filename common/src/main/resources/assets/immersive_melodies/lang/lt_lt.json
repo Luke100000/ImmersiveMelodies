@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Trikampis",
   "item.immersive_melodies.trumpet": "Trimitas",
   "item.immersive_melodies.tiny_drum": "Mažytis būgnelis",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "Žaidimas",
   "immersive_melodies.error.empty": "Nepavyksta analizuoti failo.",
   "immersive_melodies.error.unknown_file_type": "Turi būti .abc arba .midi failas.",
