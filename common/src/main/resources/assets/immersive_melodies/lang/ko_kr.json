@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "트라이앵글",
   "item.immersive_melodies.trumpet": "트럼펫",
   "item.immersive_melodies.tiny_drum": "작은 드럼",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "재생",
   "immersive_melodies.error.empty": "파일을 구문 분석할 수 없습니다.",
   "immersive_melodies.error.unknown_file_type": ".abc 또는 .midi 파일이어야 합니다.",
