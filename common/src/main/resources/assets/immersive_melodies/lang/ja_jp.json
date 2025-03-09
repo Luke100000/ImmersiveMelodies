@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "トライアングル",
   "item.immersive_melodies.trumpet": "トランペット",
   "item.immersive_melodies.tiny_drum": "タイニー・ドラム",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "プレー",
   "immersive_melodies.error.empty": "ファイルを解析できません。",
   "immersive_melodies.error.unknown_file_type": ".abcまたは.midiファイルが必要です。",
