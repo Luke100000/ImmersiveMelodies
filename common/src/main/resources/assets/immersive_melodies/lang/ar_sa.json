@@ -8,6 +8,7 @@
   "item.immersive_melodies.triangle": "Triangle",
   "item.immersive_melodies.trumpet": "Trumpet",
   "item.immersive_melodies.tiny_drum": "طبلة صغيرة",
+  "item.immersive_melodies.vielle": "Vielle",
   "immersive_melodies.playing": "Playing",
   "immersive_melodies.error.empty": "Cannot parse the file.",
   "immersive_melodies.error.unknown_file_type": "Needs to be a .abc or .midi file.",
