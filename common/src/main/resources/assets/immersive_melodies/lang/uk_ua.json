@@ -8,7 +8,7 @@
   "item.immersive_melodies.triangle": "Трикутник",
   "item.immersive_melodies.trumpet": "Труба",
   "item.immersive_melodies.tiny_drum": "Маленький барабан",
-  "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.vielle": "Вієль.",
   "immersive_melodies.playing": "Грає",
   "immersive_melodies.error.empty": "Не вдається розібрати файл.",
   "immersive_melodies.error.unknown_file_type": "Це має бути файл у форматі .abc або .midi.",
