@@ -8,7 +8,7 @@
   "item.immersive_melodies.triangle": "Dreieck",
   "item.immersive_melodies.trumpet": "Trompete",
   "item.immersive_melodies.tiny_drum": "Winzige Trommel",
-  "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.vielle": "Fiedel",
   "immersive_melodies.playing": "Spielen",
   "immersive_melodies.error.empty": "Die Datei kann nicht geparst werden.",
   "immersive_melodies.error.unknown_file_type": "Needs to be a .abc or .midi file.",
