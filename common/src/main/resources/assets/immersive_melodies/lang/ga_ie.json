@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompur",
   "item.immersive_melodies.tiny_drum": "Píomh beag",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Bass Ender",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Ag Seinn",
   "immersive_melodies.error.empty": "Ní féidir an comhad a parseáil.",
   "immersive_melodies.error.unknown_file_type": "Caithfidh sé a bheith ina chomhad .abc nó .midi.",
   "immersive_melodies.error.upload.no_permission": "Níl cead agat comhoibrithe a uaslódáil!",
+  "immersive_melodies.free_playing": "Úsáid do chléiriún chun nótaí a sheinn!",
   "immersive_melodies.close": "Dún",
   "immersive_melodies.search": "Cuardaigh",
   "immersive_melodies.favorite": "Is Fearr",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Liosta Rian",
   "immersive_melodies.help": "Oscail cabhair",
   "immersive_melodies.pause": "Sosuigh",
-  "immersive_melodies.read": "Cliceáil chun foghlaim conas a uaslódáil!"
+  "immersive_melodies.read": "Cliceáil chun foghlaim conas a uaslódáil!",
+  "immersive_melodies.keyboard": "Seinn le do chléiriún!"
 }
