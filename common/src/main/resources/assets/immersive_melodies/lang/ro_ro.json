@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompetă",
   "item.immersive_melodies.tiny_drum": "Tiny Drum",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Bas Ender",
+  "item.immersive_melodies.handpan": "Manual",
   "immersive_melodies.playing": "Joc",
   "immersive_melodies.error.empty": "Nu se poate analiza fișierul.",
   "immersive_melodies.error.unknown_file_type": "Trebuie să fie un fișier .abc sau .midi.",
   "immersive_melodies.error.upload.no_permission": "Nu aveți permisiunea de a încărca fișiere!",
+  "immersive_melodies.free_playing": "Folosește tastatura pentru a juca notițe!",
   "immersive_melodies.close": "Închideți",
   "immersive_melodies.search": "Căutare",
   "immersive_melodies.favorite": "Favorit",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Lista de piese",
   "immersive_melodies.help": "Deschideți ajutorul",
   "immersive_melodies.pause": "Pauză",
-  "immersive_melodies.read": "Faceți clic pentru a învăța cum să încărcați!"
+  "immersive_melodies.read": "Faceți clic pentru a învăța cum să încărcați!",
+  "immersive_melodies.keyboard": "Joacă cu tastatura!"
 }
