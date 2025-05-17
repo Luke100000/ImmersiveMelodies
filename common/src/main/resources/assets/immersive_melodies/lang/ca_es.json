@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompeta",
   "item.immersive_melodies.tiny_drum": "Tambor petit",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Jugant",
   "immersive_melodies.error.empty": "No es pot analitzar el fitxer.",
   "immersive_melodies.error.unknown_file_type": "Ha de ser un fitxer .abc o .midi.",
   "immersive_melodies.error.upload.no_permission": "No tens permís per pujar fitxers!",
+  "immersive_melodies.free_playing": "Utilitza el teu teclat per tocar notes!",
   "immersive_melodies.close": "Tancar",
   "immersive_melodies.search": "Cerca",
   "immersive_melodies.favorite": "Favorit",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Llista de pistes",
   "immersive_melodies.help": "Obrir ajuda",
   "immersive_melodies.pause": "Pausa",
-  "immersive_melodies.read": "Fes clic per aprendre com pujar!"
+  "immersive_melodies.read": "Fes clic per aprendre com pujar!",
+  "immersive_melodies.keyboard": "Juga amb el teu teclat!"
 }
