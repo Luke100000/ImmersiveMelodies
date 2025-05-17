@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompete",
   "item.immersive_melodies.tiny_drum": "Kleine Trommel",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Spielen",
   "immersive_melodies.error.empty": "Kann die Datei nicht verarbeiten.",
   "immersive_melodies.error.unknown_file_type": "Muss eine .abc oder .midi Datei sein.",
   "immersive_melodies.error.upload.no_permission": "Du hast keine Berechtigung, Dateien hochzuladen!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Schließen",
   "immersive_melodies.search": "Suchen",
   "immersive_melodies.favorite": "Favorit",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Titel Liste",
   "immersive_melodies.help": "Hilfe öffnen",
   "immersive_melodies.pause": "Paus",
-  "immersive_melodies.read": "Klicke hier um zu lernen, wie man hochlädt!"
+  "immersive_melodies.read": "Klicke hier um zu lernen, wie man hochlädt!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
