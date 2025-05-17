@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trumpeta",
   "item.immersive_melodies.tiny_drum": "Nindë tinë",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Nóle",
   "immersive_melodies.error.empty": "Násie úvë ma fátë.",
   "immersive_melodies.error.unknown_file_type": "Násie cirë i .abc ne .midi fátë.",
   "immersive_melodies.error.upload.no_permission": "Nátya úvë sercë ce fátie!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Nóle",
   "immersive_melodies.search": "Néno",
   "immersive_melodies.favorite": "Mellone",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Listë track",
   "immersive_melodies.help": "Fmá tultien",
   "immersive_melodies.pause": "Nóle",
-  "immersive_melodies.read": "Naut sívë mi tatú!"
+  "immersive_melodies.read": "Naut sívë mi tatú!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
