@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trubka",
   "item.immersive_melodies.tiny_drum": "Drobný Buben",
   "item.immersive_melodies.vielle": "Fidula",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Ruční pancíř",
   "immersive_melodies.playing": "Přehrávání",
   "immersive_melodies.error.empty": "Soubor nelze analyzovat.",
   "immersive_melodies.error.unknown_file_type": "Musí to být soubor .abc nebo .midi.",
   "immersive_melodies.error.upload.no_permission": "Nemáte oprávnění k nahrávání souborů!",
+  "immersive_melodies.free_playing": "Použijte klávesnici k přehrávání poznámek!",
   "immersive_melodies.close": "Zavřít",
   "immersive_melodies.search": "Vyhledávání",
   "immersive_melodies.favorite": "Oblíbené",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Seznam skladeb",
   "immersive_melodies.help": "Otevřít nápovědu",
   "immersive_melodies.pause": "Pauza",
-  "immersive_melodies.read": "Kliknutím se dozvíte, jak nahrávat!"
+  "immersive_melodies.read": "Kliknutím se dozvíte, jak nahrávat!",
+  "immersive_melodies.keyboard": "Hrajte s Vaší klávesnicí!"
 }
