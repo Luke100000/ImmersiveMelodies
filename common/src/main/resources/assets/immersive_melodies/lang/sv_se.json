@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trumpet",
   "item.immersive_melodies.tiny_drum": "Liten trumma",
   "item.immersive_melodies.vielle": "Fiddla",
+  "item.immersive_melodies.ender_bass": "Ender Bas",
+  "item.immersive_melodies.handpan": "Handpanna",
   "immersive_melodies.playing": "Spelande",
   "immersive_melodies.error.empty": "Kan inte analysera filen.",
   "immersive_melodies.error.unknown_file_type": "Måste vara en .abc- eller .midi-fil.",
   "immersive_melodies.error.upload.no_permission": "Du har inte behörighet att ladda upp filer!",
+  "immersive_melodies.free_playing": "Använd tangentbordet för att spela anteckningar!",
   "immersive_melodies.close": "Nära",
   "immersive_melodies.search": "Sök på",
   "immersive_melodies.favorite": "Favorit",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Spårlista",
   "immersive_melodies.help": "Öppna hjälp",
   "immersive_melodies.pause": "Paus",
-  "immersive_melodies.read": "Klicka för att lära dig hur du laddar upp!"
+  "immersive_melodies.read": "Klicka för att lära dig hur du laddar upp!",
+  "immersive_melodies.keyboard": "Spela med ditt tangentbord!"
 }
