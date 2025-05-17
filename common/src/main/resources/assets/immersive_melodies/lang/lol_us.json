@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trumpetz",
   "item.immersive_melodies.tiny_drum": "Tiny Drumz",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Playin'",
   "immersive_melodies.error.empty": "Cannot parse teh file.",
   "immersive_melodies.error.unknown_file_type": "Needz to be a .abc or .midi file.",
   "immersive_melodies.error.upload.no_permission": "U don\\'t hav permissionz to upload filez!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Closee",
   "immersive_melodies.search": "Search",
   "immersive_melodies.favorite": "Favoritz",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Track List",
   "immersive_melodies.help": "Open helpz",
   "immersive_melodies.pause": "Pawz",
-  "immersive_melodies.read": "Click to learn howz to upload!"
+  "immersive_melodies.read": "Click to learn howz to upload!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
