@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trobenta",
   "item.immersive_melodies.tiny_drum": "Droben boben",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Igranje",
   "immersive_melodies.error.empty": "Datoteke ni mogoče razčleniti.",
   "immersive_melodies.error.unknown_file_type": "To mora biti datoteka .abc ali .midi.",
   "immersive_melodies.error.upload.no_permission": "Nimate dovoljenja za nalaganje datotek!",
+  "immersive_melodies.free_playing": "Uporabite tipkovnico za igranje not!",
   "immersive_melodies.close": "Zapri",
   "immersive_melodies.search": "Iskanje",
   "immersive_melodies.favorite": "Najljubši",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Seznam skladb",
   "immersive_melodies.help": "Odprta pomoč",
   "immersive_melodies.pause": "Prekinitev",
-  "immersive_melodies.read": "Kliknite in se naučite, kako naložiti!"
+  "immersive_melodies.read": "Kliknite in se naučite, kako naložiti!",
+  "immersive_melodies.keyboard": "Igrajte se s tipkovnico!"
 }
