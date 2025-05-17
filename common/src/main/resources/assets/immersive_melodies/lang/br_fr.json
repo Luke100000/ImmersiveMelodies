@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Ne c'haller ket parse ar fil.",
   "immersive_melodies.error.unknown_file_type": "Ret eo bezañ ur fil .abc pe .midi.",
   "immersive_melodies.error.upload.no_permission": "N'eo ket gallet upload ar filioù!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Implijit ho c'henzev da c'hoari noteoù!",
   "immersive_melodies.close": "Pleg",
   "immersive_melodies.search": "Kerkoul",
   "immersive_melodies.favorite": "Hantervoa",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Digoret ar sikour",
   "immersive_melodies.pause": "Paus",
   "immersive_melodies.read": "Klikit evit dizoleiñ penaos upload!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "C'hoarita ouzh ho c'henzev!"
 }
