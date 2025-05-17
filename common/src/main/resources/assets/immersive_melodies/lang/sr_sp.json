@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Труба",
   "item.immersive_melodies.tiny_drum": "Мали Бубањ",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ендер Бас",
+  "item.immersive_melodies.handpan": "Хандпан",
   "immersive_melodies.playing": "Пуштање",
   "immersive_melodies.error.empty": "Не може да анализира фајл.",
   "immersive_melodies.error.unknown_file_type": "Мора бити .abc или .midi фајл.",
   "immersive_melodies.error.upload.no_permission": "Немате дозволу да отпремате фајлове!",
+  "immersive_melodies.free_playing": "Користи тастатуру да свираш ноте!",
   "immersive_melodies.close": "Затвори",
   "immersive_melodies.search": "Претражи",
   "immersive_melodies.favorite": "Омиљено",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Листа Трагова",
   "immersive_melodies.help": "Отвори помоћ",
   "immersive_melodies.pause": "Пауза",
-  "immersive_melodies.read": "Кликните да бисте сазнали како да отпремите!"
+  "immersive_melodies.read": "Кликните да бисте сазнали како да отпремите!",
+  "immersive_melodies.keyboard": "Свирај са тастатуром!"
 }
