@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "小号",
   "item.immersive_melodies.tiny_drum": "小鼓",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "末影低音",
+  "item.immersive_melodies.handpan": "手枪",
   "immersive_melodies.playing": "正在演奏",
   "immersive_melodies.error.empty": "无法解析文件。",
   "immersive_melodies.error.unknown_file_type": "需要是 .abc 或 .midi 文件。",
   "immersive_melodies.error.upload.no_permission": "您没有上传文件的权限！",
+  "immersive_melodies.free_playing": "使用您的键盘来播放笔记！",
   "immersive_melodies.close": "关闭",
   "immersive_melodies.search": "搜索",
   "immersive_melodies.favorite": "收藏",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "曲目列表",
   "immersive_melodies.help": "打开帮助",
   "immersive_melodies.pause": "暂停",
-  "immersive_melodies.read": "点击了解如何上传！"
+  "immersive_melodies.read": "点击了解如何上传！",
+  "immersive_melodies.keyboard": "用您的键盘玩！"
 }
