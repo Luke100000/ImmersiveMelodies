@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "ट्रम्पेट",
   "item.immersive_melodies.tiny_drum": "छोटी ड्रम",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "एंडर बास",
+  "item.immersive_melodies.handpan": "हैंडपैन",
   "immersive_melodies.playing": "बजाना",
   "immersive_melodies.error.empty": "फ़ाइल को पार्स नहीं कर सकता।",
   "immersive_melodies.error.unknown_file_type": "एक .abc या .midi फ़ाइल होना चाहिए।",
   "immersive_melodies.error.upload.no_permission": "आपके पास फ़ाइल अपलोड करने की अनुमति नहीं है!",
+  "immersive_melodies.free_playing": "अपने कीबोर्ड का उपयोग करके नोट्स बजाएं!",
   "immersive_melodies.close": "बंद",
   "immersive_melodies.search": "खोज",
   "immersive_melodies.favorite": "पसंदीदा",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "ट्रैक सूची",
   "immersive_melodies.help": "मदद खोलें",
   "immersive_melodies.pause": "विराम",
-  "immersive_melodies.read": "अपलोड करने का तरीका सीखने के लिए क्लिक करें!"
+  "immersive_melodies.read": "अपलोड करने का तरीका सीखने के लिए क्लिक करें!",
+  "immersive_melodies.keyboard": "अपने कीबोर्ड के साथ खेलें!"
 }
