@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trummel",
   "item.immersive_melodies.tiny_drum": "Drum Berr",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Rag oynya",
   "immersive_melodies.error.empty": "Nyns eus mella dhis yn termyn.",
   "immersive_melodies.error.unknown_file_type": "Rag yn diskans.abc po .midi.",
   "immersive_melodies.error.upload.no_permission": "Ny yll slowdh neppyn dhis dhe upload!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Dhe vos",
   "immersive_melodies.search": "Gorsa",
   "immersive_melodies.favorite": "An Gwyn",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Rag-listh",
   "immersive_melodies.help": "Agas open help",
   "immersive_melodies.pause": "Paus",
-  "immersive_melodies.read": "Klicka dhis owth esedh na yll neppyn!"
+  "immersive_melodies.read": "Klicka dhis owth esedh na yll neppyn!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
