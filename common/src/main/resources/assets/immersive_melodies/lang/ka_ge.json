@@ -9,13 +9,13 @@
   "item.immersive_melodies.trumpet": "ტომპეტი",
   "item.immersive_melodies.tiny_drum": "პატარაობა ტუმბერი",
   "item.immersive_melodies.vielle": "Vielle",
-  "item.immersive_melodies.ender_bass": "Ender Bass",
-  "item.immersive_melodies.handpan": "Handpan",
+  "item.immersive_melodies.ender_bass": "ენდერი ბასსი",
+  "item.immersive_melodies.handpan": "ჰენდპანი",
   "immersive_melodies.playing": "თამაშობა",
   "immersive_melodies.error.empty": "ფაილის ანალიზის საშუალება არაა.",
   "immersive_melodies.error.unknown_file_type": "წარმატებული უნდა იყოს .abc ან .midi ფაილი.",
   "immersive_melodies.error.upload.no_permission": "თქვენ არ გაქვთ უფლება ატვირთოთ ფაილები!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "გამოიყენეთ თქვენი საკიები Notes खेलने के लिए!",
   "immersive_melodies.close": "დახურვა",
   "immersive_melodies.search": "ძებნა",
   "immersive_melodies.favorite": "ფავორიტი",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "გაგვიცნობთ დახმარების",
   "immersive_melodies.pause": "დაბრკოლება",
   "immersive_melodies.read": "დააჭირეთ რომ გაიგოთ როგორ უნდა ატვირთოთ!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "თამაშეთ თქვენს საკიებზე!"
 }
