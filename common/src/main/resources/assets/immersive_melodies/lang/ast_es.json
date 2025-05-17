@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompeta",
   "item.immersive_melodies.tiny_drum": "Tamborín",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Tocando",
   "immersive_melodies.error.empty": "Nun se pue procesar el ficheru.",
   "immersive_melodies.error.unknown_file_type": "Necesita ser un fichero .abc o .midi.",
   "immersive_melodies.error.upload.no_permission": "¡Non tienes permisu pa subir ficheros!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Cerrar",
   "immersive_melodies.search": "Buscar",
   "immersive_melodies.favorite": "Favorito",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Llista de Pistes",
   "immersive_melodies.help": "Abrir ayuda",
   "immersive_melodies.pause": "Pausar",
-  "immersive_melodies.read": "¡Clica pa aprender como subir!"
+  "immersive_melodies.read": "¡Clica pa aprender como subir!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
