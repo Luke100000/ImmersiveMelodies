@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Тромпет",
   "item.immersive_melodies.tiny_drum": "Малък барабан",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ендър Бас",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Играе",
   "immersive_melodies.error.empty": "Не може да анализира файла.",
   "immersive_melodies.error.unknown_file_type": "Трябва да бъде .abc или .midi файл.",
   "immersive_melodies.error.upload.no_permission": "Нямате разрешение да качвате файлове!",
+  "immersive_melodies.free_playing": "Използвайте клавиатурата си, за да свирите ноти!",
   "immersive_melodies.close": "Затвори",
   "immersive_melodies.search": "Търсене",
   "immersive_melodies.favorite": "Любими",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Списък с песни",
   "immersive_melodies.help": "Отворена помощ",
   "immersive_melodies.pause": "Пауза",
-  "immersive_melodies.read": "Кликнете, за да научите как да качвате!"
+  "immersive_melodies.read": "Кликнете, за да научите как да качвате!",
+  "immersive_melodies.keyboard": "Играйте с клавиатурата си!"
 }
