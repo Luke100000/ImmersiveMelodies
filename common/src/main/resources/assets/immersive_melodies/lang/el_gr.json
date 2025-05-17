@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Τρομπέτα",
   "item.immersive_melodies.tiny_drum": "Μικροσκοπικό τύμπανο",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Μπάσα Του Τελειωτή",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Παίζοντας",
   "immersive_melodies.error.empty": "Δεν είναι δυνατή η ανάλυση του αρχείου.",
   "immersive_melodies.error.unknown_file_type": "Πρέπει να είναι αρχείο .abc ή .midi.",
   "immersive_melodies.error.upload.no_permission": "Δεν έχετε δικαίωμα να ανεβάσετε αρχεία!",
+  "immersive_melodies.free_playing": "Χρησιμοποιήστε το πληκτρολόγιό σας για να παίξετε σημειώσεις!",
   "immersive_melodies.close": "Κλείστε το",
   "immersive_melodies.search": "Αναζήτηση",
   "immersive_melodies.favorite": "Αγαπημένο",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Λίστα κομματιών",
   "immersive_melodies.help": "Ανοίξτε τη βοήθεια",
   "immersive_melodies.pause": "Παύση",
-  "immersive_melodies.read": "Κάντε κλικ για να μάθετε πώς να ανεβάζετε!"
+  "immersive_melodies.read": "Κάντε κλικ για να μάθετε πώς να ανεβάζετε!",
+  "immersive_melodies.keyboard": "Παίξτε με το πληκτρολόγιό σας!"
 }
