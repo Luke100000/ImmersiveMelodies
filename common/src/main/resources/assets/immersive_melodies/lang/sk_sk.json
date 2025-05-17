@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trúbka",
   "item.immersive_melodies.tiny_drum": "Drobný bubon",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Hranie na",
   "immersive_melodies.error.empty": "Nemožno analyzovať súbor.",
   "immersive_melodies.error.unknown_file_type": "Musí to byť súbor .abc alebo .midi.",
   "immersive_melodies.error.upload.no_permission": "Nemáte povolenie na nahrávanie súborov!",
+  "immersive_melodies.free_playing": "Používajte klávesnicu na hranie nôt!",
   "immersive_melodies.close": "Zatvoriť",
   "immersive_melodies.search": "Vyhľadávanie",
   "immersive_melodies.favorite": "Obľúbené stránky",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Zoznam skladieb",
   "immersive_melodies.help": "Otvoriť pomoc",
   "immersive_melodies.pause": "Pauza",
-  "immersive_melodies.read": "Kliknutím sa dozviete, ako nahrávať!"
+  "immersive_melodies.read": "Kliknutím sa dozviete, ako nahrávať!",
+  "immersive_melodies.keyboard": "Hrajte sa s klávesnicou!"
 }
