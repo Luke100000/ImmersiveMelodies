@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Kìkì Kòkòrò",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Nṣiṣẹ",
   "immersive_melodies.error.empty": "A ko le tú faili náà.",
   "immersive_melodies.error.unknown_file_type": "O nilo lati jẹ faili .abc tabi .midi.",
   "immersive_melodies.error.upload.no_permission": "Iwọ ko ni aṣẹ lati gbe awọn faili!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Pa",
   "immersive_melodies.search": "Wa",
   "immersive_melodies.favorite": "Ayanfẹ",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Àtòjọ Awọn ọna orin",
   "immersive_melodies.help": "Ṣí iranlọwọ",
   "immersive_melodies.pause": "Dákẹ́",
-  "immersive_melodies.read": "Tẹ lati kọ ẹkọ bi a ṣe le gbe!"
+  "immersive_melodies.read": "Tẹ lati kọ ẹkọ bi a ṣe le gbe!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
