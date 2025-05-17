@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trumpeto",
   "item.immersive_melodies.tiny_drum": "Mini Drum",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Ludi",
   "immersive_melodies.error.empty": "Ne eblas analizi la dosieron.",
   "immersive_melodies.error.unknown_file_type": "Devas esti .abc aŭ .midi dosiero.",
   "immersive_melodies.error.upload.no_permission": "Vi ne havas permeson por ŝarĝi dosierojn!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Fermi",
   "immersive_melodies.search": "Serĉi",
   "immersive_melodies.favorite": "Ŝatato",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Trako-Listo",
   "immersive_melodies.help": "Malfermi helpon",
   "immersive_melodies.pause": "Pauzi",
-  "immersive_melodies.read": "Klaku por lerni kiel ŝarĝi!"
+  "immersive_melodies.read": "Klaku por lerni kiel ŝarĝi!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
