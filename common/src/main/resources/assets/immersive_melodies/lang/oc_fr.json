@@ -9,13 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompeta",
   "item.immersive_melodies.tiny_drum": "Petit tambor",
   "item.immersive_melodies.vielle": "Vielle",
-  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.ender_bass": "Bass Ender",
   "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Cantar",
   "immersive_melodies.error.empty": "Impossible de parsejar lo fichièr.",
   "immersive_melodies.error.unknown_file_type": "Devèn èsser un fichièr .abc o .midi.",
   "immersive_melodies.error.upload.no_permission": "Non avètz pas de permís per cargar de fichièrs!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Utiliza ton teclado per jugar de las notas!",
   "immersive_melodies.close": "Claus",
   "immersive_melodies.search": "Cercar",
   "immersive_melodies.favorite": "Favorit",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Obrir ajuda",
   "immersive_melodies.pause": "Pausar",
   "immersive_melodies.read": "Clicatz per aprene cossí cargar!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Juga amb ton teclado!"
 }
