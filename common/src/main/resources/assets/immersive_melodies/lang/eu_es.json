@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompeta",
   "item.immersive_melodies.tiny_drum": "Titi Danborrilla",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Jotzea",
   "immersive_melodies.error.empty": "Fitxategia parseatu ezin da.",
   "immersive_melodies.error.unknown_file_type": "Fitxategia .abc edo .midi izan behar du.",
   "immersive_melodies.error.upload.no_permission": "Ez duzu fitxategiak igoateko baimenik!",
+  "immersive_melodies.free_playing": "Erabili zure teklatuari notak jotzeko!",
   "immersive_melodies.close": "Itxi",
   "immersive_melodies.search": "Bilatu",
   "immersive_melodies.favorite": "Gustukoena",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Pista Zerrenda",
   "immersive_melodies.help": "Laguntza ireki",
   "immersive_melodies.pause": "Gelditu",
-  "immersive_melodies.read": "Klikatu ikasteko nola igo!"
+  "immersive_melodies.read": "Klikatu ikasteko nola igo!",
+  "immersive_melodies.keyboard": "Jotzeko erabili zure teklatua!"
 }
