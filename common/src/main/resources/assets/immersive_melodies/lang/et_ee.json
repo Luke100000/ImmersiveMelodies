@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Väike trummel",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Mängimine",
   "immersive_melodies.error.empty": "Faili ei saa analüüsida.",
   "immersive_melodies.error.unknown_file_type": "Peab olema .abc või .midi fail.",
   "immersive_melodies.error.upload.no_permission": "Teil ei ole luba failide üleslaadimiseks!",
+  "immersive_melodies.free_playing": "Kasutage oma klaviatuuri, et mängida noote!",
   "immersive_melodies.close": "Sulge",
   "immersive_melodies.search": "Otsi",
   "immersive_melodies.favorite": "Lemmik",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Raja nimekiri",
   "immersive_melodies.help": "Avatud abi",
   "immersive_melodies.pause": "Paus",
-  "immersive_melodies.read": "Klõpsake, et teada saada, kuidas üles laadida!"
+  "immersive_melodies.read": "Klõpsake, et teada saada, kuidas üles laadida!",
+  "immersive_melodies.keyboard": "Mängi oma klaviatuuriga!"
 }
