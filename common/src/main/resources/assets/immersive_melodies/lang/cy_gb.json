@@ -9,13 +9,13 @@
   "item.immersive_melodies.trumpet": "Drwm",
   "item.immersive_melodies.tiny_drum": "Drwm Bach",
   "item.immersive_melodies.vielle": "Vielle",
-  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.ender_bass": "Bass Diwedd",
   "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Chwarae",
   "immersive_melodies.error.empty": "Ni ellir dadansoddi'r ffeil.",
   "immersive_melodies.error.unknown_file_type": "Mae'n rhaid iddo fod yn ffeil .abc neu .midi.",
   "immersive_melodies.error.upload.no_permission": "Nid oes gennych ganiatâd i uwchlwytho ffeiliau!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Defnyddiwch eich bysellfwrdd i chwarae nodau!",
   "immersive_melodies.close": "Cau",
   "immersive_melodies.search": "Chwilio",
   "immersive_melodies.favorite": "Hoffi",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Agor cymorth",
   "immersive_melodies.pause": "Pau",
   "immersive_melodies.read": "Cliciwch i ddysgu sut i uwchlwytho!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Chwarae gyda'ch bysellfwrdd!"
 }
