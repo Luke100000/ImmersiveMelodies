@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Klein Trom",
   "item.immersive_melodies.vielle": "Vieel",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Speel",
   "immersive_melodies.error.empty": "Kan nie die lêer verwerk nie.",
   "immersive_melodies.error.unknown_file_type": "Moet 'n .abc of .midi lêer wees.",
   "immersive_melodies.error.upload.no_permission": "Jy het nie toestemming om lêers op te laai nie!",
+  "immersive_melodies.free_playing": "Gebruik jou sleutelbord om notas te speel!",
   "immersive_melodies.close": "Maak toe",
   "immersive_melodies.search": "Soek",
   "immersive_melodies.favorite": "Gunsteling",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Lys van Snitte",
   "immersive_melodies.help": "Maak hulp oop",
   "immersive_melodies.pause": "Pouse",
-  "immersive_melodies.read": "Kliek om te leer hoe om op te laai!"
+  "immersive_melodies.read": "Kliek om te leer hoe om op te laai!",
+  "immersive_melodies.keyboard": "Speel met jou sleutelbord!"
 }
