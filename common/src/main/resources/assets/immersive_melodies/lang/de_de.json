@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Die Datei kann nicht geparst werden.",
   "immersive_melodies.error.unknown_file_type": "Es muss eine .abc oder .midi Datei sein.",
   "immersive_melodies.error.upload.no_permission": "Du hast nicht die Erlaubnis, Dateien hochzuladen!",
-  "immersive_melodies.free_playing": "Benutze deine Tastatur, um Notizen zu spielen!",
+  "immersive_melodies.free_playing": "Benutze deine Tastatur, um Noten zu spielen!",
   "immersive_melodies.close": "Schließen",
   "immersive_melodies.search": "Suchen",
   "immersive_melodies.favorite": "Favorit",
