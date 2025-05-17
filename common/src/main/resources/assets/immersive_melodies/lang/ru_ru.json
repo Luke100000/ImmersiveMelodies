@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Труба",
   "item.immersive_melodies.tiny_drum": "Крошечный барабан",
   "item.immersive_melodies.vielle": "Фидель",
+  "item.immersive_melodies.ender_bass": "Эндер-бас",
+  "item.immersive_melodies.handpan": "Рукоятка",
   "immersive_melodies.playing": "Играет",
   "immersive_melodies.error.empty": "Невозможно разобрать файл.",
   "immersive_melodies.error.unknown_file_type": "Это должен быть файл в формате .abc или .midi.",
   "immersive_melodies.error.upload.no_permission": "У тебя нет разрешения на загрузку файлов!",
+  "immersive_melodies.free_playing": "Используйте клавиатуру для воспроизведения заметок!",
   "immersive_melodies.close": "Закрыть",
   "immersive_melodies.search": "Поиск",
   "immersive_melodies.favorite": "Избранное",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Список композиций",
   "immersive_melodies.help": "Открыть справку",
   "immersive_melodies.pause": "Пауза",
-  "immersive_melodies.read": "Нажмите, чтобы узнать, как добавлять мелодии!"
+  "immersive_melodies.read": "Нажмите, чтобы узнать, как добавлять мелодии!",
+  "immersive_melodies.keyboard": "Играйте с помощью клавиатуры!"
 }
