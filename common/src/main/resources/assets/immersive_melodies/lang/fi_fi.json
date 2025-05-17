@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Tiedostoa ei voida analysoida.",
   "immersive_melodies.error.unknown_file_type": "Sen on oltava .abc- tai .midi-tiedosto.",
   "immersive_melodies.error.upload.no_permission": "Sinulla ei ole lupaa ladata tiedostoja!",
-  "immersive_melodies.free_playing": "Käytä näppäimistöäsi pelataksesi muistiinpanoja!",
+  "immersive_melodies.free_playing": "Käytä näppäimistöäsi soittamaan nuotteja!",
   "immersive_melodies.close": "Sulje",
   "immersive_melodies.search": "Etsi",
   "immersive_melodies.favorite": "Suosikki",
