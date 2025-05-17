@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trombita",
   "item.immersive_melodies.tiny_drum": "Apró dob",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Játék",
   "immersive_melodies.error.empty": "Nem tudja elemezni a fájlt.",
   "immersive_melodies.error.unknown_file_type": ".abc vagy .midi fájlnak kell lennie.",
   "immersive_melodies.error.upload.no_permission": "Nincs jogosultsága fájlok feltöltéséhez!",
+  "immersive_melodies.free_playing": "Használd a billentyűzetet a hangjegyek lejátszásához!",
   "immersive_melodies.close": "Zárja be a",
   "immersive_melodies.search": "Keresés",
   "immersive_melodies.favorite": "Kedvenc",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Track lista",
   "immersive_melodies.help": "Segítség megnyitása",
   "immersive_melodies.pause": "Szünet",
-  "immersive_melodies.read": "Kattints a feltöltés módjának megtanulásához!"
+  "immersive_melodies.read": "Kattints a feltöltés módjának megtanulásához!",
+  "immersive_melodies.keyboard": "Játssz a billentyűzettel!"
 }
