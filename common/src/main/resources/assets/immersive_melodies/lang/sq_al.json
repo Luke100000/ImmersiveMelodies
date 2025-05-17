@@ -9,13 +9,13 @@
   "item.immersive_melodies.trumpet": "Trumpetë",
   "item.immersive_melodies.tiny_drum": "Të Vogël Muzikë",
   "item.immersive_melodies.vielle": "Vielle",
-  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.ender_bass": "Bass ender",
   "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Duke luajtur",
   "immersive_melodies.error.empty": "Nuk mund të analizohet skedari.",
   "immersive_melodies.error.unknown_file_type": "Duhet të jetë një skedar .abc ose .midi.",
   "immersive_melodies.error.upload.no_permission": "Nuk keni leje për të ngarkuar skedarë!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Përdorni tastierën tuaj për të luajtur nota!",
   "immersive_melodies.close": "Mbyll",
   "immersive_melodies.search": "Kërko",
   "immersive_melodies.favorite": "E Preferuar",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Hap ndihmën",
   "immersive_melodies.pause": "Dërgo",
   "immersive_melodies.read": "Kliko për të mësuar si të ngarkosh!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Luani me tastierën tuaj!"
 }
