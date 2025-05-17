@@ -9,13 +9,13 @@
   "item.immersive_melodies.trumpet": "Tuba",
   "item.immersive_melodies.tiny_drum": "Tympanum Parvum",
   "item.immersive_melodies.vielle": "Vielle",
-  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.ender_bass": "Bass Ender",
   "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Ludens",
   "immersive_melodies.error.empty": "Non potest parare fasciculum.",
   "immersive_melodies.error.unknown_file_type": "Necesse est ut sit fasciculus .abc vel .midi.",
   "immersive_melodies.error.upload.no_permission": "Non habes licentiam ut fasciculos subicias!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Utere claviaturam tuam ut notas canas!",
   "immersive_melodies.close": "Clausus",
   "immersive_melodies.search": "Quaerere",
   "immersive_melodies.favorite": "Praeferens",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Aperire auxilium",
   "immersive_melodies.pause": "Pausare",
   "immersive_melodies.read": "Clicca ut discas quomodo subiciat!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Lude cum claviaturam tuam!"
 }
