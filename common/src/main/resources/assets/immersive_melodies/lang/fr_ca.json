@@ -9,13 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompette",
   "item.immersive_melodies.tiny_drum": "Tambour minuscule",
   "item.immersive_melodies.vielle": "Vielle",
-  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.ender_bass": "Basse Ender",
   "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Jouer",
   "immersive_melodies.error.empty": "Impossible d'analyser le fichier.",
   "immersive_melodies.error.unknown_file_type": "Doit être un fichier .abc ou .midi.",
   "immersive_melodies.error.upload.no_permission": "Vous n'avez pas la permission de télécharger des fichiers!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Utilisez votre clavier pour jouer des notes!",
   "immersive_melodies.close": "Fermer",
   "immersive_melodies.search": "Recherche",
   "immersive_melodies.favorite": "Favoris",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Ouvrir l'aide",
   "immersive_melodies.pause": "Pause",
   "immersive_melodies.read": "Clique pour savoir comment télécharger !",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Jouez avec votre clavier!"
 }
