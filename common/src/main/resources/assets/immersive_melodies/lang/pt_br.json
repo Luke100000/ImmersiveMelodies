@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompete",
   "item.immersive_melodies.tiny_drum": "Tambor minúsculo",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Graves do Ender",
+  "item.immersive_melodies.handpan": "Manual",
   "immersive_melodies.playing": "Tocando",
   "immersive_melodies.error.empty": "Não é possível analisar o arquivo.",
   "immersive_melodies.error.unknown_file_type": "Precisa ser um arquivo .abc ou .midi.",
   "immersive_melodies.error.upload.no_permission": "Você não tem permissão para carregar arquivos!",
+  "immersive_melodies.free_playing": "Use o seu teclado para reproduzir anotações!",
   "immersive_melodies.close": "Fechar",
   "immersive_melodies.search": "Procurar",
   "immersive_melodies.favorite": "Favorito",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Lista de faixas",
   "immersive_melodies.help": "Abrir ajuda",
   "immersive_melodies.pause": "Pausar",
-  "immersive_melodies.read": "Clique para saber como carregar!"
+  "immersive_melodies.read": "Clique para saber como carregar!",
+  "immersive_melodies.keyboard": "Brinque com o seu teclado!"
 }
