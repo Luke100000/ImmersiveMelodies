@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trumpet",
   "item.immersive_melodies.tiny_drum": "Darbuka yar",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Ciyaaraya",
   "immersive_melodies.error.empty": "Faylka lama aqrin karo.",
   "immersive_melodies.error.unknown_file_type": "Waa in uu yahay fayl .abc ama .midi ah.",
   "immersive_melodies.error.upload.no_permission": "Ma haysatid oggolaansho aad faylasha u geli karto!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Xir",
   "immersive_melodies.search": "Raadi",
   "immersive_melodies.favorite": "Jecel",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Liiska Raajada",
   "immersive_melodies.help": "Fur caawinta",
   "immersive_melodies.pause": "Jooji",
-  "immersive_melodies.read": "Guji si aad u barato sida upload looga sameeyo!"
+  "immersive_melodies.read": "Guji si aad u barato sida upload looga sameeyo!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
