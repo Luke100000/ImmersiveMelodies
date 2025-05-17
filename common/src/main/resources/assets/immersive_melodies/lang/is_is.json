@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Litla Tromma",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Spila",
   "immersive_melodies.error.empty": "Gat ekki lesið skjalið.",
   "immersive_melodies.error.unknown_file_type": "Verður að vera .abc eða .midi skrá.",
   "immersive_melodies.error.upload.no_permission": "Þú hefur ekki heimild til að hlaða upp skrám!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Loka",
   "immersive_melodies.search": "Leita",
   "immersive_melodies.favorite": "Uppáhalds",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Skrálisti",
   "immersive_melodies.help": "Opna aðstoð",
   "immersive_melodies.pause": "Pausa",
-  "immersive_melodies.read": "Smelltu til að læra hvernig á að hlaða upp!"
+  "immersive_melodies.read": "Smelltu til að læra hvernig á að hlaða upp!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
