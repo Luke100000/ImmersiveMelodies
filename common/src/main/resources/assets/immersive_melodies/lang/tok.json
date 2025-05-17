@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "mi ken ala kama lete e lipu.",
   "immersive_melodies.error.unknown_file_type": "iku li wile e .abc anu .midi lipu.",
   "immersive_melodies.error.upload.no_permission": "sina ala toki e lipu!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "tawa kepeken toki!",
   "immersive_melodies.close": "moku",
   "immersive_melodies.search": "tawa",
   "immersive_melodies.favorite": "suno",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "open pali",
   "immersive_melodies.pause": "pali",
   "immersive_melodies.read": "clicked to wile ala li toki!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "tawa kepeken kiwen!"
 }
