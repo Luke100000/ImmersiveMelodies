@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Ne mogu obraditi datoteku.",
   "immersive_melodies.error.unknown_file_type": "Mora biti .abc ili .midi datoteka.",
   "immersive_melodies.error.upload.no_permission": "Nemate dozvolu za učitavanje datoteka!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Koristite svoju tipkovnicu za sviranje nota!",
   "immersive_melodies.close": "Zatvori",
   "immersive_melodies.search": "Pretraži",
   "immersive_melodies.favorite": "Omiljeno",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Otvorite pomoć",
   "immersive_melodies.pause": "Pauza",
   "immersive_melodies.read": "Kliknite da naučite kako učitati!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Svirajte sa svojom tipkovnicom!"
 }
