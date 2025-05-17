@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Տրոպետ",
   "item.immersive_melodies.tiny_drum": "Փոքր թ drum",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Էնդեր Բաս",
+  "item.immersive_melodies.handpan": "Հանդպան",
   "immersive_melodies.playing": "Տ Spielen",
   "immersive_melodies.error.empty": "Չնայած չի կարող հրաժարել ֆայլը։",
   "immersive_melodies.error.unknown_file_type": "Պետք է լինի .abc կամ .midi ֆայլ։",
   "immersive_melodies.error.upload.no_permission": "Դուք չունեք հնարավորություն բարձիջելու ֆայլեր։",
+  "immersive_melodies.free_playing": "Օգտագործեք ձեր ստեղնաշարը նոտաներ նվագելու համար!",
   "immersive_melodies.close": "Փակել",
   "immersive_melodies.search": "Որոնել",
   "immersive_melodies.favorite": "Համալրված",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Հայտի ցանկ",
   "immersive_melodies.help": "Բացեք օգնություն",
   "immersive_melodies.pause": "Դադարեցնել",
-  "immersive_melodies.read": "Սեղմեք, որպեսզի իմանաք, թե ինչպես բարձիջել։"
+  "immersive_melodies.read": "Սեղմեք, որպեսզի իմանաք, թե ինչպես բարձիջել։",
+  "immersive_melodies.keyboard": "Նվագեք ձեր ստեղնաշարով!"
 }
