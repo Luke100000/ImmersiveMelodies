@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "喇叭",
   "item.immersive_melodies.tiny_drum": "小鼓",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "手搖板",
   "immersive_melodies.playing": "正在播放",
   "immersive_melodies.error.empty": "無法解析音檔",
   "immersive_melodies.error.unknown_file_type": "需要是 .abc 或 .midi 檔案。",
   "immersive_melodies.error.upload.no_permission": "您沒有上傳檔案的權限！",
+  "immersive_melodies.free_playing": "使用鍵盤彈奏音符！",
   "immersive_melodies.close": "關閉",
   "immersive_melodies.search": "搜索",
   "immersive_melodies.favorite": "最喜歡的",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "曲目清單",
   "immersive_melodies.help": "打開幫助選單",
   "immersive_melodies.pause": "暫停",
-  "immersive_melodies.read": "點擊了解如何上傳!"
+  "immersive_melodies.read": "點擊了解如何上傳!",
+  "immersive_melodies.keyboard": "玩您的鍵盤！"
 }
