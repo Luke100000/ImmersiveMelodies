@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trumpet",
   "item.immersive_melodies.tiny_drum": "Pìob bheag",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "A' cluich",
   "immersive_melodies.error.empty": "Chan urrainn fuasgladh a na faidhle.",
   "immersive_melodies.error.unknown_file_type": "Feumaidh a bhith mar .abc no .midi faidhle.",
   "immersive_melodies.error.upload.no_permission": "Chan eil chead agad faidhlichean a thogail!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Dùin",
   "immersive_melodies.search": "Lorg",
   "immersive_melodies.favorite": "Freagairte",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Liosta Rèise",
   "immersive_melodies.help": "Fhosgail help",
   "immersive_melodies.pause": "Freagair",
-  "immersive_melodies.read": "Clic gus lorg mar a ghabhas fhilleadh!"
+  "immersive_melodies.read": "Clic gus lorg mar a ghabhas fhilleadh!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
