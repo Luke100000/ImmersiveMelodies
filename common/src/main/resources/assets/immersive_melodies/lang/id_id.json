@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Terompet",
   "item.immersive_melodies.tiny_drum": "Tiny Drum",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Bermain",
   "immersive_melodies.error.empty": "Tidak dapat mengurai file.",
   "immersive_melodies.error.unknown_file_type": "Harus berupa file .abc atau .midi.",
   "immersive_melodies.error.upload.no_permission": "Anda tidak memiliki izin untuk mengunggah file!",
+  "immersive_melodies.free_playing": "Gunakan keyboard Anda untuk memainkan nada!",
   "immersive_melodies.close": "Tutup",
   "immersive_melodies.search": "Pencarian",
   "immersive_melodies.favorite": "Favorit",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Daftar Lagu",
   "immersive_melodies.help": "Buka bantuan",
   "immersive_melodies.pause": "Jeda",
-  "immersive_melodies.read": "Klik untuk mempelajari cara mengunggah!"
+  "immersive_melodies.read": "Klik untuk mempelajari cara mengunggah!",
+  "immersive_melodies.keyboard": "Bermainlah dengan keyboard Anda!"
 }
