@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompete",
   "item.immersive_melodies.tiny_drum": "Tiny Drum",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Spēlējot",
   "immersive_melodies.error.empty": "Failu nav iespējams analizēt.",
   "immersive_melodies.error.unknown_file_type": "Nepieciešams .abc vai .midi fails.",
   "immersive_melodies.error.upload.no_permission": "Jums nav atļaujas augšupielādēt failus!",
+  "immersive_melodies.free_playing": "Izmantojiet tastatūru, lai atskaņotu notis!",
   "immersive_melodies.close": "Aizvērt",
   "immersive_melodies.search": "Meklēšana",
   "immersive_melodies.favorite": "Iecienītākais",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Dziesmu saraksts",
   "immersive_melodies.help": "Atvērt palīdzību",
   "immersive_melodies.pause": "Pauze",
-  "immersive_melodies.read": "Noklikšķiniet, lai uzzinātu, kā augšupielādēt!"
+  "immersive_melodies.read": "Noklikšķiniet, lai uzzinātu, kā augšupielādēt!",
+  "immersive_melodies.keyboard": "Spēlējiet ar tastatūru!"
 }
