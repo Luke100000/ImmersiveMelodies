@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "<i>yIQuH.</i>",
   "immersive_melodies.error.unknown_file_type": "<i>HaptaDHa'n Doq.</i>",
   "immersive_melodies.error.upload.no_permission": "<i>yItlHa'-'eghuD!</i>",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "tlhabwI'vaD yInob ngoD!",
   "immersive_melodies.close": "<i>qaH</i>",
   "immersive_melodies.search": "Search",
   "immersive_melodies.favorite": "<i>mIw</i>",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "<i>pagh Qum</i>",
   "immersive_melodies.pause": "<i>paQchaj</i>",
   "immersive_melodies.read": "<i>tlhIngan!</i>",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "tlhabwI'vaD yIchech!"
 }
