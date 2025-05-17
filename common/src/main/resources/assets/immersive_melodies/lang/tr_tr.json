@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Minik Davul",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Oynamak",
   "immersive_melodies.error.empty": "Dosya ayrıştırılamıyor.",
   "immersive_melodies.error.unknown_file_type": "Bir .abc veya .midi dosyası olması gerekir.",
   "immersive_melodies.error.upload.no_permission": "Dosya yüklemek için izniniz yok!",
+  "immersive_melodies.free_playing": "Notaları çalmak için klavyenizi kullanın!",
   "immersive_melodies.close": "Kapat",
   "immersive_melodies.search": "Arama",
   "immersive_melodies.favorite": "Favori",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Parça Listesi",
   "immersive_melodies.help": "Açık yardım",
   "immersive_melodies.pause": "Duraklat",
-  "immersive_melodies.read": "Nasıl yükleme yapacağınızı öğrenmek için tıklayın!"
+  "immersive_melodies.read": "Nasıl yükleme yapacağınızı öğrenmek için tıklayın!",
+  "immersive_melodies.keyboard": "Klavyenizle oynayın!"
 }
