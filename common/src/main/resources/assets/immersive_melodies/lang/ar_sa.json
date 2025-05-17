@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "بوق",
   "item.immersive_melodies.tiny_drum": "طبلة صغيرة",
   "item.immersive_melodies.vielle": "فييل",
+  "item.immersive_melodies.ender_bass": "إندر باس",
+  "item.immersive_melodies.handpan": "هانبان",
   "immersive_melodies.playing": "عزف",
   "immersive_melodies.error.empty": "لا يمكن تحليل الملف.",
   "immersive_melodies.error.unknown_file_type": "يجب أن يكون ملفًا من نوع .abc أو .midi.",
   "immersive_melodies.error.upload.no_permission": "ليس لديك إذن لتحميل الملفات!",
+  "immersive_melodies.free_playing": "استخدم لوحة المفاتيح الخاصة بك لتشغيل النغمات!",
   "immersive_melodies.close": "إغلاق",
   "immersive_melodies.search": "بحث",
   "immersive_melodies.favorite": "مفضل",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "قائمة الأغاني",
   "immersive_melodies.help": "فتح المساعدة",
   "immersive_melodies.pause": "إيقاف مؤقت",
-  "immersive_melodies.read": "انقر لتعرف كيفية التحميل!"
+  "immersive_melodies.read": "انقر لتعرف كيفية التحميل!",
+  "immersive_melodies.keyboard": "العب باستخدام لوحة المفاتيح الخاصة بك!"
 }
