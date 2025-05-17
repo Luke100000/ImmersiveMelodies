@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Mali bubanj",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Svira",
   "immersive_melodies.error.empty": "Ne mogu obraditi datoteku.",
   "immersive_melodies.error.unknown_file_type": "Mora biti .abc ili .midi datoteka.",
   "immersive_melodies.error.upload.no_permission": "Nemate dozvolu za učitavanje datoteka!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Zatvori",
   "immersive_melodies.search": "Pretraži",
   "immersive_melodies.favorite": "Omiljeno",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Popis pjesama",
   "immersive_melodies.help": "Otvorite pomoć",
   "immersive_melodies.pause": "Pauza",
-  "immersive_melodies.read": "Kliknite da naučite kako učitati!"
+  "immersive_melodies.read": "Kliknite da naučite kako učitati!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
