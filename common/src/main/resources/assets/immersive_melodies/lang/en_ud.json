@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "ʇǝdɯnɹ⟘",
   "item.immersive_melodies.tiny_drum": "Tiny Drum",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "ᵷuᴉʎɐꞁԀ",
   "immersive_melodies.error.empty": "˙ǝꞁᴉɟ ǝɥʇ ǝsɹɐd ʇouuɐƆ",
   "immersive_melodies.error.unknown_file_type": "Needs to be a .abc or .midi file.",
   "immersive_melodies.error.upload.no_permission": "You don't have permission to upload files!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "ǝsoꞁƆ",
   "immersive_melodies.search": "ɥɔɹɐǝS",
   "immersive_melodies.favorite": "ǝʇᴉɹoʌɐℲ",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Track List",
   "immersive_melodies.help": "dꞁǝɥ uǝdO",
   "immersive_melodies.pause": "ǝsnɐԀ",
-  "immersive_melodies.read": "¡pɐoꞁdn oʇ ʍoɥ uɹɐǝꞁ oʇ ʞɔᴉꞁƆ"
+  "immersive_melodies.read": "¡pɐoꞁdn oʇ ʍoɥ uɹɐǝꞁ oʇ ʞɔᴉꞁƆ",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
