@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Трубка",
   "item.immersive_melodies.tiny_drum": "Кіші барабан",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Ойнату",
   "immersive_melodies.error.empty": "Файлды талдай алмайтын болды.",
   "immersive_melodies.error.unknown_file_type": "Файл .abc немесе .midi түрінде болуы тиіс.",
   "immersive_melodies.error.upload.no_permission": "Сіз файлдарды жүктеуге рұқсатыңыз жоқ!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Жабу",
   "immersive_melodies.search": "Іздеу",
   "immersive_melodies.favorite": "Сүйікті",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Трек тізімі",
   "immersive_melodies.help": "Көмек көрсету",
   "immersive_melodies.pause": "Уақытша тоқтату",
-  "immersive_melodies.read": "Жүктеуді қалай жасауды үйрену үшін басыңыз!"
+  "immersive_melodies.read": "Жүктеуді қалай жасауды үйрену үшін басыңыз!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
