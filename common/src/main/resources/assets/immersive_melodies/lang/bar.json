@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Die Datei kann nicht geparst werden.",
   "immersive_melodies.error.unknown_file_type": "Muss a .abc oder .midi Datei sei.",
   "immersive_melodies.error.upload.no_permission": "Du hosch koi Berechtigung, um Dateien hochzuladen!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Nimm dei Tastatur und spiel Noten!",
   "immersive_melodies.close": "Schließen",
   "immersive_melodies.search": "Suche",
   "immersive_melodies.favorite": "Favorit",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Hilfe öffnen",
   "immersive_melodies.pause": "Pause",
   "immersive_melodies.read": "Klicke hier, um zu erfahren, wie du hochladen kannst!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Spiel mit deiner Tastatur!"
 }
