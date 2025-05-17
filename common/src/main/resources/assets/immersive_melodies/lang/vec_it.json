@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Tromba",
   "item.immersive_melodies.tiny_drum": "Tamburo Piccolo",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Suonando",
   "immersive_melodies.error.empty": "Impossibile analizzare il file.",
   "immersive_melodies.error.unknown_file_type": "Deve essere un file .abc o .midi.",
   "immersive_melodies.error.upload.no_permission": "Non hai permesso di caricare file!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Chiudi",
   "immersive_melodies.search": "Cerca",
   "immersive_melodies.favorite": "Preferito",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Elenco Tracce",
   "immersive_melodies.help": "Apre aiuto",
   "immersive_melodies.pause": "Pausa",
-  "immersive_melodies.read": "Clicca per imparare come caricare!"
+  "immersive_melodies.read": "Clicca per imparare come caricare!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
