@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trąbka",
   "item.immersive_melodies.tiny_drum": "Tiny Drum",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Bass Kresu",
+  "item.immersive_melodies.handpan": "Poręcz",
   "immersive_melodies.playing": "Granie",
   "immersive_melodies.error.empty": "Nie można przeanalizować pliku.",
   "immersive_melodies.error.unknown_file_type": "Musi to być plik .abc lub .midi.",
   "immersive_melodies.error.upload.no_permission": "Nie masz uprawnień do przesyłania plików!",
+  "immersive_melodies.free_playing": "Użyj klawiatury, aby odtwarzać notatki!",
   "immersive_melodies.close": "Zamknij",
   "immersive_melodies.search": "Szukaj na stronie",
   "immersive_melodies.favorite": "Ulubione",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Lista utworów",
   "immersive_melodies.help": "Otwórz pomoc",
   "immersive_melodies.pause": "Pauza",
-  "immersive_melodies.read": "Kliknij, aby dowiedzieć się, jak przesyłać pliki!"
+  "immersive_melodies.read": "Kliknij, aby dowiedzieć się, jak przesyłać pliki!",
+  "immersive_melodies.keyboard": "Graj ze swoją klawiaturą!"
 }
