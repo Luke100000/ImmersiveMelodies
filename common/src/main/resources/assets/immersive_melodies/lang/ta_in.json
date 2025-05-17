@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "ட்ரம்பெட்",
   "item.immersive_melodies.tiny_drum": "சிறிய டிரம்",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "எண்டர் பாஸ்",
+  "item.immersive_melodies.handpan": "ஹாண்ட்பான்",
   "immersive_melodies.playing": "வாசித்தல்",
   "immersive_melodies.error.empty": "கோப்பை பகுப்பாய்வு செய்ய முடியவில்லை.",
   "immersive_melodies.error.unknown_file_type": ".abc அல்லது .midi கோப்பு இருக்க வேண்டும்.",
   "immersive_melodies.error.upload.no_permission": "கோப்புகளை பதிவேற்ற அனுமதி இல்லை!",
+  "immersive_melodies.free_playing": "உங்கள் விசைப்பலகையைப் பயன்படுத்தி குறிப்புகளை விளையாடுங்கள்!",
   "immersive_melodies.close": "மூடு",
   "immersive_melodies.search": "தேடல்",
   "immersive_melodies.favorite": "பிடித்தவை",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "பாடல் பட்டியல்",
   "immersive_melodies.help": "உதவியைத் திறக்கவும்",
   "immersive_melodies.pause": "தற்காலிக நிறுத்தம்",
-  "immersive_melodies.read": "கிளிக் செய்து எப்படி பதிவேற்றுவது என்பதை அறிக!"
+  "immersive_melodies.read": "கிளிக் செய்து எப்படி பதிவேற்றுவது என்பதை அறிக!",
+  "immersive_melodies.keyboard": "உங்கள் விசைப்பலகையுடன் விளையாடுங்கள்!"
 }
