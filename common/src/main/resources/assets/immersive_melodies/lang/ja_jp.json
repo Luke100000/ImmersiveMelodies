@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "トランペット",
   "item.immersive_melodies.tiny_drum": "タイニー・ドラム",
   "item.immersive_melodies.vielle": "ヴィエル",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "プレー",
   "immersive_melodies.error.empty": "ファイルを解析できません。",
   "immersive_melodies.error.unknown_file_type": ".abcまたは.midiファイルが必要です。",
   "immersive_melodies.error.upload.no_permission": "ファイルをアップロードする権限がありません！",
+  "immersive_melodies.free_playing": "キーボードを使用してノートを再生します！",
   "immersive_melodies.close": "閉じる",
   "immersive_melodies.search": "検索",
   "immersive_melodies.favorite": "お気に入り",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "トラックリスト",
   "immersive_melodies.help": "ヘルプを開く",
   "immersive_melodies.pause": "ポーズ",
-  "immersive_melodies.read": "アップロードの方法はこちらをご覧ください！"
+  "immersive_melodies.read": "アップロードの方法はこちらをご覧ください！",
+  "immersive_melodies.keyboard": "キーボードで遊ぼう！"
 }
