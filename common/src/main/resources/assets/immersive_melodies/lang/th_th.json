@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "ทรัมเป็ต",
   "item.immersive_melodies.tiny_drum": "กลองเล็ก",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "กำลังเล่น",
   "immersive_melodies.error.empty": "ไม่สามารถ解析ไฟล์",
   "immersive_melodies.error.unknown_file_type": "ต้องเป็นไฟล์ .abc หรือ .midi",
   "immersive_melodies.error.upload.no_permission": "คุณไม่มีสิทธิ์ในการอัปโหลดไฟล์!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "ปิด",
   "immersive_melodies.search": "ค้นหา",
   "immersive_melodies.favorite": "โปรด",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "รายการเพลง",
   "immersive_melodies.help": "เปิดช่วยเหลือ",
   "immersive_melodies.pause": "หยุดช vor ระหว่างการเล่น",
-  "immersive_melodies.read": "คลิกเพื่อเรียนรู้วิธีการอัปโหลด!"
+  "immersive_melodies.read": "คลิกเพื่อเรียนรู้วิธีการอัปโหลด!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
