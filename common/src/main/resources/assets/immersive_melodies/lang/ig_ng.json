@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Enweghị ike ibipụta faịlụ ahụ.",
   "immersive_melodies.error.unknown_file_type": "Ọ ga-abụ faịlụ .abc ma ọ bụ .midi.",
   "immersive_melodies.error.upload.no_permission": "I nwekwaghị ikike ibipụta faịlụ!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Jiri kọmpụta gị jiri mee egwu!",
   "immersive_melodies.close": "Mechie",
   "immersive_melodies.search": "Nchọta",
   "immersive_melodies.favorite": "Agba",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Mepee enyemaka",
   "immersive_melodies.pause": "Kwụsịrị",
   "immersive_melodies.read": "Pịa iji mụta otu esi bulite!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Egu na kọmpụta gị!"
 }
