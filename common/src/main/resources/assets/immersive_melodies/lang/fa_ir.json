@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "ترومپت",
   "item.immersive_melodies.tiny_drum": "درام کوچک",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "باس اندر",
+  "item.immersive_melodies.handpan": "هندپن",
   "immersive_melodies.playing": "در حال پخش",
   "immersive_melodies.error.empty": "نمی‌توان فایل را تجزیه کرد.",
   "immersive_melodies.error.unknown_file_type": "باید فایل .abc یا .midi باشد.",
   "immersive_melodies.error.upload.no_permission": "شما اجازه آپلود فایل را ندارید!",
+  "immersive_melodies.free_playing": "از صفحه‌کلید خود برای پخش نت‌ها استفاده کنید!",
   "immersive_melodies.close": "بستن",
   "immersive_melodies.search": "جستجو",
   "immersive_melodies.favorite": "مورد علاقه",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "لیست آهنگ",
   "immersive_melodies.help": "باز کردن راهنما",
   "immersive_melodies.pause": "توقف",
-  "immersive_melodies.read": "برای یادگیری نحوه آپلود کلیک کنید!"
+  "immersive_melodies.read": "برای یادگیری نحوه آپلود کلیک کنید!",
+  "immersive_melodies.keyboard": "با صفحه‌کلید خود بازی کنید!"
 }
