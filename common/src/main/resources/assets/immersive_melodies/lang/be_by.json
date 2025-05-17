@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Трампэт",
   "item.immersive_melodies.tiny_drum": "Маленькі Бубен",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Эндер Бass",
+  "item.immersive_melodies.handpan": "Хэндпан",
   "immersive_melodies.playing": "Грай",
   "immersive_melodies.error.empty": "Немагчыма прааналізаваць файл.",
   "immersive_melodies.error.unknown_file_type": "Павінен быць файл .abc або .midi.",
   "immersive_melodies.error.upload.no_permission": "У вас няма дазволу на загрузку файлаў!",
+  "immersive_melodies.free_playing": "Выкарыстоўвайце клавіятуру, каб іграць ноты!",
   "immersive_melodies.close": "Закрыць",
   "immersive_melodies.search": "Пошук",
   "immersive_melodies.favorite": "Улюбёны",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Список трэкаў",
   "immersive_melodies.help": "Адкрыйце дапамогу",
   "immersive_melodies.pause": "Паўза",
-  "immersive_melodies.read": "Націсніце, каб даведацца, як загрузіць!"
+  "immersive_melodies.read": "Націсніце, каб даведацца, як загрузіць!",
+  "immersive_melodies.keyboard": "Грайце з клавіятурай!"
 }
