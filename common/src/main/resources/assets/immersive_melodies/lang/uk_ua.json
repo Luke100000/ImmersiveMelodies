@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Труба",
   "item.immersive_melodies.tiny_drum": "Маленький барабан",
   "item.immersive_melodies.vielle": "Вієль.",
+  "item.immersive_melodies.ender_bass": "Басс Ендеру",
+  "item.immersive_melodies.handpan": "Гандпан",
   "immersive_melodies.playing": "Грає",
   "immersive_melodies.error.empty": "Не вдається розібрати файл.",
   "immersive_melodies.error.unknown_file_type": "Це має бути файл у форматі .abc або .midi.",
   "immersive_melodies.error.upload.no_permission": "У вас немає дозволу на завантаження файлів!",
+  "immersive_melodies.free_playing": "Використовуй клавіатуру, щоб грати ноти!",
   "immersive_melodies.close": "Закрити",
   "immersive_melodies.search": "Пошук",
   "immersive_melodies.favorite": "Улюбленець",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Трек-лист",
   "immersive_melodies.help": "Відкрита довідка",
   "immersive_melodies.pause": "Пауза.",
-  "immersive_melodies.read": "Натисніть, щоб дізнатися, як завантажити!"
+  "immersive_melodies.read": "Натисніть, щоб дізнатися, як завантажити!",
+  "immersive_melodies.keyboard": "Грайте за допомогою клавіатури!"
 }
