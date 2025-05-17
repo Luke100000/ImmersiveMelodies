@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Kan ikkje parse fila.",
   "immersive_melodies.error.unknown_file_type": "Må vere ei .abc eller .midi fil.",
   "immersive_melodies.error.upload.no_permission": "Du har ikkje rett til å laste opp filer!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Bruk tastaturet ditt til å spela notane!",
   "immersive_melodies.close": "Lukk",
   "immersive_melodies.search": "Søk",
   "immersive_melodies.favorite": "Favoritt",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Opne hjelp",
   "immersive_melodies.pause": "Pause",
   "immersive_melodies.read": "Klikk for å lære korleis laste opp!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Spel med tastaturet ditt!"
 }
