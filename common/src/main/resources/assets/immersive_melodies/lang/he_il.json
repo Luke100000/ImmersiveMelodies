@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "חצוצרה",
   "item.immersive_melodies.tiny_drum": "תוף קטן",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "אנדר באס",
+  "item.immersive_melodies.handpan": "הנדפן",
   "immersive_melodies.playing": "מנגן",
   "immersive_melodies.error.empty": "אין יכולת לנתח את הקובץ הזה.",
   "immersive_melodies.error.unknown_file_type": "צריך להיות קובץ .abc או .midi.",
   "immersive_melodies.error.upload.no_permission": "אין לך הרשאה להעלות קבצים!",
+  "immersive_melodies.free_playing": "השתמש במקלדת שלך כדי לנגן תווים!",
   "immersive_melodies.close": "לסגור",
   "immersive_melodies.search": "חיפוש",
   "immersive_melodies.favorite": "הוספה למועדפים",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "רשימת שירים",
   "immersive_melodies.help": "פתח/י עזרה",
   "immersive_melodies.pause": "הפסקה",
-  "immersive_melodies.read": "תלחץ/י כדי ללמוד איך להעלות!"
+  "immersive_melodies.read": "תלחץ/י כדי ללמוד איך להעלות!",
+  "immersive_melodies.keyboard": "שחק עם המקלדת שלך!"
 }
