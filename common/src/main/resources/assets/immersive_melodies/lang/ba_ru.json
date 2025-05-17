@@ -9,13 +9,13 @@
   "item.immersive_melodies.trumpet": "Труба",
   "item.immersive_melodies.tiny_drum": "Кескәй барабан",
   "item.immersive_melodies.vielle": "Vielle",
-  "item.immersive_melodies.ender_bass": "Ender Bass",
-  "item.immersive_melodies.handpan": "Handpan",
+  "item.immersive_melodies.ender_bass": "Эндер Басс",
+  "item.immersive_melodies.handpan": "Гандпан",
   "immersive_melodies.playing": "Иҙән",
   "immersive_melodies.error.empty": "Файлды аңлатып булмай.",
   "immersive_melodies.error.unknown_file_type": "Файл .abc йәки .midi булырға тейеш.",
   "immersive_melodies.error.upload.no_permission": "Файлдарҙы йөкләргә рөхсәт ителмәй!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Нота уйнар өсөн клавиатурағыҙҙы ҡулланығыҙ!",
   "immersive_melodies.close": "Ябыҡ",
   "immersive_melodies.search": "Эҙләү",
   "immersive_melodies.favorite": "Яратҡан",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Ярҙам һорау",
   "immersive_melodies.pause": "Туҡтатыу",
   "immersive_melodies.read": "Файл йөкләй алыу өсөн, баҫығыҙ!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Клавиатурағыҙ менән уйнатығыҙ!"
 }
