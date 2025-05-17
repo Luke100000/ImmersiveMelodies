@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "ಟ್ರಮ್‌ಪೆಟ್",
   "item.immersive_melodies.tiny_drum": "ಊಿಡಳೆ",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "ಊರುಡುವ",
   "immersive_melodies.error.empty": "ಫೈಲನ್ನು ಪಾರ್ಸ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
   "immersive_melodies.error.unknown_file_type": "ಇದು .abc ಅಥವಾ .midi ಫೈಲ್ ಆಗಿರಬೇಕಾಗಿದೆ.",
   "immersive_melodies.error.upload.no_permission": "ನೀವು ಫೈಲ್‌ಗಳನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲು ಅನುಮತಿ ಇಲ್ಲ!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "ಮೂಡುವುದು",
   "immersive_melodies.search": "ಅನುಸಂಧಾನ",
   "immersive_melodies.favorite": "ಪ್ರಿಯ",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "ಟ್ರಾಕ್ ಪಟ್ಟಿ",
   "immersive_melodies.help": "ಸಹಾಯ ತೆರೆಯൂ",
   "immersive_melodies.pause": "ನಿಲ್ಲಿಸಿ",
-  "immersive_melodies.read": "ಅಪ್ಲೋಡ್ ಮಾಡುವ ವಿಧಾನವನ್ನು ಕಲಿಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ!"
+  "immersive_melodies.read": "ಅಪ್ಲೋಡ್ ಮಾಡುವ ವಿಧಾನವನ್ನು ಕಲಿಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
