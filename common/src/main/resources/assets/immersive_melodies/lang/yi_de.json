@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "טרומפּעט",
   "item.immersive_melodies.tiny_drum": "טינע קעגן",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "שפּילן",
   "immersive_melodies.error.empty": "קענען נישט פּאַרסע דעם דאָסיע.",
   "immersive_melodies.error.unknown_file_type": "עס דאַרף זיין אַן .abc אָדער .midi פֿאַיל.",
   "immersive_melodies.error.upload.no_permission": "דו האָבן נישט פאַרמעגן צו אָנפֿאָרן פֿאַילן!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "קלאָז",
   "immersive_melodies.search": "זרה",
   "immersive_melodies.favorite": "באַליבט",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "לויטן רשימה",
   "immersive_melodies.help": "אַפֿן הילף",
   "immersive_melodies.pause": "פאַרשטיין",
-  "immersive_melodies.read": "קליק צו לערנען ווי צו אָנפֿאָרן!"
+  "immersive_melodies.read": "קליק צו לערנען ווי צו אָנפֿאָרן!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
