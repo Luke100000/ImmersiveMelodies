@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Kann de Datum nich lesen.",
   "immersive_melodies.error.unknown_file_type": "Möt en .abc oder .midi Datum sien.",
   "immersive_melodies.error.upload.no_permission": "Du hest keen Recht, för dat Hochloden vun Datum!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Bruk dien Tastatur, um Töne to spelen!",
   "immersive_melodies.close": "Slüten",
   "immersive_melodies.search": "Söken",
   "immersive_melodies.favorite": "Lieflings",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Hülp open",
   "immersive_melodies.pause": "Pauus",
   "immersive_melodies.read": "Klick, för dat Läden, wie Datum hochlod!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Spel mit dien Tastatur!"
 }
