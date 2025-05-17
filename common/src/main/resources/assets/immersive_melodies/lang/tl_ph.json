@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trumpeta",
   "item.immersive_melodies.tiny_drum": "Maliit na Tambol",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Naglalaro",
   "immersive_melodies.error.empty": "Hindi ma-parse ang file.",
   "immersive_melodies.error.unknown_file_type": "Kailangang .abc o .midi na file.",
   "immersive_melodies.error.upload.no_permission": "Wala kang pahintulot na mag-upload ng mga file!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Isara",
   "immersive_melodies.search": "Maghanap",
   "immersive_melodies.favorite": "Paborito",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Listahan ng Track",
   "immersive_melodies.help": "Buksan ang tulong",
   "immersive_melodies.pause": "I-pause",
-  "immersive_melodies.read": "Mag-click upang malaman kung paano mag-upload!"
+  "immersive_melodies.read": "Mag-click upang malaman kung paano mag-upload!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
