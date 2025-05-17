@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Kleine trommel",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender bas",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Spelen",
   "immersive_melodies.error.empty": "Kan het bestand niet ontleden.",
   "immersive_melodies.error.unknown_file_type": "Moet een .abc of .midi bestand zijn.",
   "immersive_melodies.error.upload.no_permission": "Je hebt geen toestemming om bestanden te uploaden!",
+  "immersive_melodies.free_playing": "Gebruik je toetsenbord om notities af te spelen!",
   "immersive_melodies.close": "Sluit",
   "immersive_melodies.search": "Zoek",
   "immersive_melodies.favorite": "Favoriet",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Track Lijst",
   "immersive_melodies.help": "Hulp openen",
   "immersive_melodies.pause": "Pauze",
-  "immersive_melodies.read": "Klik om te leren hoe je kunt uploaden!"
+  "immersive_melodies.read": "Klik om te leren hoe je kunt uploaden!",
+  "immersive_melodies.keyboard": "Speel met je toetsenbord!"
 }
