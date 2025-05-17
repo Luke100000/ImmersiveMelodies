@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trumpett",
   "item.immersive_melodies.tiny_drum": "Darbuka Żgħira",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Jiġbid",
   "immersive_melodies.error.empty": "Ma tistax taqra l-fajl.",
   "immersive_melodies.error.unknown_file_type": "Għandu jkun fajl .abc jew .midi.",
   "immersive_melodies.error.upload.no_permission": "M'għandekx permess li tħalli fajls!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Agħlaq",
   "immersive_melodies.search": "Tfittx",
   "immersive_melodies.favorite": "Favorit",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Lista tal-Kanzunetti",
   "immersive_melodies.help": "Aħdem l-għajnuna",
   "immersive_melodies.pause": "Waqqaf",
-  "immersive_melodies.read": "Ikklikkja biex titgħallem kif tħalli!"
+  "immersive_melodies.read": "Ikklikkja biex titgħallem kif tħalli!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
