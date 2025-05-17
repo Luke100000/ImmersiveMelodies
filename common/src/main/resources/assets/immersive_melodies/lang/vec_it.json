@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Impossibile analizzare il file.",
   "immersive_melodies.error.unknown_file_type": "Deve essere un file .abc o .midi.",
   "immersive_melodies.error.upload.no_permission": "Non hai permesso di caricare file!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "Dòpo 'l tò tastaressi par sunar i note!",
   "immersive_melodies.close": "Chiudi",
   "immersive_melodies.search": "Cerca",
   "immersive_melodies.favorite": "Preferito",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Apre aiuto",
   "immersive_melodies.pause": "Pausa",
   "immersive_melodies.read": "Clicca per imparare come caricare!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "Sona co 'l tò tastaressi!"
 }
