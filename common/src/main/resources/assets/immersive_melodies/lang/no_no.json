@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Liten tromme",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Håndpan",
   "immersive_melodies.playing": "Spille",
   "immersive_melodies.error.empty": "Kan ikke analysere filen.",
   "immersive_melodies.error.unknown_file_type": "Må være en .abc- eller .midi-fil.",
   "immersive_melodies.error.upload.no_permission": "Du har ikke tillatelse til å laste opp filer!",
+  "immersive_melodies.free_playing": "Bruk tastaturet for å spille notater!",
   "immersive_melodies.close": "Lukk",
   "immersive_melodies.search": "Søk",
   "immersive_melodies.favorite": "Favoritt",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Sporliste",
   "immersive_melodies.help": "Åpne hjelp",
   "immersive_melodies.pause": "Pause",
-  "immersive_melodies.read": "Klikk for å lære hvordan du laster opp!"
+  "immersive_melodies.read": "Klikk for å lære hvordan du laster opp!",
+  "immersive_melodies.keyboard": "Spill med tastaturet ditt!"
 }
