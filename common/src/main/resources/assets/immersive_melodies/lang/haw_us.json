@@ -15,7 +15,7 @@
   "immersive_melodies.error.empty": "Cannot parse the file.",
   "immersive_melodies.error.unknown_file_type": "Pono e waiho i ka faila .abc a i ʻole .midi.",
   "immersive_melodies.error.upload.no_permission": "Aole ʻoe i loaʻa ka palena e hoʻoikaika i nā faila!",
-  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
+  "immersive_melodies.free_playing": "E hoʻohana i kāu keyboard e hoʻokani i nā note!",
   "immersive_melodies.close": "Pāka",
   "immersive_melodies.search": "Hoʻʻili",
   "immersive_melodies.favorite": "Pāʻani",
@@ -26,5 +26,5 @@
   "immersive_melodies.help": "Wehe i ka kōkua",
   "immersive_melodies.pause": "E hoʻopau",
   "immersive_melodies.read": "E click e ʻike i ke ala e hoʻoikaika ai!",
-  "immersive_melodies.keyboard": "Play with your keyboard!"
+  "immersive_melodies.keyboard": "E hoʻokani me kāu keyboard!"
 }
