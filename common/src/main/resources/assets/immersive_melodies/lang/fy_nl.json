@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Trompet",
   "item.immersive_melodies.tiny_drum": "Lyts Drum",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Spylje",
   "immersive_melodies.error.empty": "Kin it bestân net parse.",
   "immersive_melodies.error.unknown_file_type": "Moat in .abc of .midi bestân wêze.",
   "immersive_melodies.error.upload.no_permission": "Jo hawwe gjin ferline om bestannen te uploads!",
+  "immersive_melodies.free_playing": "Brûk jo toetseboerd om nota te spilen!",
   "immersive_melodies.close": "Slute",
   "immersive_melodies.search": "Sykje",
   "immersive_melodies.favorite": "Favorearre",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Tracklist",
   "immersive_melodies.help": "Help iepenje",
   "immersive_melodies.pause": "Pause",
-  "immersive_melodies.read": "Klik om te learen hoe't te uploads!"
+  "immersive_melodies.read": "Klik om te learen hoe't te uploads!",
+  "immersive_melodies.keyboard": "Spylje mei jo toetseboerd!"
 }
