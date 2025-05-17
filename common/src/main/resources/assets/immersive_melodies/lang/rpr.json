@@ -9,10 +9,13 @@
   "item.immersive_melodies.trumpet": "Трубач",
   "item.immersive_melodies.tiny_drum": "Крошечный барабан",
   "item.immersive_melodies.vielle": "Vielle",
+  "item.immersive_melodies.ender_bass": "Ender Bass",
+  "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Игра",
   "immersive_melodies.error.empty": "Невозможно разобрать файл.",
   "immersive_melodies.error.unknown_file_type": "Должно быть файлом .abc или .midi.",
   "immersive_melodies.error.upload.no_permission": "У вас нет разрешения загружать файлы!",
+  "immersive_melodies.free_playing": "Use your keyboard to play notes!",
   "immersive_melodies.close": "Закрыть",
   "immersive_melodies.search": "Поиск",
   "immersive_melodies.favorite": "Любимый",
@@ -22,5 +25,6 @@
   "immersive_melodies.tracks": "Трек-лист",
   "immersive_melodies.help": "Открытая помощь",
   "immersive_melodies.pause": "Пауза",
-  "immersive_melodies.read": "Нажми, чтобы узнать, как загрузить!"
+  "immersive_melodies.read": "Нажми, чтобы узнать, как загрузить!",
+  "immersive_melodies.keyboard": "Play with your keyboard!"
 }
