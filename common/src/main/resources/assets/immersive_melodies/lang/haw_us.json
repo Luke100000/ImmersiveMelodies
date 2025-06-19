@@ -12,7 +12,7 @@
   "item.immersive_melodies.ender_bass": "Ender Bass",
   "item.immersive_melodies.handpan": "Handpan",
   "immersive_melodies.playing": "Ke Kī",
-  "immersive_melodies.error.empty": "Cannot parse the file.",
+  "immersive_melodies.error.empty": "E ʻaʻohe hiki ke hoʻoili i kēia faile.",
   "immersive_melodies.error.unknown_file_type": "Pono e waiho i ka faila .abc a i ʻole .midi.",
   "immersive_melodies.error.upload.no_permission": "Aole ʻoe i loaʻa ka palena e hoʻoikaika i nā faila!",
   "immersive_melodies.free_playing": "E hoʻohana i kāu keyboard e hoʻokani i nā note!",
