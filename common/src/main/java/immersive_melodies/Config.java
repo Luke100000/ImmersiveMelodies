@@ -19,6 +19,10 @@ public final class Config extends JsonConfig {
     public float instrumentVolumeFactor = 1.0f;
     public float perceivedLoudnessAdjustmentFactor = 0.5f;
 
+    public int humanizationTime = 5;
+    public float humanizationVolume = 0.15f;
+    public float humanizationPitch = 0.003f;
+
     public Map<String, Float> mobInstrumentFactors = Map.of(
             "minecraft:zombie", 0.01f,
             "minecraft:husk", 0.01f,

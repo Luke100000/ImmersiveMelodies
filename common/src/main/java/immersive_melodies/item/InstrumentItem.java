@@ -24,6 +24,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -56,6 +57,8 @@ public class InstrumentItem extends Item {
     private final long sustain;
 
     private final Vector3f offset;
+
+    private final RandomSource random = RandomSource.create();
 
     public InstrumentItem(Properties settings, Sounds.Instrument sound, long sustain, Vector3f offset) {
         super(settings);
@@ -144,13 +147,22 @@ public class InstrumentItem extends Item {
     public CancelableSoundInstance playNote(Entity entity, Note note, long time) {
         float volume = note.getVelocity() / 255.0f * 2.0f * Config.getInstance().instrumentVolumeFactor;
         float pitch = (float) Math.pow(2, (note.getNote() - 24) / 12.0);
+        long delay = note.getTime() - time;
+        delay = Math.max(delay, 0);
+        long length = note.getLength();
+        long sustain = Math.min(this.sustain, note.getSustain());
+
+        // humanize
+        volume += Config.getInstance().humanizationVolume * (random.nextFloat() * 2 - 1);
+        pitch *= 1 + Config.getInstance().humanizationPitch * (random.nextFloat() * 2 - 1);
+        delay += random.nextIntBetweenInclusive(-Config.getInstance().humanizationTime, Config.getInstance().humanizationTime);
+        length += random.nextIntBetweenInclusive(-Config.getInstance().humanizationTime, Config.getInstance().humanizationTime);
+
         int octave = 1;
         while (octave < 8 && pitch > 4.0 / 3.0) {
             pitch /= 2;
             octave++;
         }
-        long length = note.getLength();
-        long sustain = Math.min(this.sustain, note.getSustain());
 
         // adjust volume based on perceived loudness
         float factor = Config.getInstance().perceivedLoudnessAdjustmentFactor;
@@ -160,8 +172,7 @@ public class InstrumentItem extends Item {
         // sound
         CancelableSoundInstance soundInstance = Common.soundManager.playSound(entity.getX(), entity.getY(), entity.getZ(),
                 sound.get(octave), SoundSource.NEUTRAL,
-                volume, pitch, length, sustain,
-                note.getTime() - time, entity);
+                volume, pitch, length, sustain, delay, entity);
 
         // Stop game music
         if (entity instanceof Player && Config.getInstance().stopGameMusicForPlayers) {
