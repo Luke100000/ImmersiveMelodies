@@ -27,4 +27,5 @@ public final class Config extends JsonConfig {
 
     public boolean clickedHelp = false;
     public boolean disableUpload = false;
+    public int uploadPermissionLevel = 0;
 }
