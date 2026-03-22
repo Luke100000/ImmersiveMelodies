@@ -48,12 +48,16 @@ public final class Config extends JsonConfig {
             Map.entry(72, 69), // H -> A4
             Map.entry(74, 71), // J -> B4
             Map.entry(75, 72), // K -> C5
-            Map.entry(81, 61), // Q -> C#4
-            Map.entry(87, 63), // W -> D#4
-            Map.entry(69, 66), // E -> F#4
-            Map.entry(82, 68), // R -> G#4
-            Map.entry(84, 70), // T -> A#4
-            Map.entry(89, 73)  // Y -> C#5
+            Map.entry(76, 74), // L -> D5
+            Map.entry(59, 76), // ; -> E5
+            Map.entry(39, 77), // ' -> F5
+            Map.entry(87, 61), // W -> C#4
+            Map.entry(69, 63), // E -> D#4
+            Map.entry(84, 66), // T -> F#4
+            Map.entry(89, 68), // Y -> G#4
+            Map.entry(85, 70), // U -> A#4
+            Map.entry(79, 73), // O -> C#5
+            Map.entry(80, 73)  // P -> D#5
     );
 
 }
