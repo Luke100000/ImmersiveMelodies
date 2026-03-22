@@ -57,7 +57,7 @@ public final class Config extends JsonConfig {
             Map.entry(89, 68), // Y -> G#4
             Map.entry(85, 70), // U -> A#4
             Map.entry(79, 73), // O -> C#5
-            Map.entry(80, 73)  // P -> D#5
+            Map.entry(80, 75)  // P -> D#5
     );
 
 }
