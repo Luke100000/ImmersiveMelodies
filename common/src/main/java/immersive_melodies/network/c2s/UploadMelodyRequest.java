@@ -25,11 +25,18 @@ public class UploadMelodyRequest extends FragmentedMessage {
 
     @Override
     protected void finish(PlayerEntity e, String name, Melody melody) {
-        if (Config.getInstance().disableUpload) {
+        if (!e.hasPermissionLevel(Config.getInstance().uploadPermissionLevel)) {
             e.sendMessage(Text.translatable("immersive_melodies.error.upload.no_permission"));
             return;
         }
-        String id = Utils.getPlayerName(e) + "/" + Utils.escapeString(name);
+
+        String id;
+        if (Config.getInstance().uploadNameOverride.isEmpty()) {
+            id = Utils.getPlayerName(e) + "/" + Utils.escapeString(name);
+        } else {
+            id = Config.getInstance().uploadNameOverride + "/" + Utils.escapeString(name);
+        }
+
         Identifier identifier = new Identifier("player", id);
 
         // Register
