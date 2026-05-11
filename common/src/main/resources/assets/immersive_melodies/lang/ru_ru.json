@@ -10,7 +10,7 @@
   "item.immersive_melodies.tiny_drum": "Крошечный барабан",
   "item.immersive_melodies.vielle": "Фидель",
   "item.immersive_melodies.ender_bass": "Эндер-бас",
-  "item.immersive_melodies.handpan": "Рукоятка",
+  "item.immersive_melodies.handpan": "Ханг",
   "immersive_melodies.playing": "Играет",
   "immersive_melodies.error.empty": "Невозможно разобрать файл.",
   "immersive_melodies.error.unknown_file_type": "Это должен быть файл в формате .abc или .midi.",
