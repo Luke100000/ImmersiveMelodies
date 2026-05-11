@@ -30,12 +30,7 @@ public class UploadMelodyRequest extends FragmentedMessage {
             return;
         }
 
-        String id;
-        if (Config.getInstance().uploadNameOverride.isEmpty()) {
-            id = Utils.getPlayerName(e) + "/" + Utils.escapeString(name);
-        } else {
-            id = Config.getInstance().uploadNameOverride + "/" + Utils.escapeString(name);
-        }
+        String id = Utils.getPlayerName(e) + "/" + Utils.escapeString(name);
 
         Identifier identifier = new Identifier("player", id);
 

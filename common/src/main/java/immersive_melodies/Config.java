@@ -27,5 +27,4 @@ public final class Config extends JsonConfig {
 
     public boolean clickedHelp = false;
     public int uploadPermissionLevel = 0;
-    public String uploadNameOverride = "";
 }
