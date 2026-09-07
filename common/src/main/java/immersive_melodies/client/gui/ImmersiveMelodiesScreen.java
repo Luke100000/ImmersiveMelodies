@@ -167,11 +167,15 @@ public class ImmersiveMelodiesScreen extends Screen {
         Melody melody = MidiParser.parseMidi(inputStream, name);
         if (!melody.getTracks().isEmpty()) {
             PacketSplitter.sendToServer(name, melody);
-            search.setValue(name);
-            list.setScrollAmount(0);
+            setSearch(name);
         } else {
             setError(Component.translatable("immersive_melodies.error.empty"));
         }
+    }
+
+    public void setSearch(String query) {
+        search.setValue(query);
+        list.setScrollAmount(0);
     }
 
     @Override

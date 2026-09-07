@@ -124,6 +124,8 @@ public class MelodyUploadScreen extends Screen {
         if (selected != null) {
             parent.onFilesDrop(List.of(selected));
             onClose();
+            String name = selected.getFileName().toString();
+            parent.setSearch(name.substring(0, name.lastIndexOf('.')));
         }
     }
 
