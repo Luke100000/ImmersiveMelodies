@@ -35,9 +35,9 @@ public class TexturedButtonWidget extends DefaultButtonWidget {
         }
 
         context.blit(texture, getX(), getY(), this.u, this.v + (active ? 0 : 16), this.w, this.h, this.tw, this.th);
+        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
 
         int j = this.active ? 0xFFFFFF : 0xA0A0A0;
         context.drawCenteredString(Minecraft.getInstance().font, this.getMessage(), this.getX() + this.width / 2, this.getY() + (this.height - 8) / 2, j | Mth.ceil(this.alpha * 255.0f) << 24);
     }
 }
-

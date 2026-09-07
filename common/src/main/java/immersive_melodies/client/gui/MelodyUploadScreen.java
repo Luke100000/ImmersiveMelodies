@@ -41,9 +41,12 @@ public class MelodyUploadScreen extends Screen {
         search = new EditBox(font, width / 2 - 70, top + 12, 140, 20, Component.translatable("immersive_melodies.search"));
         search.setMaxLength(128);
         search.setSuggestion("Search");
-        search.setResponder(value -> refreshFiles());
+        search.setResponder(value -> {
+            refreshFiles();
+            search.setSuggestion(null);
+        });
         search.setBordered(false);
-        search.setTextColor(0x808080);
+        search.setTextColor(0xFF808080);
 
         fileList = new LocalFileList(minecraft, width / 2 - 75, 150, top + 22, 145);
         setInitialFocus(search);
@@ -147,24 +150,29 @@ public class MelodyUploadScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        renderBackground(graphics);
+    public void renderBackground(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+        super.renderBackground(graphics, mouseX, mouseY, delta);
 
         int x = (width - 192) / 2;
         int y = (height - 230) / 2;
 
         graphics.blit(ImmersiveMelodiesScreen.BACKGROUND_TEXTURE, x, y, 0, 0, 192, 215);
+    }
+
+    @Override
+    public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+        super.render(graphics, mouseX, mouseY, delta);
+
+        int y = (height - 230) / 2;
 
         if (error != null) {
             graphics.drawCenteredString(font, error, width / 2, y + 36, 0xFF0000);
         } else if (fileList != null && fileList.children().isEmpty()) {
-            graphics.drawCenteredString(font, Component.translatable("immersive_melodies.upload.empty"), width / 2, y + 66, 0x808080);
+            graphics.drawCenteredString(font, Component.translatable("immersive_melodies.upload.empty"), width / 2, y + 66, 0xFF808080);
         }
 
-        super.render(graphics, mouseX, mouseY, delta);
-
         Component dropHint = Component.literal("[").append(Component.translatable("immersive_melodies.upload.drop_here")).append("]");
-        graphics.drawString(font, dropHint, width / 2 - font.width(dropHint) / 2, y + 172, 0x606060, false);
+        graphics.drawString(font, dropHint, width / 2 - font.width(dropHint) / 2, y + 172, 0xFF606060, false);
         int dropHintWidth = font.width(dropHint);
         if (mouseX >= width / 2 - dropHintWidth / 2 && mouseX <= width / 2 + dropHintWidth / 2
             && mouseY >= y + 168 && mouseY <= y + 180) {
@@ -176,11 +184,9 @@ public class MelodyUploadScreen extends Screen {
 
     private class LocalFileList extends ObjectSelectionList<LocalFileList.FileEntry> {
         LocalFileList(Minecraft client, int left, int width, int top, int height) {
-            super(client, width, MelodyUploadScreen.this.height, top, top + height, 10);
-            x0 = left;
-            x1 = left + width;
-            setRenderBackground(false);
-            setRenderTopAndBottom(false);
+            super(client, width, height, top, 10);
+            setX(left);
+            setRenderHeader(false, 0);
         }
 
         void addFile(Path path) {
@@ -206,17 +212,27 @@ public class MelodyUploadScreen extends Screen {
 
         @Override
         protected int getScrollbarPosition() {
-            return x0 + width + 2;
+            return getX() + width + 2;
         }
 
         @Override
         protected void enableScissor(GuiGraphics graphics) {
-            graphics.enableScissor(x0 - 15, y0, x0 + width, y1);
+            graphics.enableScissor(getX() - 15, getY(), getX() + width, getBottom());
+        }
+
+        @Override
+        protected void renderListBackground(GuiGraphics graphics) {
+            // Nop
+        }
+
+        @Override
+        protected void renderListSeparators(GuiGraphics graphics) {
+            // Nop
         }
 
         @Override
         protected void renderSelection(GuiGraphics graphics, int y, int entryWidth, int entryHeight, int borderColor, int fillColor) {
-            graphics.fill(x0 - 1, y - 1, x0 + width, y + entryHeight + 3, 0x40000000);
+            graphics.fill(getX() - 1, y - 1, getX() + width, y + entryHeight + 3, 0x40000000);
         }
 
         private class FileEntry extends ObjectSelectionList.Entry<FileEntry> {
@@ -230,7 +246,7 @@ public class MelodyUploadScreen extends Screen {
             public void render(GuiGraphics graphics, int index, int y, int x, int entryWidth, int entryHeight,
                                int mouseX, int mouseY, boolean hovered, float delta) {
                 String label = directory.relativize(path).toString();
-                graphics.drawString(font, font.plainSubstrByWidth(label, entryWidth - 4), x0 + 2, y + 1, 0x404040, false);
+                graphics.drawString(font, font.plainSubstrByWidth(label, entryWidth - 4), getX() + 2, y + 1, 0xFF404040, false);
             }
 
             @Override
