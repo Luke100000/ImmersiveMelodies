@@ -1,3 +1,8 @@
+# 0.8.0
+
+* Added a upload screen mostly as a fallback for when drag and drop doesn't work
+* Free-playing now supports the mouse
+
 # 0.7.0
 
 * Fixed non-ascii file name conflicts
