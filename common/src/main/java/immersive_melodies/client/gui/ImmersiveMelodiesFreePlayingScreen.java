@@ -28,6 +28,8 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
     private static final int NATURAL_ROW_OFFSET = 16;
 
     private final Set<Integer> pressedKeys = new HashSet<>();
+    private Integer pressedMouseKey;
+    private KeyLayout keyLayout;
 
     protected ImmersiveMelodiesFreePlayingScreen() {
         super(TEXT);
@@ -36,6 +38,7 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
     @Override
     protected void init() {
         super.init();
+        keyLayout = createKeyLayout(mappings());
 
         // Exit
         addRenderableWidget(new TexturedButtonWidget(width / 2 - 8, height / 2 + 58, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 16, 256, 256, Component.nullToEmpty(null), button -> {
@@ -50,8 +53,7 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
 
     @Override
     public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
-        List<Map.Entry<Integer, Integer>> mappings = new ArrayList<>(Config.getInstance().keycodeToMidi.entrySet());
-        mappings.sort(Comparator.comparingInt(Map.Entry::getValue));
+        List<Map.Entry<Integer, Integer>> mappings = mappings();
 
         context.drawCenteredString(
                 this.font,
@@ -62,20 +64,10 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
         );
 
         if (!mappings.isEmpty()) {
-            double minPosition = mappings.stream().mapToDouble(entry -> notePosition(entry.getValue())).min().orElse(0.0);
-            double maxPosition = mappings.stream().mapToDouble(entry -> notePosition(entry.getValue())).max().orElse(minPosition);
-            double positionRange = Math.max(1.0, maxPosition - minPosition);
-            int availableWidth = Math.max(KEY_WIDTH, this.width - 32);
-            int keySpacing = Math.min(MAX_KEY_SPACING, Math.max(18, (int) ((availableWidth - KEY_WIDTH) / positionRange)));
-            int totalWidth = (int) Math.round((maxPosition - minPosition) * keySpacing) + KEY_WIDTH;
-            int startX = this.width / 2 - totalWidth / 2;
-
             for (Map.Entry<Integer, Integer> entry : mappings) {
                 int keyCode = entry.getKey();
                 int midi = entry.getValue();
-                int x = startX + (int) Math.round((notePosition(midi) - minPosition) * keySpacing);
-                int y = this.height / 2 + (isSharp(midi) ? SHARP_ROW_OFFSET : NATURAL_ROW_OFFSET);
-                renderKey(context, x, y, keyCode, midi, pressedKeys.contains(keyCode));
+                renderKey(context, keyLayout.x(midi), keyLayout.y(midi), keyCode, midi, pressedKeys.contains(keyCode) || pressedMouseKey != null && pressedMouseKey == keyCode);
             }
         }
 
@@ -127,6 +119,34 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
         };
     }
 
+    private Integer keyAt(double mouseX, double mouseY) {
+        for (Map.Entry<Integer, Integer> entry : mappings()) {
+            int midi = entry.getValue();
+            int x = keyLayout.x(midi);
+            int y = keyLayout.y(midi);
+            if (mouseX >= x && mouseX < x + KEY_WIDTH && mouseY >= y && mouseY < y + KEY_HEIGHT) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+
+    private static List<Map.Entry<Integer, Integer>> mappings() {
+        List<Map.Entry<Integer, Integer>> mappings = new ArrayList<>(Config.getInstance().keycodeToMidi.entrySet());
+        mappings.sort(Comparator.comparingInt(Map.Entry::getValue));
+        return mappings;
+    }
+
+    private KeyLayout createKeyLayout(List<Map.Entry<Integer, Integer>> mappings) {
+        double minPosition = mappings.stream().mapToDouble(entry -> notePosition(entry.getValue())).min().orElse(0.0);
+        double maxPosition = mappings.stream().mapToDouble(entry -> notePosition(entry.getValue())).max().orElse(minPosition);
+        double positionRange = Math.max(1.0, maxPosition - minPosition);
+        int availableWidth = Math.max(KEY_WIDTH, this.width - 32);
+        int keySpacing = Math.min(MAX_KEY_SPACING, Math.max(18, (int) ((availableWidth - KEY_WIDTH) / positionRange)));
+        int totalWidth = (int) Math.round((maxPosition - minPosition) * keySpacing) + KEY_WIDTH;
+        return new KeyLayout(minPosition, keySpacing, this.width / 2 - totalWidth / 2, this.height / 2);
+    }
+
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         Integer midi = Config.getInstance().keycodeToMidi.get(keyCode);
@@ -151,6 +171,31 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
     }
 
     @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (super.mouseClicked(mouseX, mouseY, button)) {
+            return true;
+        }
+
+        Integer keyCode = keyAt(mouseX, mouseY);
+        if (keyCode != null) {
+            pressedMouseKey = keyCode;
+            Client.playNote(Config.getInstance().keycodeToMidi.get(keyCode), 127);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        if (pressedMouseKey != null) {
+            Client.playNote(Config.getInstance().keycodeToMidi.get(pressedMouseKey), 0);
+            pressedMouseKey = null;
+            return true;
+        }
+        return super.mouseReleased(mouseX, mouseY, button);
+    }
+
+    @Override
     public void removed() {
         for (int keyCode : pressedKeys) {
             Integer midi = Config.getInstance().keycodeToMidi.get(keyCode);
@@ -158,12 +203,26 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
                 Client.playNote(midi, 0);
             }
         }
+        if (pressedMouseKey != null) {
+            Client.playNote(Config.getInstance().keycodeToMidi.get(pressedMouseKey), 0);
+        }
         pressedKeys.clear();
+        pressedMouseKey = null;
         super.removed();
     }
 
     @Override
     public boolean isPauseScreen() {
         return false;
+    }
+
+    private record KeyLayout(double minPosition, int keySpacing, int startX, int centerY) {
+        private int x(int midi) {
+            return startX + (int) Math.round((notePosition(midi) - minPosition) * keySpacing);
+        }
+
+        private int y(int midi) {
+            return centerY + (isSharp(midi) ? SHARP_ROW_OFFSET : NATURAL_ROW_OFFSET);
+        }
     }
 }

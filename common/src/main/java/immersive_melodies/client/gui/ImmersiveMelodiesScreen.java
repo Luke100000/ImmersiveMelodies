@@ -166,11 +166,15 @@ public class ImmersiveMelodiesScreen extends Screen {
         Melody melody = MidiParser.parseMidi(inputStream, name);
         if (!melody.getTracks().isEmpty()) {
             PacketSplitter.sendToServer(name, melody);
-            search.setValue(name);
-            list.setScrollAmount(0);
+            setSearch(name);
         } else {
             setError(Component.translatable("immersive_melodies.error.empty"));
         }
+    }
+
+    public void setSearch(String query) {
+        search.setValue(query);
+        list.setScrollAmount(0);
     }
 
     @Override
@@ -305,32 +309,43 @@ public class ImmersiveMelodiesScreen extends Screen {
         }
 
         // Free playing
-        addRenderableWidget(new TexturedButtonWidget(width / 2 - 33, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 0, 256, 256, Component.nullToEmpty(null), button -> {
+        addRenderableWidget(new TexturedButtonWidget(width / 2 - 35, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 0, 256, 256, Component.nullToEmpty(null), button -> {
             if (minecraft != null) {
                 minecraft.setScreen(new ImmersiveMelodiesFreePlayingScreen());
             }
         }, () -> List.of(Component.translatable("immersive_melodies.keyboard").getVisualOrderText())));
 
         // Pause
-        addRenderableWidget(new TexturedButtonWidget(width / 2 - 8, y, 16, 16, BACKGROUND_TEXTURE, 256 - 32, 32, 256, 256, Component.nullToEmpty(null), button -> {
+        addRenderableWidget(new TexturedButtonWidget(width / 2 - 15, y, 16, 16, BACKGROUND_TEXTURE, 256 - 32, 32, 256, 256, Component.nullToEmpty(null), button -> {
             Network.sendToServer(ItemActionMessage.fromState(ItemActionMessage.State.PAUSE));
         }, () -> List.of(Component.translatable("immersive_melodies.pause").getVisualOrderText())));
 
         // Play
-        addRenderableWidget(new TexturedButtonWidget(width / 2 + 8, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 32, 256, 256, Component.nullToEmpty(null), button -> {
+        addRenderableWidget(new TexturedButtonWidget(width / 2 + 5, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 32, 256, 256, Component.nullToEmpty(null), button -> {
             Network.sendToServer(ItemActionMessage.fromState(ItemActionMessage.State.CONTINUE));
         }, () -> List.of(Component.translatable("immersive_melodies.play").getVisualOrderText())));
 
+        int actionX = width / 2 + 25;
+
         // Delete
         if (selected != null && (Utils.canDelete(selected, Minecraft.getInstance().player))) {
-            addRenderableWidget(new TexturedButtonWidget(width / 2 + 30, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 16, 256, 256, Component.nullToEmpty(null), button -> {
+            addRenderableWidget(new TexturedButtonWidget(actionX, y, 16, 16, BACKGROUND_TEXTURE, 256 - 16, 16, 256, 256, Component.nullToEmpty(null), button -> {
                 Network.sendToServer(new MelodyDeleteRequest(selected));
                 selected = null;
             }, () -> List.of(Component.translatable("immersive_melodies.delete").getVisualOrderText())));
+            actionX += 20;
         }
 
+        // Upload
+        addRenderableWidget(new TexturedButtonWidget(actionX, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 48, 256, 256, Component.empty(), button -> {
+            if (minecraft != null) {
+                minecraft.setScreen(new MelodyUploadScreen(this));
+            }
+        }, () -> List.of(Component.translatable("immersive_melodies.upload").getVisualOrderText())));
+        actionX += 20;
+
         // Help
-        addRenderableWidget(new TexturedButtonWidget(width / 2 + 50, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 32, 256, 256, Component.nullToEmpty(null), button -> {
+        addRenderableWidget(new TexturedButtonWidget(actionX, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 32, 256, 256, Component.nullToEmpty(null), button -> {
             openHelp();
             if (!Config.getInstance().clickedHelp) {
                 Config.getInstance().clickedHelp = true;
