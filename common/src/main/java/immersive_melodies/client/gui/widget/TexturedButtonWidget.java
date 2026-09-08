@@ -1,21 +1,21 @@
 package immersive_melodies.client.gui.widget;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
+import net.minecraft.util.ARGB;
 
 import java.util.List;
 import java.util.function.Supplier;
 
 public class TexturedButtonWidget extends DefaultButtonWidget {
     private final int u, v, tw, th, w, h;
-    private final ResourceLocation texture;
+    private final Identifier texture;
 
-    public TexturedButtonWidget(int x, int y, int width, int height, ResourceLocation texture, int u, int v, int tw, int th, Component message, OnPress onPress, Supplier<List<FormattedCharSequence>> tooltipSupplier) {
+    public TexturedButtonWidget(int x, int y, int width, int height, Identifier texture, int u, int v, int tw, int th, Component message, OnPress onPress, Supplier<List<FormattedCharSequence>> tooltipSupplier) {
         super(x, y, width, height, message, onPress, tooltipSupplier);
         this.texture = texture;
         this.w = width;
@@ -27,17 +27,12 @@ public class TexturedButtonWidget extends DefaultButtonWidget {
     }
 
     @Override
-    public void renderWidget(GuiGraphics context, int mouseX, int mouseY, float delta) {
-        if (isHovered) {
-            RenderSystem.setShaderColor(1.0f, 0.75f, 0.75f, this.alpha);
-        } else {
-            RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, this.alpha);
-        }
-
-        context.blit(texture, getX(), getY(), this.u, this.v + (active ? 0 : 16), this.w, this.h, this.tw, this.th);
-        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+    protected void extractContents(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
+        int textureColor = isHovered() ? ARGB.colorFromFloat(this.alpha, 1.0F, 0.75F, 0.75F) : ARGB.white(this.alpha);
+        context.blit(RenderPipelines.GUI_TEXTURED, texture, getX(), getY(), this.u, this.v + (active ? 0 : 16), this.w, this.h, this.tw, this.th, textureColor);
 
         int j = this.active ? 0xFFFFFF : 0xA0A0A0;
-        context.drawCenteredString(Minecraft.getInstance().font, this.getMessage(), this.getX() + this.width / 2, this.getY() + (this.height - 8) / 2, j | Mth.ceil(this.alpha * 255.0f) << 24);
+        context.centeredText(Minecraft.getInstance().font, this.getMessage(), this.getX() + this.width / 2, this.getY() + (this.height - 8) / 2, ARGB.color(this.alpha, j));
+        extractTooltip(context, mouseX, mouseY);
     }
 }

@@ -18,15 +18,16 @@ import immersive_melodies.util.MidiConverter;
 import immersive_melodies.util.MidiParser;
 import immersive_melodies.util.Utils;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.ItemStack;
 
 import java.io.ByteArrayInputStream;
@@ -40,7 +41,7 @@ import java.nio.file.PathMatcher;
 import java.util.*;
 
 public class ImmersiveMelodiesScreen extends Screen {
-    public static final ResourceLocation BACKGROUND_TEXTURE = Common.locate("textures/gui/paper.png");
+    public static final Identifier BACKGROUND_TEXTURE = Common.locate("textures/gui/paper.png");
     private MelodyListWidget list;
     private MelodyListWidget trackList;
     private EditBox search;
@@ -49,7 +50,7 @@ public class ImmersiveMelodiesScreen extends Screen {
     private long lastError;
     private boolean showTrackSelection;
     private List<Integer> enabledTracks = new ArrayList<>();
-    private ResourceLocation selected;
+    private Identifier selected;
 
     private void setError(Component error) {
         this.error = error;
@@ -76,7 +77,7 @@ public class ImmersiveMelodiesScreen extends Screen {
             this.search.setSuggestion(null);
         });
         this.search.setBordered(false);
-        this.search.setTextColor(0x808080);
+        this.search.setTextColor(0xFF808080);
         this.search.setSuggestion("Search");
         setInitialFocus(this.search);
 
@@ -185,45 +186,45 @@ public class ImmersiveMelodiesScreen extends Screen {
     }
 
     @Override
-    public void renderBackground(GuiGraphics context, int mouseX, int mouseY, float delta) {
-        super.renderBackground(context, mouseX, mouseY, delta);
+    public void extractBackground(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
+        super.extractBackground(context, mouseX, mouseY, delta);
 
         renderPaperBackground(context);
     }
 
-    private void renderPaperBackground(GuiGraphics context) {
+    private void renderPaperBackground(GuiGraphicsExtractor context) {
         // Draw the track selection background
         int cx = (this.width - 192) / 2;
         int cy = (this.height - 230) / 2;
         if (showTrackSelection) {
             int overlap = 10;
             int trackListWidth = 75;
-            context.blit(BACKGROUND_TEXTURE, cx + 192 - overlap, cy + 8, 0, 0, 32, 100);
-            context.blit(BACKGROUND_TEXTURE, cx + 192 - overlap, cy + 108, 0, 115, 32, 100);
-            context.blit(BACKGROUND_TEXTURE, cx + 192 - overlap + 32, cy + 8, 192 - overlap - trackListWidth, 0, overlap + trackListWidth, 100);
-            context.blit(BACKGROUND_TEXTURE, cx + 192 - overlap + 32, cy + 108, 192 - overlap - trackListWidth, 115, overlap + trackListWidth, 100);
+            context.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND_TEXTURE, cx + 192 - overlap, cy + 8, 0, 0, 32, 100, 32, 100, 256, 256);
+            context.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND_TEXTURE, cx + 192 - overlap, cy + 108, 0, 115, 32, 100, 32, 100, 256, 256);
+            context.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND_TEXTURE, cx + 192 - overlap + 32, cy + 8, 192 - overlap - trackListWidth, 0, overlap + trackListWidth, 100, overlap + trackListWidth, 100, 256, 256);
+            context.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND_TEXTURE, cx + 192 - overlap + 32, cy + 108, 192 - overlap - trackListWidth, 115, overlap + trackListWidth, 100, overlap + trackListWidth, 100, 256, 256);
 
             // Track selection title
-            context.drawString(font, Component.translatable("immersive_melodies.tracks"), this.width / 2 + 100, this.height / 2 - 94, 0x000000, false);
+            context.text(font, Component.translatable("immersive_melodies.tracks"), this.width / 2 + 100, this.height / 2 - 94, 0xFF000000, false);
         }
 
         // Draw background
-        context.blit(BACKGROUND_TEXTURE, cx, cy, 0, 0, 192, 215);
+        context.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND_TEXTURE, cx, cy, 0, 0, 192, 215, 192, 215, 256, 256);
     }
 
     @Override
-    public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
+    public void extractRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
         // Print help for noobs
         if (!Config.getInstance().clickedHelp) {
-            context.renderTooltip(font, Component.translatable("immersive_melodies.read"), width / 2 + 55, height / 2 + 69 + 17);
+            context.setTooltipForNextFrame(font, Component.translatable("immersive_melodies.read"), width / 2 + 55, height / 2 + 69 + 17);
         }
 
         // Print error
         if (error != null && System.currentTimeMillis() - lastError < 5000) {
-            context.drawCenteredString(font, error, width / 2, this.height / 2 - 103, 0xFF0000);
+            context.centeredText(font, error, width / 2, this.height / 2 - 103, 0xFFFF0000);
         }
 
-        super.render(context, mouseX, mouseY, delta);
+        super.extractRenderState(context, mouseX, mouseY, delta);
     }
 
     public void refreshPage() {
@@ -235,7 +236,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         // Build the melody list
         list.clearEntries();
         String lastPath = "";
-        for (Map.Entry<ResourceLocation, MelodyDescriptor> entry : ClientMelodyManager.getMelodiesList().entrySet().stream()
+        for (Map.Entry<Identifier, MelodyDescriptor> entry : ClientMelodyManager.getMelodiesList().entrySet().stream()
                 .filter(e -> this.search.getValue().isEmpty() || e.getValue().getName().toLowerCase(Locale.ROOT).contains(this.search.getValue().toLowerCase(Locale.ROOT)))
                 .sorted((a, b) -> {
                     int primarySortA = getSortIndex(a);
@@ -252,7 +253,7 @@ public class ImmersiveMelodiesScreen extends Screen {
             String path = entry.getKey().getNamespace() + "/" + dir;
 
             if (!path.equals(lastPath)) {
-                list.addEntry(ResourceLocation.parse(path), Component.literal(dir).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY), null);
+                list.addEntry(Identifier.parse(path), Component.literal(dir).withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY), null);
                 lastPath = path;
             }
 
@@ -280,7 +281,7 @@ public class ImmersiveMelodiesScreen extends Screen {
                     Track track = melody.getTracks().get(i);
                     int trackId = i;
                     trackList.addEntry(
-                            ResourceLocation.parse(selected.getPath() + "/" + i),
+                            Identifier.parse(selected.getPath() + "/" + i),
                             Component.translatable(track.getName()).withStyle(enabledTracks.contains(i) ? ChatFormatting.DARK_GRAY : ChatFormatting.STRIKETHROUGH),
                             () -> {
                                 boolean enabled = enabledTracks.contains(trackId);
@@ -291,7 +292,7 @@ public class ImmersiveMelodiesScreen extends Screen {
             }
         }
 
-        this.list.setScrollAmount(this.list.getScrollAmount());
+        this.list.setScrollAmount(this.list.scrollAmount());
 
         int y = this.height / 2 + 69;
 
@@ -354,7 +355,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         }, () -> List.of(Component.translatable("immersive_melodies.help").getVisualOrderText())));
     }
 
-    private static int getSortIndex(Map.Entry<ResourceLocation, MelodyDescriptor> entry) {
+    private static int getSortIndex(Map.Entry<Identifier, MelodyDescriptor> entry) {
         return Utils.ownsMelody(entry.getKey(), Minecraft.getInstance().player) ? 2 : Utils.isPlayerMelody(entry.getKey()) ? 0 : 1;
     }
 

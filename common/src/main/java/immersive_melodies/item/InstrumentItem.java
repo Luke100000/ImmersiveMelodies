@@ -13,6 +13,7 @@ import immersive_melodies.network.s2c.OpenGuiRequest;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.Note;
 import immersive_melodies.resources.ServerMelodyManager;
+import immersive_melodies.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
@@ -20,32 +21,34 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import org.joml.Vector3f;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class InstrumentItem extends Item {
     public static final DataComponentType<Boolean> PLAYING = Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, "playing",
             DataComponentType.<Boolean>builder().persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL).build());
 
-    public static final DataComponentType<ResourceLocation> MELODY = Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, "melody",
-            DataComponentType.<ResourceLocation>builder().persistent(ResourceLocation.CODEC).networkSynchronized(ResourceLocation.STREAM_CODEC).build());
+    public static final DataComponentType<Identifier> MELODY = Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, "melody",
+            DataComponentType.<Identifier>builder().persistent(Identifier.CODEC).networkSynchronized(Identifier.STREAM_CODEC).build());
 
     public static final DataComponentType<Long> START_TIME = Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, "start_time",
             DataComponentType.<Long>builder().persistent(Codec.LONG).networkSynchronized(ByteBufCodecs.VAR_LONG).build());
@@ -73,23 +76,23 @@ public class InstrumentItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-        if (!world.isClientSide) {
+    public InteractionResult use(Level world, Player user, InteractionHand hand) {
+        if (!world.isClientSide()) {
             Network.sendToPlayer(new MelodyListMessage(user), (ServerPlayer) user);
             Network.sendToPlayer(new OpenGuiRequest(), (ServerPlayer) user);
         }
 
-        return InteractionResultHolder.sidedSuccess(user.getItemInHand(hand), world.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> components, TooltipFlag tooltipFlag) {
         // State
         if (isPlaying(stack)) {
-            components.add(Component.translatable("immersive_melodies.playing").withStyle(ChatFormatting.GREEN));
+            components.accept(Component.translatable("immersive_melodies.playing").withStyle(ChatFormatting.GREEN));
         }
 
-        super.appendHoverText(stack, context, components, tooltipFlag);
+        super.appendHoverText(stack, context, display, components, tooltipFlag);
     }
 
     public boolean isPlaying(ItemStack stack) {
@@ -99,7 +102,7 @@ public class InstrumentItem extends Item {
     public void inventoryClientTick(ItemStack stack, Level world, LivingEntity entity) {
         ItemStack primaryStack = null;
         List<ItemStack> playingInstruments = new ArrayList<>();
-        for (ItemStack handItem : entity.getHandSlots()) {
+        for (ItemStack handItem : Utils.getHandItems(entity)) {
             if (handItem.getItem() instanceof InstrumentItem instrument && instrument.isPlaying(handItem)) {
                 if (primaryStack == null) {
                     primaryStack = handItem;
@@ -108,7 +111,7 @@ public class InstrumentItem extends Item {
             }
         }
 
-        if (stack != primaryStack || !world.isClientSide || !Common.soundManager.audible(entity)) {
+        if (stack != primaryStack || !world.isClientSide() || !Common.soundManager.audible(entity)) {
             return;
         }
 
@@ -212,7 +215,7 @@ public class InstrumentItem extends Item {
         // autoplay
         if (!(entity instanceof Player) && !isPlaying(stack)) {
             ItemStack playingStack = null;
-            for (ItemStack handItem : entity.getHandSlots()) {
+            for (ItemStack handItem : Utils.getHandItems(entity)) {
                 if (handItem != stack && handItem.getItem() instanceof InstrumentItem instrument && instrument.isPlaying(handItem)) {
                     playingStack = handItem;
                     break;
@@ -227,11 +230,11 @@ public class InstrumentItem extends Item {
         }
     }
 
-    public void play(ItemStack stack, ResourceLocation melody, Level world, Entity entity) {
+    public void play(ItemStack stack, Identifier melody, Level world, Entity entity) {
         play(stack, melody, world.getGameTime(), entity);
     }
 
-    private void play(ItemStack stack, ResourceLocation melody, long startTime, Entity entity) {
+    private void play(ItemStack stack, Identifier melody, long startTime, Entity entity) {
         stack.set(MELODY, melody);
         stack.set(PLAYING, true);
         stack.set(START_TIME, startTime);
@@ -240,7 +243,7 @@ public class InstrumentItem extends Item {
         refreshTracks(stack, entity);
     }
 
-    public static ResourceLocation getMelody(ItemStack stack) {
+    public static Identifier getMelody(ItemStack stack) {
         return stack.getOrDefault(MELODY, Common.locate("default"));
     }
 

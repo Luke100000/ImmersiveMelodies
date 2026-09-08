@@ -6,16 +6,8 @@
     "  P"
   ],
   "key": {
-    "L": [
-      {
-        "item": "minecraft:lapis_lazuli"
-      }
-    ],
-    "P": [
-      {
-        "tag": "minecraft:planks"
-      }
-    ]
+    "L": "minecraft:lapis_lazuli",
+    "P": "#minecraft:planks"
   },
   "result": {
     "id": "immersive_melodies:didgeridoo"

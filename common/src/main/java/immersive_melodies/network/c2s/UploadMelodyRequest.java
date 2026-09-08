@@ -14,7 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
@@ -31,12 +31,12 @@ public record UploadMelodyRequest(String name, byte[] fragment, int length) impl
 
     @Override
     public void finish(Player e, String name, Melody melody) {
-        if (!e.hasPermissions(Config.getInstance().uploadPermissionLevel)) {
+        if (!Utils.hasPermissions(e, Config.getInstance().uploadPermissionLevel)) {
             e.sendSystemMessage(Component.translatable("immersive_melodies.error.upload.no_permission"));
             return;
         }
         String id = Utils.getPlayerName(e) + "/" + UUID.randomUUID();
-        ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath("player", id);
+        Identifier identifier = Identifier.fromNamespaceAndPath("player", id);
 
         // Register
         ServerMelodyManager.registerMelody(

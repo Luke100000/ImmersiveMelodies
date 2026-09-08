@@ -8,14 +8,14 @@ import immersive_melodies.resources.ServerMelodyManager;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
-public record MelodyRequest(ResourceLocation identifier) implements ImmersivePayload {
+public record MelodyRequest(Identifier identifier) implements ImmersivePayload {
     public static final Type<MelodyRequest> TYPE = new CustomPacketPayload.Type<>(Common.locate("melody_request"));
     public static final StreamCodec<FriendlyByteBuf, MelodyRequest> STREAM_CODEC = StreamCodec.composite(
-            ResourceLocation.STREAM_CODEC, MelodyRequest::identifier,
+            Identifier.STREAM_CODEC, MelodyRequest::identifier,
             MelodyRequest::new
     );
 

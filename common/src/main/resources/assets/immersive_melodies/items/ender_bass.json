@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "immersive_melodies:item/ender_bass"
+        },
+        "when": ["gui", "ground", "fixed"]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "immersive_melodies:item/ender_bass_hand"
+    },
+    "property": "minecraft:display_context"
+  }
+}

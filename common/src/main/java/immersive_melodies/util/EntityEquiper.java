@@ -43,7 +43,7 @@ public class EntityEquiper {
     }
 
     private static boolean hasInstrument(LivingEntity entity) {
-        for (ItemStack handItem : entity.getHandSlots()) {
+        for (ItemStack handItem : Utils.getHandItems(entity)) {
             if (handItem.getItem() instanceof InstrumentItem) {
                 return true;
             }

@@ -6,16 +6,8 @@
     "   "
   ],
   "key": {
-    "B": [
-      {
-        "item": "minecraft:copper_ingot"
-      }
-    ],
-    "C": [
-      {
-        "item": "minecraft:copper_block"
-      }
-    ]
+    "B": "minecraft:copper_ingot",
+    "C": "minecraft:copper_block"
   },
   "result": {
     "id": "immersive_melodies:handpan"

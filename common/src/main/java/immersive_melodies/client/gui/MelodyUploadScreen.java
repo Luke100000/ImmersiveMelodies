@@ -2,14 +2,16 @@ package immersive_melodies.client.gui;
 
 import immersive_melodies.Common;
 import immersive_melodies.client.gui.widget.TexturedButtonWidget;
-import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.util.Util;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -34,7 +36,6 @@ public class MelodyUploadScreen extends Screen {
 
     @Override
     protected void init() {
-        assert minecraft != null;
         directory = minecraft.gameDirectory.toPath().resolve("immersive_melodies").toAbsolutePath().normalize();
         int top = (height - 230) / 2;
 
@@ -140,7 +141,6 @@ public class MelodyUploadScreen extends Screen {
 
     @Override
     public void onClose() {
-        assert minecraft != null;
         minecraft.setScreen(parent);
     }
 
@@ -150,33 +150,33 @@ public class MelodyUploadScreen extends Screen {
     }
 
     @Override
-    public void renderBackground(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        super.renderBackground(graphics, mouseX, mouseY, delta);
+    public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
+        super.extractBackground(graphics, mouseX, mouseY, delta);
 
         int x = (width - 192) / 2;
         int y = (height - 230) / 2;
 
-        graphics.blit(ImmersiveMelodiesScreen.BACKGROUND_TEXTURE, x, y, 0, 0, 192, 215);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, ImmersiveMelodiesScreen.BACKGROUND_TEXTURE, x, y, 0, 0, 192, 215, 192, 215, 256, 256);
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        super.render(graphics, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
+        super.extractRenderState(graphics, mouseX, mouseY, delta);
 
         int y = (height - 230) / 2;
 
         if (error != null) {
-            graphics.drawCenteredString(font, error, width / 2, y + 36, 0xFF0000);
+            graphics.centeredText(font, error, width / 2, y + 36, 0xFFFF0000);
         } else if (fileList != null && fileList.children().isEmpty()) {
-            graphics.drawCenteredString(font, Component.translatable("immersive_melodies.upload.empty"), width / 2, y + 66, 0xFF808080);
+            graphics.centeredText(font, Component.translatable("immersive_melodies.upload.empty"), width / 2, y + 66, 0xFF808080);
         }
 
         Component dropHint = Component.literal("[").append(Component.translatable("immersive_melodies.upload.drop_here")).append("]");
-        graphics.drawString(font, dropHint, width / 2 - font.width(dropHint) / 2, y + 172, 0xFF606060, false);
+        graphics.text(font, dropHint, width / 2 - font.width(dropHint) / 2, y + 172, 0xFF606060, false);
         int dropHintWidth = font.width(dropHint);
         if (mouseX >= width / 2 - dropHintWidth / 2 && mouseX <= width / 2 + dropHintWidth / 2
             && mouseY >= y + 168 && mouseY <= y + 180) {
-            graphics.renderTooltip(font, List.of(
+            graphics.setTooltipForNextFrame(font, List.of(
                     Component.translatable("immersive_melodies.upload.drag_drop").getVisualOrderText(),
                     Component.translatable("immersive_melodies.upload.fallback").getVisualOrderText()), mouseX, mouseY);
         }
@@ -186,7 +186,6 @@ public class MelodyUploadScreen extends Screen {
         LocalFileList(Minecraft client, int left, int width, int top, int height) {
             super(client, width, height, top, 10);
             setX(left);
-            setRenderHeader(false, 0);
         }
 
         void addFile(Path path) {
@@ -211,28 +210,28 @@ public class MelodyUploadScreen extends Screen {
         }
 
         @Override
-        protected int getScrollbarPosition() {
+        protected int scrollBarX() {
             return getX() + width + 2;
         }
 
         @Override
-        protected void enableScissor(GuiGraphics graphics) {
+        protected void enableScissor(GuiGraphicsExtractor graphics) {
             graphics.enableScissor(getX() - 15, getY(), getX() + width, getBottom());
         }
 
         @Override
-        protected void renderListBackground(GuiGraphics graphics) {
+        protected void extractListBackground(GuiGraphicsExtractor graphics) {
             // Nop
         }
 
         @Override
-        protected void renderListSeparators(GuiGraphics graphics) {
+        protected void extractListSeparators(GuiGraphicsExtractor graphics) {
             // Nop
         }
 
         @Override
-        protected void renderSelection(GuiGraphics graphics, int y, int entryWidth, int entryHeight, int borderColor, int fillColor) {
-            graphics.fill(getX() - 1, y - 1, getX() + width, y + entryHeight + 3, 0x40000000);
+        protected void extractSelection(GuiGraphicsExtractor graphics, FileEntry entry, int outlineColor) {
+            graphics.fill(getX() - 1, entry.getY() - 1, getX() + width, entry.getY() + entry.getContentHeight() + 3, 0x40000000);
         }
 
         private class FileEntry extends ObjectSelectionList.Entry<FileEntry> {
@@ -243,15 +242,14 @@ public class MelodyUploadScreen extends Screen {
             }
 
             @Override
-            public void render(GuiGraphics graphics, int index, int y, int x, int entryWidth, int entryHeight,
-                               int mouseX, int mouseY, boolean hovered, float delta) {
+            public void extractContent(GuiGraphicsExtractor graphics, int mouseX, int mouseY, boolean hovered, float delta) {
                 String label = directory.relativize(path).toString();
-                graphics.drawString(font, font.plainSubstrByWidth(label, entryWidth - 4), getX() + 2, y + 1, 0xFF404040, false);
+                graphics.text(font, font.plainSubstrByWidth(label, getWidth() - 4), getX() + 2, getY() + 1, 0xFF404040, false);
             }
 
             @Override
-            public boolean mouseClicked(double mouseX, double mouseY, int button) {
-                if (button == 0) {
+            public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+                if (event.button() == 0) {
                     LocalFileList.this.setSelected(this);
                     refreshWidgets();
                     return true;

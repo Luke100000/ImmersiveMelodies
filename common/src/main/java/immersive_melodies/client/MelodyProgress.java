@@ -4,7 +4,7 @@ import immersive_melodies.Common;
 import immersive_melodies.item.InstrumentItem;
 import immersive_melodies.resources.ClientMelodyManager;
 import immersive_melodies.resources.Melody;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.HashMap;
@@ -14,8 +14,8 @@ public class MelodyProgress {
     long time;
     long loop = -1;
 
-    ResourceLocation currentlyPlaying = Common.locate("");
-    ResourceLocation overwritten = null;
+    Identifier currentlyPlaying = Common.locate("");
+    Identifier overwritten = null;
     long overwrittenWorldTime;
     long worldTime;
     final Map<Integer, Integer> lastIndex = new HashMap<>();
@@ -37,7 +37,7 @@ public class MelodyProgress {
 
     public void tick(ItemStack stack, long gameTime) {
         // reset progress on change
-        ResourceLocation identifier = InstrumentItem.getMelody(stack);
+        Identifier identifier = InstrumentItem.getMelody(stack);
         long startTime = stack.getOrDefault(InstrumentItem.START_TIME, 0L);
 
         // reset if the melody changed
@@ -106,11 +106,11 @@ public class MelodyProgress {
         return currentPitch;
     }
 
-    public ResourceLocation getCurrentlyPlaying() {
+    public Identifier getCurrentlyPlaying() {
         return overwritten == null ? currentlyPlaying : overwritten;
     }
 
-    public void overwrite(ResourceLocation by, long startTime, long gameTime) {
+    public void overwrite(Identifier by, long startTime, long gameTime) {
         if (overwritten == null || !overwritten.equals(by) || overwrittenWorldTime != startTime) {
             overwritten = by;
             overwrittenWorldTime = startTime;

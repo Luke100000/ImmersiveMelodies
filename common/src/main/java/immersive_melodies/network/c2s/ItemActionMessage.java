@@ -1,6 +1,7 @@
 package immersive_melodies.network.c2s;
 
 import immersive_melodies.Common;
+import immersive_melodies.util.Utils;
 import immersive_melodies.item.InstrumentItem;
 import immersive_melodies.network.ImmersivePayload;
 import io.netty.buffer.ByteBuf;
@@ -8,31 +9,31 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ByIdMap;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.IntFunction;
 
-public record ItemActionMessage(State state, ResourceLocation melody) implements ImmersivePayload {
+public record ItemActionMessage(State state, Identifier melody) implements ImmersivePayload {
     public static final Type<ItemActionMessage> TYPE = new CustomPacketPayload.Type<>(Common.locate("item_action_message"));
     public static final StreamCodec<FriendlyByteBuf, ItemActionMessage> STREAM_CODEC = StreamCodec.composite(
             State.STREAM_CODEC, ItemActionMessage::state,
-            ResourceLocation.STREAM_CODEC, ItemActionMessage::melody,
+            Identifier.STREAM_CODEC, ItemActionMessage::melody,
             ItemActionMessage::new
     );
-    public static ItemActionMessage fromStateAndMelody(State state, ResourceLocation melody) {
+    public static ItemActionMessage fromStateAndMelody(State state, Identifier melody) {
         return new ItemActionMessage(state, melody);
     }
 
     public static ItemActionMessage fromState(State state) {
-        return new ItemActionMessage(state, ResourceLocation.withDefaultNamespace("empty"));
+        return new ItemActionMessage(state, Identifier.withDefaultNamespace("empty"));
     }
 
     @Override
     public void handle(Player e) {
-        e.getHandSlots().forEach(stack -> {
+        Utils.getHandItems(e).forEach(stack -> {
             if (stack.getItem() instanceof InstrumentItem instrument) {
                 switch (state) {
                     case PLAY -> instrument.play(stack, melody, e.level(), e);

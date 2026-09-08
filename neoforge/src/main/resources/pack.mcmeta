@@ -1,6 +1,7 @@
 {
   "pack": {
     "description": "Immersive Melodies",
-    "pack_format": 6
+    "min_format": 84,
+    "max_format": 101
   }
 }

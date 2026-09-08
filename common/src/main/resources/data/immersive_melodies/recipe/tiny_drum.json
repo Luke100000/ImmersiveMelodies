@@ -6,21 +6,9 @@
     "   "
   ],
   "key": {
-    "L": [
-      {
-        "item": "minecraft:leather"
-      }
-    ],
-    "S": [
-      {
-        "item": "minecraft:string"
-      }
-    ],
-    "W": [
-      {
-        "tag": "minecraft:logs"
-      }
-    ]
+    "L": "minecraft:leather",
+    "S": "minecraft:string",
+    "W": "#minecraft:logs"
   },
   "result": {
     "id": "immersive_melodies:tiny_drum"

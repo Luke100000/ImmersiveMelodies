@@ -1,6 +1,7 @@
 package immersive_melodies.mixin;
 
 import immersive_melodies.item.InstrumentItem;
+import immersive_melodies.util.Utils;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,7 +26,7 @@ public class ClientWorldMixin {
     @Unique
     private void immersiveMelodies$tick(Entity entity) {
         if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.getHandSlots().forEach(itemStack -> {
+            Utils.getHandItems(livingEntity).forEach(itemStack -> {
                 if (itemStack.getItem() instanceof InstrumentItem item) {
                     item.inventoryClientTick(itemStack, (ClientLevel) (Object) this, livingEntity);
                 }

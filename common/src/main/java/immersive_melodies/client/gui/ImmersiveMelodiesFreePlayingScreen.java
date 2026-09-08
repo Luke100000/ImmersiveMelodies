@@ -4,8 +4,10 @@ import com.mojang.blaze3d.platform.InputConstants;
 import immersive_melodies.Client;
 import immersive_melodies.Config;
 import immersive_melodies.client.gui.widget.TexturedButtonWidget;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
@@ -47,20 +49,20 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
     }
 
     @Override
-    protected void renderBlurredBackground(float partialTick) {
+    protected void extractBlurredBackground(GuiGraphicsExtractor graphics) {
         // Nop
     }
 
     @Override
-    public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
+    public void extractRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
         List<Map.Entry<Integer, Integer>> mappings = mappings();
 
-        context.drawCenteredString(
+        context.centeredText(
                 this.font,
                 TEXT,
                 this.width / 2,
                 this.height / 2 - 50,
-                0xFFFFFF
+                0xFFFFFFFF
         );
 
         if (!mappings.isEmpty()) {
@@ -71,10 +73,10 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
             }
         }
 
-        super.render(context, mouseX, mouseY, delta);
+        super.extractRenderState(context, mouseX, mouseY, delta);
     }
 
-    private void renderKey(GuiGraphics context, int x, int y, int keyCode, int midi, boolean pressed) {
+    private void renderKey(GuiGraphicsExtractor context, int x, int y, int keyCode, int midi, boolean pressed) {
         int borderColor = pressed ? 0xFFFFE59A : 0xFF8A8A8A;
         int backgroundColor = pressed ? 0xFFE2B84B : 0xCC171717;
         int keyColor = pressed ? 0xFF241B0A : 0xFFFFFFFF;
@@ -84,8 +86,8 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
         context.fill(x, y, x + KEY_WIDTH, y + KEY_HEIGHT, backgroundColor);
 
         Component keyName = InputConstants.Type.KEYSYM.getOrCreate(keyCode).getDisplayName();
-        context.drawCenteredString(this.font, keyName, x + KEY_WIDTH / 2, y + 4, keyColor);
-        context.drawCenteredString(this.font, midiName(midi), x + KEY_WIDTH / 2, y + 16, noteColor);
+        context.centeredText(this.font, keyName, x + KEY_WIDTH / 2, y + 4, keyColor);
+        context.centeredText(this.font, midiName(midi), x + KEY_WIDTH / 2, y + 16, noteColor);
     }
 
     private static String midiName(int midi) {
@@ -148,7 +150,8 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
     }
 
     @Override
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+    public boolean keyPressed(KeyEvent event) {
+        int keyCode = event.key();
         Integer midi = Config.getInstance().keycodeToMidi.get(keyCode);
         if (midi != null) {
             if (pressedKeys.add(keyCode)) {
@@ -156,27 +159,28 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
             }
             return true;
         }
-        return super.keyPressed(keyCode, scanCode, modifiers);
+        return super.keyPressed(event);
     }
 
     @Override
-    public boolean keyReleased(int keyCode, int scanCode, int modifiers) {
+    public boolean keyReleased(KeyEvent event) {
+        int keyCode = event.key();
         Integer midi = Config.getInstance().keycodeToMidi.get(keyCode);
         if (midi != null) {
             pressedKeys.remove(keyCode);
             Client.playNote(midi, 0);
             return true;
         }
-        return super.keyReleased(keyCode, scanCode, modifiers);
+        return super.keyReleased(event);
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (super.mouseClicked(mouseX, mouseY, button)) {
+    public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+        if (super.mouseClicked(event, doubleClick)) {
             return true;
         }
 
-        Integer keyCode = keyAt(mouseX, mouseY);
+        Integer keyCode = keyAt(event.x(), event.y());
         if (keyCode != null) {
             pressedMouseKey = keyCode;
             Client.playNote(Config.getInstance().keycodeToMidi.get(keyCode), 127);
@@ -186,13 +190,13 @@ public class ImmersiveMelodiesFreePlayingScreen extends Screen {
     }
 
     @Override
-    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+    public boolean mouseReleased(MouseButtonEvent event) {
         if (pressedMouseKey != null) {
             Client.playNote(Config.getInstance().keycodeToMidi.get(pressedMouseKey), 0);
             pressedMouseKey = null;
             return true;
         }
-        return super.mouseReleased(mouseX, mouseY, button);
+        return super.mouseReleased(event);
     }
 
     @Override

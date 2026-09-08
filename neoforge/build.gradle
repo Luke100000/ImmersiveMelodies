@@ -5,10 +5,6 @@ plugins {
 
 neoForge {
     version = neoforge_version
-    parchment {
-        minecraftVersion = parchment_minecraft
-        mappingsVersion = parchment_version
-    }
     runs {
         configureEach {
             systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
@@ -16,12 +12,15 @@ neoForge {
         }
         client {
             client()
+            gameDirectory = file('runs/client')
         }
         data {
             data()
+            gameDirectory = file('runs/data')
         }
         server {
             server()
+            gameDirectory = file('runs/server')
         }
     }
     mods {

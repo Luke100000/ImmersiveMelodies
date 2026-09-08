@@ -6,16 +6,8 @@
     "   "
   ],
   "key": {
-    "B": [
-      {
-        "item": "minecraft:bone"
-      }
-    ],
-    "N": [
-      {
-        "item": "minecraft:note_block"
-      }
-    ]
+    "B": "minecraft:bone",
+    "N": "minecraft:note_block"
   },
   "result": {
     "id": "immersive_melodies:piano"

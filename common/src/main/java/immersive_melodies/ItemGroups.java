@@ -1,11 +1,11 @@
 package immersive_melodies;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
 public class ItemGroups {
-    public static ResourceLocation getIdentifier() {
+    public static Identifier getIdentifier() {
         return Common.locate(Common.MOD_ID + "_tab");
     }
 

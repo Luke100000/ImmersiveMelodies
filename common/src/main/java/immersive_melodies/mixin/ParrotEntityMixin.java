@@ -1,7 +1,7 @@
 package immersive_melodies.mixin;
 
 import immersive_melodies.client.MelodyProgressManager;
-import net.minecraft.world.entity.animal.Parrot;
+import net.minecraft.world.entity.animal.parrot.Parrot;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

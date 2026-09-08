@@ -2,7 +2,7 @@ package immersive_melodies.resources;
 
 import immersive_melodies.network.Network;
 import immersive_melodies.network.c2s.MelodyRequest;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,15 +10,15 @@ import java.util.Map;
 import java.util.Set;
 
 public class ClientMelodyManager {
-    static final Map<ResourceLocation, Melody> melodies = new HashMap<>();
-    static final Map<ResourceLocation, MelodyDescriptor> melodiesList = new HashMap<>();
-    static final Set<ResourceLocation> requested = new HashSet<>();
+    static final Map<Identifier, Melody> melodies = new HashMap<>();
+    static final Map<Identifier, MelodyDescriptor> melodiesList = new HashMap<>();
+    static final Set<Identifier> requested = new HashSet<>();
 
-    public static Map<ResourceLocation, MelodyDescriptor> getMelodiesList() {
+    public static Map<Identifier, MelodyDescriptor> getMelodiesList() {
         return melodiesList;
     }
 
-    public static Melody getMelody(ResourceLocation identifier) {
+    public static Melody getMelody(Identifier identifier) {
         if (!melodies.containsKey(identifier) && !requested.contains(identifier)) {
             Network.sendToServer(new MelodyRequest(identifier));
             requested.add(identifier);
@@ -26,7 +26,7 @@ public class ClientMelodyManager {
         return melodies.getOrDefault(identifier, Melody.DEFAULT);
     }
 
-    public static void setMelody(ResourceLocation identifier, Melody melody) {
+    public static void setMelody(Identifier identifier, Melody melody) {
         melodies.put(identifier, melody);
     }
 }

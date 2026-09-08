@@ -1,9 +1,7 @@
 package immersive_melodies.client.gui.widget;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 
@@ -24,20 +22,16 @@ public class DefaultButtonWidget extends Button {
     }
 
     @Override
-    protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        super.renderWidget(guiGraphics, mouseX, mouseY, partialTick);
+    protected void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
+        this.extractDefaultSprite(graphics);
+        this.extractDefaultLabel(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE));
 
-        if (visible) {
-            updateTooltip();
-        }
+        extractTooltip(graphics, mouseX, mouseY);
     }
 
-    private void updateTooltip() {
+    protected void extractTooltip(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
         if (this.tooltipSupplier != null && isHovered()) {
-            Screen screen = Minecraft.getInstance().screen;
-            if (screen != null) {
-                screen.setTooltipForNextRenderPass(this.tooltipSupplier.get());
-            }
+            graphics.setTooltipForNextFrame(this.tooltipSupplier.get(), mouseX, mouseY);
         }
     }
 }

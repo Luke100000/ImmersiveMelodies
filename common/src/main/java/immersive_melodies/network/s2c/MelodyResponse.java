@@ -8,7 +8,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 
 public record MelodyResponse(String name, byte[] fragment, int length) implements FragmentedMessage {
@@ -22,7 +22,7 @@ public record MelodyResponse(String name, byte[] fragment, int length) implement
 
     @Override
     public void finish(Player e, String name, Melody melody) {
-        ClientMelodyManager.setMelody(ResourceLocation.parse(name), melody);
+        ClientMelodyManager.setMelody(Identifier.parse(name), melody);
     }
 
     @Override

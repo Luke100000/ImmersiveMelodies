@@ -25,7 +25,13 @@ public class JsonConfig {
     }
 
     public void save() {
-        try (FileWriter writer = new FileWriter(getConfigFile())) {
+        File configFile = getConfigFile();
+        File parent = configFile.getParentFile();
+        if (parent != null && !parent.exists() && !parent.mkdirs()) {
+            Common.LOGGER.error("Couldn't create config directory {}", parent);
+            return;
+        }
+        try (FileWriter writer = new FileWriter(configFile)) {
             version = getVersion();
             writer.write(toJsonString());
         } catch (IOException e) {

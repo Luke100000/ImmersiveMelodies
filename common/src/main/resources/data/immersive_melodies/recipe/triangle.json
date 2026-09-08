@@ -6,11 +6,7 @@
     "CCC"
   ],
   "key": {
-    "C": [
-      {
-        "item": "minecraft:copper_ingot"
-      }
-    ]
+    "C": "minecraft:copper_ingot"
   },
   "result": {
     "id": "immersive_melodies:triangle"

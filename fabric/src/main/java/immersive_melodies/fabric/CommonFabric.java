@@ -12,7 +12,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -41,7 +41,7 @@ public final class CommonFabric implements ModInitializer {
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> ServerMelodyManager.server = server);
 
-        CreativeModeTab group = FabricItemGroup.builder()
+        CreativeModeTab group = FabricCreativeModeTab.builder()
                 .title(ItemGroups.getDisplayName())
                 .icon(ItemGroups::getIcon)
                 .displayItems((enabledFeatures, entries) -> entries.acceptAll(Items.getSortedItems()))
@@ -57,10 +57,10 @@ public final class CommonFabric implements ModInitializer {
         @Override
         public <T extends ImmersivePayload> void register(CustomPacketPayload.Type<T> type, StreamCodec<FriendlyByteBuf, T> codec, boolean isServer) {
             if (isServer) {
-                PayloadTypeRegistry.playC2S().register(type, codec);
+                PayloadTypeRegistry.serverboundPlay().register(type, codec);
                 ServerPlayNetworking.registerGlobalReceiver(type, (payload, ctx) -> ctx.server().execute(() -> payload.handle(ctx.player())));
             } else {
-                PayloadTypeRegistry.playS2C().register(type, codec);
+                PayloadTypeRegistry.clientboundPlay().register(type, codec);
                 if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
                     ClientProxy.register(type);
                 }

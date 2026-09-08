@@ -6,16 +6,8 @@
     "LLL"
   ],
   "key": {
-    "F": [
-      {
-        "item": "immersive_melodies:flute"
-      }
-    ],
-    "L": [
-      {
-        "item": "minecraft:leather"
-      }
-    ]
+    "F": "immersive_melodies:flute",
+    "L": "minecraft:leather"
   },
   "result": {
     "id": "immersive_melodies:bagpipe"

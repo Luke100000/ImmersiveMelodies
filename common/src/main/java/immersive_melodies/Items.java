@@ -4,7 +4,9 @@ import com.google.common.base.Suppliers;
 import immersive_melodies.client.animation.ItemAnimators;
 import immersive_melodies.client.animation.animators.Animator;
 import immersive_melodies.item.InstrumentItem;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -13,13 +15,11 @@ import org.joml.Vector3f;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
 public interface Items {
-    Map<ResourceLocation, Supplier<Item>> items = new ConcurrentHashMap<>();
-    CopyOnWriteArrayList<ResourceLocation> customInventoryModels = new CopyOnWriteArrayList<>();
+    Map<Identifier, Supplier<Item>> items = new ConcurrentHashMap<>();
 
     Supplier<Item> BAGPIPE = register(Common.MOD_ID, "bagpipe", 300, new Vector3f(0.5f, 0.6f, 0.05f));
     Supplier<Item> DIDGERIDOO = register(Common.MOD_ID, "didgeridoo", 400, new Vector3f(0.0f, -0.45f, 1.0f));
@@ -46,7 +46,7 @@ public interface Items {
      * @return The registered item's provider.
      */
     static Supplier<Item> register(@NotNull String namespace, @NotNull String name, Animator animator, long sustain, Vector3f offset) {
-        ResourceLocation identifier = ResourceLocation.fromNamespaceAndPath(namespace, name);
+        Identifier identifier = Identifier.fromNamespaceAndPath(namespace, name);
         ItemAnimators.register(identifier, animator);
         return register(namespace, name, sustain, offset);
     }
@@ -63,12 +63,11 @@ public interface Items {
      * @return The registered item's provider.
      */
     static Supplier<Item> register(@NotNull String namespace, @NotNull String name, long sustain, Vector3f offset) {
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(namespace, name);
+        Identifier location = Identifier.fromNamespaceAndPath(namespace, name);
         Supplier<Item> supplier = Suppliers.memoize(() -> new InstrumentItem(
-                baseProps(), new Sounds.Instrument(namespace, name), sustain, offset
+                baseProps().setId(ResourceKey.create(Registries.ITEM, location)), new Sounds.Instrument(namespace, name), sustain, offset
         ));
         items.put(location, supplier);
-        customInventoryModels.addIfAbsent(location);
         return supplier;
     }
 

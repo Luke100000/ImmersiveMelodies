@@ -5,7 +5,7 @@ import immersive_melodies.network.s2c.MelodyResponse;
 import immersive_melodies.resources.Melody;
 import io.netty.buffer.Unpooled;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 
 import java.util.LinkedList;
@@ -50,7 +50,7 @@ public class PacketSplitter {
      * @param melody     The melody to send
      * @param player     The player to send the melody to
      */
-    public static void sendToPlayer(ResourceLocation identifier, Melody melody, ServerPlayer player) {
+    public static void sendToPlayer(Identifier identifier, Melody melody, ServerPlayer player) {
         List<byte[]> fragments = fragmentate(melody);
         int length = fragments.stream().mapToInt(f -> f.length).sum();
         for (byte[] fragment : fragments) {

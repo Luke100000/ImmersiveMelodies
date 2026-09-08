@@ -15,7 +15,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -76,7 +76,7 @@ public final class CommonNeoForge {
     public static void registerNetwork(final RegisterPayloadHandlersEvent event) {
         Network.register(new NeoForgeRegistrar(event.registrar("1")));
         Network.registerSender(PacketDistributor::sendToPlayer);
-        Network.registerClientSender(PacketDistributor::sendToServer);
+        Network.registerClientSender(net.neoforged.neoforge.client.network.ClientPacketDistributor::sendToServer);
     }
 
     @SubscribeEvent
@@ -96,7 +96,7 @@ public final class CommonNeoForge {
     }
 
     @SubscribeEvent
-    public static void onAddReloadListener(AddReloadListenerEvent event) {
-        event.addListener(new MelodyLoader());
+    public static void onAddReloadListener(AddServerReloadListenersEvent event) {
+        event.addListener(Common.locate("melody"), new MelodyLoader());
     }
 }

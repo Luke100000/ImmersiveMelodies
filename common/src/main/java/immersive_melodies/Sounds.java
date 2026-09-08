@@ -1,6 +1,6 @@
 package immersive_melodies;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 
 import java.util.LinkedList;
@@ -9,10 +9,10 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public interface Sounds {
-    Map<ResourceLocation, SoundEvent> sounds = new ConcurrentHashMap<>();
+    Map<Identifier, SoundEvent> sounds = new ConcurrentHashMap<>();
 
     static SoundEvent register(String namespace, String path) {
-        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(namespace, path);
+        Identifier id = Identifier.fromNamespaceAndPath(namespace, path);
         SoundEvent event = SoundEvent.createVariableRangeEvent(id);
         sounds.put(id, event);
         return event;

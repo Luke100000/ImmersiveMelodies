@@ -11,16 +11,16 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public record MelodyListMessage(Map<ResourceLocation, MelodyDescriptor> melodies) implements ImmersivePayload {
+public record MelodyListMessage(Map<Identifier, MelodyDescriptor> melodies) implements ImmersivePayload {
     public static final Type<MelodyListMessage> TYPE = new CustomPacketPayload.Type<>(Common.locate("melody_list_message"));
     public static final StreamCodec<FriendlyByteBuf, MelodyListMessage> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.map(HashMap::new, ResourceLocation.STREAM_CODEC, MelodyDescriptor.STREAM_CODEC), MelodyListMessage::melodies,
+            ByteBufCodecs.map(HashMap::new, Identifier.STREAM_CODEC, MelodyDescriptor.STREAM_CODEC), MelodyListMessage::melodies,
             MelodyListMessage::new
     );
 
@@ -28,10 +28,10 @@ public record MelodyListMessage(Map<ResourceLocation, MelodyDescriptor> melodies
         this(createMelodiesMap(receiver));
     }
 
-    private static Map<ResourceLocation, MelodyDescriptor> createMelodiesMap(Player receiver) {
-        Map<ResourceLocation, MelodyDescriptor> melodies = new HashMap<>();
+    private static Map<Identifier, MelodyDescriptor> createMelodiesMap(Player receiver) {
+        Map<Identifier, MelodyDescriptor> melodies = new HashMap<>();
         //datapack melodies
-        for (Map.Entry<ResourceLocation, MelodyLoader.LazyMelody> lazyMelodyEntry : ServerMelodyManager.getDatapackMelodies().entrySet()) {
+        for (Map.Entry<Identifier, MelodyLoader.LazyMelody> lazyMelodyEntry : ServerMelodyManager.getDatapackMelodies().entrySet()) {
             melodies.put(lazyMelodyEntry.getKey(), lazyMelodyEntry.getValue().getDescriptor());
         }
 

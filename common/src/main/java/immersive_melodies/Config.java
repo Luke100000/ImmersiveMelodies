@@ -2,7 +2,7 @@ package immersive_melodies;
 
 import java.util.Map;
 
-import static net.minecraft.world.entity.Mob.DEFAULT_EQUIPMENT_DROP_CHANCE;
+import static net.minecraft.world.entity.DropChances.DEFAULT_EQUIPMENT_DROP_CHANCE;
 
 public final class Config extends JsonConfig {
     private static final Config INSTANCE = loadOrCreate();

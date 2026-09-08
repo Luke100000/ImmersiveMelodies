@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "immersive_melodies:item/tiny_drum"
+        },
+        "when": ["gui", "ground", "fixed"]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "immersive_melodies:item/tiny_drum_hand"
+    },
+    "property": "minecraft:display_context"
+  }
+}
