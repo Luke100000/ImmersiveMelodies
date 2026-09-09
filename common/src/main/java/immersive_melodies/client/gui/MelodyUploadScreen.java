@@ -135,8 +135,8 @@ public class MelodyUploadScreen extends Screen {
 
     @Override
     public void onFilesDrop(List<Path> paths) {
-        parent.onFilesDrop(paths);
         onClose();
+        parent.onFilesDrop(paths);
     }
 
     @Override
