@@ -14,8 +14,8 @@ neoForge {
             client()
             gameDirectory = file('runs/client')
         }
-        data {
-            data()
+        clientData {
+            clientData()
             gameDirectory = file('runs/data')
         }
         server {
