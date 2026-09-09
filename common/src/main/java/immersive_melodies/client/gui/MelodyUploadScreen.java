@@ -41,7 +41,10 @@ public class MelodyUploadScreen extends Screen {
         search = new EditBox(font, width / 2 - 70, top + 12, 140, 20, Component.translatable("immersive_melodies.search"));
         search.setMaxLength(128);
         search.setSuggestion("Search");
-        search.setResponder(value -> refreshFiles());
+        search.setResponder(value -> {
+            refreshFiles();
+            search.setSuggestion(null);
+        });
         search.setBordered(false);
         search.setTextColor(0x808080);
 
@@ -131,8 +134,8 @@ public class MelodyUploadScreen extends Screen {
 
     @Override
     public void onFilesDrop(List<Path> paths) {
-        parent.onFilesDrop(paths);
         onClose();
+        parent.onFilesDrop(paths);
     }
 
     @Override
