@@ -312,7 +312,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         // Free playing
         addRenderableWidget(new TexturedButtonWidget(width / 2 - 35, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 0, 256, 256, Component.nullToEmpty(null), button -> {
             if (minecraft != null) {
-                minecraft.setScreen(new ImmersiveMelodiesFreePlayingScreen());
+                minecraft.gui.setScreen(new ImmersiveMelodiesFreePlayingScreen());
             }
         }, () -> List.of(Component.translatable("immersive_melodies.keyboard").getVisualOrderText())));
 
@@ -340,7 +340,7 @@ public class ImmersiveMelodiesScreen extends Screen {
         // Upload
         addRenderableWidget(new TexturedButtonWidget(actionX, y, 16, 16, BACKGROUND_TEXTURE, 256 - 48, 48, 256, 256, Component.empty(), button -> {
             if (minecraft != null) {
-                minecraft.setScreen(new MelodyUploadScreen(this));
+                minecraft.gui.setScreen(new MelodyUploadScreen(this));
             }
         }, () -> List.of(Component.translatable("immersive_melodies.upload").getVisualOrderText())));
         actionX += 20;

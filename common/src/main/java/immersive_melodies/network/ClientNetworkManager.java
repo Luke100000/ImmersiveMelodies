@@ -13,7 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 public class ClientNetworkManager implements NetworkManager {
     @Override
     public void handleOpenGuiRequest(OpenGuiRequest request) {
-        Minecraft.getInstance().setScreen(new ImmersiveMelodiesScreen());
+        Minecraft.getInstance().gui.setScreen(new ImmersiveMelodiesScreen());
     }
 
     @Override
@@ -21,7 +21,7 @@ public class ClientNetworkManager implements NetworkManager {
         ClientMelodyManager.getMelodiesList().clear();
         ClientMelodyManager.getMelodiesList().putAll(response.melodies());
 
-        if (Minecraft.getInstance().screen instanceof ImmersiveMelodiesScreen screen) {
+        if (Minecraft.getInstance().gui.screen() instanceof ImmersiveMelodiesScreen screen) {
             screen.refreshPage();
         }
     }

@@ -31,7 +31,7 @@ public class SoundManagerImpl implements SoundManager {
 
     @Override
     public boolean isFirstPerson(Entity entity) {
-        return Minecraft.getInstance().getCameraEntity() == entity && !Minecraft.getInstance().gameRenderer.getMainCamera().isDetached();
+        return Minecraft.getInstance().getCameraEntity() == entity && !Minecraft.getInstance().gameRenderer.mainCamera().isDetached();
     }
 
     @Override
