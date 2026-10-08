@@ -15,6 +15,8 @@ import immersive_melodies.resources.ServerMelodyManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -222,11 +224,20 @@ public class InstrumentItem extends Item {
         }
     }
 
+    /**
+     * Starts a melody at the current world game tick.
+     */
     public void play(ItemStack stack, ResourceLocation melody, Level world, Entity entity) {
         play(stack, melody, world.getGameTime(), entity);
     }
 
-    private void play(ItemStack stack, ResourceLocation melody, long startTime, Entity entity) {
+    /**
+     * Starts a melody with the given start tick so performers can play in sync.
+     *
+     * @param startTime The world game tick when playback began.
+     * @param entity    The performer used to look up track settings.
+     */
+    public void play(ItemStack stack, ResourceLocation melody, long startTime, Entity entity) {
         stack.getOrCreateTag().putString(TAG_MELODY, melody.toString());
         stack.getOrCreateTag().putBoolean(TAG_PLAYING, true);
         stack.getOrCreateTag().putLong(TAG_START_TIME, startTime);
@@ -239,12 +250,40 @@ public class InstrumentItem extends Item {
         return new ResourceLocation(stack.getOrCreateTag().getString(TAG_MELODY));
     }
 
+    /**
+     * Returns the melody and start tick of a playing instrument.
+     * Returns empty if the stack is not a playing instrument or its playback data is missing or invalid.
+     */
+    public static Optional<Playback> getPlayback(ItemStack stack) {
+        if (!(stack.getItem() instanceof InstrumentItem instrument)) {
+            return Optional.empty();
+        }
+
+        CompoundTag tag = stack.getTag();
+        if (tag == null || !tag.contains(TAG_MELODY, Tag.TAG_STRING)
+            || !tag.contains(TAG_START_TIME, Tag.TAG_LONG) || !instrument.isPlaying(stack)) {
+            return Optional.empty();
+        }
+
+        ResourceLocation melody = ResourceLocation.tryParse(tag.getString(TAG_MELODY));
+        return melody == null ? Optional.empty() : Optional.of(new Playback(melody, tag.getLong(TAG_START_TIME)));
+    }
+
+    /**
+     * A playing melody and its start tick in world game time.
+     */
+    public record Playback(ResourceLocation melody, long startTime) {
+    }
+
     public void refreshTracks(ItemStack stack, Entity entity) {
         String identifier = ServerMelodyManager.getIdentifier(entity, BuiltInRegistries.ITEM.getKey(this));
         Set<Integer> enabledTracks = ServerMelodyManager.getSettings().getEnabledTracks(getMelody(stack), identifier);
         stack.getOrCreateTag().putIntArray(TAG_TRACKS, enabledTracks.stream().mapToInt(i -> i).toArray());
     }
 
+    /**
+     * Resumes playback at its paused position. Call on the server thread.
+     */
     public void play(ItemStack stack, Level world) {
         if (stack.getOrCreateTag().contains(TAG_PAUSED_TIME)) {
             long pausedTime = stack.getOrCreateTag().getLong(TAG_PAUSED_TIME);
@@ -255,6 +294,10 @@ public class InstrumentItem extends Item {
         stack.getOrCreateTag().putBoolean(TAG_PLAYING, true);
     }
 
+    /**
+     * Pauses playback. Call on the server thread.
+     * Mobs holding the instrument start playing again on their next instrument tick.
+     */
     public void pause(ItemStack stack, Level world) {
         if (isPlaying(stack)) {
             stack.getOrCreateTag().putLong(TAG_PAUSED_TIME, world.getGameTime());
