@@ -1,6 +1,10 @@
+# 0.8.1
+
+* Fixed bagpipe texture
+
 # 0.8.0
 
-* Added a upload screen mostly as a fallback for when drag and drop doesn't work
+* Added an upload screen mostly as a fallback for when drag and drop doesn't work
 * Free-playing now supports the mouse
 
 # 0.7.0
