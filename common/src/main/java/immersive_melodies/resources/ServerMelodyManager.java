@@ -8,6 +8,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
@@ -19,6 +20,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class ServerMelodyManager {
@@ -92,6 +94,21 @@ public class ServerMelodyManager {
         } else {
             return (Identifier) custom[i - datapack.length];
         }
+    }
+
+    /**
+     * Chooses a matching datapack or uploaded melody, with each distinct ID equally likely.
+     * Call on the server thread after the melody manager is initialized.
+     *
+     * @param random The random source used for selection.
+     * @param filter A predicate for allowed melody IDs, such as a namespace filter.
+     * @return Empty if no melody matches the filter.
+     */
+    public static Optional<Identifier> getRandomMelody(RandomSource random, Predicate<Identifier> filter) {
+        Set<Identifier> ids = new HashSet<>(getDatapackMelodies().keySet());
+        ids.addAll(getIndex().getMelodies().keySet());
+        List<Identifier> melodies = ids.stream().filter(filter).toList();
+        return melodies.isEmpty() ? Optional.empty() : Optional.of(melodies.get(random.nextInt(melodies.size())));
     }
 
     /**
