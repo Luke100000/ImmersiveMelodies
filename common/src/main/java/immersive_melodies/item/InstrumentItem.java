@@ -40,6 +40,7 @@ import org.joml.Vector3f;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -230,11 +231,20 @@ public class InstrumentItem extends Item {
         }
     }
 
+    /**
+     * Starts a melody at the current world game tick.
+     */
     public void play(ItemStack stack, Identifier melody, Level world, Entity entity) {
         play(stack, melody, world.getGameTime(), entity);
     }
 
-    private void play(ItemStack stack, Identifier melody, long startTime, Entity entity) {
+    /**
+     * Starts a melody with the given start tick so performers can play in sync.
+     *
+     * @param startTime The world game tick when playback began.
+     * @param entity    The performer used to look up track settings.
+     */
+    public void play(ItemStack stack, Identifier melody, long startTime, Entity entity) {
         stack.set(MELODY, melody);
         stack.set(PLAYING, true);
         stack.set(START_TIME, startTime);
@@ -247,12 +257,35 @@ public class InstrumentItem extends Item {
         return stack.getOrDefault(MELODY, Common.locate("default"));
     }
 
+    /**
+     * Returns the melody and start tick of a playing instrument.
+     * Returns empty if the stack is not a playing instrument or its playback data is missing or invalid.
+     */
+    public static Optional<Playback> getPlayback(ItemStack stack) {
+        if (!(stack.getItem() instanceof InstrumentItem instrument) || !instrument.isPlaying(stack)) {
+            return Optional.empty();
+        }
+
+        Identifier melody = stack.get(MELODY);
+        Long startTime = stack.get(START_TIME);
+        return melody == null || startTime == null ? Optional.empty() : Optional.of(new Playback(melody, startTime));
+    }
+
+    /**
+     * A playing melody and its start tick in world game time.
+     */
+    public record Playback(Identifier melody, long startTime) {
+    }
+
     public void refreshTracks(ItemStack stack, Entity entity) {
         String identifier = ServerMelodyManager.getIdentifier(entity, BuiltInRegistries.ITEM.getKey(this));
         Set<Integer> enabledTracks = ServerMelodyManager.getSettings().getEnabledTracks(getMelody(stack), identifier);
         stack.set(TRACKS, new ArrayList<>(enabledTracks));
     }
 
+    /**
+     * Resumes playback at its paused position. Call on the server thread.
+     */
     public void play(ItemStack stack, Level world) {
         if (stack.has(PAUSED_TIME)) {
             long pausedTime = stack.getOrDefault(PAUSED_TIME, world.getGameTime());
@@ -263,6 +296,10 @@ public class InstrumentItem extends Item {
         stack.set(PLAYING, true);
     }
 
+    /**
+     * Pauses playback. Call on the server thread.
+     * Mobs holding the instrument start playing again on their next instrument tick.
+     */
     public void pause(ItemStack stack, Level world) {
         if (isPlaying(stack)) {
             stack.set(PAUSED_TIME, world.getGameTime());
