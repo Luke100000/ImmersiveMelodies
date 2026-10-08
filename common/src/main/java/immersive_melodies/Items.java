@@ -5,13 +5,16 @@ import immersive_melodies.client.animation.ItemAnimators;
 import immersive_melodies.client.animation.animators.Animator;
 import immersive_melodies.item.InstrumentItem;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Supplier;
@@ -78,6 +81,16 @@ public interface Items {
 
     static Collection<ItemStack> getSortedItems() {
         return items.values().stream().map(Supplier::get).map(Item::getDefaultInstance).toList();
+    }
+
+    /**
+     * Returns a new stack for a random registered instrument, including addon instruments.
+     * Returns empty if no instruments are available.
+     */
+    static Optional<ItemStack> getRandomInstrument(RandomSource random) {
+        List<Item> instruments = items.values().stream().map(Supplier::get)
+                .filter(item -> item instanceof InstrumentItem).toList();
+        return instruments.isEmpty() ? Optional.empty() : Optional.of(instruments.get(random.nextInt(instruments.size())).getDefaultInstance());
     }
 
     static void registerItems(Common.RegisterHelper<Item> helper) {
