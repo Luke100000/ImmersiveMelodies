@@ -57,7 +57,7 @@ public class MelodyListWidget extends ObjectSelectionList<MelodyListWidget.Melod
 
     @Override
     public boolean isMouseOver(double mouseX, double mouseY) {
-        return mouseX >= getX() && mouseX <= getX() + getWidth() + width + 10 && mouseY >= this.getY() && mouseY <= this.getY() + getHeight();
+        return mouseX >= getX() && mouseX <= getX() + getWidth() + 10 && mouseY >= this.getY() && mouseY <= this.getY() + getHeight();
     }
 
     @Override
