@@ -1,3 +1,7 @@
+# 0.8.2
+
+* Fixed track selection
+
 # 0.8.1
 
 * Fixed bagpipe texture
