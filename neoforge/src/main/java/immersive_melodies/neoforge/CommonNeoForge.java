@@ -16,6 +16,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
+import net.neoforged.neoforge.event.GameShuttingDownEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -93,6 +94,11 @@ public final class CommonNeoForge {
             Client.postLoad();
             firstLoad = false;
         }
+    }
+
+    @SubscribeEvent
+    public static void onShutdown(GameShuttingDownEvent event) {
+        MidiListener.stop();
     }
 
     @SubscribeEvent
