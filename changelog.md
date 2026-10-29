@@ -1,6 +1,7 @@
 # 0.8.2
 
 * Fixed track selection
+* Fixed background thread not terminating
 
 # 0.8.1
 
