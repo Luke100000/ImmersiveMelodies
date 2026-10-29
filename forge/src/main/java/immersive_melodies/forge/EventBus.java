@@ -2,9 +2,11 @@ package immersive_melodies.forge;
 
 import immersive_melodies.Client;
 import immersive_melodies.Common;
+import immersive_melodies.MidiListener;
 import immersive_melodies.resources.MelodyLoader;
 import immersive_melodies.resources.ServerMelodyManager;
 import net.minecraftforge.event.AddReloadListenerEvent;
+import net.minecraftforge.event.GameShuttingDownEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,6 +28,11 @@ public class EventBus {
             Client.postLoad();
             firstLoad = false;
         }
+    }
+
+    @SubscribeEvent
+    public static void onShutdown(GameShuttingDownEvent event) {
+        MidiListener.stop();
     }
 
     @SubscribeEvent
