@@ -41,6 +41,7 @@ public class Network {
         c.register(MelodyDeleteRequest.class, MelodyDeleteRequest::new);
         c.register(MelodyRequest.class, MelodyRequest::new);
         c.register(NoteBroadcastRequest.class, NoteBroadcastRequest::new);
+        c.register(OpenMenuRequest.class, OpenMenuRequest::new);
         c.register(TrackToggleMessage.class, TrackToggleMessage::new);
         c.register(UploadMelodyRequest.class, UploadMelodyRequest::new);
 
