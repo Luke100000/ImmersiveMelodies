@@ -42,6 +42,7 @@ public final class Config extends JsonConfig {
     public boolean loadInbuiltMidis = true;
     public boolean stopGameMusicForPlayers = true;
     public boolean stopGameMusicForMobs = false;
+    public boolean requireSneakToOpenMenu = false;
     public int uploadPermissionLevel = 0;
     public int rightClickToDropEntityInstrumentPermissionLevel = 0;
 

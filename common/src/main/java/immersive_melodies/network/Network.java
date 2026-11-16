@@ -37,6 +37,7 @@ public class Network {
         c.register(MelodyDeleteRequest.TYPE, MelodyDeleteRequest.STREAM_CODEC, true);
         c.register(MelodyRequest.TYPE, MelodyRequest.STREAM_CODEC, true);
         c.register(NoteBroadcastRequest.TYPE, NoteBroadcastRequest.STREAM_CODEC, true);
+        c.register(OpenMenuRequest.TYPE, OpenMenuRequest.STREAM_CODEC, true);
         c.register(TrackToggleMessage.TYPE, TrackToggleMessage.STREAM_CODEC, true);
         c.register(UploadMelodyRequest.TYPE, UploadMelodyRequest.STREAM_CODEC, true);
 

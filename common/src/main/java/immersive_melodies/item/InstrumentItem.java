@@ -8,8 +8,7 @@ import immersive_melodies.client.MelodyProgress;
 import immersive_melodies.client.MelodyProgressManager;
 import immersive_melodies.client.sound.CancelableSoundInstance;
 import immersive_melodies.network.Network;
-import immersive_melodies.network.s2c.MelodyListMessage;
-import immersive_melodies.network.s2c.OpenGuiRequest;
+import immersive_melodies.network.c2s.OpenMenuRequest;
 import immersive_melodies.resources.Melody;
 import immersive_melodies.resources.Note;
 import immersive_melodies.resources.ServerMelodyManager;
@@ -23,7 +22,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -78,11 +76,12 @@ public class InstrumentItem extends Item {
 
     @Override
     public InteractionResult use(Level world, Player user, InteractionHand hand) {
-        if (!world.isClientSide()) {
-            Network.sendToPlayer(new MelodyListMessage(user), (ServerPlayer) user);
-            Network.sendToPlayer(new OpenGuiRequest(), (ServerPlayer) user);
+        // The client decides, since requireSneakToOpenMenu is a client preference
+        if (!world.isClientSide() || Config.getInstance().requireSneakToOpenMenu && !user.isShiftKeyDown()) {
+            return InteractionResult.PASS;
         }
 
+        Network.sendToServer(new OpenMenuRequest());
         return InteractionResult.SUCCESS;
     }
 
