@@ -18,6 +18,7 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.GameShuttingDownEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -83,6 +84,11 @@ public final class CommonNeoForge {
     @SubscribeEvent
     public static void onServerAboutToStart(ServerAboutToStartEvent event) {
         ServerMelodyManager.server = event.getServer();
+    }
+
+    @SubscribeEvent
+    public static void onServerStopped(ServerStoppedEvent event) {
+        ServerMelodyManager.server = null;
     }
 
     public static boolean firstLoad = true;

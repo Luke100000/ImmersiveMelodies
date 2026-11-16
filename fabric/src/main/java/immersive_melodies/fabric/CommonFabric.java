@@ -40,6 +40,7 @@ public final class CommonFabric implements ModInitializer {
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new FabricMelody());
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> ServerMelodyManager.server = server);
+        ServerLifecycleEvents.SERVER_STOPPED.register(server -> ServerMelodyManager.server = null);
 
         CreativeModeTab group = FabricItemGroup.builder()
                 .title(ItemGroups.getDisplayName())
