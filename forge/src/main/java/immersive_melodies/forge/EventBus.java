@@ -9,6 +9,7 @@ import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.GameShuttingDownEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
+import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -17,6 +18,11 @@ public class EventBus {
     @SubscribeEvent
     public static void onServerAboutToStart(ServerAboutToStartEvent event) {
         ServerMelodyManager.server = event.getServer();
+    }
+
+    @SubscribeEvent
+    public static void onServerStopped(ServerStoppedEvent event) {
+        ServerMelodyManager.server = null;
     }
 
     public static boolean firstLoad = true;

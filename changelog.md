@@ -1,3 +1,7 @@
+# 0.8.4
+
+* Fixed the integrated server leaking after leaving a world
+
 # 0.8.2
 
 * Fixed background thread not terminating
